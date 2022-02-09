@@ -8,19 +8,15 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 
 const App = () => {
-  const [loggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
   return (
     <>
-      <Header loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Header />
       <Routes>
         <Route path="/" element={<Nails />} />
         <Route path="/nails" element={<Nails />} />
         <Route path="/book" element={<Book />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/login"
-          element={<Login loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn} />}
-        />
+        <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
