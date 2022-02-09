@@ -18,86 +18,86 @@ import eighteen from "../assets/eighteen.JPEG";
 
 const Nails = () => {
   return (
-    <div className="flex flex-col items-center my-6">
+    <div className='flex flex-col items-center my-6'>
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={one}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={two}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={three}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={four}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={five}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={six}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={seven}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={eight}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={nine}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={ten}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={eleven}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={fourteen}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={fithteen}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={sixteen}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={seventeen}
-        alt=""
+        alt=''
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className='w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md'
         src={eighteen}
-        alt=""
+        alt=''
       />
     </div>
   );
