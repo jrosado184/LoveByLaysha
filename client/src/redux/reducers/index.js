@@ -1,4 +1,4 @@
-import { LOGIN, LOGGEDIN, LOGOUT } from "../actions/API_CALLS";
+import { LOGIN, LOGGEDIN, LOGOUT } from "../actions/login_actions";
 const initialState = {
   login: {
     message: "",

@@ -15,7 +15,6 @@ const Register = () => {
       ...register,
       [e.target.name]: e.target.value,
     });
-    console.log(register);
   };
 
   const handleSubmit = (e) => {

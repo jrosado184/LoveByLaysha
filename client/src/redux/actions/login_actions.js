@@ -19,7 +19,7 @@ export const loggedOut = () => {
 export const handleLogin = (info) => {
   return (dispatch) => {
     axiosWithAuth()
-      .post("https://lovebylaysha.herokuapp.com/api/users/login", info)
+      .post("/api/users/login", info)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         dispatch(loggedIn());

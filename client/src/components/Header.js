@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import laysha from "../assets/laysha.jpg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { loggedOut } from "../redux/actions/API_CALLS";
+import { loggedOut } from "../redux/actions/login_actions";
 
 const Header = ({ login, dispatch, logIn }) => {
   const handleLogOut = () => {
@@ -53,7 +53,7 @@ const Header = ({ login, dispatch, logIn }) => {
                 : "hidden"
             }
           >
-            <Link to="policies">Contact</Link>
+            <Link to="contact">Contact</Link>
           </nav>
           <nav
             className={
@@ -62,7 +62,7 @@ const Header = ({ login, dispatch, logIn }) => {
                 : "hidden"
             }
           >
-            <Link to="policies">Dashboard</Link>
+            <Link to="dashboard">Dashboard</Link>
           </nav>
           <nav className="text-1xl border-2 rounded-full text-center bg-white border-pink-300 w-20 h-[6%] pl-2 pr-2 items-center justify-center flex">
             {!login.loggedIn ? (

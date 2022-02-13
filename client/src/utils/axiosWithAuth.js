@@ -6,6 +6,7 @@ const axiosWithAuth = () => {
     headers: {
       authorization: token,
     },
+    baseURL: "https://lovebylaysha.herokuapp.com/",
   });
 };
 
