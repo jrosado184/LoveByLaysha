@@ -22,8 +22,9 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    if (localStorage.getItem("token")) return nav("/appointments");
-    return null;
+    if (localStorage.getItem("token")) {
+      nav("/appointments");
+    }
   };
   return (
     <div>

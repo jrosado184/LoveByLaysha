@@ -1,7 +1,16 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import right from "../assets/right.svg";
 
 const Dashboard = () => {
+  const nav = useNavigate();
+
+  const { id } = useParams();
+
+  const handleAppointment = () => {
+    nav(`/appointment/${id}`);
+  };
+
   return (
     <div className="flex justify-center items-center flex-col my-1 gap-8">
       <div className="w-[95%] h-24 border-2 border-gray-300 rounded-md flex flex-col shadow-md">
@@ -13,7 +22,10 @@ const Dashboard = () => {
         </div>
         <div className="w-full pl-4 my-2 flex justify-between">
           <p className="w-full">10:00 AM</p>
-          <div className="w-full flex h-fit items-center justify-center my-6 ml-12 gap-2">
+          <div
+            onClick={handleAppointment}
+            className="w-full flex h-fit items-center justify-center my-6 ml-12 gap-2"
+          >
             <p>See Information</p>
             <img className="w-4" src={right} alt="" />
           </div>
