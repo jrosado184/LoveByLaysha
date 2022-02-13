@@ -8,30 +8,21 @@ exports.up = async (knex) => {
       users.boolean("admin").defaultsTo(false);
       users.timestamps(false, true);
     })
-    .createTable("clients", (clients) => {
-      clients.increments("client_id");
-      clients.string("client_name").notNullable();
-      clients.string("client_phone").notNullable().unique();
-      clients.string("client_set").defaultsTo("none");
-      clients.boolean("client_refill").defaultsTo(false);
-      clients.string("client_refillSet").defaultsTo("none");
-      clients.boolean("client_soak").defaultsTo(false);
-      clients.string("client_details");
-    })
     .createTable("appointments", (appointments) => {
       appointments.increments("appointment_id");
-      appointments.string("appointment_date").notNullable().unique();
-      appointments.string("appointment_time").notNullable().unique();
-      appointments
-        .integer("client_id")
-        .references("client_id")
-        .inTable("clients")
-        .unsigned();
+      appointments.string("appointment_date");
+      appointments.string("appointment_time");
+      appointments.string("client_name");
+      appointments.string("client_phone", 200);
+      appointments.string("client_set");
+      appointments.boolean("client_refill").defaultsTo(false);
+      appointments.string("client_refillSet").defaultsTo("none");
+      appointments.boolean("client_Soak").defaultsTo(false);
+      appointments.string("client_details").defaultsTo("none");
     });
 };
 
 exports.down = async (knex) => {
   await knex.schema.dropTableIfExists("appointments");
-  await knex.schema.dropTableIfExists("clients");
   await knex.schema.dropTableIfExists("users");
 };
