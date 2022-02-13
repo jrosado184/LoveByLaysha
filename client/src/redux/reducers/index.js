@@ -4,7 +4,7 @@ const initialState = {
     message: "",
   },
   loggedIn: "",
-  logout: "",
+  logout: localStorage.removeItem("token"),
 };
 
 const reducer = (state = initialState, action) => {
