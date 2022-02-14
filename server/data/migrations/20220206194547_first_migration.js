@@ -15,10 +15,10 @@ exports.up = async (knex) => {
       appointments.string("client_name");
       appointments.string("client_phone", 200);
       appointments.string("client_set");
-      appointments.boolean("client_refill").defaultsTo(false);
-      appointments.string("client_refillSet").defaultsTo("none");
-      appointments.boolean("client_Soak").defaultsTo(false);
-      appointments.string("client_details").defaultsTo("none");
+      appointments.boolean("client_refill");
+      appointments.string("client_refillSet");
+      appointments.boolean("client_Soak");
+      appointments.string("client_details");
     });
 };
 

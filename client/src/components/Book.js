@@ -16,7 +16,7 @@ const Book = (props) => {
     client_phone: "",
     client_set: "none",
     client_refill: false,
-    client_refillSet: "",
+    client_refillSet: "none",
     client_Soak: false,
     client_details: "",
   });
@@ -124,7 +124,7 @@ const Book = (props) => {
             name="client_refill"
             className="mr-2 my-4"
             type="radio"
-            onChange={() => setInfo({ ...info, refill: true })}
+            onChange={() => setInfo({ ...info, client_refill: true })}
             value={info.client_refill}
           />
           Refill
@@ -135,7 +135,7 @@ const Book = (props) => {
           value={info.client_refillSet}
           onChange={handleChange}
           className={
-            info.refill
+            info.client_refill
               ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full"
               : "hidden"
           }
@@ -151,8 +151,9 @@ const Book = (props) => {
         </select>
         <label className="flex my-4">
           <input
+            name="client_Soak"
             value={info.client_Soak}
-            onChange={() => setInfo({ ...info, soak: true })}
+            onChange={() => setInfo({ ...info, client_Soak: true })}
             className="mr-2 my-[1.5%]"
             type="radio"
           />

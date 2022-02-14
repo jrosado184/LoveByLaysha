@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_APPOINTMENTS:
       return {
         ...state,
-        appointments: action.appointments,
+        appointments: action.payload,
       };
     default:
       return state;
