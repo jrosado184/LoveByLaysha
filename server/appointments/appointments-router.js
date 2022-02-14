@@ -21,7 +21,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.use((err, req, res, next) => {
-  res.json({
+  res.status(500).json({
     message: err.message,
     custom: "error in the appointments router",
   });

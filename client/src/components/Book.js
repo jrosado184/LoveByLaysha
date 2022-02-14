@@ -16,7 +16,7 @@ const Book = (props) => {
     client_phone: "",
     client_set: "none",
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: "",
     client_Soak: false,
     client_details: "",
   });
@@ -25,7 +25,7 @@ const Book = (props) => {
     setInfo({
       ...info,
       appointment_date: selectedDate,
-      image: e.target.files,
+      // image: e.target.files,
       [e.target.name]: e.target.value,
     });
   };
@@ -151,7 +151,7 @@ const Book = (props) => {
         </select>
         <label className="flex my-4">
           <input
-            value={info.client_soak}
+            value={info.client_Soak}
             onChange={() => setInfo({ ...info, soak: true })}
             className="mr-2 my-[1.5%]"
             type="radio"
