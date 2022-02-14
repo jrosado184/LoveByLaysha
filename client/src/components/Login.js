@@ -57,7 +57,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     login: {
-      message: state.login.message,
+      message: state.login.login.message,
     },
   };
 };

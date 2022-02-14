@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, utils } from "react-modern-calendar-datepicker";
 import { disabledDays } from "./data/Disabled";
+import { connect } from "react-redux";
+import { handleAppointments } from "../redux/actions/appointment-actions";
 
-const Book = () => {
+const Book = (props) => {
+  console.log(props);
+  const { dispatch, appointments } = props;
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
     date: null,
@@ -29,7 +33,7 @@ const Book = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(info);
+    dispatch(handleAppointments(info));
   };
 
   return (
@@ -186,4 +190,9 @@ const Book = () => {
   );
 };
 
-export default Book;
+const mapStateToProps = (state) => {
+  return {
+    appointments: state.appointments.appointments,
+  };
+};
+export default connect(mapStateToProps)(Book);

@@ -87,9 +87,9 @@ const Header = ({ login, dispatch }) => {
 const mapStateToProps = (state) => {
   return {
     login: {
-      message: state.login.message,
-      loggedIn: state.loggedIn,
-      logout: state.logout,
+      message: state.login.login.message,
+      loggedIn: state.login.loggedIn,
+      logout: state.login.logout,
     },
   };
 };
