@@ -5,7 +5,7 @@ const findAll = () => {
 };
 
 const insert = async (appointments) => {
-  const [appointments_id] = await db("appointments").insert(appointments, [
+  const [appoint_id] = await db("appointments").insert(appointments, [
     "appointment_date",
     "appointment_time",
     "client_name",
@@ -16,7 +16,7 @@ const insert = async (appointments) => {
     "client_Soak",
     "client_details",
   ]);
-  return appointments_id;
+  return appoint_id;
 };
 
 module.exports = {
