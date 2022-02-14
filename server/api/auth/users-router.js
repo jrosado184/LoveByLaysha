@@ -34,4 +34,11 @@ router.post("/login", checkBody, (req, res, next) => {
     .catch(next);
 });
 
+router.use((err, req, res, next) => {
+  res.json({
+    message: err.message,
+    custom: "error in the auth router",
+  });
+});
+
 module.exports = router;

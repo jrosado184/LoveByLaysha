@@ -20,4 +20,11 @@ router.post("/", (req, res, next) => {
     .catch(next);
 });
 
+router.use((err, req, res, next) => {
+  res.json({
+    message: err.message,
+    custom: "error in the appointments router",
+  });
+});
+
 module.exports = router;
