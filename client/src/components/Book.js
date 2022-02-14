@@ -10,22 +10,21 @@ const Book = (props) => {
   const { dispatch, appointments } = props;
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
-    date: null,
-    time: "",
-    name: "",
-    phone: "",
-    set: "none",
-    refill: false,
-    refillSet: "none",
-    soak: false,
-    details: "",
-    image: null,
+    appointment_date: null,
+    appointment_time: "",
+    client_name: "",
+    client_phone: "",
+    client_set: "none",
+    client_refill: false,
+    client_refillSet: "none",
+    client_Soak: false,
+    client_details: "",
   });
 
   const handleChange = (e) => {
     setInfo({
       ...info,
-      date: selectedDate,
+      appointment_date: selectedDate,
       image: e.target.files,
       [e.target.name]: e.target.value,
     });
@@ -51,8 +50,8 @@ const Book = (props) => {
           disabledDays={disabledDays}
         />
         <select
-          name="time"
-          value={info.time}
+          name="appointment_time"
+          value={info.appointment_time}
           onChange={handleChange}
           className="w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md"
         >
@@ -86,22 +85,22 @@ const Book = (props) => {
           className="pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md"
           type="text"
           placeholder="Name"
-          name="name"
-          value={info.name}
+          name="client_name"
+          value={info.client_name}
           onChange={handleChange}
         />
         <input
           data-testid="phone"
-          name="phone"
-          value={info.phone}
+          name="client_phone"
+          value={info.client_phone}
           onChange={handleChange}
           className="pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md"
           type="tel"
           placeholder="Phone number"
         />
         <select
-          name="set"
-          value={info.set}
+          name="client_set"
+          value={info.client_set}
           onChange={handleChange}
           disabled={info.refill}
           className={
@@ -122,18 +121,18 @@ const Book = (props) => {
         <label>
           <input
             data-testid="rinput"
-            name="refill"
+            name="client_refill"
             className="mr-2 my-4"
             type="radio"
             onChange={() => setInfo({ ...info, refill: true })}
-            value={info.refill}
+            value={info.client_refill}
           />
           Refill
         </label>
         <select
           data-testid="refill"
-          name="refillSet"
-          value={info.refillSet}
+          name="client_refillSet"
+          value={info.client_refillSet}
           onChange={handleChange}
           className={
             info.refill
@@ -152,7 +151,7 @@ const Book = (props) => {
         </select>
         <label className="flex my-4">
           <input
-            value={info.soak}
+            value={info.client_soak}
             onChange={() => setInfo({ ...info, soak: true })}
             className="mr-2 my-[1.5%]"
             type="radio"
@@ -164,8 +163,8 @@ const Book = (props) => {
           Additional Details:
           <input
             data-testid="details"
-            name="details"
-            value={info.details}
+            name="client_details"
+            value={info.client_details}
             onChange={handleChange}
             className="w-80 h-20 border-2 border-gray-400"
           />
@@ -173,7 +172,7 @@ const Book = (props) => {
         <label className=" my-4">
           Have a specific set in mind?
           <input
-            name="image"
+            name="client_image"
             onChange={handleChange}
             className="w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
              file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]"

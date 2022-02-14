@@ -12,6 +12,7 @@ export const handleAppointments = (info) => {
       .post("/api/appointments", info)
       .then((res) => {
         console.log(res);
+        dispatch(fetchAppointments(res));
       });
   };
 };

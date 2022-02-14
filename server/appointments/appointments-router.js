@@ -15,7 +15,7 @@ router.get("/", restricted, (req, res, next) => {
 router.post("/", (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
-      res.json(appoint);
+      res.status(201).json(appoint);
     })
     .catch(next);
 });
