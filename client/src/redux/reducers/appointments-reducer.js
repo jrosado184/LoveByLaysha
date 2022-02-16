@@ -1,7 +1,11 @@
-import { FETCH_APPOINTMENTS } from "../actions/appointment-actions";
+import {
+  FETCH_APPOINTMENTS,
+  RECEIVE_APPOINTMENTS,
+} from "../actions/appointment-actions";
 
 const initialState = {
   appointments: [],
+  allAppointments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +14,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         appointments: action.payload,
+      };
+    case RECEIVE_APPOINTMENTS:
+      return {
+        ...state,
+        allAppointments: action.payload,
       };
     default:
       return state;

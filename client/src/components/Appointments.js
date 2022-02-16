@@ -5,7 +5,7 @@ import right from "../assets/right.svg";
 import { getAppointments } from "./../redux/actions/appointment-actions";
 import numeral from "numeral";
 
-const Dashboard = ({ dispatch, appointments }) => {
+const Dashboard = ({ dispatch, allAppointments }) => {
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -20,7 +20,7 @@ const Dashboard = ({ dispatch, appointments }) => {
 
   return (
     <>
-      {appointments.map((appointment) => (
+      {allAppointments.map((appointment) => (
         <div
           key={appointment.appointment_id}
           className="flex justify-center items-center flex-col my-1 gap-8"
@@ -53,7 +53,7 @@ const Dashboard = ({ dispatch, appointments }) => {
 
 const mapStateToProps = (state) => {
   return {
-    appointments: state.appointments.appointments,
+    allAppointments: state.appointments.allAppointments,
   };
 };
 

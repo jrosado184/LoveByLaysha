@@ -8,8 +8,8 @@ export const addAppointments = (info) => {
 
 export const RECEIVE_APPOINTMENTS = "RECEIVE_APPOINTMENTS";
 
-export const receiveAppointments = () => {
-  return { type: RECEIVE_APPOINTMENTS };
+export const receiveAppointments = (appointments) => {
+  return { type: RECEIVE_APPOINTMENTS, payload: appointments };
 };
 
 export const getAppointments = () => {
@@ -17,7 +17,7 @@ export const getAppointments = () => {
     axiosWithAuth()
       .get("/api/appointments")
       .then((res) => {
-        dispatch(addAppointments(res.data));
+        dispatch(receiveAppointments(res.data));
       });
   };
 };
