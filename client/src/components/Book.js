@@ -56,13 +56,13 @@ const Book = (props) => {
           className="w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md"
         >
           <option value="">select a time</option>
-          <option data-testid="time" value="10:00">
+          <option data-testid="time" value="10:00 AM">
             10:00 AM
           </option>
-          <option data-testid="time" value="10:30">
+          <option data-testid="time" value="10:30 AM">
             10:30 AM
           </option>
-          <option data-testid="time" value="11:00">
+          <option data-testid="time" value="11:00 AM">
             11:00 AM
           </option>
           <option value="11:30 AM">11:30 AM</option>
