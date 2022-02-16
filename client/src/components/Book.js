@@ -65,20 +65,20 @@ const Book = (props) => {
           <option data-testid="time" value="11:00">
             11:00 AM
           </option>
-          <option value="11:30">11:30 AM</option>
-          <option value="12:00">12:00 PM</option>
-          <option value="12:30">12:30 PM</option>
-          <option value="1:00">1:00 PM</option>
-          <option value="1:30">1:30 PM</option>
-          <option value="2:00">2:00 PM</option>
-          <option value="2:30">2:30 PM</option>
-          <option value="3:00">3:00 PM</option>
-          <option value="3:30">3:30 PM</option>
-          <option value="4:00">4:00 PM</option>
-          <option value="4:30">4:30 PM</option>
-          <option value="5:30">5:00 PM</option>
-          <option value="5:30">5:30 PM</option>
-          <option value="6:00">6:00 PM</option>
+          <option value="11:30 AM">11:30 AM</option>
+          <option value="12:00 AM">12:00 PM</option>
+          <option value="12:30 PM">12:30 PM</option>
+          <option value="1:00 PM">1:00 PM</option>
+          <option value="1:30 PM">1:30 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="2:30 PM">2:30 PM</option>
+          <option value="3:00 PM">3:00 PM</option>
+          <option value="3:30 PM">3:30 PM</option>
+          <option value="4:00 PM">4:00 PM</option>
+          <option value="4:30 PM">4:30 PM</option>
+          <option value="5:30 PM">5:00 PM</option>
+          <option value="5:30 PM">5:30 PM</option>
+          <option value="6:00 PM">6:00 PM</option>
         </select>
         <input
           data-testid="name"

@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import right from "../assets/right.svg";
 import { getAppointments } from "./../redux/actions/appointment-actions";
-import numeral from "numeral";
 
-const Dashboard = ({ dispatch, allAppointments }) => {
+const Appointments = ({ dispatch, allAppointments }) => {
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -17,6 +16,8 @@ const Dashboard = ({ dispatch, allAppointments }) => {
   const handleAppointment = () => {
     nav(`/appointment/${id}`);
   };
+
+  const [morning, setMorning] = useState("AM");
 
   return (
     <>
@@ -57,4 +58,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Appointments);
