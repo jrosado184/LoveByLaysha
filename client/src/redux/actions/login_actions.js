@@ -1,6 +1,5 @@
 import React from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import { getAppointments } from "./appointment-actions";
 
 export const LOGIN = "LOGIN";
 export const LOGGEDIN = "LOGGEDIN";
@@ -31,6 +30,5 @@ export const handleLogin = (info) => {
       .catch((err) => {
         console.log(err);
       });
-    dispatch(getAppointments());
   };
 };
