@@ -17,8 +17,6 @@ const Appointments = ({ dispatch, allAppointments }) => {
     nav(`/appointment/${id}`);
   };
 
-  const [morning, setMorning] = useState("AM");
-
   return (
     <>
       {allAppointments.map((appointment) => (

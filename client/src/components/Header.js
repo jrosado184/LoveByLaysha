@@ -5,9 +5,11 @@ import { connect } from "react-redux";
 import { loggedOut } from "../redux/actions/login_actions";
 
 const Header = ({ login, dispatch }) => {
+  console.log(login);
   const handleLogOut = () => {
     dispatch(loggedOut());
   };
+
   return (
     <>
       <div className="flex bg-pink-200 w-100 h-62 shadow-md flex flex-col">
@@ -17,18 +19,10 @@ const Header = ({ login, dispatch }) => {
             src={laysha}
             alt=""
           />
-          <h2
-            className={
-              login.loggedIn ? "hidden" : "mr-24 my-6 font-girl text-2xl w-2"
-            }
-          >
-            LoveByLaysha
-          </h2>
+          <h2 className="mr-24 my-6 font-girl text-2xl w-2">LoveByLaysha</h2>
         </div>
-        <div
-          className={login.loggedIn ? "font-girl ml-6 text-2xl w-96" : "hidden"}
-        >
-          {login.message}
+        <div className="font-girl ml-6 text-2xl w-96">
+          {localStorage.getItem("message")}
         </div>
         <div
           className={
@@ -71,7 +65,7 @@ const Header = ({ login, dispatch }) => {
             <Link to="appointments">Appointments</Link>
           </nav>
           <nav className="text-1xl border-2 rounded-full text-center bg-white border-pink-300 w-20 h-[6%] pl-2 pr-2 items-center justify-center flex">
-            {!login.loggedIn ? (
+            {!localStorage.getItem("token") ? (
               <Link to="login">Admin</Link>
             ) : (
               <Link onClick={handleLogOut} to="/">

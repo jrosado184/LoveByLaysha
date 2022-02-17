@@ -4,7 +4,7 @@ const initialState = {
     message: "",
   },
   loggedIn: "",
-  logout: localStorage.removeItem("token"),
+  logout: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,12 +19,15 @@ const reducer = (state = initialState, action) => {
     case LOGGEDIN:
       return {
         ...state,
+        login: {
+          message: localStorage.getItem("message"),
+        },
         loggedIn: localStorage.getItem("token"),
       };
     case LOGOUT: {
       return {
         ...state,
-        loggedIn: "",
+        logout: localStorage.clear(),
       };
     }
     default:

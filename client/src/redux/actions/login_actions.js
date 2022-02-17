@@ -15,6 +15,18 @@ export const loggedIn = () => {
 export const loggedOut = () => {
   return { type: LOGOUT };
 };
+export const handleMessage = () => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .get("/api/users")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const handleLogin = (info) => {
   return (dispatch) => {
@@ -22,6 +34,7 @@ export const handleLogin = (info) => {
       .post("/api/users/login", info)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("message", res.data.message);
         dispatch(loggedIn());
         dispatch(login(res.data));
       })

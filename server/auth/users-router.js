@@ -5,9 +5,11 @@ const Users = require("./users-model");
 const { checkBody, checkExists } = require("./users-middleware");
 
 router.get("/", (req, res, next) => {
-  Users.findAll().then((users) => {
-    res.json(users);
-  });
+  Users.findAll()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch(next);
 });
 
 router.post("/register", checkBody, checkExists, (req, res, next) => {
