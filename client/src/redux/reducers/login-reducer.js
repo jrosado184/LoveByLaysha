@@ -19,9 +19,6 @@ const reducer = (state = initialState, action) => {
     case LOGGEDIN:
       return {
         ...state,
-        login: {
-          message: localStorage.getItem("message"),
-        },
         loggedIn: localStorage.getItem("token"),
       };
     case LOGOUT: {

@@ -18,6 +18,7 @@ export const getAppointments = () => {
       .get("/api/appointments")
       .then((res) => {
         dispatch(receiveAppointments(res.data));
+        localStorage.getItem("token");
       })
       .catch((err) => console.error(err));
   };

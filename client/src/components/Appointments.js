@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import right from "../assets/right.svg";
 import { getAppointments } from "./../redux/actions/appointment-actions";
+import { handleLogin } from "../redux/actions/login_actions";
 
 const Appointments = ({ dispatch, allAppointments }) => {
   const nav = useNavigate();

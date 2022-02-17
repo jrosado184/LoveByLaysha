@@ -1,4 +1,6 @@
+import React from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth";
+import { getAppointments } from "./appointment-actions";
 
 export const LOGIN = "LOGIN";
 export const LOGGEDIN = "LOGGEDIN";
@@ -15,18 +17,6 @@ export const loggedIn = () => {
 export const loggedOut = () => {
   return { type: LOGOUT };
 };
-export const handleMessage = () => {
-  return (dispatch) => {
-    axiosWithAuth()
-      .get("/api/users")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
 
 export const handleLogin = (info) => {
   return (dispatch) => {
@@ -41,5 +31,6 @@ export const handleLogin = (info) => {
       .catch((err) => {
         console.log(err);
       });
+    dispatch(getAppointments());
   };
 };

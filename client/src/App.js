@@ -8,7 +8,9 @@ import Login from "./components/Login";
 import Appointments from "./components/Appointments";
 import Appointment from "./components/Appointment";
 
-const App = () => {
+import { connect } from "react-redux";
+
+const App = ({ login }) => {
   return (
     <>
       <Header />
@@ -19,10 +21,17 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/appointments" element={<Appointments />} />
-        <Route path="/appointment/:id" element={<Appointment />} />
       </Routes>
     </>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    login: {
+      loggedIn: state.login.loggedIn,
+    },
+  };
+};
+
+export default connect(mapStateToProps)(App);
