@@ -33,7 +33,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
                   {appointment.client_name}
                 </h1>
               </div>
-              <p className="mr-4 py-1">2/21/2022</p>
+              <p className="mr-4 py-1">{appointment.appointment_date}</p>
             </div>
             <div className="w-full pl-4 my-2 flex justify-between">
               <p className="w-full">{appointment.appointment_time}</p>

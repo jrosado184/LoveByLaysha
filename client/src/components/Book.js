@@ -24,7 +24,7 @@ const Book = (props) => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_date: selectedDate,
+      appointment_date: `${selectedDate.month}/${selectedDate.day}/${selectedDate.year}`,
       // image: e.target.files,
       [e.target.name]: e.target.value,
     });
