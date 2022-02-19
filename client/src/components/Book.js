@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 import { handleAppointments } from "../redux/actions/appointment-actions";
 
 const Book = (props) => {
-  console.log(props);
-  const { dispatch, appointments } = props;
+  const { dispatch } = props;
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
     appointment_date: null,
@@ -102,9 +101,9 @@ const Book = (props) => {
           name="client_set"
           value={info.client_set}
           onChange={handleChange}
-          disabled={info.refill}
+          disabled={info.client_refill}
           className={
-            !info.refill
+            !info.client_refill
               ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md"
               : "hidden"
           }

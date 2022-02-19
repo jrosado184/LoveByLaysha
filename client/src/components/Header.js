@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { loggedOut } from "../redux/actions/login_actions";
 
 const Header = ({ login, dispatch }) => {
-  console.log(login);
   const handleLogOut = () => {
     dispatch(loggedOut());
   };
