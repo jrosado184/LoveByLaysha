@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import right from "../assets/right.svg";
 import { getAppointments } from "./../redux/actions/appointment-actions";
+import search from "../assets/search.svg";
 
 const Appointments = ({ dispatch, allAppointments }) => {
+  const [showSearch, setShowSearch] = useState(false);
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -18,7 +20,23 @@ const Appointments = ({ dispatch, allAppointments }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <div className="h-8 flex items-center justify-end w-full my-2">
+        <input
+          className={
+            showSearch
+              ? "w-[87%] border-2 border-pink-300 mr-2 h-8 pl-2"
+              : "hidden"
+          }
+          placeholder="Search for a client"
+        />
+        <img
+          onClick={() => setShowSearch(!showSearch)}
+          className="w-6 mr-4"
+          src={search}
+          alt=""
+        />
+      </div>
       {allAppointments.map((appointment) => (
         <div
           key={appointment.appointment_id}

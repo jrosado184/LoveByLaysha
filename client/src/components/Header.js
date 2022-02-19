@@ -20,7 +20,9 @@ const Header = ({ login, dispatch }) => {
           />
           <h2
             className={
-              login.loggedIn ? "hidden" : "mr-24 my-6 font-girl text-2xl w-2"
+              localStorage.getItem("token")
+                ? "hidden"
+                : "mr-24 my-6 font-girl text-2xl w-2"
             }
           >
             LoveByLaysha
@@ -31,9 +33,9 @@ const Header = ({ login, dispatch }) => {
         </div>
         <div
           className={
-            login.loggedIn
-              ? "sm:flex my-3 font-girl w-90 gap-1 items-end justify-end mr-2 grow"
-              : "sm:flex my-3 font-girl w-100 gap-1 items-end justify-end mr-2"
+            localStorage.getItem("token")
+              ? "sm:flex my-3 font-girl w-90 gap-1 items-end justify-end mr-[4.5%] grow"
+              : "sm:flex my-3 font-girl w-100 gap-1 items-end justify-end mr-[2.6%]"
           }
         >
           <nav className="h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-2 pr-2 h-[6%] items-center justify-center flex">
@@ -41,7 +43,7 @@ const Header = ({ login, dispatch }) => {
           </nav>
           <nav
             className={
-              !login.loggedIn
+              !localStorage.getItem("token")
                 ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-2 pr-2 h-[6%] items-center justify-center flex"
                 : "hidden"
             }
@@ -53,7 +55,7 @@ const Header = ({ login, dispatch }) => {
           </nav>
           <nav
             className={
-              !login.loggedIn
+              !localStorage.getItem("token")
                 ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-2 pr-2 w-20 h-[6%] items-center justify-center flex"
                 : "hidden"
             }
@@ -62,7 +64,7 @@ const Header = ({ login, dispatch }) => {
           </nav>
           <nav
             className={
-              login.loggedIn
+              localStorage.getItem("token")
                 ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 w- h-[6%] pl-2 pr-2 items-center justify-center flex"
                 : "hidden"
             }
