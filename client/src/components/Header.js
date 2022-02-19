@@ -12,13 +12,19 @@ const Header = ({ login, dispatch }) => {
   return (
     <>
       <div className="flex bg-pink-200 w-100 h-62 shadow-md flex flex-col">
-        <div className="flex w-full">
+        <div className="flex">
           <img
             className="ml-6 my-2 w-44 h-44 rounded-full border-4 border-white"
             src={laysha}
             alt=""
           />
-          <h2 className="mr-24 my-6 font-girl text-2xl w-2">LoveByLaysha</h2>
+          <h2
+            className={
+              login.loggedIn ? "hidden" : "mr-24 my-6 font-girl text-2xl w-2"
+            }
+          >
+            LoveByLaysha
+          </h2>
         </div>
         <div className="font-girl ml-6 text-2xl w-96">
           {localStorage.getItem("message")}
@@ -26,8 +32,8 @@ const Header = ({ login, dispatch }) => {
         <div
           className={
             login.loggedIn
-              ? "sm:flex my-3 font-girl w-90 gap-1 items-center justify-center"
-              : "flex my-3 font-girl w-100 gap-1 items-center justify-center"
+              ? "sm:flex my-3 font-girl w-90 gap-1 items-end justify-end mr-2 grow"
+              : "sm:flex my-3 font-girl w-100 gap-1 items-end justify-end mr-2"
           }
         >
           <nav className="h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-2 pr-2 h-[6%] items-center justify-center flex">

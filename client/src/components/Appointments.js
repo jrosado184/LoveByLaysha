@@ -18,13 +18,13 @@ const Appointments = ({ dispatch, allAppointments }) => {
   };
 
   return (
-    <>
+    <div>
       {allAppointments.map((appointment) => (
         <div
           key={appointment.appointment_id}
-          className="flex justify-center items-center flex-col my-1 gap-8"
+          className="w-full flex justify-center items-center flex-col my-1 gap-8"
         >
-          <div className="w-[95%] h-24 border-2 border-gray-300 rounded-md flex flex-col shadow-md">
+          <div className="w-full h-24 border-2 border-gray-300 rounded-md flex flex-col shadow-md">
             <div className="w-full flex justify-between">
               <div className="h-fit">
                 <h1 className="ml-4 py-1 font-semibold">
@@ -37,16 +37,16 @@ const Appointments = ({ dispatch, allAppointments }) => {
               <p className="w-full">{appointment.appointment_time}</p>
               <div
                 onClick={handleAppointment}
-                className="w-full flex h-fit items-center justify-center my-6 ml-12 gap-2"
+                className="w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4"
               >
-                <p>See Information</p>
+                <p className="flex">See Information</p>
                 <img className="w-4" src={right} alt="" />
               </div>
             </div>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

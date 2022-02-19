@@ -26,9 +26,12 @@ const Login = (props) => {
     nav("/nails");
   };
   return (
-    <div>
-      <p className="font-bold ml-28 my-2">FOR ADMIN USE ONLY</p>{" "}
-      <form onSubmit={handleSubmit} className="flex flex-col items-center my-4">
+    <div className="flex flex-col items-center justify-center">
+      <p className="font-bold my-2">FOR ADMIN USE ONLY</p>{" "}
+      <form
+        onSubmit={handleSubmit}
+        className=" w-96 my-4 flex flex-col items-center justify-center"
+      >
         <input
           className="pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md"
           type="text"
