@@ -18,84 +18,84 @@ import eighteen from "../assets/eighteen.JPEG";
 
 const Nails = () => {
   return (
-    <div className="flex flex-col items-start ml-12 my-6">
+    <div className="w-full h-fit flex flex-row flex-wrap items-center justify-center gap-4">
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="sm:w-[45%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={one}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="sm:w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={two}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="sm:w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={three}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={four}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={five}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={six}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={seven}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={eight}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={nine}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={ten}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={eleven}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={fourteen}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="sm:w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={fithteen}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={sixteen}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={seventeen}
         alt=""
       />
       <img
-        className="w-[80%] h-80 my-6 border-2 border-gray-500 shadow-md rounded-md"
+        className="w-[45%] h-80 my-2 border-2 border-gray-500 shadow-md rounded-md sm2:w-40 h-60"
         src={eighteen}
         alt=""
       />
