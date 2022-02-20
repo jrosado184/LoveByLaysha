@@ -5,9 +5,10 @@ import { Calendar, utils } from "react-modern-calendar-datepicker";
 import { disabledDays } from "./data/Disabled";
 import { connect } from "react-redux";
 import { handleAppointments } from "../redux/actions/appointment-actions";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Book = (props) => {
-  const { dispatch } = props;
+  const { dispatch, appointments } = props;
   const nav = useNavigate();
   const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
@@ -38,7 +39,6 @@ const Book = (props) => {
   };
 
   const handleConfirm = (e) => {
-    e.preventDefault();
     nav(`/confirm/${id}`);
   };
 
@@ -202,6 +202,7 @@ const Book = (props) => {
 const mapStateToProps = (state) => {
   return {
     appointments: state.appointments.appointments,
+    allAppointments: state.appointments.allAppointments,
   };
 };
 export default connect(mapStateToProps)(Book);

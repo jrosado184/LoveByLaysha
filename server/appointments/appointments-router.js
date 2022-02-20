@@ -2,12 +2,20 @@ const router = require("express").Router();
 const Appoint = require("./appointments-model");
 const restricted = require("./restricted");
 
-router.get("/", restricted, (req, res, next) => {
+router.get("/", (req, res, next) => {
   Appoint.findAll()
     .then((appoint) => {
       {
         res.json(appoint);
       }
+    })
+    .catch(next);
+});
+
+router.get("/:id", (req, res, next) => {
+  Appoint.findById(req.params.id)
+    .then((appoint) => {
+      res.json(appoint);
     })
     .catch(next);
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import check from "./../assets/check.svg";
 
 const Confirm = () => {

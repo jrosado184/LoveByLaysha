@@ -4,6 +4,10 @@ const findAll = () => {
   return db("appointments");
 };
 
+const findById = (id) => {
+  return db("appointments").where("appointment_id", id);
+};
+
 const insert = async (appointments) => {
   const [appoint_id] = await db("appointments").insert(appointments, [
     "appointment_date",
@@ -22,4 +26,5 @@ const insert = async (appointments) => {
 module.exports = {
   findAll,
   insert,
+  findById,
 };

@@ -25,7 +25,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
         <input
           className={
             showSearch
-              ? "w-[87%] border-2 border-pink-300 mr-2 h-9 pl-3 rounded-full"
+              ? "w-[100%] ml-2 border-2 border-pink-300 mr-2 h-9 pl-3 rounded-full"
               : "hidden"
           }
           placeholder="Search for a client"
