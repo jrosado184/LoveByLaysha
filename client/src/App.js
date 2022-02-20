@@ -7,9 +7,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Appointments from "./components/Appointments";
 import Appointment from "./components/Appointment";
+import Confirm from "./components/Confirm";
 import PrivateRoute from "./utils/PrivateRoute";
-
-import { connect } from "react-redux";
 
 const App = () => {
   return (
@@ -19,6 +18,7 @@ const App = () => {
         <Route path="/" element={<Nails />} />
         <Route path="/nails" element={<Nails />} />
         <Route path="/book" element={<Book />} />
+        <Route path="/confirm/:id" element={<Confirm />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route
@@ -29,7 +29,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appointment/:id" element={<Appointment />} />
       </Routes>
     </>
   );

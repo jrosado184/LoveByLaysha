@@ -20,12 +20,12 @@ const Appointments = ({ dispatch, allAppointments }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="h-8 flex items-center justify-end w-full my-2">
+    <div className="flex flex-col items-center my-2">
+      <form className="h-8 flex items-center justify-end w-full my-2">
         <input
           className={
             showSearch
-              ? "w-[87%] border-2 border-pink-300 mr-2 h-8 pl-2"
+              ? "w-[87%] border-2 border-pink-300 mr-2 h-9 pl-3 rounded-full"
               : "hidden"
           }
           placeholder="Search for a client"
@@ -36,7 +36,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
           src={search}
           alt=""
         />
-      </div>
+      </form>
       {allAppointments.map((appointment) => (
         <div
           key={appointment.appointment_id}

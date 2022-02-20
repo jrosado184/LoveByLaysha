@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loggedOut } from "../redux/actions/login_actions";
 
-const Header = ({ login, dispatch }) => {
+const Header = ({ dispatch }) => {
   const handleLogOut = () => {
     dispatch(loggedOut());
   };
@@ -48,7 +48,7 @@ const Header = ({ login, dispatch }) => {
                 : "hidden"
             }
           >
-            <Link to="book">Book?</Link>
+            <Link to="book">Book</Link>
           </nav>
           <nav className="h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-1 pr-1 w-20 h-[6%] items-center justify-center flex">
             <Link to="policies">Policies</Link>
@@ -88,8 +88,6 @@ const Header = ({ login, dispatch }) => {
 const mapStateToProps = (state) => {
   return {
     login: {
-      message: state.login.login.message,
-      loggedIn: state.login.loggedIn,
       logout: state.login.logout,
     },
   };

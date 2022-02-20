@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, utils } from "react-modern-calendar-datepicker";
 import { disabledDays } from "./data/Disabled";
@@ -7,6 +8,8 @@ import { handleAppointments } from "../redux/actions/appointment-actions";
 
 const Book = (props) => {
   const { dispatch } = props;
+  const nav = useNavigate();
+  const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
     appointment_date: null,
@@ -32,6 +35,11 @@ const Book = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleAppointments(info));
+  };
+
+  const handleConfirm = (e) => {
+    e.preventDefault();
+    nav(`/confirm/${id}`);
   };
 
   return (
@@ -179,6 +187,7 @@ const Book = (props) => {
               />
             </label>
             <input
+              onClick={handleConfirm}
               data-testid="bookbtn"
               className="w-20 h-8 my-3 ml-28 border-2 border-pink-300 bg-pink-100 ml-[30%] text-pink-300 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]"
               type="submit"
