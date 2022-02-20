@@ -39,7 +39,7 @@ const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
             <div className="w-[88%] h-60 my-6 border-2 border-gray-200">
               <GoogleMapReact
                 bootstrapURLKeys={{
-                  key: "AIzaSyD3rVIDh_aPBbmg76DAMNVVyz2xhtUHUBU",
+                  key: "",
                 }}
                 defaultCenter={map.center}
                 defaultZoom={map.zoom}
