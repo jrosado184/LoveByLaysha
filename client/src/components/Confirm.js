@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 
 const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
+  console.log();
   const [map, setMap] = useState({
     center: {
       lat: 40.041585195819714,
@@ -39,7 +40,7 @@ const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
             <div className="w-[88%] h-60 my-6 border-2 border-gray-200">
               <GoogleMapReact
                 bootstrapURLKeys={{
-                  key: "",
+                  key: process.env.MAP_KEY,
                 }}
                 defaultCenter={map.center}
                 defaultZoom={map.zoom}
