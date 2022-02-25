@@ -39,7 +39,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
         />
       </form>
       {allAppointments
-        .sort((a, b) => (a.appointment_date > b.appointment_date ? 1 : -1))
+        .sort((a, b) => (a.appointment_date >= b.appointment_date ? 1 : -1))
         .map((appointment) => (
           <div
             key={appointment.appointment_id}
