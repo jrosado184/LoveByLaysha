@@ -45,7 +45,6 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
 const mapStateToProps = (state) => {
   return {
     fetchAppointments: state.appointments.fetchAppointments,
-    getAppointmentById: state.appointments.getAppointmentById,
   };
 };
 

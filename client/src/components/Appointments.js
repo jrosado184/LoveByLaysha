@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const Appointments = (props) => {
   const nav = useNavigate();
-  const { appointment, dispatch } = props;
+  const { appointment } = props;
   const handleAppointment = () => {
-    dispatch(appointmentId(appointment.appointment_id));
     nav(`/appointment/${appointment.appointment_id}`);
   };
 

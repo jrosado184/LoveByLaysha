@@ -24,6 +24,7 @@ const Book = (props) => {
     client_Soak: false,
     client_details: "",
   });
+  console.log(info);
 
   useEffect(() => {
     dispatch(getAppointments());
