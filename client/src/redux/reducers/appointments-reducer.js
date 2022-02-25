@@ -1,11 +1,13 @@
 import {
   ADD_APPOINTMENTS,
   RECEIVE_APPOINTMENTS,
+  GET_BY_ID,
 } from "../actions/appointment-actions";
 
 const initialState = {
   addAppointments: [],
   fetchAppointments: [],
+  getAppointmentById: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +21,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchAppointments: action.payload,
+      };
+    case GET_BY_ID:
+      return {
+        ...state,
+        getAppointmentById: action.payload,
       };
     default:
       return state;

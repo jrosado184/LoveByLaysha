@@ -2,21 +2,24 @@ import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import right from "../assets/right.svg";
-import { getAppointments } from "./../redux/actions/appointment-actions";
+import {
+  getAppointments,
+  appointmentId,
+} from "./../redux/actions/appointment-actions";
 import search from "../assets/search.svg";
 
-const Appointments = ({ dispatch, fetchAppointments }) => {
+const Appointments = ({ dispatch, fetchAppointments, getById }) => {
   const [showSearch, setShowSearch] = useState(false);
+  console.log(getById);
   const nav = useNavigate();
-
-  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getAppointments());
+    dispatch(appointmentId());
   }, []);
 
   const handleAppointment = () => {
-    nav(`/appointment/${id}`);
+    // nav(`/appointment/${id}`);
   };
 
   return (
@@ -73,6 +76,7 @@ const Appointments = ({ dispatch, fetchAppointments }) => {
 const mapStateToProps = (state) => {
   return {
     fetchAppointments: state.appointments.fetchAppointments,
+    getAppointmentById: state.appointments.getAppointmentById,
   };
 };
 

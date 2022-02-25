@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, utils } from "react-modern-calendar-datepicker";
 import { disabledDays } from "./data/Disabled";
 import { connect } from "react-redux";
-import { handleAppointments } from "../redux/actions/appointment-actions";
+import {
+  postAppointments,
+  getAppointments,
+} from "../redux/actions/appointment-actions";
 
 const Book = (props) => {
-  const { dispatch } = props;
+  const { dispatch, fetchAppointments } = props;
   const nav = useNavigate();
-  const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
     appointment_date: selectedDate,
@@ -23,6 +25,10 @@ const Book = (props) => {
     client_details: "",
   });
 
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, []);
+
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -34,8 +40,12 @@ const Book = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleAppointments(info));
-    nav(`/confirm/${id}`);
+    dispatch(postAppointments(info));
+    nav(
+      `/confirm/${
+        fetchAppointments[fetchAppointments.length - 1].appointment_id
+      }`
+    );
   };
 
   return (
@@ -200,6 +210,7 @@ const Book = (props) => {
 const mapStateToProps = (state) => {
   return {
     addAppointments: state.appointments.addAppointments,
+    fetchAppointments: state.appointments.fetchAppointments,
   };
 };
 export default connect(mapStateToProps)(Book);

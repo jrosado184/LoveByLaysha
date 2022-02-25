@@ -12,6 +12,11 @@ export const receiveAppointments = (appointments) => {
   return { type: RECEIVE_APPOINTMENTS, payload: appointments };
 };
 
+export const GET_BY_ID = "GET_BY_ID";
+export const getById = (id) => {
+  return { type: GET_BY_ID, payload: id };
+};
+
 export const getAppointments = () => {
   return (dispatch) => {
     axiosWithAuth()
@@ -23,12 +28,25 @@ export const getAppointments = () => {
   };
 };
 
-export const handleAppointments = (info) => {
+export const postAppointments = (info) => {
   return (dispatch) => {
     axiosWithAuth()
       .post("/api/appointments", info)
       .then((res) => {
         dispatch(addAppointments(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const appointmentId = (id) => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .get(`/api/appointments/${id}`)
+      .then((res) => {
+        dispatch(getById(res.data));
       })
       .catch((err) => {
         console.log(err);
