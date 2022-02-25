@@ -1,24 +1,24 @@
 import {
-  FETCH_APPOINTMENTS,
+  ADD_APPOINTMENTS,
   RECEIVE_APPOINTMENTS,
 } from "../actions/appointment-actions";
 
 const initialState = {
-  appointments: [],
-  allAppointments: [],
+  addAppointments: [],
+  fetchAppointments: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_APPOINTMENTS:
+    case ADD_APPOINTMENTS:
       return {
         ...state,
-        appointments: action.payload,
+        addAppointments: action.payload,
       };
     case RECEIVE_APPOINTMENTS:
       return {
         ...state,
-        allAppointments: action.payload,
+        fetchAppointments: action.payload,
       };
     default:
       return state;

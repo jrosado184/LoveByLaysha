@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import check from "./../assets/check.svg";
 import { connect } from "react-redux";
 import { getAppointments } from "../redux/actions/appointment-actions";
-import { Link } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 
-const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
+const Confirm = ({ dispatch, fetchAppointments }) => {
   const [map, setMap] = useState({
     center: {
       lat: 40.041585195819714,
@@ -15,10 +14,10 @@ const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
   });
   useEffect(() => {
     dispatch(getAppointments());
-  }, []);
+  }, [fetchAppointments]);
 
-  const fil = allAppointments.filter(
-    (elem) => elem === allAppointments[allAppointments.length - 1]
+  const fil = fetchAppointments.filter(
+    (elem) => elem === fetchAppointments[fetchAppointments.length - 1]
   );
 
   return (
@@ -62,7 +61,7 @@ const Confirm = ({ dispatch, allAppointments, center, zoom }) => {
 
 const mapStateToProps = (state) => {
   return {
-    allAppointments: state.appointments.allAppointments,
+    fetchAppointments: state.appointments.fetchAppointments,
   };
 };
 

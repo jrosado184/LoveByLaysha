@@ -5,15 +5,14 @@ import { Calendar, utils } from "react-modern-calendar-datepicker";
 import { disabledDays } from "./data/Disabled";
 import { connect } from "react-redux";
 import { handleAppointments } from "../redux/actions/appointment-actions";
-import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Book = (props) => {
-  const { dispatch, appointments } = props;
+  const { dispatch } = props;
   const nav = useNavigate();
   const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
-    appointment_date: null,
+    appointment_date: selectedDate,
     appointment_time: "",
     client_name: "",
     client_phone: "",
@@ -41,7 +40,10 @@ const Book = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="pl-10 py-4">
+      <form
+        onSubmit={handleSubmit}
+        className="sm:pl-10 py-4 desktop:ml-[7%] w-full"
+      >
         <div className="sm:  md:flex">
           <Calendar
             onChange={setSelectedDate}
@@ -197,8 +199,7 @@ const Book = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    appointments: state.appointments.appointments,
-    allAppointments: state.appointments.allAppointments,
+    addAppointments: state.appointments.addAppointments,
   };
 };
 export default connect(mapStateToProps)(Book);

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Appoint = require("./appointments-model");
-const restricted = require("./restricted");
+const { checkBody, checkId } = require("./appointments-middleware");
 
 router.get("/", (req, res, next) => {
   Appoint.findAll()
@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id", checkId, (req, res, next) => {
   Appoint.findById(req.params.id)
     .then((appoint) => {
       res.json(appoint);
@@ -20,7 +20,7 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", checkBody, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);

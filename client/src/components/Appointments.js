@@ -5,8 +5,7 @@ import right from "../assets/right.svg";
 import { getAppointments } from "./../redux/actions/appointment-actions";
 import search from "../assets/search.svg";
 
-const Appointments = ({ dispatch, allAppointments }) => {
-  console.log(allAppointments.sort());
+const Appointments = ({ dispatch, fetchAppointments }) => {
   const [showSearch, setShowSearch] = useState(false);
   const nav = useNavigate();
 
@@ -38,7 +37,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
           alt=""
         />
       </form>
-      {allAppointments
+      {fetchAppointments
         .sort((a, b) => (a.appointment_date >= b.appointment_date ? 1 : -1))
         .map((appointment) => (
           <div
@@ -73,7 +72,7 @@ const Appointments = ({ dispatch, allAppointments }) => {
 
 const mapStateToProps = (state) => {
   return {
-    allAppointments: state.appointments.allAppointments,
+    fetchAppointments: state.appointments.fetchAppointments,
   };
 };
 

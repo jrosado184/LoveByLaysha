@@ -1,9 +1,9 @@
 import axiosWithAuth from "../../utils/axiosWithAuth";
 
-export const FETCH_APPOINTMENTS = "FETCH_APPOINTMENTS";
+export const ADD_APPOINTMENTS = "ADD_APPOINTMENTS";
 
 export const addAppointments = (info) => {
-  return { type: FETCH_APPOINTMENTS, payload: info };
+  return { type: ADD_APPOINTMENTS, payload: info };
 };
 
 export const RECEIVE_APPOINTMENTS = "RECEIVE_APPOINTMENTS";
