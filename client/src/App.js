@@ -5,7 +5,7 @@ import Nails from "./components/Nails";
 import Book from "./components/Book";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Appointments from "./components/Appointments";
+import AppointmentList from "./components/AppointmentList";
 import Appointment from "./components/Appointment";
 import Confirm from "./components/Confirm";
 import Contact from "./components/Contact";
@@ -23,15 +23,16 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/appointment/:id" element={<Appointment />} />
         <Route
           path="/appointments"
           element={
             <PrivateRoute>
-              <Appointments />
+              <AppointmentList />
             </PrivateRoute>
           }
         />
-        <Route path="/appointment/:id" element={<Appointment />} />
+        {/* <Route path="/appointment/:id" element={<Appointment />} /> */}
       </Routes>
     </>
   );
