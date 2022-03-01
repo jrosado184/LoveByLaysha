@@ -36,6 +36,7 @@ const Book = (props) => {
       appointment_date: `${Months([selectedDate.month])} ${selectedDate.day}, ${
         selectedDate.year
       }`,
+      client_set: info.client_refill ? "none" : info.client_set,
       // image: e.target.files,
       [e.target.name]: e.target.value,
     });
