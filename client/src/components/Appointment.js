@@ -23,13 +23,13 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
         return (
           <div className="flex flex-col" key={appointment.appointment_id}>
             <div>
-              <div className="flex items-end">
+              <div className="flex items-end my-6">
                 <img className="w-6" src={date} alt="" />
                 <h1 className="ml-2">{appointment.appointment_date}</h1>
               </div>
-              <div className="flex my-6">
+              <div className="flex my-10">
                 <img className="w-6" src={time} alt="" />
-                <p>{appointment.appointment_time}</p>
+                <p className="ml-2">{appointment.appointment_time}</p>
               </div>
             </div>
             <div className="flex justify-center">
@@ -37,27 +37,29 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
             </div>
             <div className="flex items-end my-6">
               <img className="w-6" src={person} alt="" />
-              <p> {appointment.client_name}</p>
+              <p className="ml-2"> {appointment.client_name}</p>
             </div>
             <div className="flex my-4">
               <img className="w-6" src={phone} alt="" />
-              <p>{appointment.client_phone}</p>
+              <p className="ml-2">{appointment.client_phone}</p>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
             </div>
             <div className="flex items-end my-6">
               <img className="w-8" src={set} alt="" />
-              <p> {appointment.client_set}</p>
+              <p className="ml-2"> {appointment.client_set}</p>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
             </div>
             <div className="flex items-end my-6">
               <img className="w-6" src={refill} alt="" />
-              <p>Refill: {String(appointment.client_refill)}</p>
+              <p className="ml-2">
+                Refill: {String(appointment.client_refill)}
+              </p>
             </div>
-            <div className="flex my-6">
+            <div className="flex my-6 items-end">
               <img className="w-8" src={set} alt="" />
               <p>Refill Set: {appointment.client_refillSet}</p>
             </div>
@@ -66,14 +68,16 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
             </div>
             <div className="flex items-end my-6">
               <img className="w-6" src={soak} alt="" />
-              <p>Soak Off: {String(appointment.client_Soak)}</p>
+              <p className="ml-2">
+                Soak Off: {String(appointment.client_Soak)}
+              </p>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
             </div>
             <div className="flex items-end my-6">
               <img className="w-6" src={details} alt="" />
-              <p>Details: {appointment.client_details}</p>
+              <p className="ml-2"> {appointment.client_details}</p>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
