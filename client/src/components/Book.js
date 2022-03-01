@@ -8,6 +8,7 @@ import {
   postAppointments,
   getAppointments,
 } from "../redux/actions/appointment-actions";
+import Months from "./data/Months";
 
 const Book = (props) => {
   const { dispatch, fetchAppointments } = props;
@@ -24,7 +25,6 @@ const Book = (props) => {
     client_Soak: false,
     client_details: "",
   });
-  console.log(info);
 
   useEffect(() => {
     dispatch(getAppointments());
@@ -33,7 +33,9 @@ const Book = (props) => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_date: `${selectedDate.month}/${selectedDate.day}/${selectedDate.year}`,
+      appointment_date: `${Months([selectedDate.month])} ${selectedDate.day}, ${
+        selectedDate.year
+      }`,
       // image: e.target.files,
       [e.target.name]: e.target.value,
     });
