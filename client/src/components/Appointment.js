@@ -10,6 +10,7 @@ import details from "../assets/details.svg";
 import soak from "../assets/soak.svg";
 import phone from "../assets/phone.svg";
 import refill from "../assets/refill.svg";
+import Phone from "./data/Phone";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
@@ -41,7 +42,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
             </div>
             <div className="flex my-4">
               <img className="w-6" src={phone} alt="" />
-              <p className="ml-2">{appointment.client_phone}</p>
+              <p className="ml-2">{Phone(appointment.client_phone)}</p>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
