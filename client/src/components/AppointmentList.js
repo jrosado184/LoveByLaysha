@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getAppointments } from "../redux/actions/appointment-actions";
 import search from "../assets/search.svg";
 import Appointments from "./Appointments";
@@ -30,14 +29,12 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
           alt=""
         />
       </form>
-      {fetchAppointments
-        .sort((a, b) => (a.appointment_date >= b.appointment_date ? 1 : -1))
-        .map((appointment) => (
-          <Appointments
-            key={appointment.appointment_id}
-            appointment={appointment}
-          />
-        ))}
+      {fetchAppointments.map((appointment) => (
+        <Appointments
+          key={appointment.appointment_id}
+          appointment={appointment}
+        />
+      ))}
     </div>
   );
 };

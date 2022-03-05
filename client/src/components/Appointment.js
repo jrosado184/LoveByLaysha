@@ -10,7 +10,7 @@ import details from "../assets/details.svg";
 import soak from "../assets/soak.svg";
 import phone from "../assets/phone.svg";
 import refill from "../assets/refill.svg";
-import Phone from "./data/Phone";
+import Phone from "../Algos/Phone";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
@@ -19,16 +19,18 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
     dispatch(appointmentId(id));
   });
   return (
-    <div className="ml-2 py-6">
+    <div className="ml-6 py-6">
       {getAppointmentById.map((appointment) => {
         return (
           <div className="flex flex-col" key={appointment.appointment_id}>
             <div>
-              <div className="flex items-end my-6">
-                <img className="w-6" src={date} alt="" />
-                <h1 className="ml-2">{appointment.appointment_date}</h1>
+              <div className="flex flex-col items-center my-6">
+                <img className="w-8" src={date} alt="" />
+                <h1 className="ml-2 my-2 font-bold">
+                  {appointment.appointment_date}
+                </h1>
               </div>
-              <div className="flex my-10">
+              <div className="flex my-10 mr-6">
                 <img className="w-6" src={time} alt="" />
                 <p className="ml-2">{appointment.appointment_time}</p>
               </div>
@@ -36,13 +38,15 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />
             </div>
-            <div className="flex items-end my-6">
-              <img className="w-6" src={person} alt="" />
-              <p className="ml-2"> {appointment.client_name}</p>
-            </div>
-            <div className="flex my-4">
-              <img className="w-6" src={phone} alt="" />
-              <p className="ml-2">{Phone(appointment.client_phone)}</p>
+            <div>
+              <div className="flex items-end my-8">
+                <img className="w-6" src={person} alt="" />
+                <p className="ml-2"> {appointment.client_name}</p>
+              </div>
+              <div className="flex my-10">
+                <img className="w-6" src={phone} alt="" />
+                <p className="ml-2">{Phone(appointment.client_phone)}</p>
+              </div>
             </div>
             <div className="flex justify-center">
               <hr className="bg-gray-500 w-96" />

@@ -10,7 +10,9 @@ const findById = (id) => {
 
 const insert = async (appointments) => {
   const [appoint_id] = await db("appointments").insert(appointments, [
-    "appointment_date",
+    "appointment_month",
+    "appointment_day",
+    "appointment_year",
     "appointment_time",
     "client_name",
     "client_phone",

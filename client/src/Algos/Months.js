@@ -14,9 +14,9 @@ const Months = (x) => {
     "November",
     "December",
   ];
+
   for (let i = 1; i < month.length - 1; i++) {
     return month[x];
   }
 };
-
 export default Months;

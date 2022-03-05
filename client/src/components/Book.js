@@ -8,14 +8,16 @@ import {
   postAppointments,
   getAppointments,
 } from "../redux/actions/appointment-actions";
-import Months from "./data/Months";
+import Months from "./../Algos/Months";
 
 const Book = (props) => {
   const { dispatch, fetchAppointments } = props;
   const nav = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
   const [info, setInfo] = useState({
-    appointment_date: selectedDate,
+    appointment_month: selectedDate,
+    appointment_day: selectedDate,
+    appointment_year: selectedDate,
     appointment_time: "",
     client_name: "",
     client_phone: "",
@@ -33,9 +35,9 @@ const Book = (props) => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_date: `${Months([selectedDate.month])} ${selectedDate.day}, ${
-        selectedDate.year
-      }`,
+      appointment_month: `${Months(selectedDate.month)}`,
+      appointment_day: `${selectedDate.day}`,
+      appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? "none" : info.client_set,
       // image: e.target.files,
       [e.target.name]: e.target.value,
