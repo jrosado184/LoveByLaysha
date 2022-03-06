@@ -24,27 +24,31 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
         return (
           <div className="w-full h-screen py-6 flex flex-col">
             <div className="flex justify-evenly">
-              <div className="flex flex-col justify-center items-center w-40">
+              <div className="flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md">
                 <img className="w-9" src={date} alt="" />
-                <p className="font- py-4 py-4">{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
+                <p className="font-semibold py-4 py-4">{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9" src={time} alt="" />
-                <p className="font- py-4">{appointment.appointment_time}</p>
+                <p className="font-semibold py-4">
+                  {appointment.appointment_time}
+                </p>
               </div>
             </div>
             <div className="flex justify-evenly py-6">
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9" src={person} alt="" />
-                <p className="font- py-4">{appointment.client_name}</p>
+                <p className="font-semibold py-4">{appointment.client_name}</p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9" src={phone} alt="" />
-                <p className="font- py-4">{Phone(appointment.client_phone)}</p>
+                <p className="font-semibold py-4">
+                  {Phone(appointment.client_phone)}
+                </p>
               </div>
             </div>
             <div className="flex justify-evenly py-6">
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9 h-fit" src={soak} alt="" />
                 <p className="font-semibold py-4">
                   {String(appointment.client_Soak) === "true"
@@ -52,7 +56,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                     : "No Soak Off"}
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-12 h-fit" src={set} alt="" />
                 <p className="font-semibold py-4">
                   {appointment.client_set === "none"
@@ -62,7 +66,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               </div>
             </div>
             <div className="flex justify-evenly py-6 shadow-lg">
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9 h-fit" src={refill} alt="" />
                 <p className="font-semibold py-4">
                   {String(appointment.refill) === "true"
@@ -70,26 +74,28 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                     : "No Refill"}
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40">
+              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-12 h-fit" src={set} alt="" />
-                <p>
+                <p className="font-semibold py-4">
                   {String(appointment.client_refillSet) === "none"
                     ? "No Refill Set"
                     : appointment.client_refillSet}
                 </p>
               </div>
             </div>
-
-            {/* <div className="flex items-center justify-end">
-              <div className="flex items-center justify-center w-40">
-                <img className="w-12" src={details} alt="" />
-                <p>
+            <div className="flex flex-col items-start justify-start">
+              <div className="flex flex-col items-center justify-center w-full pb-1=6 py-6">
+                <img className="border-1 border-black w-96 h-80" alt="" />
+              </div>
+              <div className="pb-6 flex ml-2 flex items-center">
+                <img className="w-9" src={details} alt="" />
+                <p className="ml-2">
                   {appointment.client_details === ""
-                    ? "No additional details"
+                    ? "No Additional Details"
                     : appointment.client_details}
                 </p>
               </div>
-            </div> */}
+            </div>
           </div>
         );
       })}
