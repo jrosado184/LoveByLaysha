@@ -34,7 +34,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
               alt=""
             />
             <p className="font-semibold">Your appointment is confirmed:</p>
-            <p className="font-bold underline">{`For ${item.appointment_date} at ${item.appointment_time}`}</p>
+            <p className="font-bold underline">{`For ${item.appointment_month} ${item.appointment_day}, ${item.appointment_year} at ${item.appointment_time}`}</p>
             <div className="w-[88%] h-60 my-6 border-2 border-gray-200">
               <GoogleMapReact
                 bootstrapURLKeys={{

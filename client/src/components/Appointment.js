@@ -19,78 +19,81 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
     dispatch(appointmentId(id));
   });
   return (
-    <div className="ml-6 py-6">
+    <>
       {getAppointmentById.map((appointment) => {
         return (
-          <div className="flex flex-col" key={appointment.appointment_id}>
-            <div>
-              <div className="flex flex-col items-center my-6">
-                <img className="w-8" src={date} alt="" />
-                <h1 className="ml-2 my-2 font-bold">
-                  {appointment.appointment_date}
-                </h1>
+          <div className="w-full h-screen py-6 flex flex-col">
+            <div className="flex justify-evenly">
+              <div className="flex flex-col justify-center items-center w-40">
+                <img className="w-9" src={date} alt="" />
+                <p className="font- py-4 py-4">{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
               </div>
-              <div className="flex my-10 mr-6">
-                <img className="w-6" src={time} alt="" />
-                <p className="ml-2">{appointment.appointment_time}</p>
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-9" src={time} alt="" />
+                <p className="font- py-4">{appointment.appointment_time}</p>
               </div>
             </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
-            </div>
-            <div>
-              <div className="flex items-end my-8">
-                <img className="w-6" src={person} alt="" />
-                <p className="ml-2"> {appointment.client_name}</p>
+            <div className="flex justify-evenly py-6">
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-9" src={person} alt="" />
+                <p className="font- py-4">{appointment.client_name}</p>
               </div>
-              <div className="flex my-10">
-                <img className="w-6" src={phone} alt="" />
-                <p className="ml-2">{Phone(appointment.client_phone)}</p>
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-9" src={phone} alt="" />
+                <p className="font- py-4">{Phone(appointment.client_phone)}</p>
               </div>
             </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
+            <div className="flex justify-evenly py-6">
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-9 h-fit" src={soak} alt="" />
+                <p className="font-semibold py-4">
+                  {String(appointment.client_Soak) === "true"
+                    ? "Soak Off"
+                    : "No Soak Off"}
+                </p>
+              </div>
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-12 h-fit" src={set} alt="" />
+                <p className="font-semibold py-4">
+                  {appointment.client_set === "none"
+                    ? "No New Set"
+                    : appointment.client_set}
+                </p>
+              </div>
             </div>
-            <div className="flex items-end my-6">
-              <img className="w-8" src={set} alt="" />
-              <p className="ml-2"> {appointment.client_set}</p>
+            <div className="flex justify-evenly py-6 shadow-lg">
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-9 h-fit" src={refill} alt="" />
+                <p className="font-semibold py-4">
+                  {String(appointment.refill) === "true"
+                    ? "Refill"
+                    : "No Refill"}
+                </p>
+              </div>
+              <div className="flex flex-col items-center justify-center w-40">
+                <img className="w-12 h-fit" src={set} alt="" />
+                <p>
+                  {String(appointment.client_refillSet) === "none"
+                    ? "No Refill Set"
+                    : appointment.client_refillSet}
+                </p>
+              </div>
             </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
-            </div>
-            <div className="flex items-end my-6">
-              <img className="w-6" src={refill} alt="" />
-              <p className="ml-2">
-                Refill: {String(appointment.client_refill)}
-              </p>
-            </div>
-            <div className="flex my-6 items-end">
-              <img className="w-8" src={set} alt="" />
-              <p>Refill Set: {appointment.client_refillSet}</p>
-            </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
-            </div>
-            <div className="flex items-end my-6">
-              <img className="w-6" src={soak} alt="" />
-              <p className="ml-2">
-                Soak Off: {String(appointment.client_Soak)}
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
-            </div>
-            <div className="flex items-end my-6">
-              <img className="w-6" src={details} alt="" />
-              <p className="ml-2"> {appointment.client_details}</p>
-            </div>
-            <div className="flex justify-center">
-              <hr className="bg-gray-500 w-96" />
-            </div>
+
+            {/* <div className="flex items-center justify-end">
+              <div className="flex items-center justify-center w-40">
+                <img className="w-12" src={details} alt="" />
+                <p>
+                  {appointment.client_details === ""
+                    ? "No additional details"
+                    : appointment.client_details}
+                </p>
+              </div>
+            </div> */}
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 const mapStateToProps = (state) => {
