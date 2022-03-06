@@ -45,7 +45,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 yesIWantToUseGoogleMapApiInternals
               ></GoogleMapReact>
               <div className="my-4">
-                <p className="font-semibold">
+                <p className="font-semibold pb-32">
                   {`Hey Love, the address will be sent via text 24 hrs before the
                   appointment. If you need to reschedule please contact me before
                    ${item.appointment_date}, either through the contact form or my instagram @Lovebylaysha, Thank you ♡.`}

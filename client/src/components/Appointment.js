@@ -69,7 +69,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
                 <img className="w-9 h-fit" src={refill} alt="" />
                 <p className="font-semibold py-4">
-                  {String(appointment.refill) === "true"
+                  {String(appointment.client_refill) === "true"
                     ? "Refill"
                     : "No Refill"}
                 </p>
@@ -83,7 +83,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-start justify-start">
+            <div className="flex flex-col items-start justify-start h-full">
               <div className="flex flex-col items-center justify-center w-full pb-1=6 py-6">
                 <img className="border-1 border-black w-96 h-80" alt="" />
               </div>
@@ -94,6 +94,14 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                     ? "No Additional Details"
                     : appointment.client_details}
                 </p>
+              </div>
+              <div className="flex justify-between items-center w-full h-fit my-6 ml-2">
+                <button className="w-24 h-10 mr-6 bg-red-500 text-white shadow-sm rounded-sm">
+                  Remove
+                </button>
+                <button className="w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm">
+                  Complete
+                </button>
               </div>
             </div>
           </div>
