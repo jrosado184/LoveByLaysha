@@ -17,6 +17,11 @@ export const getById = (id) => {
   return { type: GET_BY_ID, payload: id };
 };
 
+export const DELETED_APPOINTMENTS = "DELETED_APPOINTMENTS";
+export const deletedAppointments = (appointments) => {
+  return { type: DELETED_APPOINTMENTS, payload: appointments };
+};
+
 export const getAppointments = () => {
   return (dispatch) => {
     axiosWithAuth()
@@ -47,6 +52,19 @@ export const appointmentId = (id) => {
       .get(`/api/appointments/${id}`)
       .then((res) => {
         dispatch(getById(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const deleteAppointments = (id) => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .delete(`/api/appointments/${id}`)
+      .then((res) => {
+        dispatch(deletedAppointments(res.data));
       })
       .catch((err) => {
         console.log(err);

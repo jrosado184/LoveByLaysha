@@ -11,6 +11,7 @@ import soak from "../../assets/soak.svg";
 import phone from "../../assets/phone.svg";
 import refill from "../../assets/refill.svg";
 import Phone from "../../Algos/Phone";
+import { handleDelete } from "./Deleted";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
@@ -22,7 +23,10 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
     <>
       {getAppointmentById.map((appointment) => {
         return (
-          <div className="w-full h-screen py-6 flex flex-col">
+          <div
+            key={appointment.appointment_id}
+            className="w-full h-screen py-6 flex flex-col"
+          >
             <div className="flex justify-evenly">
               <div className="flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md">
                 <img className="w-9" src={date} alt="" />

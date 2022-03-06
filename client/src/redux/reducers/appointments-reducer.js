@@ -2,12 +2,15 @@ import {
   ADD_APPOINTMENTS,
   RECEIVE_APPOINTMENTS,
   GET_BY_ID,
+  DELETED_APPOINTMENTS,
 } from "../actions/appointment-actions";
 
 const initialState = {
   addAppointments: [],
   fetchAppointments: [],
   getAppointmentById: [],
+  deletedAppointments: [],
+  completedAppointments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +29,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         getAppointmentById: action.payload,
+      };
+    case DELETED_APPOINTMENTS:
+      return {
+        ...state,
+        deletedAppointments: action.payload,
       };
     default:
       return state;

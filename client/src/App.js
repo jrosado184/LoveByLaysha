@@ -9,6 +9,7 @@ import AppointmentList from "./components/Appointments/AppointmentList";
 import Appointment from "./components/Appointments/Appointment";
 import Confirm from "./components/Appointments/Confirm";
 import Contact from "./components/Main/Contact";
+import Deleted from "./components/Main/";
 import PrivateRoute from "./utils/PrivateRoute";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/appointment/:id" element={<Appointment />} />
+        <Route path="/deleted" element={<Deleted />} />
         <Route
           path="/appointments"
           element={
