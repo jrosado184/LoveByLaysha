@@ -4,8 +4,9 @@ const findAll = () => {
   return db("appointments");
 };
 
-const findById = (id) => {
-  return db("appointments").where("appointment_id", id);
+const findById = async (id) => {
+  const rows = await db("appointments").where("appointment_id", id[0]);
+  return rows;
 };
 
 const insert = async (appointments) => {
@@ -25,8 +26,13 @@ const insert = async (appointments) => {
   return appoint_id;
 };
 
+const remove = async (appointment_id) => {
+  return db("appointments").del().where("appointment_id", appointment_id);
+};
+
 module.exports = {
   findAll,
   insert,
   findById,
+  remove,
 };

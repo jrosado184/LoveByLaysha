@@ -28,6 +28,14 @@ router.post("/", checkBody, (req, res, next) => {
     .catch(next);
 });
 
+router.delete("/:id", checkId, (req, res, next) => {
+  Appoint.remove(req.params.id).then((appoint) => {
+    res
+      .json(`Appointment with the ID ${req.params.id} was removed`)
+      .catch(next);
+  });
+});
+
 router.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message,
