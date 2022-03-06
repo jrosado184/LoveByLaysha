@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import { appointmentId } from "../redux/actions/appointment-actions";
+import { appointmentId } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import date from "../assets/calendar.svg";
-import person from "../assets/person.svg";
-import set from "../assets/set.svg";
-import time from "../assets/time.svg";
-import details from "../assets/details.svg";
-import soak from "../assets/soak.svg";
-import phone from "../assets/phone.svg";
-import refill from "../assets/refill.svg";
-import Phone from "../Algos/Phone";
+import date from "../../assets/calendar.svg";
+import person from "../../assets/person.svg";
+import set from "../../assets/set.svg";
+import time from "../../assets/time.svg";
+import details from "../../assets/details.svg";
+import soak from "../../assets/soak.svg";
+import phone from "../../assets/phone.svg";
+import refill from "../../assets/refill.svg";
+import Phone from "../../Algos/Phone";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();

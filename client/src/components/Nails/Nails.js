@@ -1,4 +1,4 @@
-import NailData from "./data/NailData";
+import NailData from "../data/NailData";
 
 const Nails = () => {
   return (

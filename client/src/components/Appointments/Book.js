@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, utils } from "react-modern-calendar-datepicker";
-import { disabledDays } from "./data/Disabled";
+import { disabledDays } from "./../data/Disabled";
 import { connect } from "react-redux";
 import {
   postAppointments,
   getAppointments,
-} from "../redux/actions/appointment-actions";
-import Months from "./../Algos/Months";
+} from "../../redux/actions/appointment-actions.js";
+import Months from "./../../Algos/Months";
 
 const Book = (props) => {
   const { dispatch, fetchAppointments } = props;

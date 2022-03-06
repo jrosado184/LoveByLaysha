@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { handleLogin, login } from "../redux/actions/login_actions";
+import { handleLogin, login } from "../../redux/actions/login_actions";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 

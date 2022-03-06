@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import check from "./../assets/check.svg";
+import check from "./../../assets/check.svg";
 import { connect } from "react-redux";
-import { getAppointments } from "../redux/actions/appointment-actions";
+import { getAppointments } from "../../redux/actions/appointment-actions";
 import GoogleMapReact from "google-map-react";
 
 const Confirm = ({ dispatch, fetchAppointments }) => {

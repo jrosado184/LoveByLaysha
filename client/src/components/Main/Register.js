@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Register = () => {
   /*NOT FOR USER USE AT THE MOMENT */

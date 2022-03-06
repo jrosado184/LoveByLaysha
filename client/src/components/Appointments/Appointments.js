@@ -1,7 +1,6 @@
 import React from "react";
-import right from "../assets/right.svg";
+import right from "../../assets/right.svg";
 import { connect } from "react-redux";
-import { appointmentId } from "../redux/actions/appointment-actions";
 import { useNavigate } from "react-router-dom";
 
 const Appointments = (props) => {

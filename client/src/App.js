@@ -1,14 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Nails from "./components/Nails";
-import Book from "./components/Book";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import AppointmentList from "./components/AppointmentList";
-import Appointment from "./components/Appointment";
-import Confirm from "./components/Confirm";
-import Contact from "./components/Contact";
+import Header from "./components/Main/Header";
+import Nails from "./components/Nails/Nails";
+import Book from "./components/Appointments/Book";
+import Register from "./components/Main/Register";
+import Login from "./components/Main/Login";
+import AppointmentList from "./components/Appointments/AppointmentList";
+import Appointment from "./components/Appointments/Appointment";
+import Confirm from "./components/Appointments/Confirm";
+import Contact from "./components/Main/Contact";
 import PrivateRoute from "./utils/PrivateRoute";
 
 const App = () => {

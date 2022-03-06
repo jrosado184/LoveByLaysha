@@ -1,8 +1,8 @@
 import React from "react";
-import laysha from "../assets/laysha.jpg";
+import laysha from "../../assets/laysha.jpg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { loggedOut } from "../redux/actions/login_actions";
+import { loggedOut } from "../../redux/actions/login_actions";
 
 const Header = ({ dispatch }) => {
   const handleLogOut = () => {

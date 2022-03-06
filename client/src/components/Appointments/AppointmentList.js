@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { getAppointments } from "../redux/actions/appointment-actions";
-import search from "../assets/search.svg";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import search from "../../assets/search.svg";
 import Appointments from "./Appointments";
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {

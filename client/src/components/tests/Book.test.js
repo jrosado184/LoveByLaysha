@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Book from "./Book";
+import Book from "../Appointments/Book";
 
 test("sanity check", () => {
   expect(1).toBe(1);
