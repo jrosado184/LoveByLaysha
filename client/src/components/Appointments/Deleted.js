@@ -3,7 +3,6 @@ import { deletedAppointments } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 
 const Deleted = (props) => {
-  console.log(props);
   return <div></div>;
 };
 

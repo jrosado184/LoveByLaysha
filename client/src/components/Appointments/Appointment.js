@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { appointmentId } from "../../redux/actions/appointment-actions";
+import {
+  appointmentId,
+  deleteAppointments,
+} from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import date from "../../assets/calendar.svg";
@@ -11,7 +14,7 @@ import soak from "../../assets/soak.svg";
 import phone from "../../assets/phone.svg";
 import refill from "../../assets/refill.svg";
 import Phone from "../../Algos/Phone";
-import { handleDelete } from "./Deleted";
+import Deleted from "./Deleted";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
@@ -19,6 +22,10 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
   useEffect(() => {
     dispatch(appointmentId(id));
   });
+
+  const handleDelete = () => {
+    dispatch(deleteAppointments(id));
+  };
   return (
     <>
       {getAppointmentById.map((appointment) => {
@@ -100,7 +107,10 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                 </p>
               </div>
               <div className="flex justify-between items-center w-full h-fit my-6 ml-2">
-                <button className="w-24 h-10 mr-6 bg-red-500 text-white shadow-sm rounded-sm">
+                <button
+                  onClick={handleDelete}
+                  className="w-24 h-10 mr-6 bg-red-500 text-white shadow-sm rounded-sm"
+                >
                   Remove
                 </button>
                 <button className="w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm">
@@ -117,6 +127,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
 const mapStateToProps = (state) => {
   return {
     getAppointmentById: state.appointments.getAppointmentById,
+    deletedAppointments: state.appointments.deletedAppointments,
   };
 };
 

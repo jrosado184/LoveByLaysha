@@ -9,7 +9,7 @@ import AppointmentList from "./components/Appointments/AppointmentList";
 import Appointment from "./components/Appointments/Appointment";
 import Confirm from "./components/Appointments/Confirm";
 import Contact from "./components/Main/Contact";
-import Deleted from "./components/Main/";
+import Deleted from "./components/Appointments/Deleted";
 import PrivateRoute from "./utils/PrivateRoute";
 
 const App = () => {
