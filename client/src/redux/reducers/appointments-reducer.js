@@ -5,7 +5,7 @@ import {
   DELETED_APPOINTMENTS,
 } from "../actions/appointment-actions";
 
-const initialState = {
+export const initialState = {
   addAppointments: [],
   fetchAppointments: [],
   getAppointmentById: [],

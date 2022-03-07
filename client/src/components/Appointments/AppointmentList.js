@@ -1,15 +1,22 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { getAppointments } from "../../redux/actions/appointment-actions";
+import { useNavigate } from "react-router-dom";
 import search from "../../assets/search.svg";
 import Appointments from "./Appointments";
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
+  const nav = useNavigate();
+
   const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     dispatch(getAppointments());
   }, []);
+
+  const handleRemoved = () => {
+    nav("/deleted");
+  };
 
   return (
     <div className="flex flex-col items-center my-2">
@@ -30,7 +37,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
               : "hidden"
           }
         >
-          <p className="text-sm">Removed</p>
+          <p onClick={handleRemoved} className="text-sm">
+            Removed
+          </p>
         </div>
         <form className="h-8 flex items-center justify-end w-full my-2">
           <input

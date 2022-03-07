@@ -1,4 +1,5 @@
 import axiosWithAuth from "../../utils/axiosWithAuth";
+import { initialState } from "../reducers/appointments-reducer";
 
 export const ADD_APPOINTMENTS = "ADD_APPOINTMENTS";
 
@@ -64,7 +65,8 @@ export const deleteAppointments = (id) => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
       .then((res) => {
-        dispatch(deletedAppointments(res.data));
+        console.log(res);
+        initialState.deletedAppointments.push(res.data);
       })
       .catch((err) => {
         console.log(err);

@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  appointmentId,
-  deleteAppointments,
-} from "../../redux/actions/appointment-actions";
+import { appointmentId } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import date from "../../assets/calendar.svg";
@@ -14,52 +11,50 @@ import soak from "../../assets/soak.svg";
 import phone from "../../assets/phone.svg";
 import refill from "../../assets/refill.svg";
 import Phone from "../../Algos/Phone";
-import Deleted from "./Deleted";
+import { useNavigate } from "react-router-dom";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(appointmentId(id));
-  });
+    console.log(getAppointmentById);
+  }, []);
 
-  const handleDelete = () => {
-    dispatch(deleteAppointments(id));
-  };
   return (
     <>
       {getAppointmentById.map((appointment) => {
         return (
           <div
             key={appointment.appointment_id}
-            className="w-full h-screen py-6 flex flex-col"
+            className="sm:w-full h-screen py-6 flex flex-col desktop:ml-6"
           >
-            <div className="flex justify-evenly">
-              <div className="flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md">
+            <div className="sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9" src={date} alt="" />
                 <p className="font-semibold py-4 py-4">{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9" src={time} alt="" />
                 <p className="font-semibold py-4">
                   {appointment.appointment_time}
                 </p>
               </div>
             </div>
-            <div className="flex justify-evenly py-6">
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+            <div className="sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9" src={person} alt="" />
                 <p className="font-semibold py-4">{appointment.client_name}</p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9" src={phone} alt="" />
                 <p className="font-semibold py-4">
                   {Phone(appointment.client_phone)}
                 </p>
               </div>
             </div>
-            <div className="flex justify-evenly py-6">
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+            <div className="sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9 h-fit" src={soak} alt="" />
                 <p className="font-semibold py-4">
                   {String(appointment.client_Soak) === "true"
@@ -67,7 +62,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                     : "No Soak Off"}
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+              <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-12 h-fit" src={set} alt="" />
                 <p className="font-semibold py-4">
                   {appointment.client_set === "none"
@@ -76,8 +71,8 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-evenly py-6 shadow-lg">
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+            <div className="sm:shadow-lg w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4">
+              <div className="sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-9 h-fit" src={refill} alt="" />
                 <p className="font-semibold py-4">
                   {String(appointment.client_refill) === "true"
@@ -85,37 +80,13 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                     : "No Refill"}
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center w-40 border 2 border-black rounded-md p-3">
+              <div className="sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">
                 <img className="w-12 h-fit" src={set} alt="" />
                 <p className="font-semibold py-4">
                   {String(appointment.client_refillSet) === "none"
                     ? "No Refill Set"
                     : appointment.client_refillSet}
                 </p>
-              </div>
-            </div>
-            <div className="flex flex-col items-start justify-start h-full">
-              <div className="flex flex-col items-center justify-center w-full pb-1=6 py-6">
-                <img className="border-1 border-black w-96 h-80" alt="" />
-              </div>
-              <div className="pb-6 flex ml-2 flex items-center">
-                <img className="w-9" src={details} alt="" />
-                <p className="ml-2">
-                  {appointment.client_details === ""
-                    ? "No Additional Details"
-                    : appointment.client_details}
-                </p>
-              </div>
-              <div className="flex justify-between items-center w-full h-fit my-6 ml-2">
-                <button
-                  onClick={handleDelete}
-                  className="w-24 h-10 mr-6 bg-red-500 text-white shadow-sm rounded-sm"
-                >
-                  Remove
-                </button>
-                <button className="w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm">
-                  Complete
-                </button>
               </div>
             </div>
           </div>

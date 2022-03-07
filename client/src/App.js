@@ -7,6 +7,7 @@ import Register from "./components/Main/Register";
 import Login from "./components/Main/Login";
 import AppointmentList from "./components/Appointments/AppointmentList";
 import Appointment from "./components/Appointments/Appointment";
+import Uploads from "./components/Appointments/Uploads";
 import Confirm from "./components/Appointments/Confirm";
 import Contact from "./components/Main/Contact";
 import Deleted from "./components/Appointments/Deleted";
@@ -24,7 +25,15 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/appointment/:id" element={<Appointment />} />
+        <Route
+          path="/appointment/:id"
+          element={
+            <div className="sm:w-full flex flex-col desktop:flex-row">
+              <Appointment />
+              <Uploads />
+            </div>
+          }
+        />
         <Route path="/deleted" element={<Deleted />} />
         <Route
           path="/appointments"
