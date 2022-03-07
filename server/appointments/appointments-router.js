@@ -29,11 +29,11 @@ router.post("/", checkBody, (req, res, next) => {
 });
 
 router.delete("/:id", checkId, (req, res, next) => {
-  Appoint.remove(req.params.id).then((appoint) => {
-    res
-      .json(`Appointment with the ID ${req.params.id} was removed`)
-      .catch(next);
-  });
+  Appoint.remove(req.params.id)
+    .then((appoint) => {
+      res.json(appoint);
+    })
+    .catch(next);
 });
 
 router.use((err, req, res, next) => {
