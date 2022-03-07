@@ -28,35 +28,35 @@ const Header = ({ dispatch }) => {
             LoveByLaysha
           </h2>
         </div>
-        <div className="font-girl ml-6 text-2xl w-96">
+        <div className="ml-6 underline text-2xl w-96">
           {localStorage.getItem("message")}
         </div>
         <div
           className={
             localStorage.getItem("token")
-              ? "sm:flex my-3 font-girl w-90 gap-1 items-end justify-end mr-[4.5%] grow"
-              : "sm:flex my-3 font-girl w-100 gap-1 items-end justify-end mr-[2.6%]"
+              ? "sm:flex my-3 text-md w-90 gap-1 items-end justify-end mr-[4.5%] grow"
+              : "sm:flex my-3 text-md w-100 gap-1 items-end justify-end mr-[2.6%]"
           }
         >
-          <nav className="h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-2 pr-2 h-[6%] items-center justify-center flex">
+          <nav className="h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex">
             <Link to="nails">Nailfies</Link>
           </nav>
           <nav
             className={
               !localStorage.getItem("token")
-                ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-2 pr-2 h-[6%] items-center justify-center flex"
+                ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex"
                 : "hidden"
             }
           >
             <Link to="book">Book</Link>
           </nav>
-          <nav className="h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-1 pr-1 w-20 h-[6%] items-center justify-center flex">
+          <nav className="h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex">
             <Link to="policies">Policies</Link>
           </nav>
           <nav
             className={
               !localStorage.getItem("token")
-                ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-2 pr-2 w-20 h-[6%] items-center justify-center flex"
+                ? "h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex"
                 : "hidden"
             }
           >
@@ -71,7 +71,7 @@ const Header = ({ dispatch }) => {
           >
             <Link to="appointments">Appointments</Link>
           </nav>
-          <nav className="text-1xl border-2 rounded-full text-center bg-white border-pink-300 w-20 h-[6%] pl-2 pr-2 items-center justify-center flex">
+          <nav className="text-1xl border-2 rounded-full text-center bg-white border-pink-300 w-20 h-[6%] pl-3 pr-3 items-center justify-center flex">
             {!localStorage.getItem("token") ? (
               <Link to="login">Admin</Link>
             ) : (

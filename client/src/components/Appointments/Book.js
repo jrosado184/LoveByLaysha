@@ -58,7 +58,7 @@ const Book = (props) => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="sm:pl-10 py-4 desktop:ml-[7%] w-full"
+        className="sm:pl-10 py-4 desktop:pl-[17%] w-full"
       >
         <div className="sm:  md:flex">
           <Calendar

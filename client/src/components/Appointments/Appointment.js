@@ -18,8 +18,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
 
   useEffect(() => {
     dispatch(appointmentId(id));
-    console.log(getAppointmentById);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

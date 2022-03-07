@@ -12,7 +12,6 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
 
   useEffect(() => {
     dispatch(appointmentId(id));
-    console.log(getAppointmentById);
   }, []);
 
   const handleDelete = () => {
