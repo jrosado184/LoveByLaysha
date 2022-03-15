@@ -23,7 +23,10 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       <div className="desktop:flex flex-col items-start justify-start h-full">
         {getAppointmentById.map((appointmentId) => {
           return (
-            <div className="flex flex-col items-center justify-center w-full pb-6 desktop:py-12">
+            <div
+              key={appointmentId.appointment_id}
+              className="flex flex-col items-center justify-center w-full pb-6 desktop:py-12"
+            >
               <img
                 className="sm:w-96 border-1 border-black desktop:w-[50%] h-96"
                 alt=""
