@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Main/Header";
-import Nails from "./components/Nails/Nails";
 import Book from "./components/Appointments/Book";
 import Register from "./components/Main/Register";
 import Login from "./components/Main/Login";
@@ -12,14 +11,29 @@ import Confirm from "./components/Appointments/Confirm";
 import Contact from "./components/Main/Contact";
 import Deleted from "./components/Appointments/Deleted";
 import PrivateRoute from "./utils/PrivateRoute";
+const Nails = React.lazy(() => import("./components/Nails/Nails.js"));
 
 const App = () => {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Nails />} />
-        <Route path="/nails" element={<Nails />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Nails />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/nails"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Nails />
+            </Suspense>
+          }
+        />
         <Route path="/book" element={<Book />} />
         <Route path="/confirm/:id" element={<Confirm />} />
         <Route path="/contact" element={<Contact />} />
