@@ -1,5 +1,5 @@
 import NailData from "../data/NailData";
-
+import React from "react";
 const Nails = () => {
   return (
     <div className="w-100 h-80 flex flex-row flex-wrap items-center justify-center gap-4">
