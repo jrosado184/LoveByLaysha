@@ -48,17 +48,9 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 <p className="font-semibold pb-32">
                   {`Hey Love, the address will be sent via text 24 hrs before the
                   appointment. If you need to reschedule please contact me before
-<<<<<<< HEAD
                    ${item.appointment_month} ${item.appointment_day - 1}, ${
                     item.appointment_year
                   }, either through the contact form or my instagram @Lovebylaysha, Thank you ♡.`}
-=======
-                    ${item.appointment_month} ${item.appointment_day - 1}, ${
-                    item.appointment_year
-                  }
-                  , either through the contact form or my instagram
-                  @Lovebylaysha, Thank you ♡.`}
->>>>>>> 4da3ae10eebb3e24a784cb732c13243cf25b90a7
                 </p>
               </div>
             </div>
