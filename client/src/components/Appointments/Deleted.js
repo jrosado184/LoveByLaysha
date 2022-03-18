@@ -1,10 +1,9 @@
 import React from "react";
-import { deletedAppointments } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 
-const Deleted = (props) => {
-  console.log(props);
-  return <div></div>;
+const Deleted = ({ deletedAppointments }) => {
+  console.log(deletedAppointments);
+  return <></>;
 };
 
 const mapStateToProps = (state) => {

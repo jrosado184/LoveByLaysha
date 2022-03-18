@@ -27,10 +27,12 @@ const insert = async (appointments) => {
 };
 
 const remove = async (appointment_id) => {
-  return await db("appointments")
+  const row = await db("appointments")
     .del()
     .where("appointment_id", appointment_id)
     .returning("*");
+  const deleted = await db("deleted_appointments").insert(row);
+  return deleted;
 };
 
 module.exports = {

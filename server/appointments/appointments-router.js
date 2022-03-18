@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Appoint = require("./appointments-model");
+const Deleted = require("./deleted-model");
 const { checkBody, checkId } = require("./appointments-middleware");
 
 router.get("/", (req, res, next) => {
@@ -29,6 +30,7 @@ router.post("/", checkBody, (req, res, next) => {
 });
 
 router.delete("/:id", checkId, (req, res, next) => {
+  Deleted.insert();
   Appoint.remove(req.params.id)
     .then((appoint) => {
       res.json(appoint);

@@ -58,12 +58,14 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
           />
         </form>
       </div>
-      {fetchAppointments.map((appointment) => (
-        <Appointments
-          key={appointment.appointment_id}
-          appointment={appointment}
-        />
-      ))}
+      {fetchAppointments
+        .sort((a, b) => a.appointment_day - b.appointment_day)
+        .map((appointment) => (
+          <Appointments
+            key={appointment.appointment_id}
+            appointment={appointment}
+          />
+        ))}
     </div>
   );
 };
