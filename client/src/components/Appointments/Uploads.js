@@ -19,7 +19,7 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
     nav("/appointments");
   };
   return (
-    <div className="desktop:w-full">
+    <div className="desktop:w-full mb-12">
       <div className="desktop:flex flex-col items-start justify-start h-full">
         {getAppointmentById.map((appointmentId) => {
           return (

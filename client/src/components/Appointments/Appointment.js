@@ -6,12 +6,10 @@ import date from "../../assets/calendar.svg";
 import person from "../../assets/person.svg";
 import set from "../../assets/set.svg";
 import time from "../../assets/time.svg";
-import details from "../../assets/details.svg";
 import soak from "../../assets/soak.svg";
 import phone from "../../assets/phone.svg";
 import refill from "../../assets/refill.svg";
 import Phone from "../../Algos/Phone";
-import { useNavigate } from "react-router-dom";
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
@@ -26,7 +24,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
         return (
           <div
             key={appointment.appointment_id}
-            className="sm:w-full h-screen py-6 flex flex-col desktop:ml-6"
+            className="sm:w-full h-100 py-6 flex flex-col desktop:ml-6"
           >
             <div className="sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4">
               <div className="sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2">

@@ -28,7 +28,7 @@ const Header = ({ dispatch }) => {
             LoveByLaysha
           </h2>
         </div>
-        <div className="ml-6 text-2xl w-96 font-semibold">
+        <div className="ml-10 text-2xl w-96 font-girl">
           {localStorage.getItem("message")}
         </div>
         <div
