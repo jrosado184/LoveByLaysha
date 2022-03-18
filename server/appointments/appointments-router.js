@@ -30,7 +30,6 @@ router.post("/", checkBody, (req, res, next) => {
 });
 
 router.delete("/:id", checkId, (req, res, next) => {
-  Deleted.insert();
   Appoint.remove(req.params.id)
     .then((appoint) => {
       res.json(appoint);
