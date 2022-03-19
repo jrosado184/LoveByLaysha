@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { appointmentId } from "../../redux/actions/appointment-actions";
+import { getCompletedAppointmentsById } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import date from "../../assets/calendar.svg";
@@ -11,16 +11,16 @@ import phone from "../../assets/phone.svg";
 import refill from "../../assets/refill.svg";
 import Phone from "../../Algos/Phone";
 
-const CompletedInformation = ({ dispatch, getAppointmentById }) => {
+const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(appointmentId(id));
+    dispatch(getCompletedAppointmentsById(id));
   }, [dispatch]);
 
   return (
     <>
-      {getAppointmentById.map((appointment) => {
+      {completedAppointmentsById.map((appointment) => {
         return (
           <div
             key={appointment.appointment_id}
@@ -94,8 +94,7 @@ const CompletedInformation = ({ dispatch, getAppointmentById }) => {
 };
 const mapStateToProps = (state) => {
   return {
-    getAppointmentById: state.appointments.getAppointmentById,
-    deletedAppointments: state.appointments.deletedAppointments,
+    completedAppointmentsById: state.appointments.completedAppointmentsById,
   };
 };
 

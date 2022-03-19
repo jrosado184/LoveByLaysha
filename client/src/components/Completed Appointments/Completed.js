@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Search from "./Search";
+import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import right from "../../assets/right.svg";
@@ -7,10 +6,8 @@ import right from "../../assets/right.svg";
 const Completed = ({ dispatch, appointment }) => {
   const nav = useNavigate();
   const handleAppointment = () => {
-    nav(`/appointment/${appointment.appointment_id}`);
+    nav(`/completed-information/${appointment.appointment_id}`);
   };
-
-  console.log(appointment);
 
   return (
     <>

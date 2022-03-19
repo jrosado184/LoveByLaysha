@@ -28,6 +28,12 @@ export const completedAppointments = (appointments) => {
   return { type: COMPLETED_APPOINTMENTS, payload: appointments };
 };
 
+export const COMPLETED_APPOINTMENTS_ID = "COMPLETED_APPOINTMENTS_ID";
+
+export const completedAppointmentsById = (appointments) => {
+  return { type: COMPLETED_APPOINTMENTS_ID, payload: appointments };
+};
+
 export const getAppointments = () => {
   return (dispatch) => {
     axiosWithAuth()
@@ -83,6 +89,19 @@ export const getCompletedAppointments = () => {
       .get(`/api/completedAppointments`)
       .then((res) => {
         dispatch(completedAppointments(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const getCompletedAppointmentsById = (id) => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .get(`/api/completedAppointments/${id}`)
+      .then((res) => {
+        dispatch(completedAppointmentsById(res.data));
       })
       .catch((err) => {
         console.log(err);

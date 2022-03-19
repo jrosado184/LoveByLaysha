@@ -12,8 +12,10 @@ import Contact from "./components/Main/Contact";
 import Deleted from "./components/Appointments/Deleted";
 import PrivateRoute from "./utils/PrivateRoute";
 import Nails from "./components/Nails/Nails";
-import Completed from "./components/Appointments/Completed";
-import CompletedAppointmentsList from "./components/Appointments/CompletedAppointmentsList";
+import Completed from "./components/Completed Appointments/Completed";
+import CompletedAppointmentsList from "./components/Completed Appointments/CompletedAppointmentsList";
+import CompletedInformation from "./components/Completed Appointments/CompletedInformation";
+import CompletedUploads from "./components/Completed Appointments/CompletedUploads";
 
 const App = () => {
   return (
@@ -60,6 +62,17 @@ const App = () => {
             <PrivateRoute>
               <CompletedAppointmentsList />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/completed-information/:id"
+          element={
+            <div className="sm:w-full flex flex-col desktop:flex-row">
+              <PrivateRoute>
+                <CompletedInformation />
+                <CompletedUploads />
+              </PrivateRoute>
+            </div>
           }
         />
         <Route

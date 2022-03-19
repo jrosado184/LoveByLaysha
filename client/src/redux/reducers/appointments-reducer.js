@@ -4,6 +4,7 @@ import {
   GET_BY_ID,
   DELETED_APPOINTMENTS,
   COMPLETED_APPOINTMENTS,
+  COMPLETED_APPOINTMENTS_ID,
 } from "../actions/appointment-actions";
 
 export const initialState = {
@@ -12,6 +13,7 @@ export const initialState = {
   getAppointmentById: [],
   deletedAppointments: [],
   completedAppointments: [],
+  completedAppointmentsById: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +42,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         completedAppointments: action.payload,
+      };
+    case COMPLETED_APPOINTMENTS_ID:
+      return {
+        ...state,
+        completedAppointmentsById: action.payload,
       };
     default:
       return state;

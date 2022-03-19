@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import { getCompletedAppointments } from "../../redux/actions/appointment-actions";
 import Completed from "./Completed";
-import Search from "./Search";
+import Search from "../Appointments/Search";
 
 const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   useEffect(() => {
