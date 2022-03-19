@@ -17,6 +17,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const handleRemoved = () => {
     nav("/deleted");
   };
+  const handleCompleted = () => {
+    nav("/completed");
+  };
 
   return (
     <div className="flex flex-col items-center my-2">
@@ -28,7 +31,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
               : "hidden"
           }
         >
-          <p className="text-sm">Completed</p>
+          <p onClick={handleCompleted} className="text-sm">
+            Completed
+          </p>
         </div>
         <div
           className={

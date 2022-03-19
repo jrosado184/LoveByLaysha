@@ -16,23 +16,21 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
   const handleDelete = () => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
-      .then((res) => {
-        nav("/appointments");
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
+    nav("/appointments");
   };
 
   const handleComplete = () => {
     axiosWithAuth()
-      .delete(`/api/appointments/completed${id}`)
-      .then(() => {
-        nav("/appointments");
-      })
+      .delete(`/api/appointments/completed/${id}`)
+      .then(() => {})
       .catch((err) => {
         console.log(err);
       });
+    nav("/appointments");
   };
 
   return (

@@ -24,7 +24,7 @@ export const deletedAppointments = (appointments) => {
 
 export const COMPLETED_APPOINTMENTS = "COMPLETED_APPOINTMENTS";
 
-export const completeAppointments = (appointments) => {
+export const completedAppointments = (appointments) => {
   return { type: COMPLETED_APPOINTMENTS, payload: appointments };
 };
 
@@ -71,6 +71,18 @@ export const deleteAppointments = () => {
       .get(`/api/deletedAppointments`)
       .then((res) => {
         dispatch(deletedAppointments(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+export const getCompletedAppointments = () => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .get(`/api/completedAppointments`)
+      .then((res) => {
+        dispatch(completedAppointments(res.data));
       })
       .catch((err) => {
         console.log(err);
