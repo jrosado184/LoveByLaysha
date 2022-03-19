@@ -3,6 +3,7 @@ import {
   RECEIVE_APPOINTMENTS,
   GET_BY_ID,
   DELETED_APPOINTMENTS,
+  COMPLETED_APPOINTMENTS,
 } from "../actions/appointment-actions";
 
 export const initialState = {
@@ -34,6 +35,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         deletedAppointments: action.payload,
+      };
+    case COMPLETED_APPOINTMENTS:
+      return {
+        ...state,
+        completedAppointments: action.payload,
       };
     default:
       return state;

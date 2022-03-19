@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import {
-  deleteAppointments,
-  appointmentId,
-} from "../../redux/actions/appointment-actions";
+import { appointmentId } from "../../redux/actions/appointment-actions";
 import { connect } from "react-redux";
+
 const Uploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
 
@@ -19,13 +17,24 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
       .then((res) => {
-        console.log(res);
+        nav("/appointments");
       })
       .catch((err) => {
         console.log(err);
       });
-    nav("/appointments");
   };
+
+  const handleComplete = () => {
+    axiosWithAuth()
+      .delete(`/api/appointments/completed${id}`)
+      .then(() => {
+        nav("/appointments");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="desktop:w-full mb-12">
       <div className="desktop:flex flex-col items-start justify-start h-full">
@@ -54,7 +63,10 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
           >
             Remove
           </button>
-          <button className="w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm">
+          <button
+            onClick={handleComplete}
+            className="w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm"
+          >
             Complete
           </button>
         </div>

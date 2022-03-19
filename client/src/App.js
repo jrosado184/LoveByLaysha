@@ -12,6 +12,7 @@ import Contact from "./components/Main/Contact";
 import Deleted from "./components/Appointments/Deleted";
 import PrivateRoute from "./utils/PrivateRoute";
 import Nails from "./components/Nails/Nails";
+import Completed from "./components/Appointments/Completed";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           }
         />
         <Route path="/deleted" element={<Deleted />} />
+        <Route path="/completed" element={<Completed />} />
         <Route
           path="/appointments"
           element={

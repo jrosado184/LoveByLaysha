@@ -1,5 +1,4 @@
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import { initialState } from "../reducers/appointments-reducer";
 
 export const ADD_APPOINTMENTS = "ADD_APPOINTMENTS";
 
@@ -21,6 +20,12 @@ export const getById = (id) => {
 export const DELETED_APPOINTMENTS = "DELETED_APPOINTMENTS";
 export const deletedAppointments = (appointments) => {
   return { type: DELETED_APPOINTMENTS, payload: appointments };
+};
+
+export const COMPLETED_APPOINTMENTS = "COMPLETED_APPOINTMENTS";
+
+export const completeAppointments = (appointments) => {
+  return { type: COMPLETED_APPOINTMENTS, payload: appointments };
 };
 
 export const getAppointments = () => {
