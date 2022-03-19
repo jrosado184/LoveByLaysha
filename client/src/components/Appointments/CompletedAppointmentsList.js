@@ -9,7 +9,6 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
     dispatch(getCompletedAppointments());
   }, [dispatch]);
 
-  console.log(completedAppointments);
   return (
     <>
       <Search />

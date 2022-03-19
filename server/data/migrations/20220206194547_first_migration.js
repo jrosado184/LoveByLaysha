@@ -37,18 +37,18 @@ exports.up = async (knex) => {
       deleted.string("client_details");
     })
     .createTable("completed_appointments", (completed) => {
-      completed.increments("appointment_id");
-      completed.text("appointment_month");
-      completed.text("appointment_day");
-      completed.text("appointment_year");
-      completed.string("appointment_time");
-      completed.string("client_name");
-      completed.string("client_phone", 200);
-      completed.string("client_set");
-      completed.boolean("client_refill");
-      completed.string("client_refillSet");
-      completed.boolean("client_Soak");
-      completed.string("client_details");
+      completed.increments("completed_appointment_id");
+      completed.text("completed_appointment_month");
+      completed.text("completed_appointment_day");
+      completed.text("completed_appointment_year");
+      completed.string("completed_appointment_time");
+      completed.string("completed_client_name");
+      completed.string("completed_client_phone", 200);
+      completed.string("completed_client_set");
+      completed.boolean("completed_client_refill");
+      completed.string("completed_client_refillSet");
+      completed.boolean("completed_client_Soak");
+      completed.string("completed_client_details");
     });
 };
 

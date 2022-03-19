@@ -11,7 +11,7 @@ const Search = () => {
     nav("/deleted");
   };
   const handleCompleted = () => {
-    nav("/completed");
+    nav("/completedAppointments");
   };
 
   return (

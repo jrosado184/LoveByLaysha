@@ -9,6 +9,14 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
+router.get("/:Id", (req, res, next) => {
+  Completed.findById()
+    .then((appoint) => {
+      res.json(appoint);
+    })
+    .catch(next);
+});
+
 router.use = (err, req, res, next) => {
   res.json({
     message: err.message,

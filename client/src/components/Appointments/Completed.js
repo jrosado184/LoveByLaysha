@@ -6,12 +6,13 @@ import right from "../../assets/right.svg";
 
 const Completed = ({ dispatch, appointment }) => {
   const nav = useNavigate();
-  const handleAppointment = () => {};
+  const handleAppointment = () => {
+    nav(`/appointment/${appointment.appointment_id}`);
+  };
 
   return (
     <>
-      <Search />
-      {/* <div
+      <div
         key={appointment.appointment_id}
         className="w-full flex justify-center items-center flex-col my-1 gap-8"
       >
@@ -26,13 +27,16 @@ const Completed = ({ dispatch, appointment }) => {
           </div>
           <div className="w-full pl-4 my-2 flex justify-between">
             <p className="w-full">{appointment.appointment_time}</p>
-            <div className="w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4">
+            <div
+              onClick={handleAppointment}
+              className="w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4"
+            >
               <p className="flex">See Information</p>
               <img className="w-4" src={right} alt="" />
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

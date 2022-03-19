@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Main/Header";
 import Book from "./components/Appointments/Book";
@@ -20,7 +20,7 @@ const App = () => {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Nails />} />
+        <Route path="/" element={<Register />} />
         <Route path="/nails" element={<Nails />} />
         <Route path="/book" element={<Book />} />
         <Route path="/confirm/:id" element={<Confirm />} />
