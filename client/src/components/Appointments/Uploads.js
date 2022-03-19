@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 import {
   deleteAppointments,
   appointmentId,
@@ -15,7 +16,14 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
   }, []);
 
   const handleDelete = () => {
-    dispatch(deleteAppointments(id));
+    axiosWithAuth()
+      .delete(`/api/appointments/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     nav("/appointments");
   };
   return (

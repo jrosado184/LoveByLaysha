@@ -35,10 +35,25 @@ exports.up = async (knex) => {
       deleted.string("client_refillSet");
       deleted.boolean("client_Soak");
       deleted.string("client_details");
+    })
+    .createTable("completed_appointments", (completed) => {
+      completed.increments("appointment_id");
+      completed.text("appointment_month");
+      completed.text("appointment_day");
+      completed.text("appointment_year");
+      completed.string("appointment_time");
+      completed.string("client_name");
+      completed.string("client_phone", 200);
+      completed.string("client_set");
+      completed.boolean("client_refill");
+      completed.string("client_refillSet");
+      completed.boolean("client_Soak");
+      completed.string("client_details");
     });
 };
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists("completed_appointments");
   await knex.schema.dropTableIfExists("deleted_appointments");
   await knex.schema.dropTableIfExists("appointments");
   await knex.schema.dropTableIfExists("users");

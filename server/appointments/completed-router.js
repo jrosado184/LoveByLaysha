@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const Deleted = require("./deleted-model");
+const Completed = require("./completed-model");
 
 router.get("/", (req, res, next) => {
-  Deleted.findAll()
-    .then((deleted) => {
-      res.json(deleted);
+  Completed.findAll()
+    .then((completed) => {
+      res.json(completed);
     })
     .catch(next);
 });
@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
 router.use = (err, req, res, next) => {
   res.json({
     message: err.message,
-    custom: "There was an error in the deleted appointments router",
+    custom: "There was an error in the completed appointments router",
   });
 };
 

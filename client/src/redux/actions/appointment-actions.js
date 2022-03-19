@@ -60,13 +60,12 @@ export const appointmentId = (id) => {
   };
 };
 
-export const deleteAppointments = (id) => {
+export const deleteAppointments = () => {
   return (dispatch) => {
     axiosWithAuth()
-      .delete(`/api/appointments/${id}`)
+      .get(`/api/deletedAppointments`)
       .then((res) => {
-        console.log(res);
-        initialState.deletedAppointments.push(res.data);
+        dispatch(deletedAppointments(res.data));
       })
       .catch((err) => {
         console.log(err);
