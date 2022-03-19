@@ -10,6 +10,8 @@ const Completed = ({ dispatch, appointment }) => {
     nav(`/appointment/${appointment.appointment_id}`);
   };
 
+  console.log(appointment);
+
   return (
     <>
       <div

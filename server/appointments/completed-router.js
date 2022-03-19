@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Completed = require("./completed-model");
+const { checkId } = require("./completed-middleware");
 
 router.get("/", (req, res, next) => {
   Completed.findAll()
@@ -9,8 +10,8 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/:Id", (req, res, next) => {
-  Completed.findById()
+router.get("/:id", checkId, (req, res, next) => {
+  Completed.findById(req.params.id)
     .then((appoint) => {
       res.json(appoint);
     })

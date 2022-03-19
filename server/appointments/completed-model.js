@@ -4,9 +4,8 @@ const findAll = () => {
   return db("completed_appointments");
 };
 
-const findById = async (id) => {
-  const row = await db("completed_appointments").where({ id });
-  return row;
+const findById = (appointment_id) => {
+  return db("completed_appointments").where({ appointment_id });
 };
 
 module.exports = {
