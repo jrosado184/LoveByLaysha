@@ -9,6 +9,11 @@ const findById = async (id) => {
   return rows;
 };
 
+const findBy = async (filter) => {
+  const rows = await db("appointments").where(filter);
+  return rows;
+};
+
 const insert = async (appointments) => {
   const [appoint_id] = await db("appointments").insert(appointments, [
     "appointment_month",
@@ -50,4 +55,5 @@ module.exports = {
   findById,
   remove,
   removeCompleted,
+  findBy,
 };

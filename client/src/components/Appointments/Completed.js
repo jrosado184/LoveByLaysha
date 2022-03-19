@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Search from "./Search";
 import { connect } from "react-redux";
 import { getCompletedAppointments } from "../../redux/actions/appointment-actions";
 
@@ -9,6 +10,7 @@ const Completed = ({ completedAppointments, dispatch }) => {
 
   return (
     <>
+      <Search />
       {completedAppointments.map((appointment) => {
         return (
           <div

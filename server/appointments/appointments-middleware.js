@@ -23,6 +23,26 @@ const checkBody = (req, res, next) => {
   }
 };
 
+const checkExists = async (req, res, next) => {
+  try {
+    const { appointment_month, appointment_day, appointment_time } = req.body;
+    const all = await Appoint.findAll();
+    const search = all.some(
+      (appoint) =>
+        appoint.appointment_day === appointment_day &&
+        appoint.appointment_time === appointment_time &&
+        appointment_month === appoint.appointment_month
+    );
+    if (search) {
+      res.json("This appointment has been booked");
+    } else {
+      next();
+    }
+  } catch {
+    next();
+  }
+};
+
 const checkId = async (req, res, next) => {
   try {
     const [id] = await Appoint.findById(req.params.id);
@@ -39,4 +59,5 @@ const checkId = async (req, res, next) => {
 module.exports = {
   checkBody,
   checkId,
+  checkExists,
 };

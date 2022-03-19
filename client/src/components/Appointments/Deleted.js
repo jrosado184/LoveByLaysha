@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Search from "./Search";
 import { connect } from "react-redux";
 import { deleteAppointments } from "../../redux/actions/appointment-actions";
 
@@ -9,6 +10,7 @@ const Deleted = ({ deletedAppointments, dispatch }) => {
 
   return (
     <>
+      <Search />
       {deletedAppointments.map((appointment) => {
         return (
           <div

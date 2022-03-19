@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const Appoint = require("./appointments-model");
-const Deleted = require("./deleted-model");
-const { checkBody, checkId } = require("./appointments-middleware");
+const {
+  checkBody,
+  checkId,
+  checkExists,
+} = require("./appointments-middleware");
 
 router.get("/", (req, res, next) => {
   Appoint.findAll()
@@ -21,7 +24,7 @@ router.get("/:id", checkId, (req, res, next) => {
     .catch(next);
 });
 
-router.post("/", checkBody, (req, res, next) => {
+router.post("/", checkBody, checkExists, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);
