@@ -37,6 +37,14 @@ router.delete("/:id", checkId, (req, res, next) => {
     .catch(next);
 });
 
+router.delete("/completed/:id", checkId, (req, res, next) => {
+  Appoint.removeCompleted(req.params.id)
+    .then((appoint) => {
+      res.json(appoint);
+    })
+    .catch(next);
+});
+
 router.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message,
