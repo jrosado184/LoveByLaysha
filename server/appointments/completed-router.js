@@ -19,7 +19,7 @@ router.get("/:id", checkId, (req, res, next) => {
 });
 
 router.use = (err, req, res, next) => {
-  res.json({
+  res.status(500).json({
     message: err.message,
     custom: "There was an error in the completed appointments router",
   });

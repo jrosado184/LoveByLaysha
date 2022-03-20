@@ -34,7 +34,7 @@ const checkExists = async (req, res, next) => {
         appointment_month === appoint.appointment_month
     );
     if (search) {
-      res.json("This appointment has been booked");
+      res.status(422).json("This appointment has been booked");
     } else {
       next();
     }

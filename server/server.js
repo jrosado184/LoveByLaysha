@@ -1,12 +1,14 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+const fileUpload = require("express-fileUpload");
 const adminRouter = require("./auth/users-router");
 const appointRouter = require("./appointments/appointments-router");
 const deletedRouter = require("./appointments/deleted-router");
 const completedRouter = require("./appointments/completed-router");
 
 const server = express();
+server.use(fileUpload());
 server.use(express.json());
 server.use(helmet());
 server.use(cors());

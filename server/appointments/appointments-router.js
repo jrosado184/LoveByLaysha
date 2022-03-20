@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const fileUpload = require("express-fileUpload");
 const Appoint = require("./appointments-model");
 const {
   checkBody,
@@ -31,6 +32,8 @@ router.post("/", checkBody, checkExists, (req, res, next) => {
     })
     .catch(next);
 });
+
+router.post("/upload", (req, res, next) => {});
 
 router.delete("/:id", checkId, (req, res, next) => {
   Appoint.remove(req.params.id)

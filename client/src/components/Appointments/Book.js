@@ -9,6 +9,7 @@ import {
   getAppointments,
 } from "../../redux/actions/appointment-actions.js";
 import Months from "./../../Algos/Months";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Book = (props) => {
   const { dispatch, fetchAppointments } = props;
@@ -26,6 +27,7 @@ const Book = (props) => {
     client_refillSet: "none",
     client_Soak: false,
     client_details: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -39,21 +41,29 @@ const Book = (props) => {
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? "none" : info.client_set,
-      // image: e.target.files,
       [e.target.name]: e.target.value,
     });
+    console.log(info);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postAppointments(info));
+    const formData = new FormData();
+    formData.append("image", info.image);
+    axiosWithAuth()
+      .post(`/api/appointments/upload`, formData)
+      .then((res) => {
+        console.log(res);
+      });
+
     nav(
       `/confirm/${
         fetchAppointments[fetchAppointments.length - 1].appointment_id
       }`
     );
   };
-
+  console.log(info);
   return (
     <div>
       <form
@@ -194,11 +204,11 @@ const Book = (props) => {
             <label className=" my-4 flex flex-col shrink md:ml-6">
               Have a specific set in mind?
               <input
-                name="client_image"
-                onChange={handleChange}
+                name="image"
+                onChange={(e) => setInfo({ ...info, image: e.target.files[0] })}
+                type="file"
                 className="w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
               file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]"
-                type="file"
               />
             </label>
             <input
