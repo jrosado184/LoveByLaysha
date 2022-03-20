@@ -38,7 +38,9 @@ router.post("/upload", (req, res, next) => {
   }
   const image = req.files.image;
 
-  image.mv(`${__dirname}/client/public/uploads/${image.name}`, (err) => {
+  const uploadPath = __dirname + "/client/public/uploads" + image.name;
+
+  image.mv(uploadPath, (err) => {
     if (err) {
       console.log(err);
       return res.status(500).send(err);
