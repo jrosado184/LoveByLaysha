@@ -36,7 +36,7 @@ router.post("/upload", (req, res, next) => {
   if (req.files === null) {
     return res.status(400).json({ message: "No File Uploaded" });
   }
-  const image = req.file.image;
+  const image = req.files.image;
 
   image.mv(`${__dirname}/client/public/uploads/${image.name}`, (err) => {
     if (err) {
