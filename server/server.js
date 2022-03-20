@@ -8,8 +8,8 @@ const deletedRouter = require("./appointments/deleted-router");
 const completedRouter = require("./appointments/completed-router");
 
 const server = express();
-server.use(fileUpload());
 server.use(express.json());
+server.use(fileUpload());
 server.use(helmet());
 server.use(cors());
 server.use("/api/users", adminRouter);
