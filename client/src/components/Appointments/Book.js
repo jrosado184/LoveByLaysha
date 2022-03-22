@@ -15,6 +15,7 @@ const Book = (props) => {
   const { dispatch, fetchAppointments } = props;
   const nav = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
+  const [image, setImage] = useState("");
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
     appointment_day: selectedDate,
@@ -27,7 +28,6 @@ const Book = (props) => {
     client_refillSet: "none",
     client_Soak: false,
     client_details: "",
-    image: "",
   });
 
   useEffect(() => {
@@ -43,16 +43,19 @@ const Book = (props) => {
       client_set: info.client_refill ? "none" : info.client_set,
       [e.target.name]: e.target.value,
     });
-    console.log(info);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postAppointments(info));
     const formData = new FormData();
-    formData.append("image", info.image);
+    formData.append("image", image);
     axiosWithAuth()
-      .post(`/api/appointments/upload`, formData)
+      .post(`/api/appointments/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res);
       });
@@ -63,7 +66,7 @@ const Book = (props) => {
       }`
     );
   };
-  console.log(info);
+  console.log(image);
   return (
     <div>
       <form
@@ -204,9 +207,12 @@ const Book = (props) => {
             <label className=" my-4 flex flex-col shrink md:ml-6">
               Have a specific set in mind?
               <input
+                method="POST"
+                action="/upload"
+                enctype="multipart/form-data"
                 name="image"
-                onChange={(e) => setInfo({ ...info, image: e.target.files[0] })}
                 type="file"
+                onChange={(e) => setImage(e.target.files[0])}
                 className="w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
               file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]"
               />

@@ -32,23 +32,6 @@ router.post("/", checkBody, checkExists, (req, res, next) => {
     .catch(next);
 });
 
-router.post("/upload", (req, res, next) => {
-  if (req.files === null) {
-    return res.status(400).json({ message: "No File Uploaded" });
-  }
-  const image = req.files.image;
-
-  const uploadPath = __dirname + "/client/public/uploads" + image.name;
-
-  image.mv(uploadPath, (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send(err);
-    }
-    res.json({ fileName: image.name, filePath: `/uploads/${image.name}` });
-  });
-});
-
 router.delete("/:id", checkId, (req, res, next) => {
   Appoint.remove(req.params.id)
     .then((appoint) => {
