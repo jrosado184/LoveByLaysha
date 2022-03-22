@@ -2,18 +2,6 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-const multer = require("multer");
-const path = require("path");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./.././uploads");
-  },
-  filename: (req, file, cb) => {
-    console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-const upload = multer({ storage: storage });
 
 const adminRouter = require("./auth/users-router");
 const appointRouter = require("./appointments/appointments-router");
@@ -34,8 +22,23 @@ server.get("/", async (req, res) => {
   res.send("Welcome to LoveByLayshas server");
 });
 
-server.post("/upload", upload.single("image"), async (req, res) => {
-  console.log("hey");
+server.post("/images", async (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+
+  const image = req.files.image;
+
+  image.mv(
+    `./../../desktop/LoveByLaysha1/client/public/uploads/${image.name}`,
+    (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+      res.json({ fileName: image.name, filePath: `/uploads/${image.name}` });
+    }
+  );
 });
 
 module.exports = server;

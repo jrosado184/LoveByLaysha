@@ -51,15 +51,12 @@ const Book = (props) => {
     const formData = new FormData();
     formData.append("image", image);
     axiosWithAuth()
-      .post(`/api/appointments/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      .post("/images", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
-        console.log(res);
+        setImage(res.data);
       });
-
     nav(
       `/confirm/${
         fetchAppointments[fetchAppointments.length - 1].appointment_id
@@ -207,12 +204,9 @@ const Book = (props) => {
             <label className=" my-4 flex flex-col shrink md:ml-6">
               Have a specific set in mind?
               <input
-                method="POST"
-                action="/upload"
-                enctype="multipart/form-data"
                 name="image"
-                type="file"
                 onChange={(e) => setImage(e.target.files[0])}
+                type="file"
                 className="w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
               file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]"
               />
