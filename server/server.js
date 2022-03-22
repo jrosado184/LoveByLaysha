@@ -29,16 +29,13 @@ server.post("/images", (req, res) => {
 
   const image = req.files.image;
 
-  image.mv(
-    `./../../desktop/LoveByLaysha1/client/public/uploads/${image.name}`,
-    (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-      }
-      res.json({ fileName: image.name, filePath: `/uploads/${image.name}` });
+  image.mv(`./../LoveByLaysha1/client/public/uploads/${image.name}`, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
     }
-  );
+    res.json({ fileName: image.name, filePath: `/uploads/${image.name}` });
+  });
 });
 
 module.exports = server;

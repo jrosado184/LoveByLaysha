@@ -63,7 +63,6 @@ const Book = (props) => {
       }`
     );
   };
-  console.log(image);
   return (
     <div>
       <form
