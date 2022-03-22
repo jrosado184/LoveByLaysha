@@ -29,12 +29,12 @@ server.post("/images", (req, res) => {
 
   const image = req.files.image;
 
-  image.mv(`./../LoveByLaysha1/client/public/uploads/${image.name}`, (err) => {
+  image.mv(`./server/images/${image.name}`, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
     }
-    res.json({ fileName: image.name, filePath: `/uploads/${image.name}` });
+    res.json({ fileName: image.name, filePath: `/images/${image.name}` });
   });
 });
 
