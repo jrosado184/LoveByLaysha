@@ -55,7 +55,7 @@ const Book = (props) => {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
-        setImage(res.data);
+        console.log(res);
       });
     nav(
       `/confirm/${

@@ -22,7 +22,7 @@ server.get("/", async (req, res) => {
   res.send("Welcome to LoveByLayshas server");
 });
 
-server.post("/images", async (req, res) => {
+server.post("/images", (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ message: "No file uploaded" });
   }
