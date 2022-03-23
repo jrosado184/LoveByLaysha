@@ -35,9 +35,9 @@ server.post('/image', async (req, res) => {
     } else {
       const { image } = req.files;
 
-      image.mv(`${__dirname}/images/${image.name}`);
+      image.mv(`./images/${image.name}`);
 
-      res.send({ status: true, message: 'File Uploaded' });
+      res.send({ status: true, filePath: `./images/${image.name}` });
     }
   } catch (error) {
     res.status(500).send(error);
