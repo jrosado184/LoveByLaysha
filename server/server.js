@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+const morgan = require('morgan');
 
 const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
@@ -34,7 +35,7 @@ server.post('/image', async (req, res) => {
     } else {
       const { image } = req.files;
 
-      image.mv('./upload' + image.name);
+      image.mv(`../client/public/uploads/${image.name}`);
 
       res.send({ status: true, message: 'File Uploaded' });
     }

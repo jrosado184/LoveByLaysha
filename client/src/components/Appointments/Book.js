@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
-import { disabledDays } from "./../data/Disabled";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import { disabledDays } from './../data/Disabled';
+import { connect } from 'react-redux';
 import {
   postAppointments,
   getAppointments,
-} from "../../redux/actions/appointment-actions.js";
-import Months from "./../../Algos/Months";
-import axiosWithAuth from "../../utils/axiosWithAuth";
+} from '../../redux/actions/appointment-actions.js';
+import Months from './../../Algos/Months';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Book = (props) => {
   const { dispatch, fetchAppointments } = props;
   const nav = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
     appointment_day: selectedDate,
     appointment_year: selectedDate,
-    appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    appointment_time: '',
+    client_name: '',
+    client_phone: '',
+    client_set: 'none',
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: 'none',
     client_Soak: false,
-    client_details: "",
+    client_details: '',
   });
 
   useEffect(() => {
@@ -40,23 +40,21 @@ const Book = (props) => {
       appointment_month: `${Months(selectedDate.month)}`,
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
-      client_set: info.client_refill ? "none" : info.client_set,
+      client_set: info.client_refill ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(postAppointments(info));
     const formData = new FormData();
-    formData.append("image", image);
-    axiosWithAuth()
-      .post("/images", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    formData.append('image', image);
+    const res = await fetch(`https://lovebylaysha.herokuapp.com/image`, {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(res));
     nav(
       `/confirm/${
         fetchAppointments[fetchAppointments.length - 1].appointment_id
@@ -67,153 +65,153 @@ const Book = (props) => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="sm:pl-10 py-4 desktop:pl-[17%] w-full"
+        className='sm:pl-10 py-4 desktop:pl-[17%] w-full'
       >
-        <div className="sm:  md:flex">
+        <div className='sm:  md:flex'>
           <Calendar
             onChange={setSelectedDate}
-            calendarClassName="border-2 border-pink-200"
-            colorPrimary="#f8a4d1"
+            calendarClassName='border-2 border-pink-200'
+            colorPrimary='#f8a4d1'
             value={selectedDate}
             minimumDate={utils().getToday()}
             disabledDays={disabledDays}
           />
-          <div className="md:w-[60%]">
+          <div className='md:w-[60%]'>
             <select
-              name="appointment_time"
+              name='appointment_time'
               value={info.appointment_time}
               onChange={handleChange}
-              className="w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6"
+              className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
             >
-              <option value="">select a time</option>
-              <option data-testid="time" value="10:00 AM">
+              <option value=''>select a time</option>
+              <option data-testid='time' value='10:00 AM'>
                 10:00 AM
               </option>
-              <option data-testid="time" value="10:30 AM">
+              <option data-testid='time' value='10:30 AM'>
                 10:30 AM
               </option>
-              <option data-testid="time" value="11:00 AM">
+              <option data-testid='time' value='11:00 AM'>
                 11:00 AM
               </option>
-              <option value="11:30 AM">11:30 AM</option>
-              <option value="12:00 AM">12:00 PM</option>
-              <option value="12:30 PM">12:30 PM</option>
-              <option value="1:00 PM">1:00 PM</option>
-              <option value="1:30 PM">1:30 PM</option>
-              <option value="2:00 PM">2:00 PM</option>
-              <option value="2:30 PM">2:30 PM</option>
-              <option value="3:00 PM">3:00 PM</option>
-              <option value="3:30 PM">3:30 PM</option>
-              <option value="4:00 PM">4:00 PM</option>
-              <option value="4:30 PM">4:30 PM</option>
-              <option value="5:30 PM">5:00 PM</option>
-              <option value="5:30 PM">5:30 PM</option>
-              <option value="6:00 PM">6:00 PM</option>
+              <option value='11:30 AM'>11:30 AM</option>
+              <option value='12:00 AM'>12:00 PM</option>
+              <option value='12:30 PM'>12:30 PM</option>
+              <option value='1:00 PM'>1:00 PM</option>
+              <option value='1:30 PM'>1:30 PM</option>
+              <option value='2:00 PM'>2:00 PM</option>
+              <option value='2:30 PM'>2:30 PM</option>
+              <option value='3:00 PM'>3:00 PM</option>
+              <option value='3:30 PM'>3:30 PM</option>
+              <option value='4:00 PM'>4:00 PM</option>
+              <option value='4:30 PM'>4:30 PM</option>
+              <option value='5:30 PM'>5:00 PM</option>
+              <option value='5:30 PM'>5:30 PM</option>
+              <option value='6:00 PM'>6:00 PM</option>
             </select>
             <input
-              data-testid="name"
-              className="pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6"
-              type="text"
-              placeholder="Name"
-              name="client_name"
+              data-testid='name'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              type='text'
+              placeholder='Name'
+              name='client_name'
               value={info.client_name}
               onChange={handleChange}
             />
             <input
-              data-testid="phone"
-              name="client_phone"
+              data-testid='phone'
+              name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className="pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6"
-              type="tel"
-              placeholder="Phone number"
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              type='tel'
+              placeholder='Phone number'
             />
             <select
-              name="client_set"
+              name='client_set'
               value={info.client_set}
               onChange={handleChange}
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+                  : 'hidden'
               }
             >
-              <option value="">select a new set</option>
-              <option value="Shorties Full Set">Shorties Full Set $50+</option>
-              <option value="Medium Full Set">Medium Full Set $60+</option>
-              <option value="Long Full Set">Long Full Set $70+</option>
-              <option value="XL Full Set">XL Full Set $85+</option>
-              <option value="XXL Full Set">XXL Full Set $100+</option>
-              <option value="Extendo Full Set">Extendo Full Set $120+</option>
-              <option value="Freestyle">Freestyle $80-$120</option>
+              <option value=''>select a new set</option>
+              <option value='Shorties Full Set'>Shorties Full Set $50+</option>
+              <option value='Medium Full Set'>Medium Full Set $60+</option>
+              <option value='Long Full Set'>Long Full Set $70+</option>
+              <option value='XL Full Set'>XL Full Set $85+</option>
+              <option value='XXL Full Set'>XXL Full Set $100+</option>
+              <option value='Extendo Full Set'>Extendo Full Set $120+</option>
+              <option value='Freestyle'>Freestyle $80-$120</option>
             </select>
-            <label className="flex items-center">
+            <label className='flex items-center'>
               <input
-                data-testid="rinput"
-                name="client_refill"
-                className="mr-2 my-4 md:ml-6"
-                type="radio"
+                data-testid='rinput'
+                name='client_refill'
+                className='mr-2 my-4 md:ml-6'
+                type='radio'
                 onChange={() => setInfo({ ...info, client_refill: true })}
                 value={info.client_refill}
               />
               Refill
             </label>
             <select
-              data-testid="refill"
-              name="client_refillSet"
+              data-testid='refill'
+              name='client_refillSet'
               value={info.client_refillSet}
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6'
+                  : 'hidden'
               }
             >
-              <option value="">select refill</option>
-              <option value="Shorties Full Set">Shorties</option>
-              <option value="Medium Full Set">Medium</option>
-              <option value="Long Full Set">Long</option>
-              <option value="XL Full Set">XL</option>
-              <option value="XXL Full Set">XXL</option>
-              <option value="Extendo Full Set">Extendo </option>
-              <option value="Freestyle">Freestyle</option>
+              <option value=''>select refill</option>
+              <option value='Shorties Full Set'>Shorties</option>
+              <option value='Medium Full Set'>Medium</option>
+              <option value='Long Full Set'>Long</option>
+              <option value='XL Full Set'>XL</option>
+              <option value='XXL Full Set'>XXL</option>
+              <option value='Extendo Full Set'>Extendo </option>
+              <option value='Freestyle'>Freestyle</option>
             </select>
-            <label className="flex items-center my-4 md:ml-6">
+            <label className='flex items-center my-4 md:ml-6'>
               <input
-                name="client_Soak"
+                name='client_Soak'
                 value={info.client_Soak}
                 onChange={() => setInfo({ ...info, client_Soak: true })}
-                className="mr-2 my-1"
-                type="radio"
+                className='mr-2 my-1'
+                type='radio'
               />
               <p>Soak Off</p>
-              <p className="ml-52 text-pink-300">$10</p>
+              <p className='ml-52 text-pink-300'>$10</p>
             </label>
-            <label className=" my-2 md:ml-6">
+            <label className=' my-2 md:ml-6'>
               Additional Details:
               <input
-                data-testid="details"
-                name="client_details"
+                data-testid='details'
+                name='client_details'
                 value={info.client_details}
                 onChange={handleChange}
-                className="w-[88%] h-20 border-2 border-gray-400 md:ml-6"
+                className='w-[88%] h-20 border-2 border-gray-400 md:ml-6'
               />
             </label>
-            <label className=" my-4 flex flex-col shrink md:ml-6">
+            <label className=' my-4 flex flex-col shrink md:ml-6'>
               Have a specific set in mind?
               <input
-                name="image"
+                name='image'
                 onChange={(e) => setImage(e.target.files[0])}
-                type="file"
-                className="w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
-              file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]"
+                type='file'
+                className='w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
+              file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]'
               />
             </label>
             <input
-              data-testid="bookbtn"
-              className="w-20 h-8 my-3 ml-28 border-2 border-pink-300 bg-pink-100 ml-[30%] text-pink-300 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]"
-              type="submit"
+              data-testid='bookbtn'
+              className='w-20 h-8 my-3 ml-28 border-2 border-pink-300 bg-pink-100 ml-[30%] text-pink-300 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+              type='submit'
             />
           </div>
         </div>
