@@ -32,11 +32,11 @@ server.post('/image', async (req, res) => {
 
   for (let img in image) {
     let uploadedFile = path.resolve(`./images/${image[img].name}`);
-    image[img].mv(uploadedFile, (err) => {
+    await image[img].mv(uploadedFile, (err) => {
       if (err) {
         return res.status(500).send(err);
       } else {
-        return res.status(200).json(image[img].name);
+        return res.status(200).json(image[img]);
       }
     });
   }

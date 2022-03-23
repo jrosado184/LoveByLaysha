@@ -10,18 +10,19 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 const FileUpload = ({ info, dispatch, fetchAppointments }) => {
   const nav = useNavigate();
   const [image, setImage] = useState('');
-  const [uploadedFile, setUploadedFile] = useState(null);
 
   useEffect(() => {
     dispatch(getAppointments());
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('image', image);
     axiosWithAuth()
-      .post('/image', formData)
+      .post('/image', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
       .then((res) => {
         console.log(res);
       });
