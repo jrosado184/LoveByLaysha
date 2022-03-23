@@ -5,6 +5,7 @@ import {
 } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const FileUpload = ({ info, dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -16,6 +17,13 @@ const FileUpload = ({ info, dispatch, fetchAppointments }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', image);
+    axiosWithAuth()
+      .post('/image', formData)
+      .then((res) => {
+        console.log(res);
+      });
     dispatch(postAppointments(info));
     nav(
       `/confirm/${

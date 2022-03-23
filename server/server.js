@@ -29,18 +29,16 @@ server.get('/', async (req, res) => {
 });
 
 server.post('/image', async (req, res) => {
-  try {
-    if (!req.files) {
-      res.send({ status: false, message: 'No Files Uploaded' });
-    } else {
-      const { image } = req.files;
+  let image = req.files;
 
-      image.mv(`./images/${image.name}`);
-
-      res.send({ status: true, filePath: `/images/${image.name}` });
-    }
-  } catch (error) {
-    res.status(500).send(error);
+  for (let img in image) {
+    image[img].mv(`./images/${image[img].name}`, (err) => {
+      if (err) {
+        return res.status(500).send(err);
+      } else {
+        return res.status(200).json(image[img].name);
+      }
+    });
   }
 });
 
