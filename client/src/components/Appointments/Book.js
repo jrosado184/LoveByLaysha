@@ -20,6 +20,7 @@ const Book = (props) => {
     client_refillSet: 'none',
     client_Soak: false,
     client_details: '',
+    image: '',
   });
 
   const handleChange = (e) => {
@@ -167,7 +168,7 @@ const Book = (props) => {
                 className='w-[88%] h-20 border-2 border-gray-400 md:ml-6'
               />
             </label>
-            <FileUpload info={info} />
+            <FileUpload info={info} setInfo={setInfo} />
           </div>
         </div>
       </form>

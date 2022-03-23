@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   postAppointments,
   getAppointments,
 } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import axios from 'axios';
 
-const FileUpload = ({ info, dispatch, fetchAppointments }) => {
+const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const nav = useNavigate();
-  const [image, setImage] = useState('');
 
   useEffect(() => {
     dispatch(getAppointments());
@@ -18,14 +17,8 @@ const FileUpload = ({ info, dispatch, fetchAppointments }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('image', image);
-    axiosWithAuth()
-      .post('/image', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    formData.append('image', info.image);
+    axios.post('http://localhost:9000/image', formData).then((res) => {});
     dispatch(postAppointments(info));
     nav(
       `/confirm/${
@@ -41,7 +34,7 @@ const FileUpload = ({ info, dispatch, fetchAppointments }) => {
         Have a specific set in mind?
         <input
           name='image'
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setInfo({ ...info, image: e.target.files[0] })}
           type='file'
           className='w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
          file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]'
