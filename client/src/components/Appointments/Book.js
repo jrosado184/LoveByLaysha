@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
-import { connect } from 'react-redux';
-import {
-  postAppointments,
-  getAppointments,
-} from '../../redux/actions/appointment-actions.js';
+import FileUpload from './FileUpload';
 import Months from './../../Algos/Months';
-import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Book = (props) => {
-  const { dispatch, fetchAppointments } = props;
-  const nav = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
-  const [image, setImage] = useState('');
+
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
     appointment_day: selectedDate,
@@ -30,10 +22,6 @@ const Book = (props) => {
     client_details: '',
   });
 
-  useEffect(() => {
-    dispatch(getAppointments());
-  }, []);
-
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -45,28 +33,9 @@ const Book = (props) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    dispatch(postAppointments(info));
-    const formData = new FormData();
-    formData.append('image', image);
-    const res = await fetch(`https://lovebylaysha.herokuapp.com/image`, {
-      method: 'POST',
-      body: formData,
-    }).then((res) => res.json());
-    alert(JSON.stringify(res));
-    nav(
-      `/confirm/${
-        fetchAppointments[fetchAppointments.length - 1].appointment_id
-      }`
-    );
-  };
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        className='sm:pl-10 py-4 desktop:pl-[17%] w-full'
-      >
+      <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
         <div className='sm:  md:flex'>
           <Calendar
             onChange={setSelectedDate}
@@ -198,21 +167,7 @@ const Book = (props) => {
                 className='w-[88%] h-20 border-2 border-gray-400 md:ml-6'
               />
             </label>
-            <label className=' my-4 flex flex-col shrink md:ml-6'>
-              Have a specific set in mind?
-              <input
-                name='image'
-                onChange={(e) => setImage(e.target.files[0])}
-                type='file'
-                className='w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
-              file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]'
-              />
-            </label>
-            <input
-              data-testid='bookbtn'
-              className='w-20 h-8 my-3 ml-28 border-2 border-pink-300 bg-pink-100 ml-[30%] text-pink-300 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
-              type='submit'
-            />
+            <FileUpload info={info} />
           </div>
         </div>
       </form>
@@ -220,10 +175,4 @@ const Book = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    addAppointments: state.appointments.addAppointments,
-    fetchAppointments: state.appointments.fetchAppointments,
-  };
-};
-export default connect(mapStateToProps)(Book);
+export default Book;
