@@ -37,7 +37,7 @@ server.post('/image', async (req, res) => {
 
       image.mv(`./images/${image.name}`);
 
-      res.send({ status: true, filePath: `./images/${image.name}` });
+      res.send({ status: true, filePath: `/images/${image.name}` });
     }
   } catch (error) {
     res.status(500).send(error);
