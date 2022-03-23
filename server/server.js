@@ -2,8 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const morgan = require('morgan');
-
+const path = require('path');
 const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
 const deletedRouter = require('./appointments/deleted-router');
@@ -32,7 +31,8 @@ server.post('/image', async (req, res) => {
   let image = req.files;
 
   for (let img in image) {
-    image[img].mv(`./images/${image[img].name}`, (err) => {
+    let uploadedFile = path.resolve(`./images/${image[img].name}`);
+    image[img].mv(uploadedFile, (err) => {
       if (err) {
         return res.status(500).send(err);
       } else {

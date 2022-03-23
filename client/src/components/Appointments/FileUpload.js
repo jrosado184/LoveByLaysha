@@ -10,6 +10,7 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 const FileUpload = ({ info, dispatch, fetchAppointments }) => {
   const nav = useNavigate();
   const [image, setImage] = useState('');
+  const [uploadedFile, setUploadedFile] = useState(null);
 
   useEffect(() => {
     dispatch(getAppointments());
