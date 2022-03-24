@@ -5,7 +5,6 @@ import {
 } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import axiosWithAuth from './../../utils/axiosWithAuth';
 
 const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
@@ -18,11 +17,12 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postAppointments(info));
+    const formData = new FormData();
+    formData.append('image', info.image);
+    formData.append('upload_preset', 'anv5dd4e');
     axiosWithAuth()
-      .get('/image')
-      .then((res) => {
-        console.log(res);
-      });
+      .post('https://api.cloudinary.com/v1_1/hftmszdet/image/upload', formData)
+      .then((res) => console.log(res));
     nav(
       `/confirm/${
         fetchAppointments[fetchAppointments.length - 1].appointment_id
