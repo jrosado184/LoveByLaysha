@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const { generateUploadUrl } = require('./s3');
+// const { generateUploadUrl } = require('./s3');
 const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
 const deletedRouter = require('./appointments/deleted-router');
@@ -21,9 +21,9 @@ server.get('/', async (req, res) => {
   res.send('Welcome to LoveByLayshas server');
 });
 
-server.get('/image', async (req, res) => {
-  const url = await generateUploadUrl();
-  res.send(url);
-});
+// server.get('/image', async (req, res) => {
+//   const url = await generateUploadUrl();
+//   res.send(url);
+// });
 
 module.exports = server;
