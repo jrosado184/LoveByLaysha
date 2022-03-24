@@ -29,4 +29,4 @@ const generateUploadUrl = async () => {
   return uploadURL;
 };
 
-module.exports = generateUploadUrl;
+module.exports = { generateUploadUrl };

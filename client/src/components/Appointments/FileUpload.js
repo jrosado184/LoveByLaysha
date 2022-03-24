@@ -19,7 +19,7 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
     e.preventDefault();
     dispatch(postAppointments(info));
     axiosWithAuth()
-      .get('/images')
+      .get('/image')
       .then((res) => {
         console.log(res);
       });
