@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   postAppointments,
   getAppointments,
 } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axiosWithAuth from './../../utils/axiosWithAuth';
+import SimpleFileUpload from 'react-simple-file-upload';
 
 const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const nav = useNavigate();
@@ -17,12 +17,6 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postAppointments(info));
-    const formData = new FormData();
-    formData.append('image', info.image);
-    formData.append('upload_preset', 'anv5dd4e');
-    axiosWithAuth()
-      .post('https://api.cloudinary.com/v1_1/hftmszdet/image/upload', formData)
-      .then((res) => console.log(res));
     nav(
       `/confirm/${
         fetchAppointments[fetchAppointments.length - 1].appointment_id
@@ -30,18 +24,27 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
     );
   };
 
+  const handleFile = (url) => {
+    setInfo({
+      ...info,
+      image: [...info.image, url],
+    });
+    console.log(info);
+  };
+
   return (
     <div>
       {' '}
-      <label className=' my-4 flex flex-col shrink md:ml-6'>
+      <label className=' my-6 flex flex-col shrink md:ml-6'>
         Have a specific set in mind?
-        <input
-          name='image'
-          onChange={(e) => setInfo({ ...info, image: e.target.files[0] })}
-          type='file'
-          className='w-100 my-2 file:rounded-full file:border-0 file:bg-pink-100 file:font-semibold
-         file:text-pink-300 file:pl-[3%] file:pr-[3%] file:py-[1%] file:pb-[1%]'
-        />
+        <div className='my-2'>
+          <SimpleFileUpload
+            width={330}
+            apiKey={process.env.REACT_APP_UPLOAD_KEY}
+            onSuccess={handleFile}
+            preview='false'
+          />
+        </div>
       </label>
       <input
         data-testid='bookbtn'
