@@ -27,7 +27,7 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const handleFile = (url) => {
     setInfo({
       ...info,
-      image: [...info.image, url],
+      images: [...info.image, url],
     });
     console.log(info);
   };
