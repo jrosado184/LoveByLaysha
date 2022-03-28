@@ -38,7 +38,7 @@ const Header = ({ dispatch }) => {
               : 'sm:flex my-3 text-md w-100 gap-1 items-end justify-end mr-[2.6%]'
           }
         >
-          <nav className='h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
+          <nav className='ml-2 h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
             <Link to='nails'>Nailfies</Link>
           </nav>
           <nav

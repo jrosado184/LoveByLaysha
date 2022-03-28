@@ -47,7 +47,7 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
       </label>
       <input
         data-testid='bookbtn'
-        className='w-20 h-8 my-3 ml-28 border-2 border-pink-300 bg-pink-100 ml-[30%] text-pink-300 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+        className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
         type='submit'
         onClick={handleSubmit}
       />
