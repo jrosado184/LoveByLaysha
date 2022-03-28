@@ -20,7 +20,7 @@ const Book = (props) => {
     client_refillSet: 'none',
     client_Soak: false,
     client_details: '',
-    image: '',
+    images: '',
   });
 
   const handleChange = (e) => {

@@ -32,7 +32,6 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       });
     nav('/appointments');
   };
-  console.log(getAppointmentById);
 
   return (
     <div className='desktop:w-full mb-12'>
@@ -44,9 +43,9 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
               className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
             >
               <img
-                className='sm:w-96 border-1 border-black desktop:w-[50%] h-96'
+                className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
                 alt=''
-                src={appointmentId.appointment_image}
+                src={appointmentId.images}
               />
               <p className='ml-2 my-6 font-semibold'>
                 {appointmentId.client_details === ''
