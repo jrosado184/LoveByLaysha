@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Main/Header';
+import Footer from './components/Main/Footer';
 import Book from './components/Appointments/Book';
 import Register from './components/Main/Register';
 import Login from './components/Main/Login';
@@ -84,6 +85,7 @@ const App = () => {
           }
         />
       </Routes>
+      {/* <Footer /> */}
     </>
   );
 };
