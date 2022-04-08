@@ -40,6 +40,7 @@ export const Contact = () => {
           placeholder='Email'
         />
         <textarea
+          placeholder='Message'
           className='pl-3 my-6 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6'
           name='message'
         />

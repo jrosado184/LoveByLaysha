@@ -1,22 +1,23 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Main/Header";
-import Footer from "./components/Main/Footer";
-import Book from "./components/Appointments/Book";
-import Register from "./components/Main/Register";
-import Login from "./components/Main/Login";
-import AppointmentList from "./components/Appointments/AppointmentList";
-import Appointment from "./components/Appointments/Appointment";
-import Uploads from "./components/Appointments/Uploads";
-import Confirm from "./components/Appointments/Confirm";
-import Contact from "./components/Main/Contact";
-import Deleted from "./components/Appointments/Deleted";
-import PrivateRoute from "./utils/PrivateRoute";
-import Nails from "./components/Nails/Nails";
-import Completed from "./components/Completed Appointments/Completed";
-import CompletedAppointmentsList from "./components/Completed Appointments/CompletedAppointmentsList";
-import CompletedInformation from "./components/Completed Appointments/CompletedInformation";
-import CompletedUploads from "./components/Completed Appointments/CompletedUploads";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Main/Header';
+import Footer from './components/Main/Footer';
+import Book from './components/Appointments/Book';
+import Register from './components/Main/Register';
+import Login from './components/Main/Login';
+import AppointmentList from './components/Appointments/AppointmentList';
+import Appointment from './components/Appointments/Appointment';
+import Uploads from './components/Appointments/Uploads';
+import Confirm from './components/Appointments/Confirm';
+import Contact from './components/Main/Contact';
+import Deleted from './components/Appointments/Deleted';
+import PrivateRoute from './utils/PrivateRoute';
+import Nails from './components/Nails/Nails';
+import Completed from './components/Completed Appointments/Completed';
+import CompletedAppointmentsList from './components/Completed Appointments/CompletedAppointmentsList';
+import CompletedInformation from './components/Completed Appointments/CompletedInformation';
+import CompletedUploads from './components/Completed Appointments/CompletedUploads';
+import Policies from './components/Main/Policies';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/policies' element={<Policies />} />
         <Route
           path='/appointment/:id'
           element={

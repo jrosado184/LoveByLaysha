@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
-import { disabledDays } from "./../data/Disabled";
-import FileUpload from "./FileUpload";
-import Months from "./../../Algos/Months";
+import React, { useState } from 'react';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import { disabledDays } from './../data/Disabled';
+import FileUpload from './FileUpload';
+import Months from './../../Algos/Months';
+import { times, styles, refillSet } from '../data/Options';
 
-const Book = (props) => {
+const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
     appointment_day: selectedDate,
     appointment_year: selectedDate,
-    appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    appointment_time: '',
+    client_name: '',
+    client_phone: '',
+    client_set: 'none',
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: 'none',
     client_Soak: false,
-    client_details: "",
-    images: "",
+    client_details: '',
+    images: '',
   });
 
   const handleChange = (e) => {
@@ -29,11 +30,10 @@ const Book = (props) => {
       appointment_month: `${Months(selectedDate.month)}`,
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
-      client_set: info.client_refill ? "none" : info.client_set,
+      client_set: info.client_refill ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
-
   return (
     <div>
       <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
@@ -54,29 +54,11 @@ const Book = (props) => {
               className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
             >
               <option value=''>select a time</option>
-              <option data-testid='time' value='10:00 AM'>
-                10:00 AM
-              </option>
-              <option data-testid='time' value='10:30 AM'>
-                10:30 AM
-              </option>
-              <option data-testid='time' value='11:00 AM'>
-                11:00 AM
-              </option>
-              <option value='11:30 AM'>11:30 AM</option>
-              <option value='12:00 AM'>12:00 PM</option>
-              <option value='12:30 PM'>12:30 PM</option>
-              <option value='1:00 PM'>1:00 PM</option>
-              <option value='1:30 PM'>1:30 PM</option>
-              <option value='2:00 PM'>2:00 PM</option>
-              <option value='2:30 PM'>2:30 PM</option>
-              <option value='3:00 PM'>3:00 PM</option>
-              <option value='3:30 PM'>3:30 PM</option>
-              <option value='4:00 PM'>4:00 PM</option>
-              <option value='4:30 PM'>4:30 PM</option>
-              <option value='5:30 PM'>5:00 PM</option>
-              <option value='5:30 PM'>5:30 PM</option>
-              <option value='6:00 PM'>6:00 PM</option>
+              {times.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
             </select>
             <input
               data-testid='name'
@@ -103,26 +85,26 @@ const Book = (props) => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+                  : 'hidden'
               }
             >
-              <option value=''>select a new set</option>
-              <option value='Shorties Full Set'>Shorties Full Set $50+</option>
-              <option value='Medium Full Set'>Medium Full Set $60+</option>
-              <option value='Long Full Set'>Long Full Set $70+</option>
-              <option value='XL Full Set'>XL Full Set $85+</option>
-              <option value='XXL Full Set'>XXL Full Set $100+</option>
-              <option value='Extendo Full Set'>Extendo Full Set $120+</option>
-              <option value='Freestyle'>Freestyle $80-$120</option>
+              <option value=''>Select a new set</option>
+              {styles.map((style) => (
+                <option key={style} value={style}>
+                  {style}
+                </option>
+              ))}
             </select>
             <label className='flex items-center'>
               <input
                 data-testid='rinput'
                 name='client_refill'
                 className='mr-2 my-4 md:ml-6'
-                type='radio'
-                onChange={() => setInfo({ ...info, client_refill: true })}
+                type='checkbox'
+                onChange={() =>
+                  setInfo({ ...info, client_refill: !info.client_refill })
+                }
                 value={info.client_refill}
               />
               Refill
@@ -134,24 +116,24 @@ const Book = (props) => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6'
+                  : 'hidden'
               }
             >
               <option value=''>select refill</option>
-              <option value='Shorties Full Set'>Shorties</option>
-              <option value='Medium Full Set'>Medium</option>
-              <option value='Long Full Set'>Long</option>
-              <option value='XL Full Set'>XL</option>
-              <option value='XXL Full Set'>XXL</option>
-              <option value='Extendo Full Set'>Extendo </option>
-              <option value='Freestyle'>Freestyle</option>
+              {refillSet.map((set) => (
+                <option key={set} value={set}>
+                  {set}
+                </option>
+              ))}
             </select>
             <label className='flex items-center my-4 md:ml-6'>
               <input
                 name='client_Soak'
                 value={info.client_Soak}
-                onChange={() => setInfo({ ...info, client_Soak: true })}
+                onChange={() =>
+                  setInfo({ ...info, client_Soak: !info.client_Soak })
+                }
                 className='mr-2 my-1'
                 type='checkbox'
               />

@@ -4,7 +4,7 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 import { appointmentId } from '../../redux/actions/appointment-actions';
 import { connect } from 'react-redux';
 
-const Uploads = ({ dispatch, getAppointmentById }) => {
+const AppointmentExtra = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -42,18 +42,12 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
               key={appointmentId.appointment_id}
               className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
             >
-              {appointmentId.images ? (
-                <img
-                  className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
-                  alt=''
-                  src={appointmentId.images}
-                />
-              ) : (
-                <p className='sm:flex justify-center items-center w-96 border-2 border-gray-400 desktop:w-[50%] h-96'>
-                  No images uploaded
-                </p>
-              )}
-              <p className='ml-2 my-6'>
+              <img
+                className='sm:w-80 border-2 border-gray-400 desktop:w-80 h-96'
+                alt=''
+                src={appointmentId.images}
+              />
+              <p className='ml-2 my-6 font-semibold'>
                 {appointmentId.client_details === ''
                   ? 'No Additional Details'
                   : appointmentId.client_details}
@@ -86,4 +80,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Uploads);
+export default connect(mapStateToProps)(AppointmentExtra);

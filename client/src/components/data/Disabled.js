@@ -1,10 +1,7 @@
 export const disabledDays = [
-  { year: 2022, month: 2, day: 5 },
-  { year: 2022, month: 2, day: 12 },
-  { year: 2022, month: 2, day: 19 },
-  { year: 2022, month: 2, day: 26 },
-  { year: 2022, month: 3, day: 5 },
-  { year: 2022, month: 3, day: 12 },
-  { year: 2022, month: 3, day: 19 },
-  { year: 2022, month: 3, day: 26 },
+  { year: 2022, month: 4, day: 2 },
+  { year: 2022, month: 4, day: 9 },
+  { year: 2022, month: 4, day: 16 },
+  { year: 2022, month: 4, day: 23 },
+  { year: 2022, month: 4, day: 30 },
 ];
