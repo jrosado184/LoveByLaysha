@@ -14,26 +14,26 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center my-10">
+    <div className='flex flex-col items-center justify-center my-10'>
       {fil.map((item) => {
         return (
-          <div key={item.appointment_id} className="flex flex-col items-center">
-            <h1 className="text-3xl text-center my-6">
+          <div key={item.appointment_id} className='flex flex-col items-center'>
+            <h1 className='text-3xl text-center my-6'>
               {`Thank you for booking ${item.client_name}!`}
             </h1>
             <img
-              className="w-12 border-2 border-green-500 rounded-full"
+              className='w-12 border-2 border-green-500 rounded-full'
               src={check}
-              alt=""
+              alt=''
             />
-            <p className="font-semibold">Your appointment is confirmed:</p>
-            <p className="font-bold underline">{`For ${item.appointment_month} ${item.appointment_day}, ${item.appointment_year} at ${item.appointment_time}`}</p>
-            <div className="flex justify-evenly w-full h-12 items-end my-8 ">
-              <div className="flex w-12 items-center underline">
-                <button className="w-16 h-7 text-sm">Edit</button>
-                <img className="w-4 h-4" src={edit} alt="" />
+            <p className='font-semibold'>Your appointment is confirmed:</p>
+            <p className='font-bold underline'>{`For ${item.appointment_month} ${item.appointment_day}, ${item.appointment_year} at ${item.appointment_time}`}</p>
+            <div className='flex justify-evenly w-full h-12 items-end my-8 '>
+              <div className='flex w-12 items-center underline'>
+                <button className='w-16 h-7 text-sm'>Edit</button>
+                <img className='w-4 h-4' src={edit} alt='' />
               </div>
-              <button className="w-16 h-7 text-sm text-red-500 underline">
+              <button className='w-16 h-7 text-sm text-red-500 underline'>
                 Cancel
               </button>
             </div>

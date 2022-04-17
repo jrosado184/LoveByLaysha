@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { appointmentId } from '../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { appointmentId } from "../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
 
 const Uploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
@@ -20,7 +20,7 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   const handleComplete = () => {
@@ -30,16 +30,16 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   return (
     <div className='desktop:w-full mb-12'>
       <div className='desktop:flex flex-col items-start justify-start h-full'>
-        {getAppointmentById.map((appointmentId) => {
+        {getAppointmentById.map((appointmentId, index) => {
           return (
             <div
-              key={appointmentId.appointment_id}
+              key={index}
               className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
             >
               {appointmentId.images ? (
@@ -54,8 +54,8 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
                 </p>
               )}
               <p className='ml-2 my-6'>
-                {appointmentId.client_details === ''
-                  ? 'No Additional Details'
+                {appointmentId.client_details === ""
+                  ? "No Additional Details"
                   : appointmentId.client_details}
               </p>
             </div>
