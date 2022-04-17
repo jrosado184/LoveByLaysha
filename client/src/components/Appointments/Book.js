@@ -29,11 +29,9 @@ const Book = () => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_date: {
-        appointment_month: `${Months(selectedDate.month)}`,
-        appointment_day: `${selectedDate.day}`,
-        appointment_year: ` ${selectedDate.year}`,
-      },
+      appointment_month: `${Months(selectedDate.month)}`,
+      appointment_day: `${selectedDate.day}`,
+      appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? "none" : info.client_set,
       [e.target.name]: e.target.value,
     });
