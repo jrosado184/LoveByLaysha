@@ -18,8 +18,6 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
     dispatch(appointmentId(id));
   }, [dispatch]);
 
-  console.log(getAppointmentById);
-
   return (
     <>
       {getAppointmentById.map((appointment, index) => {

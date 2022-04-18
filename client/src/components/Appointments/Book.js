@@ -10,11 +10,9 @@ const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const [info, setInfo] = useState({
-    appointment_date: {
-      appointment_month: selectedDate,
-      appointment_day: selectedDate,
-      appointment_year: selectedDate,
-    },
+    appointment_month: selectedDate,
+    appointment_day: selectedDate,
+    appointment_year: selectedDate,
     appointment_time: "",
     client_name: "",
     client_phone: "",

@@ -27,8 +27,8 @@ export const Contact = () => {
 
   return (
     <>
-      <div className='sm:flex flex-col lg:flex w-[100%] h-full items-center'>
-        <div className='sm:w-[100%] h-32 lg:flex w-[50%] h-full items-center'>
+      <div className='flex flex-col lg:flex-row w-[100%] h-full items-center justify-evenly'>
+        <div className='lg:flex w-[50%] h-full items-center'>
           <form
             className='flex flex-col justify-center items-center lg:w-[100%]'
             ref={form}
@@ -57,8 +57,9 @@ export const Contact = () => {
             />
           </form>
         </div>
-        <span className='sm:w-0 lg:border border-black h-96 ml-20'></span>
-        <span className='sm:w-96 border border-black lg:w-0'></span>
+        <div className='w-[2%]'>
+          <p>Or</p>
+        </div>
         <div className='sm:h-60 lg:w-[50%] h-96 flex flex-col justify-center items-center'>
           <h2 className='text-lg'>Connect with me</h2>
           <a
