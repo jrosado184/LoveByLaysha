@@ -12,9 +12,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   return (
     <>
       <Search />
-      <div className="flex flex-col items-center my-2">
+      <div className='flex flex-col items-center my-2'>
         {fetchAppointments
-          .sort((a, b) => a.appointment_day - b.appointment_day)
+          .sort((a, b) => a.appointment_date.localeCompare(b.appointment_date))
           .map((appointment) => (
             <Appointments
               key={appointment.appointment_id}
