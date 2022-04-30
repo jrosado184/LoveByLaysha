@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import instagram from "../../assets/instagram.svg";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import instagram from '../../assets/instagram.svg';
 
 export const Contact = () => {
   const form = useRef();
@@ -27,47 +27,35 @@ export const Contact = () => {
 
   return (
     <>
-      <div className='sm:flex flex-col lg:flex w-[100%] h-full items-center'>
-        <div className='sm:w-[100%] h-32 lg:flex w-[50%] h-full items-center'>
+      <div className='sm:flex flex-col lg:flex w-[100%] h-full items-start'>
+        <div className='sm:w-[100%] h-full lg:flex w-[50%] h-full'>
           <form
-            className='flex flex-col justify-center items-center lg:w-[100%]'
+            className='flex flex-col justify-center items-start lg:w-[100%]'
             ref={form}
           >
             <input
               name='user_name'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              className='pl-3 my-6 w-[35%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
               placeholder='Name'
             />
             <input
               name='user_email'
               type='email'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              className='pl-3 my-6 w-[35%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
               placeholder='Email'
             />
             <textarea
               placeholder='Message'
-              className='pl-3 my-6 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6'
+              className='pl-3 my-6 w-[35%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6'
               name='message'
             />
             <input
-              className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[76%]'
+              className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[32%]'
               type='button'
               value='Send'
               onClick={sendEmail}
             />
           </form>
-        </div>
-        <span className='sm:w-0 lg:border border-black h-96 ml-20'></span>
-        <span className='sm:w-96 border border-black lg:w-0'></span>
-        <div className='sm:h-60 lg:w-[50%] h-96 flex flex-col justify-center items-center'>
-          <h2 className='text-lg'>Connect with me</h2>
-          <a
-            href='https://www.instagram.com/lovebylaysha/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img className='w-28' src={instagram} alt='instagram' />
-          </a>
         </div>
       </div>
     </>
