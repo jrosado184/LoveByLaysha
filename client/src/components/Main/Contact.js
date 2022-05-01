@@ -27,8 +27,8 @@ export const Contact = () => {
 
   return (
     <>
-      <div className='flex flex-col lg:flex-row w-[100%] h-full items-center justify-evenly'>
-        <div className='lg:flex w-[50%] h-full items-center'>
+      <div className='flex flex-col lg:flex-row w-[100%] h-full items-center'>
+        <div className='w-[100%] lg:w-[50%]'>
           <form
             className='flex flex-col justify-center items-center lg:w-[100%]'
             ref={form}
@@ -50,25 +50,24 @@ export const Contact = () => {
               name='message'
             />
             <input
-              className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[76%]'
+              className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[79%]'
               type='button'
               value='Send'
               onClick={sendEmail}
             />
           </form>
         </div>
-        <div className='w-[2%]'>
-          <p>Or</p>
-        </div>
-        <div className='sm:h-60 lg:w-[50%] h-96 flex flex-col justify-center items-center'>
-          <h2 className='text-lg'>Connect with me</h2>
-          <a
-            href='https://www.instagram.com/lovebylaysha/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img className='w-28' src={instagram} alt='instagram' />
-          </a>
+        <div className='w-[100%] my-6 lg:w-[50%] flex flex-col justify-center items-center'>
+          <div className='flex flex-col items-center w-full'>
+            <h2 className='text-lg'>Connect with me</h2>
+            <a
+              href='https://www.instagram.com/lovebylaysha/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img className='w-28' src={instagram} alt='instagram' />
+            </a>
+          </div>
         </div>
       </div>
     </>

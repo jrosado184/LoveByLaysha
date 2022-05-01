@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   postAppointments,
   getAppointments,
-} from '../../redux/actions/appointment-actions.js';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
-import SimpleFileUpload from 'react-simple-file-upload';
+} from "../../redux/actions/appointment-actions.js";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import SimpleFileUpload from "react-simple-file-upload";
 
 const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const nav = useNavigate();
@@ -33,7 +33,7 @@ const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
 
   return (
     <div>
-      {' '}
+      {" "}
       <label className=' my-6 flex flex-col shrink md:ml-6'>
         Have a specific set in mind?
         <div className='my-2'>

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { getCompletedAppointmentsById } from '../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { getCompletedAppointmentsById } from "../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
 
 const Uploads = ({ dispatch, completedAppointmentsById }) => {
   useEffect(() => {
@@ -9,20 +9,26 @@ const Uploads = ({ dispatch, completedAppointmentsById }) => {
   return (
     <div className='desktop:w-full mb-12'>
       <div className='desktop:flex flex-col items-start justify-start h-full'>
-        {completedAppointmentsById.map((appointmentId) => {
+        {completedAppointmentsById.map((appointmentId, index) => {
           return (
             <div
-              key={appointmentId.appointment_id}
+              key={index}
               className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
             >
-              <img
-                className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
-                alt=''
-                src={appointmentId.images}
-              />
-              <p className='ml-2 my-6 font-semibold'>
-                {appointmentId.client_details === ''
-                  ? 'No Additional Details'
+              {appointmentId.images ? (
+                <img
+                  className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
+                  alt=''
+                  src={appointmentId.images}
+                />
+              ) : (
+                <p className='sm:flex justify-center items-center w-96 border-2 border-gray-400 desktop:w-[50%] h-96'>
+                  No images uploaded
+                </p>
+              )}
+              <p className='ml-2 my-6'>
+                {appointmentId.client_details === ""
+                  ? "No Additional Details"
                   : appointmentId.client_details}
               </p>
             </div>

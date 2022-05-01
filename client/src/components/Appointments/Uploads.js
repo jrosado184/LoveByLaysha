@@ -64,13 +64,13 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
         <div className='sm:flex justify-evenly w-full h-fit my-6 ml-2 desktop:justify-center gap-12'>
           <button
             onClick={handleDelete}
-            className='w-24 h-10 mr-6 bg-red-500 text-white shadow-sm rounded-sm'
+            className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-sm'
           >
             Remove
           </button>
           <button
             onClick={handleComplete}
-            className='w-24 h-10 mr-6 bg-green-600 text-white shadow-sm rounded-sm'
+            className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
           >
             Complete
           </button>

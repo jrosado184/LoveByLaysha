@@ -1,5 +1,6 @@
 import React from "react";
 import laysha from "../../assets/laysha.jpg";
+import user from "../../assets/user.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loggedOut } from "../../redux/actions/login_actions";
@@ -11,13 +12,21 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='flex bg-pink-200 w-full h-62 shadow-md flex flex-col'>
+      <div className='flex bg-pink-200 w-full h-46 shadow-md flex flex-col'>
         <div className='w-full'>
-          <img
-            className='sm:ml-6 my-2 w-44 h-44 rounded-full border-4 border-white md:w-44'
-            src={laysha}
-            alt=''
-          />
+          {localStorage.getItem("token") ? (
+            <img
+              className='user-image ml-6 my-4 w-44 h-44 rounded-full border-4 border-white md:w-44'
+              src={user}
+              alt=''
+            />
+          ) : (
+            <img
+              className='ml-6 my-4 w-44 h-44 rounded-full border-4 border-white hover:opacity-75 md:w-44'
+              src={laysha}
+              alt=''
+            />
+          )}
           <div className='pl-14 text-2xl w-full'>
             <p className='font-light'>{localStorage.getItem("message")}</p>
           </div>
@@ -26,8 +35,8 @@ const Header = ({ dispatch }) => {
       <div
         className={
           localStorage.getItem("token")
-            ? "sm:bg-pink-200 flex text-md w-full gap-1 items-end justify-end pr-[5%] py-4 md:pr-4"
-            : "sm:bg-pink-200 flex text-md w-full gap-1 items-end justify-end pr-[2.6%] py-4 md:pr-4"
+            ? "sm:bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[5%] py-4 md:pr-4"
+            : "sm:bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[2.6%] py-4 md:pr-4"
         }
       >
         <nav className='ml-2 h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>

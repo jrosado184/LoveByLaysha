@@ -12,15 +12,21 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   return (
     <>
       <Search />
-      <div className="flex flex-col items-center my-2">
-        {completedAppointments
-          .sort((a, b) => a.appointment_day - b.appointment_day)
-          .map((appointment) => (
-            <Completed
-              key={appointment.appointment_id}
-              appointment={appointment}
-            />
-          ))}
+      <div className='flex flex-col items-center my-2'>
+        {completedAppointments ? (
+          completedAppointments
+            .sort((a, b) => a.appointment_day - b.appointment_day)
+            .map((appointment) => (
+              <Completed
+                key={appointment.appointment_id}
+                appointment={appointment}
+              />
+            ))
+        ) : (
+          <div className='w-full h-60 flex justify-center items-center'>
+            <p>No completed appointments</p>
+          </div>
+        )}
       </div>
     </>
   );

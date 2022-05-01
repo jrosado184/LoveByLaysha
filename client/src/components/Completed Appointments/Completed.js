@@ -30,7 +30,7 @@ const Completed = ({ appointment }) => {
               onClick={handleAppointment}
               className='w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4'
             >
-              <p className='flex'>See Information</p>
+              <p className='flex cursor-pointer'>See Information</p>
               <img className='w-4' src={right} alt='' />
             </div>
           </div>
