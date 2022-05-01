@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import instagram from "../../assets/instagram.svg";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import instagram from '../../assets/instagram.svg';
 
 export const Contact = () => {
   const form = useRef();
@@ -33,6 +33,7 @@ export const Contact = () => {
             className='flex flex-col justify-center items-center lg:w-[100%]'
             ref={form}
           >
+            <h1 className='my-2'>Contact Me</h1>
             <input
               name='user_name'
               className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
