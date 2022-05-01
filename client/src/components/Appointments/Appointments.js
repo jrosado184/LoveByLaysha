@@ -1,7 +1,7 @@
-import React from "react";
-import right from "../../assets/right.svg";
-import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import right from '../../assets/right.svg';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Appointments = (props) => {
   const nav = useNavigate();
@@ -26,7 +26,7 @@ const Appointments = (props) => {
           <p className='w-full'>{appointment.appointment_time}</p>
           <div
             onClick={handleAppointment}
-            className='w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4'
+            className='cursor-pointer w-full flex h-fit items-center justify-end my-6 ml-12 gap-2 mr-4'
           >
             <p className='flex cursor-pointer'>See Information</p>
             <img className='w-4' src={right} alt='' />
