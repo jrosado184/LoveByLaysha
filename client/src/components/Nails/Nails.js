@@ -1,7 +1,15 @@
-import NailData from "../data/NailData";
-import React from "react";
+import NailData from '../data/NailData';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import plus from './../../assets/plus.svg';
 
-const Nails = () => {
+const Nails = (logIn) => {
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    setToken(localStorage.getItem('token'));
+  }, [logIn]);
+
   return (
     <div className='w-full h-full flex flex-wrap justify-center gap-6 py-2'>
       {NailData.map((nailData) => {
@@ -14,12 +22,21 @@ const Nails = () => {
           />
         );
       })}
+      {token && (
+        <div className='w-[50%] h-72 flex justify-center my-2 border-2 border-gray-400 shadow-md rounded-md sm2:w-40 h-full lg:w-[13%] h-full'>
+          <img className='w-20' src={plus} alt='plus' />
+        </div>
+      )}
     </div>
   );
 };
 
-export default Nails;
+const mapStateToProps = (state) => {
+  return {
+    logIn: {
+      loggedIn: state.login.loggedIn,
+    },
+  };
+};
 
-// 'w-100 h-80 flex flex-row flex-wrap items-center justify-center gap-4'
-
-// sm:w-[45%] h-full my-4 border-2 border-gray-400 shadow-md rounded-md sm2:w-40 h-full lg:w-[13%] h-full
+export default connect(mapStateToProps)(Nails);
