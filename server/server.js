@@ -5,6 +5,7 @@ const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
 const deletedRouter = require('./appointments/deleted-router');
 const completedRouter = require('./appointments/completed-router');
+const s3 = require('./aws/s3');
 
 const server = express();
 server.use(express.json());
@@ -15,5 +16,10 @@ server.use('/api/users', adminRouter);
 server.use('/api/appointments', appointRouter);
 server.use('/api/deletedAppointments', deletedRouter);
 server.use('/api/completedAppointments', completedRouter);
+
+server.get('nails', async (req, res) => {
+  const url = s3.generateUploadedUrl();
+  res.send({ url });
+});
 
 module.exports = server;
