@@ -2,6 +2,7 @@ import NailData from '../data/NailData';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import plus from './../../assets/plus.svg';
+import axios from 'axios';
 
 const Nails = (logIn) => {
   const [token, setToken] = useState(null);
@@ -9,6 +10,10 @@ const Nails = (logIn) => {
   useEffect(() => {
     setToken(localStorage.getItem('token'));
   }, [logIn]);
+
+  axios.get('https://lovebylaysha.herokuapp.com/').then((res) => {
+    console.log(res);
+  });
 
   return (
     <div className='w-full h-full flex flex-wrap justify-center gap-6 py-2'>
