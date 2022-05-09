@@ -2,12 +2,18 @@ import NailData from '../data/NailData';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import plus from './../../assets/plus.svg';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Nails = (logIn) => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
+    axiosWithAuth()
+      .get('/nails')
+      .then((res) => {
+        console.log(res);
+      });
   }, [logIn]);
 
   return (

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import Search from "./Search";
-import { connect } from "react-redux";
-import { deleteAppointments } from "../../redux/actions/appointment-actions";
+import React, { useEffect } from 'react';
+import Search from './Search';
+import { connect } from 'react-redux';
+import { deleteAppointments } from '../../redux/actions/appointment-actions';
 
 const Deleted = ({ deletedAppointments, dispatch }) => {
   useEffect(() => {
@@ -25,7 +25,7 @@ const Deleted = ({ deletedAppointments, dispatch }) => {
                       {appointment.client_name}
                     </h1>
                   </div>
-                  <p className='mr-6 py-1'>{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
+                  <p className='mr-6 py-1'>{`${appointment.appointment_date.appointment_month} ${appointment.appointment_date.appointment_day},${appointment.appointment_date.appointment_year}`}</p>
                 </div>
                 <div className='w-full pl-4 my-2 flex justify-between'>
                   <p className='w-full'>{appointment.appointment_time}</p>

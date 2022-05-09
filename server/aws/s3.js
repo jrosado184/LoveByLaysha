@@ -1,6 +1,6 @@
 const aws = require('aws-sdk');
 const crypto = require('crypto');
-import { promisify } from 'util';
+const { promisify } = require('util');
 
 const randomBytes = promisify(crypto.randomBytes);
 
@@ -16,7 +16,7 @@ const s3 = new aws.S3({
   signatureVersion: 'v4',
 });
 
-export const genUploadUrl = async () => {
+const genUploadUrl = async () => {
   const rawBytes = await randomBytes(16);
   const nails = rawBytes.toLocaleString('hex');
   const params = {
@@ -27,4 +27,8 @@ export const genUploadUrl = async () => {
 
   const uploadURL = await s3.getSignedUrlPromise('putObject', params);
   return uploadURL;
+};
+
+module.exports = {
+  genUploadUrl,
 };
