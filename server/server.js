@@ -18,7 +18,7 @@ server.use('/api/deletedAppointments', deletedRouter);
 server.use('/api/completedAppointments', completedRouter);
 
 server.get('/', async (req, res) => {
-  const url = await s3.generateUploadedUrl();
+  const url = await s3.genUploadUrl();
   res.send({ url });
 });
 
