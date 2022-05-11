@@ -24,6 +24,9 @@ const Nails = (logIn) => {
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
+  }, [logIn]);
+
+  useEffect(() => {
     listAll(allImageRef).then((res) => {
       res.items.map((item) =>
         getDownloadURL(item).then((url) => {
@@ -31,7 +34,7 @@ const Nails = (logIn) => {
         })
       );
     });
-  }, [logIn]);
+  }, []);
 
   return (
     <div className='w-full h-full flex flex-wrap justify-center gap-6 py-2'>
