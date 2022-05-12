@@ -73,7 +73,7 @@ const Nails = (logIn) => {
                     onClick={() => handleDeleteImage(nailData)}
                     className='delete-nail-btn'
                   >
-                    <img className='w-3' src={trash} alt='trash' />
+                    <img className='w-2' src={trash} alt='trash' />
                   </button>
                 )}
               </div>
