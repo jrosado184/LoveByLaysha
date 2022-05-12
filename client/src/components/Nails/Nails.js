@@ -54,10 +54,10 @@ const Nails = (logIn) => {
   return (
     <>
       {token && (
-        <div className='flex flex-col items-end w-full'>
+        <div className='flex flex-col items-end w-full h-14'>
           <button
             onClick={() => setRemoveImage(!removeImage)}
-            className='mr-10 my-6 w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-800 shadow-sm rounded-sm'
+            className='mr-5 my-6 w-16 h-8 bg-pink-200 border border-pink-500 text-pink-800 shadow-sm rounded-sm'
           >
             {removeImage ? 'Finish' : 'Delete'}
           </button>
@@ -97,7 +97,7 @@ const Nails = (logIn) => {
               />
               <button
                 onClick={handleImage}
-                className='w-32 h-8 border border-black rounded-full bg-pink-400 text-white'
+                className='my-6 w-32 h-8 bg-pink-200 border border-pink-500 text-pink-800 shadow-sm rounded-sm'
               >
                 Upload Image
               </button>

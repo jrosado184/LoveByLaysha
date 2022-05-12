@@ -21,9 +21,10 @@ input[type='file'] {
 }
 
 .delete-nail-btn {
-  width: 8%;
+  width: 9%;
   height: 2vh;
   margin-right: 3%;
   position: absolute;
   margin-top: 2%;
+  background-color: #fff;
 }
