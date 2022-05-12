@@ -57,7 +57,7 @@ const Nails = (logIn) => {
         <div className='flex flex-col items-end w-full h-14'>
           <button
             onClick={() => setRemoveImage(!removeImage)}
-            className='mr-5 my-6 w-16 h-8 bg-pink-200 border border-pink-500 text-pink-800 shadow-sm rounded-sm'
+            className='mr-4 my-6 w-16 h-8 bg-pink-200 border border-pink-500 text-pink-800 shadow-sm rounded-sm'
           >
             {removeImage ? 'Finish' : 'Delete'}
           </button>
@@ -73,7 +73,7 @@ const Nails = (logIn) => {
                     onClick={() => handleDeleteImage(nailData)}
                     className='delete-nail-btn'
                   >
-                    <img src={trash} alt='trash' />
+                    <img className='w-3' src={trash} alt='trash' />
                   </button>
                 )}
               </div>
