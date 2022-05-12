@@ -18,13 +18,52 @@ input[type='file'] {
   display: flex;
   justify-content: flex-end;
   position: relative;
+  bottom: 5%;
+  left: 5%;
+  width: 100%;
 }
 
 .delete-nail-btn {
-  width: 9%;
-  height: 2vh;
-  margin-right: 3%;
+  width: 10%;
+  height: 2.5vh;
   position: absolute;
   margin-top: 2%;
   background-color: #fff;
+  border-radius: 50%;
+  padding: auto;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 900px) {
+  .delete-nail-con {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 5%;
+    left: 4%;
+    width: 100%;
+  }
+  .delete-nail-btn {
+    width: 12%;
+    height: 2.5vh;
+    position: absolute;
+    margin-top: 2%;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: auto;
+    border: 1px solid black;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .delete-nail-btn {
+    width: 12%;
+    height: 1.9vh;
+    position: absolute;
+    margin-top: 2%;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: auto;
+    border: 1px solid black;
+  }
 }
