@@ -13,3 +13,17 @@ input[type='file'] {
 .custom-file-input {
   display: none;
 }
+
+.delete-nail-con {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.delete-nail-btn {
+  width: 8%;
+  height: 2vh;
+  margin-right: 3%;
+  position: absolute;
+  margin-top: 2%;
+}
