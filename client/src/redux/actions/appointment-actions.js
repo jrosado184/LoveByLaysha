@@ -1,34 +1,34 @@
-import axiosWithAuth from "../../utils/axiosWithAuth";
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
-export const ADD_APPOINTMENTS = "ADD_APPOINTMENTS";
+export const ADD_APPOINTMENTS = 'ADD_APPOINTMENTS';
 
 export const addAppointments = (info) => {
   return { type: ADD_APPOINTMENTS, payload: info };
 };
 
-export const RECEIVE_APPOINTMENTS = "RECEIVE_APPOINTMENTS";
+export const RECEIVE_APPOINTMENTS = 'RECEIVE_APPOINTMENTS';
 
 export const receiveAppointments = (appointments) => {
   return { type: RECEIVE_APPOINTMENTS, payload: appointments };
 };
 
-export const GET_BY_ID = "GET_BY_ID";
+export const GET_BY_ID = 'GET_BY_ID';
 export const getById = (id) => {
   return { type: GET_BY_ID, payload: id };
 };
 
-export const DELETED_APPOINTMENTS = "DELETED_APPOINTMENTS";
+export const DELETED_APPOINTMENTS = 'DELETED_APPOINTMENTS';
 export const deletedAppointments = (appointments) => {
   return { type: DELETED_APPOINTMENTS, payload: appointments };
 };
 
-export const COMPLETED_APPOINTMENTS = "COMPLETED_APPOINTMENTS";
+export const COMPLETED_APPOINTMENTS = 'COMPLETED_APPOINTMENTS';
 
 export const completedAppointments = (appointments) => {
   return { type: COMPLETED_APPOINTMENTS, payload: appointments };
 };
 
-export const COMPLETED_APPOINTMENTS_ID = "COMPLETED_APPOINTMENTS_ID";
+export const COMPLETED_APPOINTMENTS_ID = 'COMPLETED_APPOINTMENTS_ID';
 
 export const completedAppointmentsById = (appointments) => {
   return { type: COMPLETED_APPOINTMENTS_ID, payload: appointments };
@@ -37,7 +37,7 @@ export const completedAppointmentsById = (appointments) => {
 export const getAppointments = () => {
   return (dispatch) => {
     axiosWithAuth()
-      .get("/api/appointments")
+      .get('/api/appointments')
       .then((res) => {
         dispatch(receiveAppointments(res.data));
       })
@@ -48,7 +48,7 @@ export const getAppointments = () => {
 export const postAppointments = (info) => {
   return (dispatch) => {
     axiosWithAuth()
-      .post("/api/appointments", info)
+      .post('/api/appointments', info)
       .then((res) => {
         dispatch(addAppointments(res.data));
       })

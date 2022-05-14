@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
-import React, { useEffect } from "react";
-import { getCompletedAppointments } from "../../redux/actions/appointment-actions";
-import Completed from "./Completed";
-import Search from "../Appointments/Search";
+import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { getCompletedAppointments } from '../../redux/actions/appointment-actions';
+import Completed from './Completed';
+import Search from '../Appointments/Search';
 
 const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
     <>
       <Search />
       <div className='flex flex-col items-center my-2'>
-        {completedAppointments ? (
+        {completedAppointments.length ? (
           completedAppointments
             .sort((a, b) => a.appointment_day - b.appointment_day)
             .map((appointment) => (
@@ -23,7 +23,7 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
               />
             ))
         ) : (
-          <div className='w-full h-60 flex justify-center items-center'>
+          <div className='w-full h-72 flex justify-center items-center'>
             <p>No completed appointments</p>
           </div>
         )}

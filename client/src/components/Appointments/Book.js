@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
-import { disabledDays } from "./../data/Disabled";
-import FileUpload from "./FileUpload";
-import Months from "./../../Algos/Months";
-import { times, styles, refillSet } from "../data/Options";
+import React, { useState } from 'react';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import { disabledDays } from './../data/Disabled';
+import FileUpload from './FileUpload';
+import Months from './../../Algos/Months';
+import { times, styles, refillSet } from '../data/Options';
 
 const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -13,15 +13,15 @@ const Book = () => {
     appointment_month: selectedDate,
     appointment_day: selectedDate,
     appointment_year: selectedDate,
-    appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    appointment_time: '',
+    client_name: '',
+    client_phone: '',
+    client_set: 'none',
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: 'none',
     client_Soak: false,
-    client_details: "",
-    images: "",
+    client_details: '',
+    images: '',
   });
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const Book = () => {
       appointment_month: `${Months(selectedDate.month)}`,
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
-      client_set: info.client_refill ? "none" : info.client_set,
+      client_set: info.client_refill ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -85,8 +85,8 @@ const Book = () => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+                  : 'hidden'
               }
             >
               <option value=''>Select a new set</option>
@@ -100,7 +100,7 @@ const Book = () => {
               <input
                 data-testid='rinput'
                 name='client_refill'
-                className='mr-2 my-4 md:ml-6'
+                className='mr-2 my-4 border-2 md:ml-6'
                 type='checkbox'
                 onChange={() =>
                   setInfo({ ...info, client_refill: !info.client_refill })
@@ -116,8 +116,8 @@ const Book = () => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6"
-                  : "hidden"
+                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6'
+                  : 'hidden'
               }
             >
               <option value=''>select refill</option>
@@ -147,7 +147,7 @@ const Book = () => {
                 name='client_details'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[88%] h-20 border-2 border-gray-400 md:ml-6'
+                className='w-[88%] h-20 border-2 border-pink-400 md:ml-6'
               />
             </label>
             <FileUpload info={info} setInfo={setInfo} />

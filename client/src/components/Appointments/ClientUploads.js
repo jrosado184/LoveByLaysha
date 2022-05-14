@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axiosWithAuth from "../../utils/axiosWithAuth";
-import { appointmentId } from "../../redux/actions/appointment-actions";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axiosWithAuth from '../../utils/axiosWithAuth';
+import { appointmentId } from '../../redux/actions/appointment-actions';
+import { connect } from 'react-redux';
 
-const Uploads = ({ dispatch, getAppointmentById }) => {
+const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -20,7 +20,7 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav("/appointments");
+    nav('/appointments');
   };
 
   const handleComplete = () => {
@@ -30,7 +30,7 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav("/appointments");
+    nav('/appointments');
   };
 
   return (
@@ -54,8 +54,8 @@ const Uploads = ({ dispatch, getAppointmentById }) => {
                 </p>
               )}
               <p className='ml-2 my-6'>
-                {appointmentId.client_details === ""
-                  ? "No Additional Details"
+                {appointmentId.client_details === ''
+                  ? 'No Additional Details'
                   : appointmentId.client_details}
               </p>
             </div>
@@ -86,4 +86,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Uploads);
+export default connect(mapStateToProps)(ClientUploads);

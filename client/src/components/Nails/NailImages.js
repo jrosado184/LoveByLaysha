@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import trash from './../../assets/trash.png';
-import DeleteModal from './DeleteModal';
 
 const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
   const [showModal, setShowModal] = useState(false);

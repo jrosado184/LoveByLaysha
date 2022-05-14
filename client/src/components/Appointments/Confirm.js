@@ -1,10 +1,19 @@
-import React, { useEffect, useState } from "react";
-import check from "./../../assets/check.svg";
-import { connect } from "react-redux";
-import { getAppointments } from "../../redux/actions/appointment-actions";
-import edit from "./../../assets/edit.svg";
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import check from './../../assets/check.svg';
+import { connect } from 'react-redux';
+import { getAppointments } from '../../redux/actions/appointment-actions';
+import edit from './../../assets/edit.svg';
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
+  const nav = useNavigate();
+
+  const { id } = useParams();
+
+  const handleEdit = () => {
+    nav(`/edit/${id}`);
+  };
+
   useEffect(() => {
     dispatch(getAppointments());
   }, [fetchAppointments]);
@@ -30,7 +39,9 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
             <p className='font-bold underline'>{`For ${item.appointment_date.appointment_month} ${item.appointment_date.appointment_day}, ${item.appointment_date.appointment_year} at ${item.appointment_time}`}</p>
             <div className='flex justify-evenly w-full h-12 items-end my-8 '>
               <div className='flex w-12 items-center underline'>
-                <button className='w-16 h-7 text-sm'>Edit</button>
+                <button onClick={handleEdit} className='w-16 h-7 text-sm'>
+                  Edit
+                </button>
                 <img className='w-4 h-4' src={edit} alt='' />
               </div>
               <button className='w-16 h-7 text-sm text-red-500 underline'>

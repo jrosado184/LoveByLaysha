@@ -49,7 +49,7 @@ const Nails = (logIn) => {
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
-  }, [logIn, image]);
+  }, [logIn]);
 
   return (
     <>
@@ -61,9 +61,12 @@ const Nails = (logIn) => {
         />
       )}
       {token && (
-        <div className='flex items-center justify-center w-full h-14 border-b border-pink-400 shadow-md sticky top-0 bg-white'>
-          <div className='w-[50%] h-full  text-pink-800 border border-pink-300 flex justify-center items-center'>
-            <label onClick={(e) => setImage(e.target.files[0])}>
+        <div className='flex items-center justify-center w-full h-14 shadow-md sticky top-0 bg-white'>
+          <div className='w-[50%] h-full  text-pink-800 border border-pink-200 flex justify-center items-center cursor-pointer'>
+            <label
+              className='cursor-pointer'
+              onClick={(e) => setImage(e.target.files[0])}
+            >
               Upload Images
               <input
                 onChange={(e) => setImage(e.target.files[0])}
@@ -72,7 +75,7 @@ const Nails = (logIn) => {
               />
             </label>
           </div>
-          <div className='w-[50%] h-full border border-pink-300 flex justify-center'>
+          <div className='w-[50%] h-full border border-pink-200 flex justify-center cursor-pointer'>
             <button
               onClick={() => setRemoveImage(!removeImage)}
               className='text-pink-800'
