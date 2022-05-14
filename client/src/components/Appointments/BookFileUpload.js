@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import {
-  postAppointments,
-  getAppointments,
-} from '../../redux/actions/appointment-actions.js';
+import React from 'react';
+import { postAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
 
-const FileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
+const BookFileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
   const nav = useNavigate();
 
   const handleSubmit = (e) => {
@@ -52,4 +49,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(FileUpload);
+export default connect(mapStateToProps)(BookFileUpload);

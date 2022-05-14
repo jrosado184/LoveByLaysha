@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
-import FileUpload from './FileUpload';
+import BookFileUpload from './BookFileUpload';
 import Months from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
 
@@ -31,6 +31,7 @@ const Book = () => {
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? 'none' : info.client_set,
+      client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -150,7 +151,7 @@ const Book = () => {
                 className='w-[88%] h-20 border-2 border-pink-400 md:ml-6'
               />
             </label>
-            <FileUpload info={info} setInfo={setInfo} />
+            <BookFileUpload info={info} setInfo={setInfo} />
           </div>
         </div>
       </form>

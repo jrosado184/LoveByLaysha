@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
-import FileUpload from './FileUpload';
 import Months from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import SimpleFileUpload from 'react-simple-file-upload';
 
 const Edit = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const nav = useNavigate();
 
   const { id } = useParams();
 
@@ -29,6 +31,26 @@ const Edit = () => {
     images: '',
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .put(`/api/appointments/${id}`, info)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    nav('loading');
+  };
+
+  const handleFile = (url) => {
+    setInfo({
+      ...info,
+      images: url,
+    });
+  };
+
   useEffect(() => {
     axiosWithAuth()
       .get(`/api/appointments/${id}`)
@@ -37,6 +59,7 @@ const Edit = () => {
       });
   }, []);
 
+  console.log(info);
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -44,6 +67,7 @@ const Edit = () => {
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? 'none' : info.client_set,
+      client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -164,7 +188,25 @@ const Edit = () => {
               className='w-[88%] h-20 pl-2 border-2 border-pink-400 md:ml-6'
             />
           </label>
-          <FileUpload info={info} setInfo={setInfo} />
+          <div>
+            <label className=' my-6 flex flex-col shrink md:ml-6'>
+              Have a specific set in mind?
+              <div className='my-2'>
+                <SimpleFileUpload
+                  width={330}
+                  apiKey={process.env.REACT_APP_UPLOAD_KEY}
+                  onSuccess={handleFile}
+                  preview='false'
+                />
+              </div>
+            </label>
+            <input
+              data-testid='bookbtn'
+              className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+              type='submit'
+              onClick={handleSubmit}
+            />
+          </div>
         </div>
       </div>
     </form>
