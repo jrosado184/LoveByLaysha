@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import { connect } from 'react-redux';
+import Loading from './Loading';
 
 const ConfirmLoad = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -17,13 +18,8 @@ const ConfirmLoad = ({ dispatch, fetchAppointments }) => {
       }`
     );
   }, 3000);
-  console.log(fetchAppointments);
 
-  return (
-    <div className='flex justify-center items-center w-full h-96'>
-      Loading...
-    </div>
-  );
+  return <Loading />;
 };
 
 const mapStateToProps = (state) => {

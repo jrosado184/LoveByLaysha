@@ -32,6 +32,14 @@ router.post('/', checkBody, checkExists, (req, res, next) => {
     .catch(next);
 });
 
+router.put('/:id', checkBody, checkId, (req, res, next) => {
+  Appoint.update(req.params.id, req.body)
+    .then((newAppoint) => {
+      res.status(200).json(newAppoint);
+    })
+    .catch(next);
+});
+
 router.delete('/:id', checkId, (req, res, next) => {
   Appoint.remove(req.params.id)
     .then((appoint) => {
