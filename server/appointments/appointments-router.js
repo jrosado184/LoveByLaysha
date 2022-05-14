@@ -59,7 +59,7 @@ router.delete('/completed/:id', checkId, (req, res, next) => {
 router.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message,
-    custom: 'error in the appointments router',
+    custom: 'error in the appointments  router',
   });
 });
 
