@@ -20,7 +20,7 @@ const Appointments = (props) => {
               {appointment.client_name}
             </h1>
           </div>
-          <p className='mr-6 py-1'>{`${appointment.appointment_date.appointment_month} ${appointment.appointment_date.appointment_day},${appointment.appointment_date.appointment_year}`}</p>
+          <p className='mr-6 py-1'>{`${appointment.appointment_month} ${appointment.appointment_day},${appointment.appointment_year}`}</p>
         </div>
         <div className='w-full pl-4 my-2 flex justify-between'>
           <p className='w-full'>{appointment.appointment_time}</p>

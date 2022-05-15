@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
-import React, { useEffect } from "react";
-import { getAppointments } from "../../redux/actions/appointment-actions";
-import Appointments from "./Appointments";
-import Search from "./Search";
-import { sortDates } from "../../Algos/Sorting";
+import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { getAppointments } from '../../redux/actions/appointment-actions';
+import Appointments from './Appointments';
+import Search from './Search';
+import { sortDates } from '../../Algos/Sorting';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   useEffect(() => {
@@ -15,19 +15,12 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
       <Search />
       <div className='flex flex-col items-center my-2'>
         {fetchAppointments.length ? (
-          fetchAppointments
-            .sort((a, b) =>
-              a.appointment_date.appointment_day >
-              b.appointment_date.appointment_day
-                ? 1
-                : -1
-            )
-            .map((appointment) => (
-              <Appointments
-                key={appointment.appointment_id}
-                appointment={appointment}
-              />
-            ))
+          fetchAppointments.map((appointment) => (
+            <Appointments
+              key={appointment.appointment_id}
+              appointment={appointment}
+            />
+          ))
         ) : (
           <div>
             <p className='h-60 flex items-center'>No appointments available</p>
