@@ -36,7 +36,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
               alt=''
             />
             <p className='font-semibold'>Your appointment is confirmed:</p>
-            <p className='font-bold underline'>{`For ${item.appointment_date.appointment_month} ${item.appointment_date.appointment_day}, ${item.appointment_date.appointment_year} at ${item.appointment_time}`}</p>
+            <p className='font-bold underline'>{`For ${item.appointment_month} ${item.appointment_day}, ${item.appointment_year} at ${item.appointment_time}`}</p>
             <div className='flex justify-evenly w-full h-12 items-end my-8 '>
               <div className='flex w-12 items-center underline'>
                 <button onClick={handleEdit} className='w-16 h-7 text-sm'>
