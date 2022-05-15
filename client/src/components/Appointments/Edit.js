@@ -6,6 +6,7 @@ import { disabledDays } from './../data/Disabled';
 import Months from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import SimpleFileUpload from 'react-simple-file-upload';
 
@@ -33,15 +34,15 @@ const Edit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .put(`/api/appointments/${id}`, info)
+    axios
+      .put(`https://lovebylaysha.herokuapp.com/api/appointments/${id}`, info)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
-    nav('loading');
+    // nav('/loading');
   };
 
   const handleFile = (url) => {

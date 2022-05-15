@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
 
-const BookFileUpload = ({ info, dispatch, fetchAppointments, setInfo }) => {
+const BookFileUpload = ({ info, dispatch, setInfo }) => {
   const nav = useNavigate();
 
   const handleSubmit = (e) => {

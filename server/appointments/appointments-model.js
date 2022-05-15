@@ -29,7 +29,7 @@ const findAll = async () => {
 const findById = async (id) => {
   const rows = await db('appointments').where('appointment_id', id);
 
-  const custom = rows.map((row) => {
+  const custom = await rows.map((row) => {
     const newRow = {
       appointment_id: row.appointment_id,
       appointment_date: {
@@ -77,7 +77,7 @@ const insert = async (appointments) => {
 };
 const update = async (id, body) => {
   await db('appointments').update(body).where('appointment_id', id);
-  return findById(id);
+  return 'hey';
 };
 
 const remove = async (appointment_id) => {
