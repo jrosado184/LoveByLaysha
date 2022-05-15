@@ -28,29 +28,7 @@ const findAll = async () => {
 
 const findById = async (id) => {
   const rows = await db('appointments').where('appointment_id', id);
-
-  const custom = await rows.map((row) => {
-    const newRow = {
-      appointment_id: row.appointment_id,
-      appointment_date: {
-        appointment_month: row.appointment_month,
-        appointment_day: row.appointment_day,
-        appointment_year: row.appointment_year,
-      },
-      appointment_time: row.appointment_time,
-      client_name: row.client_name,
-      client_phone: row.client_phone,
-      client_set: row.client_set,
-      client_refill: row.client_refill,
-      client_refillSet: row.client_refillSet,
-      client_Soak: row.client_Soak,
-      client_details: row.client_details,
-      images: row.images,
-    };
-
-    return newRow;
-  });
-  return custom;
+  return rows;
 };
 
 const findBy = async (filter) => {
