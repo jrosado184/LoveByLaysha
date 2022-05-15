@@ -42,7 +42,7 @@ const Edit = () => {
       .catch((err) => {
         console.log(err);
       });
-    // nav('/loading');
+    nav('/loading');
   };
 
   const handleFile = (url) => {

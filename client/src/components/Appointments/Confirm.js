@@ -13,14 +13,13 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   const handleEdit = () => {
     nav(`/edit/${id}`);
   };
-
-  useEffect(() => {
-    dispatch(getAppointments());
-  }, [fetchAppointments]);
-
   const fil = fetchAppointments.filter(
     (elem) => elem === fetchAppointments[fetchAppointments.length - 1]
   );
+
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, [fil, dispatch]);
 
   return (
     <div className='flex flex-col items-center justify-center my-10'>

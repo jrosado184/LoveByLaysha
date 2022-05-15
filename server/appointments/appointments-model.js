@@ -34,7 +34,7 @@ const insert = async (appointments) => {
 };
 const update = async (id, body) => {
   await db('appointments').update(body).where('appointment_id', id);
-  return 'hey';
+  return findById(id);
 };
 
 const remove = async (appointment_id) => {
