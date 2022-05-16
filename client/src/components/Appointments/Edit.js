@@ -41,8 +41,9 @@ const Edit = () => {
     setSelectedDate({
       month: numberMonth(info.appointment_month),
       day: day,
-      year: info.appointment_year,
+      year: parseInt(info.appointment_year).toString(),
     });
+    console.log(info.appointment_year);
   }, [info]);
 
   const handleFile = (url) => {

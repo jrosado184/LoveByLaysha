@@ -11,8 +11,8 @@ exports.up = async (knex) => {
     .createTable('appointments', (appointments) => {
       appointments.increments('appointment_id');
       appointments.text('appointment_month');
-      appointments.number('appointment_day');
-      appointments.number('appointment_year');
+      appointments.integer('appointment_day');
+      appointments.integer('appointment_year');
       appointments.string('appointment_time');
       appointments.string('client_name');
       appointments.string('client_phone', 200);
