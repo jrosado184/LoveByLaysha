@@ -19,7 +19,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
 
   useEffect(() => {
     dispatch(getAppointments());
-  }, [fil, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className='flex flex-col items-center justify-center my-10'>

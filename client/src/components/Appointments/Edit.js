@@ -11,11 +11,13 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 import SimpleFileUpload from 'react-simple-file-upload';
 
 const Edit = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-
   const nav = useNavigate();
 
   const { id } = useParams();
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const [changes, setChanges] = useState(false);
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
@@ -32,19 +34,6 @@ const Edit = () => {
     images: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .put(`https://lovebylaysha.herokuapp.com/api/appointments/${id}`, info)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    nav('/loading');
-  };
-
   const handleFile = (url) => {
     setInfo({
       ...info,
@@ -52,15 +41,6 @@ const Edit = () => {
     });
   };
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get(`/api/appointments/${id}`)
-      .then((res) => {
-        setInfo(res.data[0]);
-      });
-  }, []);
-
-  console.log(info);
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -72,6 +52,37 @@ const Edit = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleCalendar = () => {
+    setInfo({
+      ...info,
+      appointment_month: `${Months(selectedDate.month)}`,
+      appointment_day: `${selectedDate.day}`,
+      appointment_year: ` ${selectedDate.year}`,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`https://lovebylaysha.herokuapp.com/api/appointments/${id}`, info)
+      .then((res) => {
+        setInfo(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    nav('/loading');
+  };
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/api/appointments/${id}`)
+      .then((res) => {
+        setInfo(res.data[0]);
+      });
+  }, []);
+
   return (
     <form className='pl-10 py-4 desktop:pl-[17%] w-full'>
       <div className='md:flex'>
@@ -201,9 +212,18 @@ const Edit = () => {
                 />
               </div>
             </label>
+            <label className='flex items-center gap-2'>
+              <input
+                onChange={handleCalendar}
+                value={changes}
+                className='pl-6'
+                type='checkbox'
+              />
+              Update Changes?
+            </label>
             <input
               data-testid='bookbtn'
-              className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+              className='w-20 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
               type='submit'
               onClick={handleSubmit}
             />
