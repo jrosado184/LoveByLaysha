@@ -34,16 +34,12 @@ const Edit = () => {
     images: '',
   });
 
-  const day = parseInt(info.appointment_day);
-  const year = parseInt(info.appointment_year);
-
   useEffect(() => {
     setSelectedDate({
       month: numberMonth(info.appointment_month),
-      day: day,
-      year: parseInt(info.appointment_year).toString(),
+      day: info.appointment_day,
+      year: info.appointment_year,
     });
-    console.log(info.appointment_year);
   }, [info]);
 
   const handleFile = (url) => {
