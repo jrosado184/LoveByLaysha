@@ -3,7 +3,7 @@ import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
 import BookFileUpload from './BookFileUpload';
-import Months from './../../Algos/Months';
+import { Months } from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
 
 const Book = () => {

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
-import Months from './../../Algos/Months';
+import { Months, numberMonth } from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -33,6 +33,17 @@ const Edit = () => {
     client_details: '',
     images: '',
   });
+
+  const day = parseInt(info.appointment_day);
+  const year = parseInt(info.appointment_year);
+
+  useEffect(() => {
+    setSelectedDate({
+      month: numberMonth(info.appointment_month),
+      day: day,
+      year: info.appointment_year,
+    });
+  }, [info]);
 
   const handleFile = (url) => {
     setInfo({
