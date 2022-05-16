@@ -9,7 +9,6 @@ import Appointment from './components/Appointments/Appointment';
 import ClientUploads from './components/Appointments/ClientUploads';
 import Confirm from './components/Appointments/Confirm';
 import Contact from './components/Main/Contact';
-import Deleted from './components/Appointments/Deleted';
 import PrivateRoute from './utils/PrivateRoute';
 import Nails from './components/Nails/Nails';
 import Completed from './components/Completed Appointments/Completed';
@@ -44,14 +43,6 @@ const App = () => {
                 <ClientUploads />
               </PrivateRoute>
             </div>
-          }
-        />
-        <Route
-          path='/deleted'
-          element={
-            <PrivateRoute>
-              <Deleted />
-            </PrivateRoute>
           }
         />
         <Route
