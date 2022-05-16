@@ -42,8 +42,7 @@ const remove = async (appointment_id) => {
     .del()
     .where('appointment_id', appointment_id)
     .returning('*');
-  const deleted = await db('deleted_appointments').insert(row);
-  return deleted;
+  return row;
 };
 
 const removeCompleted = async (appointment_id) => {
@@ -51,8 +50,7 @@ const removeCompleted = async (appointment_id) => {
     .del()
     .where('appointment_id', appointment_id)
     .returning('*');
-  const completed = await db('completed_appointments').insert(row);
-  return completed;
+  return row;
 };
 
 module.exports = {
