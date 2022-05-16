@@ -26,7 +26,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
 
   return (
     <>
-      {/* <CancelModal /> */}
+      {cancelModal && <CancelModal />}
       <div className='flex flex-col items-center justify-center my-10'>
         {fil.map((item) => {
           return (
@@ -51,7 +51,10 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   </button>
                   <img className='w-4 h-4' src={edit} alt='' />
                 </div>
-                <button className='w-16 h-7 text-sm text-red-500 underline'>
+                <button
+                  onClick={() => setCancelModal(!cancelModal)}
+                  className='w-16 h-7 text-sm text-red-500 underline'
+                >
                   Cancel
                 </button>
               </div>

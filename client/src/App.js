@@ -18,6 +18,7 @@ import CompletedUploads from './components/Completed Appointments/CompletedUploa
 import Policies from './components/Main/Policies';
 import Edit from './components/Appointments/Edit';
 import ConfirmLoad from './components/Appointments/ConfirmLoad';
+import CancelConfirm from './components/Appointments/CancelConfirm';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/policies' element={<Policies />} />
+        <Route path='/canceled' element={<CancelConfirm />} />
         <Route
           path='/appointment/:id'
           element={

@@ -1,15 +1,21 @@
 import React from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 const CancelModal = () => {
   const { id } = useParams();
 
-  const handleCancel = () => {
+  const nav = useNavigate();
+
+  const handleCancel = async () => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
       .then((res) => {
-        console.log('deleted');
+        nav('/loading');
+        setTimeout(() => {
+          nav('/canceled');
+        }, 3000);
       });
   };
   return (
