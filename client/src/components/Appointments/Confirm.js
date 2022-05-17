@@ -26,7 +26,12 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
 
   return (
     <>
-      {cancelModal && <CancelModal />}
+      {cancelModal && (
+        <CancelModal
+          cancelModal={cancelModal}
+          setCancelModal={setCancelModal}
+        />
+      )}
       <div className='flex flex-col items-center justify-center my-10'>
         {fil.map((item) => {
           return (

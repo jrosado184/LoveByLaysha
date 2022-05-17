@@ -4,6 +4,8 @@ import { getAppointments } from '../../redux/actions/appointment-actions';
 import Appointments from './Appointments';
 import Search from './Search';
 import { sortDates } from '../../Algos/Sorting';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   useEffect(() => {
@@ -23,7 +25,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
           ))
         ) : (
           <div>
-            <p className='h-60 flex items-center'>No appointments available</p>
+            <p className='h-60 flex items-center'>No appointments scheduled</p>
           </div>
         )}
       </div>

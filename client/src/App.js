@@ -19,71 +19,74 @@ import Policies from './components/Main/Policies';
 import Edit from './components/Appointments/Edit';
 import ConfirmLoad from './components/Appointments/ConfirmLoad';
 import CancelConfirm from './components/Appointments/CancelConfirm';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path='/' element={<Register />} />
-        <Route path='/nails' element={<Nails />} />
-        <Route path='/book' element={<Book />} />
-        <Route path='/confirm/:id' element={<Confirm />} />
-        <Route path='/loading' element={<ConfirmLoad />} />
-        <Route path='/edit/:id' element={<Edit />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/policies' element={<Policies />} />
-        <Route path='/canceled' element={<CancelConfirm />} />
-        <Route
-          path='/appointment/:id'
-          element={
-            <div className='sm:w-full flex flex-col desktop:flex-row'>
+      <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
+        <Routes>
+          <Route path='/' element={<Register />} />
+          <Route path='/nails' element={<Nails />} />
+          <Route path='/book' element={<Book />} />
+          <Route path='/confirm/:id' element={<Confirm />} />
+          <Route path='/loading' element={<ConfirmLoad />} />
+          <Route path='/edit/:id' element={<Edit />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/policies' element={<Policies />} />
+          <Route path='/canceled' element={<CancelConfirm />} />
+          <Route
+            path='/appointment/:id'
+            element={
+              <div className='sm:w-full flex flex-col desktop:flex-row'>
+                <PrivateRoute>
+                  <Appointment />
+                  <ClientUploads />
+                </PrivateRoute>
+              </div>
+            }
+          />
+          <Route
+            path='/completed'
+            element={
               <PrivateRoute>
-                <Appointment />
-                <ClientUploads />
+                <Completed />
               </PrivateRoute>
-            </div>
-          }
-        />
-        <Route
-          path='/completed'
-          element={
-            <PrivateRoute>
-              <Completed />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/completedAppointments'
-          element={
-            <PrivateRoute>
-              <CompletedAppointmentsList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/completed-information/:id'
-          element={
-            <div className='sm:w-full flex flex-col desktop:flex-row'>
+            }
+          />
+          <Route
+            path='/completedAppointments'
+            element={
               <PrivateRoute>
-                <CompletedInformation />
-                <CompletedUploads />
+                <CompletedAppointmentsList />
               </PrivateRoute>
-            </div>
-          }
-        />
-        <Route
-          path='/appointments'
-          element={
-            <PrivateRoute>
-              <AppointmentList />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-      {/* <Footer /> */}
+            }
+          />
+          <Route
+            path='/completed-information/:id'
+            element={
+              <div className='sm:w-full flex flex-col desktop:flex-row'>
+                <PrivateRoute>
+                  <CompletedInformation />
+                  <CompletedUploads />
+                </PrivateRoute>
+              </div>
+            }
+          />
+          <Route
+            path='/appointments'
+            element={
+              <PrivateRoute>
+                <AppointmentList />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </SkeletonTheme>
     </>
   );
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import right from '../../assets/right.svg';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Appointments = (props) => {
   const nav = useNavigate();

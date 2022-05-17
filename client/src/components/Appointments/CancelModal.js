@@ -1,9 +1,8 @@
 import React from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import { useParams, useNavigate } from 'react-router-dom';
-import Loading from './Loading';
 
-const CancelModal = () => {
+const CancelModal = ({ cancelModal, setCancelModal }) => {
   const { id } = useParams();
 
   const nav = useNavigate();
@@ -26,7 +25,10 @@ const CancelModal = () => {
             Are you sure you want to cancel?
           </p>
           <div className='flex justify-evenly w-full my-6'>
-            <button className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20'>
+            <button
+              onClick={() => setCancelModal(!cancelModal)}
+              className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20'
+            >
               No
             </button>
             <button

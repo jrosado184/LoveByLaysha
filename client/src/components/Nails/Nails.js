@@ -10,12 +10,14 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage';
+import NailSkeleton from './NailSkeleton';
 
 const Nails = (logIn) => {
   const [token, setToken] = useState(null);
   const [removeImage, setRemoveImage] = useState(false);
   const [imageUrl, setImageUrl] = useState([]);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const allImageRef = ref(storage, 'nails/');
 
@@ -49,6 +51,9 @@ const Nails = (logIn) => {
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
+    setTimeout(() => {
+      setLoading(!loading);
+    }, 900);
   }, [logIn]);
 
   return (
@@ -85,6 +90,7 @@ const Nails = (logIn) => {
           </div>
         </div>
       )}
+      {loading && <NailSkeleton cards={imageUrl.length} />}
       <NailImages
         handleDeleteImage={handleDeleteImage}
         imageUrl={imageUrl}
