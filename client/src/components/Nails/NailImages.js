@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import trash from './../../assets/trash.png';
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import NailSkeleton from './NailSkeleton';
 
 const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
   const [showModal, setShowModal] = useState(false);

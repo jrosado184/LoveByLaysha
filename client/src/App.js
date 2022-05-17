@@ -19,14 +19,14 @@ import Policies from './components/Main/Policies';
 import Edit from './components/Appointments/Edit';
 import ConfirmLoad from './components/Appointments/ConfirmLoad';
 import CancelConfirm from './components/Appointments/CancelConfirm';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const App = () => {
   return (
     <>
-      <Header />
       <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
+        <Header />
         <Routes>
           <Route path='/' element={<Register />} />
           <Route path='/nails' element={<Nails />} />
@@ -42,7 +42,7 @@ const App = () => {
           <Route
             path='/appointment/:id'
             element={
-              <div className='sm:w-full flex flex-col desktop:flex-row'>
+              <div className='w-full flex flex-col desktop:flex-row'>
                 <PrivateRoute>
                   <Appointment />
                   <ClientUploads />

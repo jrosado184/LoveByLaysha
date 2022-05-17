@@ -1,32 +1,32 @@
 import { connect } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import Appointments from './Appointments';
 import Search from './Search';
 import { sortDates } from '../../Algos/Sorting';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import AppointmentsSkeleton from './AppointmentsSkeleton';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     dispatch(getAppointments());
     sortDates();
+    setTimeout(() => {
+      setLoading(false);
+    }, 900);
   }, []);
+
   return (
     <>
       <Search />
       <div className='flex flex-col items-center my-2'>
-        {fetchAppointments.length ? (
-          fetchAppointments.map((appointment) => (
-            <Appointments
-              key={appointment.appointment_id}
-              appointment={appointment}
-            />
-          ))
-        ) : (
-          <div>
-            <p className='h-60 flex items-center'>No appointments scheduled</p>
-          </div>
+        {fetchAppointments.map((appointment, index) =>
+          loading ? (
+            <AppointmentsSkeleton key={index} card={1} />
+          ) : (
+            <Appointments key={index} appointment={appointment} />
+          )
         )}
       </div>
     </>

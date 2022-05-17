@@ -8,8 +8,8 @@ const NailSkeleton = ({ cards }) => {
       {Array(cards)
         .fill(0)
         .map((e, i) => (
-          <div key={i}>
-            <Skeleton width={170} height={210} />
+          <div className='w-[45%] desktop:w-[13%]' key={i}>
+            <Skeleton height={210} />
           </div>
         ))}
     </div>
