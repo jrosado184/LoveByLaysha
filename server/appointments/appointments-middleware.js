@@ -1,4 +1,4 @@
-const Appoint = require("./appointments-model");
+const Appoint = require('./appointments-model');
 
 const checkBody = (req, res, next) => {
   const {
@@ -17,7 +17,7 @@ const checkBody = (req, res, next) => {
     !client_name ||
     !client_phone
   ) {
-    res.status(422).json({ message: "Please fill all required fields" });
+    res.status(422).json({ message: 'Please fill all required fields' });
   } else {
     next();
   }
@@ -34,7 +34,7 @@ const checkExists = async (req, res, next) => {
         appointment_month === appoint.appointment_month
     );
     if (search) {
-      res.status(422).json("This appointment has been booked");
+      res.status(422).json('This appointment has been booked');
     } else {
       next();
     }
