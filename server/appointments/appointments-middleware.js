@@ -33,8 +33,8 @@ const checkExists = async (req, res, next) => {
         appoint.appointment_time === appointment_time &&
         appointment_month === appoint.appointment_month
     );
-    if (!search) {
-      res.status(422).json('This appointment has been booked');
+    if (search) {
+      res.status(422).json({ message: 'This appointment has been booked' });
     } else {
       next();
     }
