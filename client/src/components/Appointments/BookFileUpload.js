@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { addAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,17 +8,19 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 const BookFileUpload = ({ info, dispatch, setInfo }) => {
   const nav = useNavigate();
 
+  const [error, setError] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
       .post('/api/appointments', info)
       .then((res) => {
         dispatch(addAppointments(res.data));
+        nav('/loading');
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        setError(err.response.data.message + ' (*) ');
       });
-    // nav('/loading');
   };
 
   const handleFile = (url) => {
@@ -41,9 +43,10 @@ const BookFileUpload = ({ info, dispatch, setInfo }) => {
           />
         </div>
       </label>
+      <p className='my-1 mb-6 ml-2 text-red-500 desktop:ml-8'>{error}</p>
       <input
         data-testid='bookbtn'
-        className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+        className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[63%]'
         type='submit'
         onClick={handleSubmit}
       />

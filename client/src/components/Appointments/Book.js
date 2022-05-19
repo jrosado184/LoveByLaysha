@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
@@ -10,6 +10,8 @@ import * as yup from 'yup';
 
 const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const [noDate, setNoDate] = useState('');
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate,
@@ -26,14 +28,12 @@ const Book = () => {
     images: '',
   });
 
-  const [error, setError] = useState({
-    appointment_day: 'Please select a date before continuing',
-    appointment_time: 'Please select an available time',
-    client_name: 'Please enter a name',
-    client_phone: 'Please enter a valid phone number',
-  });
-
+  const handleCalendar = (e) => {
+    setSelectedDate(e);
+    setNoDate('');
+  };
   const handleChange = (e) => {
+    !selectedDate && setNoDate('Please select a date before continuing');
     setInfo({
       ...info,
       appointment_month: `${Months(selectedDate.month)}`,
@@ -44,16 +44,14 @@ const Book = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div>
       <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
         <div className='md:flex'>
-          <div
-            className='flex flex-col'
-            onClick={() => setError({ ...error, appointment_day: '' })}
-          >
+          <div className='flex flex-col'>
             <Calendar
-              onChange={setSelectedDate}
+              onChange={handleCalendar}
               calendarClassName='border-2 border-pink-200 h-[90%]'
               colorPrimary='#f8a4d1'
               value={selectedDate}
@@ -61,9 +59,7 @@ const Book = () => {
               disabledDays={disabledDays}
             />
             <div className='my-2 ml-2'>
-              <p className='text-red-500 my-2'>
-                {!info.appointment_day && error.appointment_day}
-              </p>
+              <p className='text-red-500 my-2'>{noDate}</p>
             </div>
           </div>
           <div className='md:w-[60%]'>
@@ -71,7 +67,7 @@ const Book = () => {
               name='appointment_time'
               value={info.appointment_time}
               onChange={handleChange}
-              className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+              className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
             >
               <option value=''>select a time</option>
               {times.map((time) => (
@@ -82,7 +78,7 @@ const Book = () => {
             </select>
             <input
               data-testid='name'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 desktop:w-[70%]'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -94,7 +90,7 @@ const Book = () => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 desktop:w-[70%]'
               type='tel'
               placeholder='Phone number'
             />
@@ -105,7 +101,7 @@ const Book = () => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
                   : 'hidden'
               }
             >
@@ -136,7 +132,7 @@ const Book = () => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6'
+                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 desktop:w-[70%]'
                   : 'hidden'
               }
             >
@@ -167,7 +163,7 @@ const Book = () => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1'
+                className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1 desktop:w-[70%]'
               />
             </label>
             <BookFileUpload info={info} setInfo={setInfo} />
