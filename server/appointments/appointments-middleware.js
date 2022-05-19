@@ -27,7 +27,7 @@ const checkExists = async (req, res, next) => {
   try {
     const { appointment_month, appointment_day, appointment_time } = req.body;
     const all = await Appoint.findAll();
-    const search = all.some(
+    const search = await all.some(
       (appoint) =>
         appoint.appointment_day === appointment_day &&
         appoint.appointment_time === appointment_time &&
