@@ -2,6 +2,7 @@ import React from 'react';
 import right from '../../assets/right.svg';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Months } from '../../Algos/Months';
 
 const Appointments = (props) => {
   const nav = useNavigate();
@@ -10,7 +11,7 @@ const Appointments = (props) => {
   const handleAppointment = () => {
     nav(`/appointment/${appointment.appointment_id}`);
   };
-
+  console.log(appointment.appointment_time);
   return (
     <div
       key={index}
@@ -23,7 +24,9 @@ const Appointments = (props) => {
               {appointment.client_name}
             </h1>
           </div>
-          <p className='mr-6 py-1'>{`${appointment.appointment_month} ${appointment.appointment_day}, ${appointment.appointment_year}`}</p>
+          <p className='mr-6 py-1'>{`${Months(appointment.appointment_month)} ${
+            appointment.appointment_day
+          }, ${appointment.appointment_year}`}</p>
         </div>
         <div className='w-full pl-4 my-2 flex justify-between'>
           <p className='w-full'>{appointment.appointment_time}</p>

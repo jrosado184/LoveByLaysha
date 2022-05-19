@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
 import BookFileUpload from './BookFileUpload';
-import { Months } from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
-import { bookingSchema } from '../../validation/BookingValidation';
-import * as yup from 'yup';
 
 const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -36,13 +33,14 @@ const Book = () => {
     !selectedDate && setNoDate('Please select a date before continuing');
     setInfo({
       ...info,
-      appointment_month: `${Months(selectedDate.month)}`,
+      appointment_month: selectedDate.month,
       appointment_day: `${selectedDate.day}`,
       appointment_year: ` ${selectedDate.year}`,
       client_set: info.client_refill ? 'none' : info.client_set,
       client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
+    console.log(info.appointment_time);
   };
 
   return (

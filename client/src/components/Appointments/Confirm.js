@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import edit from './../../assets/edit.svg';
 import CancelModal from './CancelModal';
+import { Months } from '../../Algos/Months';
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -48,7 +49,11 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 alt=''
               />
               <p className='font-semibold'>Your appointment is confirmed:</p>
-              <p className='font-bold underline'>{`For ${item.appointment_month} ${item.appointment_day}, ${item.appointment_year} at ${item.appointment_time}`}</p>
+              <p className='font-bold underline'>{`For ${Months(
+                item.appointment_month
+              )} ${item.appointment_day}, ${item.appointment_year} at ${
+                item.appointment_time
+              }`}</p>
               <div className='flex justify-evenly w-full h-12 items-end my-8 '>
                 <div className='flex w-12 items-center underline'>
                   <button onClick={handleEdit} className='w-16 h-7 text-sm'>
