@@ -1,19 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
 import BookFileUpload from './BookFileUpload';
-import { times, styles, refillSet } from '../data/Options';
+import { styles, Options, refillSet } from '../data/Options';
+import { connect } from 'react-redux';
+import { getAppointments } from '../../redux/actions/appointment-actions';
+import moment from 'moment';
 
-const Book = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+const Book = ({ fetchAppointments, dispatch }) => {
+  // const disabledDays = [];
 
-  const [noDate, setNoDate] = useState('');
+  /* DO NOT REMOVE ---- to use for selecting off days later on */
+  // fetchAppointments.map((t) =>
+  //   disabledDays.push({
+  //     year: t.appointment_year,
+  //     month: t.appointment_month,
+  //     day: t.appointment_day,
+  //   })
+  // );
+
+  // console.log(moment.format('MMM'));
+
+  const [selectedDate, setSelectedDate] = useState({
+    year: moment().year(),
+    month: moment().month() + 1,
+    day: moment().date(),
+  });
 
   const [info, setInfo] = useState({
-    appointment_month: selectedDate,
-    appointment_day: selectedDate,
-    appointment_year: selectedDate,
+    appointment_month: selectedDate.month,
+    appointment_day: selectedDate.day,
+    appointment_year: selectedDate.year,
     appointment_time: '',
     client_name: '',
     client_phone: '',
@@ -25,12 +43,21 @@ const Book = () => {
     images: '',
   });
 
+  const disabledTimes = [];
+
+  fetchAppointments.map(
+    (appointment) =>
+      selectedDate.day === appointment.appointment_day &&
+      selectedDate.year === appointment.appointment_year &&
+      selectedDate.month === appointment.appointment_month &&
+      disabledTimes.push(appointment.appointment_time)
+  );
+
   const handleCalendar = (e) => {
     setSelectedDate(e);
-    setNoDate('');
   };
+
   const handleChange = (e) => {
-    !selectedDate && setNoDate('Please select a date before continuing');
     setInfo({
       ...info,
       appointment_month: selectedDate.month,
@@ -41,6 +68,10 @@ const Book = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, []);
 
   return (
     <div>
@@ -53,11 +84,8 @@ const Book = () => {
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
-              disabledDays={disabledDays}
             />
-            <div className='my-2 ml-2'>
-              <p className='text-red-500 my-2'>{noDate}</p>
-            </div>
+            <div className='my-2 ml-2'></div>
           </div>
           <div className='md:w-[60%]'>
             <select
@@ -67,11 +95,7 @@ const Book = () => {
               className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
             >
               <option value=''>select a time</option>
-              {times.map((time) => (
-                <option key={time} value={time}>
-                  {time}
-                </option>
-              ))}
+              {<Options disabledTimes={disabledTimes} />}
             </select>
             <input
               data-testid='name'
@@ -171,4 +195,10 @@ const Book = () => {
   );
 };
 
-export default Book;
+const mapStateToProps = (state) => {
+  return {
+    fetchAppointments: state.appointments.fetchAppointments,
+  };
+};
+
+export default connect(mapStateToProps)(Book);

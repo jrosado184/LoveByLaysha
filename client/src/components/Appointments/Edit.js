@@ -4,7 +4,7 @@ import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { disabledDays } from './../data/Disabled';
 import { Months, numberMonth } from './../../Algos/Months';
-import { times, styles, refillSet } from '../data/Options';
+import { styles, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
@@ -110,11 +110,6 @@ const Edit = () => {
             className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
           >
             <option value=''>select a time</option>
-            {times.map((time) => (
-              <option key={time} value={time}>
-                {time}
-              </option>
-            ))}
           </select>
           <input
             data-testid='name'
