@@ -5,6 +5,8 @@ import { disabledDays } from './../data/Disabled';
 import BookFileUpload from './BookFileUpload';
 import { Months } from './../../Algos/Months';
 import { times, styles, refillSet } from '../data/Options';
+import { bookingSchema } from '../../validation/BookingValidation';
+import * as yup from 'yup';
 
 const Book = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -24,6 +26,13 @@ const Book = () => {
     images: '',
   });
 
+  const [error, setError] = useState({
+    appointment_day: 'Please select a date before continuing',
+    appointment_time: 'Please select an available time',
+    client_name: 'Please enter a name',
+    client_phone: 'Please enter a valid phone number',
+  });
+
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -39,14 +48,19 @@ const Book = () => {
     <div>
       <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
         <div className='sm:  md:flex'>
-          <Calendar
-            onChange={setSelectedDate}
-            calendarClassName='border-2 border-pink-200'
-            colorPrimary='#f8a4d1'
-            value={selectedDate}
-            minimumDate={utils().getToday()}
-            disabledDays={disabledDays}
-          />
+          <div onClick={() => setError({ ...error, appointment_day: '' })}>
+            <Calendar
+              onChange={setSelectedDate}
+              calendarClassName='border-2 border-pink-200'
+              colorPrimary='#f8a4d1'
+              value={selectedDate}
+              minimumDate={utils().getToday()}
+              disabledDays={disabledDays}
+            />
+          </div>
+          <p className='text-red-500 my-2'>
+            {!info.appointment_day && error.appointment_day}
+          </p>
           <div className='md:w-[60%]'>
             <select
               name='appointment_time'

@@ -5,14 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 const Appointments = (props) => {
   const nav = useNavigate();
-  const { appointment } = props;
+  const { appointment, index } = props;
 
   const handleAppointment = () => {
     nav(`/appointment/${appointment.appointment_id}`);
   };
 
   return (
-    <div className='w-full flex justify-center items-center flex-col my-1 gap-8'>
+    <div
+      key={index}
+      className='w-full flex justify-center items-center flex-col my-1 gap-8'
+    >
       <div className='w-full h-24 border-2 border-gray-300 rounded-md flex flex-col shadow-md'>
         <div className='w-full flex justify-between'>
           <div className='h-fit'>

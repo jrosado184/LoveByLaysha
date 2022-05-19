@@ -52,7 +52,7 @@ const Nails = (logIn) => {
   useEffect(() => {
     setToken(localStorage.getItem('token'));
     setTimeout(() => {
-      setLoading(!loading);
+      setLoading(false);
     }, 900);
   }, [logIn]);
 
