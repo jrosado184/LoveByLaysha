@@ -15,7 +15,7 @@ exports.up = async (knex) => {
       appointments.integer('appointment_year').notNullable();
       appointments.string('appointment_time').notNullable();
       appointments.string('client_name').notNullable();
-      appointments.integer('client_phone', 200).notNullable();
+      appointments.string('client_phone').notNullable();
       appointments.string('client_set');
       appointments.boolean('client_refill');
       appointments.string('client_refillSet');

@@ -1,16 +1,24 @@
 import React from 'react';
-import { postAppointments } from '../../redux/actions/appointment-actions.js';
+import { addAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const BookFileUpload = ({ info, dispatch, setInfo }) => {
   const nav = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postAppointments(info));
-    nav('/loading');
+    axiosWithAuth()
+      .post('/api/appointments', info)
+      .then((res) => {
+        dispatch(addAppointments(res.data));
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+    // nav('/loading');
   };
 
   const handleFile = (url) => {

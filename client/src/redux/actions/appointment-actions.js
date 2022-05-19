@@ -53,7 +53,7 @@ export const postAppointments = (info) => {
         dispatch(addAppointments(res.data));
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
       });
   };
 };

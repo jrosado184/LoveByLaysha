@@ -47,20 +47,25 @@ const Book = () => {
   return (
     <div>
       <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
-        <div className='sm:  md:flex'>
-          <div onClick={() => setError({ ...error, appointment_day: '' })}>
+        <div className='md:flex'>
+          <div
+            className='flex flex-col'
+            onClick={() => setError({ ...error, appointment_day: '' })}
+          >
             <Calendar
               onChange={setSelectedDate}
-              calendarClassName='border-2 border-pink-200'
+              calendarClassName='border-2 border-pink-200 h-[90%]'
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
               disabledDays={disabledDays}
             />
+            <div className='my-2 ml-2'>
+              <p className='text-red-500 my-2'>
+                {!info.appointment_day && error.appointment_day}
+              </p>
+            </div>
           </div>
-          <p className='text-red-500 my-2'>
-            {!info.appointment_day && error.appointment_day}
-          </p>
           <div className='md:w-[60%]'>
             <select
               name='appointment_time'
@@ -156,13 +161,13 @@ const Book = () => {
               <p className='ml-52 text-pink-300'>$10</p>
             </label>
             <label className=' my-2 md:ml-6'>
-              Additional Details:
               <textarea
                 data-testid='details'
                 name='client_details'
+                placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[88%] h-20 border-2 border-pink-400 md:ml-6'
+                className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1'
               />
             </label>
             <BookFileUpload info={info} setInfo={setInfo} />
