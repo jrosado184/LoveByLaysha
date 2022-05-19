@@ -24,7 +24,7 @@ router.get('/:id', checkId, (req, res, next) => {
     .catch(next);
 });
 
-router.post('/', checkBody, checkExists, (req, res, next) => {
+router.post('/', checkExists, checkBody, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);
