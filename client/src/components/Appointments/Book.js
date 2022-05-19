@@ -40,7 +40,6 @@ const Book = () => {
       client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
-    console.log(info.appointment_time);
   };
 
   return (

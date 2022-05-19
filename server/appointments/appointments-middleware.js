@@ -25,13 +25,10 @@ const checkBody = (req, res, next) => {
 
 const checkExists = async (req, res, next) => {
   try {
-    const { appointment_month, appointment_day, appointment_time } = req.body;
+    const { appointment_month, appointment_day } = req.body;
     const all = await Appoint.findAll();
     const search = await all.some(
-      (appoint) =>
-        appoint.appointment_day === appointment_day &&
-        appoint.appointment_time === appointment_time &&
-        appointment_month === appoint.appointment_month
+      (appoint) => appoint.appointment_day === appointment_day
     );
     if (search) {
       res.status(422).json({ message: 'This appointment has been booked' });
