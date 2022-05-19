@@ -11,7 +11,7 @@ const Appointments = (props) => {
   const handleAppointment = () => {
     nav(`/appointment/${appointment.appointment_id}`);
   };
-  console.log(appointment.appointment_time);
+  console.log(appointment);
   return (
     <div
       key={index}

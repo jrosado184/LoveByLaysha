@@ -38,8 +38,8 @@ const checkExists = async (req, res, next) => {
     } else {
       next();
     }
-  } catch {
-    next();
+  } catch (error) {
+    next(error);
   }
 };
 
