@@ -20,8 +20,6 @@ const Book = ({ fetchAppointments, dispatch }) => {
   //   })
   // );
 
-  // console.log(moment.format('MMM'));
-
   const [selectedDate, setSelectedDate] = useState({
     year: moment().year(),
     month: moment().month() + 1,

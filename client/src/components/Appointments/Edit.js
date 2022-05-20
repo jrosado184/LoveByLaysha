@@ -14,14 +14,18 @@ const Edit = ({ fetchAppointments, dispatch }) => {
 
   const { id } = useParams();
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState({
+    year: 2022,
+    month: 20,
+    day: 1,
+  });
 
   const [changes, setChanges] = useState(false);
 
   const [info, setInfo] = useState({
-    appointment_month: selectedDate,
-    appointment_day: selectedDate,
-    appointment_year: selectedDate,
+    appointment_month: selectedDate.year,
+    appointment_day: selectedDate.day,
+    appointment_year: selectedDate.year,
     appointment_time: '',
     client_name: '',
     client_phone: '',
