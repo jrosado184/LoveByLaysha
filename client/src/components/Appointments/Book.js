@@ -42,7 +42,6 @@ const Book = ({ fetchAppointments, dispatch }) => {
     client_details: '',
     images: '',
   });
-
   const disabledTimes = [];
 
   fetchAppointments.map(
@@ -61,8 +60,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
     setInfo({
       ...info,
       appointment_month: selectedDate.month,
-      appointment_day: `${selectedDate.day}`,
-      appointment_year: ` ${selectedDate.year}`,
+      appointment_day: selectedDate.day,
+      appointment_year: selectedDate.year,
       client_set: info.client_refill ? 'none' : info.client_set,
       client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,

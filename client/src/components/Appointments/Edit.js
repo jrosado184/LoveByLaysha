@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { disabledDays } from './../data/Disabled';
-import { Months, numberMonth } from './../../Algos/Months';
-import { styles, refillSet } from '../data/Options';
+import { styles, refillSet, Options } from '../data/Options';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import SimpleFileUpload from 'react-simple-file-upload';
+import { getAppointments } from '../../redux/actions/appointment-actions';
 
-const Edit = () => {
+const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();
 
   const { id } = useParams();
@@ -34,13 +33,15 @@ const Edit = () => {
     images: '',
   });
 
-  useEffect(() => {
-    setSelectedDate({
-      month: numberMonth(info.appointment_month),
-      day: info.appointment_day,
-      year: info.appointment_year,
-    });
-  }, [info]);
+  const disabledTimes = [];
+
+  fetchAppointments.map(
+    (appointment) =>
+      selectedDate.day === appointment.appointment_day &&
+      selectedDate.year === appointment.appointment_year &&
+      selectedDate.month === appointment.appointment_month &&
+      disabledTimes.push(appointment.appointment_time)
+  );
 
   const handleFile = (url) => {
     setInfo({
@@ -52,9 +53,9 @@ const Edit = () => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_month: `${Months(selectedDate.month)}`,
-      appointment_day: `${selectedDate.day}`,
-      appointment_year: ` ${selectedDate.year}`,
+      appointment_month: selectedDate.month,
+      appointment_day: selectedDate.day,
+      appointment_year: selectedDate.year,
       client_set: info.client_refill ? 'none' : info.client_set,
       client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
@@ -64,9 +65,9 @@ const Edit = () => {
   const handleCalendar = () => {
     setInfo({
       ...info,
-      appointment_month: `${Months(selectedDate.month)}`,
-      appointment_day: `${selectedDate.day}`,
-      appointment_year: ` ${selectedDate.year}`,
+      appointment_month: selectedDate.month,
+      appointment_day: selectedDate.day,
+      appointment_year: selectedDate.year,
     });
   };
 
@@ -76,12 +77,16 @@ const Edit = () => {
       .put(`https://lovebylaysha.herokuapp.com/api/appointments/${id}`, info)
       .then((res) => {
         setInfo(res.data[0]);
+        nav('/loading');
       })
       .catch((err) => {
         console.log(err);
       });
-    nav('/loading');
   };
+
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, []);
 
   useEffect(() => {
     axiosWithAuth()
@@ -90,6 +95,14 @@ const Edit = () => {
         setInfo(res.data[0]);
       });
   }, []);
+
+  useEffect(() => {
+    setSelectedDate({
+      month: info.appointment_month,
+      day: info.appointment_day,
+      year: info.appointment_year,
+    });
+  }, [info]);
 
   return (
     <form className='pl-10 py-4 desktop:pl-[17%] w-full'>
@@ -100,7 +113,6 @@ const Edit = () => {
           colorPrimary='#f8a4d1'
           value={selectedDate}
           minimumDate={utils().getToday()}
-          disabledDays={disabledDays}
         />
         <div className='md:w-[60%]'>
           <select
@@ -110,6 +122,7 @@ const Edit = () => {
             className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
           >
             <option value=''>select a time</option>
+            {<Options disabledTimes={disabledTimes} />}
           </select>
           <input
             data-testid='name'
@@ -240,6 +253,7 @@ const Edit = () => {
 const mapStateToProps = (state) => {
   return {
     getAppointmentById: state.appointments.getAppointmentById,
+    fetchAppointments: state.appointments.fetchAppointments,
   };
 };
 
