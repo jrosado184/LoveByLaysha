@@ -42,9 +42,9 @@ const Book = ({ fetchAppointments, dispatch }) => {
   });
 
   const [error, setError] = useState({
-    time: 'Please select an available time',
-    name: 'Please enter a name',
-    phone: 'Please enter a valid phone number',
+    time: '',
+    name: '',
+    phone: '',
     set: '',
     refillSet: '',
   });
@@ -86,7 +86,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
           <div className='flex flex-col'>
             <Calendar
               onChange={handleCalendar}
-              calendarClassName='border-2 border-pink-200 h-[90%]'
+              calendarClassName='border-2 border-pink-200 h-[100%]'
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
@@ -173,6 +173,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 </option>
               ))}
             </select>
+            <p>{error.refillSet}</p>
             <label className='flex items-center my-4 md:ml-6'>
               <input
                 name='client_Soak'
@@ -196,12 +197,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1 desktop:w-[70%]'
               />
             </label>
-            <BookFileUpload
-              error={error}
-              setError={setError}
-              info={info}
-              setInfo={setInfo}
-            />
+            <BookFileUpload info={info} setInfo={setInfo} />
           </div>
         </div>
       </form>

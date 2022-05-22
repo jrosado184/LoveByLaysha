@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-const BookFileUpload = ({ info, dispatch, setInfo, error, setError }) => {
+const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
   const nav = useNavigate();
 
   const handleSubmit = (e) => {
@@ -44,7 +44,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, error, setError }) => {
       <input
         disabled={false}
         data-testid='bookbtn'
-        className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[63%]'
+        className='w-20 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
         type='submit'
         onClick={handleSubmit}
       />
