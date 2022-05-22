@@ -22,7 +22,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
       <Search />
       <div className='flex flex-col items-center my-2'>
         {loading ? (
-          <AppointmentsSkeleton card={1} />
+          <AppointmentsSkeleton card={fetchAppointments.length} />
         ) : (
           fetchAppointments.map((appointment, index) => (
             <Appointments key={index} appointment={appointment} />

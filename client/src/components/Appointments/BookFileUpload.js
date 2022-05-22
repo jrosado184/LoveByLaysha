@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-const BookFileUpload = ({ info, dispatch, setInfo }) => {
+const BookFileUpload = ({ info, dispatch, setInfo, error, setError }) => {
   const nav = useNavigate();
-
-  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ const BookFileUpload = ({ info, dispatch, setInfo }) => {
         nav('/loading');
       })
       .catch((err) => {
-        setError(err.response.data.message + ' (*) ');
+        console.log(err.response.message);
       });
   };
 
@@ -43,8 +41,8 @@ const BookFileUpload = ({ info, dispatch, setInfo }) => {
           />
         </div>
       </label>
-      <p className='my-1 mb-6 ml-2 text-red-500 desktop:ml-8'>{error}</p>
       <input
+        disabled={false}
         data-testid='bookbtn'
         className='w-20 h-8 my-3 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[63%]'
         type='submit'

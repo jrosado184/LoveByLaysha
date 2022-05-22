@@ -40,6 +40,15 @@ const Book = ({ fetchAppointments, dispatch }) => {
     client_details: '',
     images: '',
   });
+
+  const [error, setError] = useState({
+    time: 'Please select an available time',
+    name: 'Please enter a name',
+    phone: 'Please enter a valid phone number',
+    set: '',
+    refillSet: '',
+  });
+
   const disabledTimes = [];
 
   fetchAppointments.map(
@@ -94,6 +103,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               <option value=''>select a time</option>
               {<Options disabledTimes={disabledTimes} />}
             </select>
+            <p className='text-red-500'>{error.time}</p>
             <input
               data-testid='name'
               className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 desktop:w-[70%]'
@@ -103,6 +113,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               value={info.client_name}
               onChange={handleChange}
             />
+            <p className='text-red-500'>{error.name}</p>
             <input
               data-testid='phone'
               name='client_phone'
@@ -112,6 +123,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               type='tel'
               placeholder='Phone number'
             />
+            <p className='text-red-500'>{error.phone}</p>
             <select
               name='client_set'
               value={info.client_set}
@@ -184,7 +196,12 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1 desktop:w-[70%]'
               />
             </label>
-            <BookFileUpload info={info} setInfo={setInfo} />
+            <BookFileUpload
+              error={error}
+              setError={setError}
+              info={info}
+              setInfo={setInfo}
+            />
           </div>
         </div>
       </form>
