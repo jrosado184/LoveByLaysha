@@ -26,11 +26,13 @@ const AppointmentExtra = ({ dispatch, getAppointmentById }) => {
   const handleComplete = () => {
     axiosWithAuth()
       .delete(`/api/appointments/completed/${id}`)
-      .then(() => {})
+      .then(() => {
+        console.log('worked');
+        nav('/appointments');
+      })
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
   };
 
   return (

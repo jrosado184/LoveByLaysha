@@ -33,7 +33,6 @@ const Search = () => {
         </div>
         <form className='h-8 flex items-center justify-end w-full my-2'>
           <input
-            value={searchInput}
             onClick={handleSearch}
             className={
               showSearch
