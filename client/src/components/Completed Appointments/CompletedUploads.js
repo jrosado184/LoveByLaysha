@@ -1,8 +1,24 @@
 import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getCompletedAppointmentsById } from '../../redux/actions/appointment-actions';
 import { connect } from 'react-redux';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Uploads = ({ dispatch, completedAppointmentsById }) => {
+  const { id } = useParams();
+  const nav = useNavigate();
+
+  const handleDelete = () => {
+    axiosWithAuth()
+      .delete(`/api/completedAppointments/${id}`)
+      .then(() => {
+        nav('/completedAppointments');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     dispatch(getCompletedAppointmentsById());
   });
@@ -35,7 +51,10 @@ const Uploads = ({ dispatch, completedAppointmentsById }) => {
           );
         })}
         <div className='flex justify-evenly w-full h-fit my-6 desktop:justify-center gap-12'>
-          <button className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-sm'>
+          <button
+            onClick={handleDelete}
+            className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-sm'
+          >
             Delete
           </button>
         </div>

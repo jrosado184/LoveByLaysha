@@ -11,7 +11,6 @@ import Confirm from './components/Appointments/Confirm';
 import Contact from './components/Main/Contact';
 import PrivateRoute from './utils/PrivateRoute';
 import Nails from './components/Nails/Nails';
-import Completed from './components/Completed Appointments/Completed';
 import CompletedAppointmentsList from './components/Completed Appointments/CompletedAppointmentsList';
 import CompletedInformation from './components/Completed Appointments/CompletedInformation';
 import CompletedUploads from './components/Completed Appointments/CompletedUploads';
@@ -48,14 +47,6 @@ const App = () => {
                   <ClientUploads />
                 </PrivateRoute>
               </div>
-            }
-          />
-          <Route
-            path='/completed'
-            element={
-              <PrivateRoute>
-                <Completed />
-              </PrivateRoute>
             }
           />
           <Route
