@@ -14,7 +14,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
     sortDates();
     setTimeout(() => {
       setLoading(false);
-    }, 900);
+    }, 600);
   }, []);
 
   return (
