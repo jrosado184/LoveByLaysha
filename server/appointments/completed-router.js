@@ -18,6 +18,14 @@ router.get('/:id', checkId, (req, res, next) => {
     .catch(next);
 });
 
+router.delete('/:id', checkId, (req, res, next) => {
+  Completed.remove(req.params.id)
+    .then((completed) => {
+      res.json(completed);
+    })
+    .catch(next);
+});
+
 router.use = (err, req, res, next) => {
   res.status(500).json({
     message: err.message,

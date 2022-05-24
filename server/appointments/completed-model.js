@@ -10,7 +10,12 @@ const findById = async (appointment_id) => {
   return rows;
 };
 
+const remove = async (appointment_id) => {
+  return await db('completed_appointments').del().where({ appointment_id });
+};
+
 module.exports = {
   findAll,
   findById,
+  remove,
 };

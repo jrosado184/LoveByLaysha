@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { getCompletedAppointmentsById } from "../../redux/actions/appointment-actions";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { getCompletedAppointmentsById } from '../../redux/actions/appointment-actions';
+import { connect } from 'react-redux';
 
 const Uploads = ({ dispatch, completedAppointmentsById }) => {
   useEffect(() => {
@@ -27,14 +27,18 @@ const Uploads = ({ dispatch, completedAppointmentsById }) => {
                 </p>
               )}
               <p className='ml-2 my-6'>
-                {appointmentId.client_details === ""
-                  ? "No Additional Details"
+                {appointmentId.client_details === ''
+                  ? 'No Additional Details'
                   : appointmentId.client_details}
               </p>
             </div>
           );
         })}
-        <div className='sm:flex justify-evenly w-full h-fit my-6 ml-2 desktop:justify-center gap-12'></div>
+        <div className='flex justify-evenly w-full h-fit my-6 desktop:justify-center gap-12'>
+          <button className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-sm'>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
