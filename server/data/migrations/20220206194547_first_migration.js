@@ -37,10 +37,16 @@ exports.up = async (knex) => {
       completed.boolean('client_Soak');
       completed.string('client_details');
       completed.string('images');
+    })
+    .createTable('disabled_days', (disabled) => {
+      disabled.integer('year');
+      disabled.integer('month');
+      disabled.integer('day');
     });
 };
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists('disabled_days');
   await knex.schema.dropTableIfExists('completed_appointments');
   await knex.schema.dropTableIfExists('appointments');
   await knex.schema.dropTableIfExists('users');

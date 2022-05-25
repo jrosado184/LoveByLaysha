@@ -4,6 +4,7 @@ const cors = require('cors');
 const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
 const completedRouter = require('./appointments/completed-router');
+const disabledDays = require('./appointments/disabled days/disabled-router');
 
 const server = express();
 server.use(express.json());
@@ -13,5 +14,6 @@ server.use(express.urlencoded({ extended: true }));
 server.use('/api/users', adminRouter);
 server.use('/api/appointments', appointRouter);
 server.use('/api/completedAppointments', completedRouter);
+server.use('/api/disabledDays', disabledDays);
 
 module.exports = server;
