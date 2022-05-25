@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { disabledDays } from './../data/Disabled';
 import BookFileUpload from './BookFileUpload';
 import { styles, Options, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
@@ -25,6 +24,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
     month: moment().month() + 1,
     day: moment().date(),
   });
+  const disabledTimes = [];
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate.month,
@@ -48,8 +48,6 @@ const Book = ({ fetchAppointments, dispatch }) => {
     set: '',
     refillSet: '',
   });
-
-  const disabledTimes = [];
 
   fetchAppointments.map(
     (appointment) =>

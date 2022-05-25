@@ -53,8 +53,23 @@ const Header = ({ dispatch }) => {
         >
           <Link to='book'>Book</Link>
         </nav>
-        <nav className='h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'>
+        <nav
+          className={
+            localStorage.getItem('token')
+              ? 'hidden'
+              : 'h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'
+          }
+        >
           <Link to='policies'>Policies</Link>
+        </nav>
+        <nav
+          className={
+            localStorage.getItem('token')
+              ? 'h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-24 h-[6%] items-center justify-center flex'
+              : 'hidden'
+          }
+        >
+          <Link to='schedule'>Schedule</Link>
         </nav>
         <nav
           className={

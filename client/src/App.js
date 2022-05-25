@@ -8,6 +8,7 @@ import AppointmentList from './components/Appointments/AppointmentList';
 import Appointment from './components/Appointments/Appointment';
 import ClientUploads from './components/Appointments/ClientUploads';
 import Confirm from './components/Appointments/Confirm';
+import Schedule from './components/Appointments/Schedule';
 import Contact from './components/Main/Contact';
 import PrivateRoute from './utils/PrivateRoute';
 import Nails from './components/Nails/Nails';
@@ -73,6 +74,14 @@ const App = () => {
             element={
               <PrivateRoute>
                 <AppointmentList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/schedule'
+            element={
+              <PrivateRoute>
+                <Schedule />
               </PrivateRoute>
             }
           />
