@@ -1,45 +1,84 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import moment from 'moment';
 import { Options } from './../data/Options';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
-  const [selectedDate, setSelectedDate] = useState({
-    year: moment().year(),
-    month: moment().month() + 1,
-    day: moment().date(),
-  });
-
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [enableDate, setEnableDate] = useState(null);
+  const [disabledDays, setDisabledDays] = useState([]);
   const [time, setTime] = useState(false);
-
   const [fullDay, setFullDay] = useState(false);
+  const [enable, setEnable] = useState(false);
 
   const disabledTimes = [];
 
-  fetchAppointments.map(
-    (appointment) =>
-      selectedDate.day === appointment.appointment_day &&
-      selectedDate.year === appointment.appointment_year &&
-      selectedDate.month === appointment.appointment_month &&
-      disabledTimes.push(appointment.appointment_time)
-  );
+  const addDisabledDay = () => {
+    axiosWithAuth()
+      .post('/api/disabledDays', selectedDate)
+      .then((res) => {
+        setDisabledDays((prev) => [...prev, res.data]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const EnableDate = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .delete('/api/disabledDays')
+      .then((res) => {
+        console.log('worked');
+      });
+  };
+
+  useEffect(() => {
+    !selectedDate !== null &&
+      fetchAppointments.map(
+        (appointment) =>
+          selectedDate.day === appointment.appointment_day &&
+          selectedDate.year === appointment.appointment_year &&
+          selectedDate.month === appointment.appointment_month &&
+          disabledTimes.push(appointment.appointment_time)
+      );
+  }, []);
 
   useEffect(() => {
     dispatch(getAppointments());
+    axiosWithAuth()
+      .get('/api/disabledDays')
+      .then((res) => {
+        setDisabledDays(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
     <div className='flex flex-col items-center my-6'>
-      <Calendar
-        calendarClassName='border-2 border-pink-200 h-[100%]'
-        colorPrimary='#f8a4d1'
-        value={selectedDate}
-        minimumDate={utils().getToday()}
-        onChange={setSelectedDate}
-      />
+      {!enable ? (
+        <Calendar
+          calendarClassName='border-2 border-pink-200 h-[100%]'
+          colorPrimary='#f8a4d1'
+          value={selectedDate}
+          minimumDate={utils().getToday()}
+          onChange={setSelectedDate}
+          disabledDays={disabledDays}
+        />
+      ) : (
+        <Calendar
+          calendarClassName='border-2 border-pink-200 h-[100%]'
+          colorPrimary='#f8a4d1'
+          value={enableDate}
+          minimumDate={utils().getToday()}
+          onChange={setEnableDate}
+        />
+      )}
       <div className='w-full flex justify-around my-4'>
         <div className='flex items-center'>
           <label className='mr-12'>
@@ -76,9 +115,34 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         </div>
       )}
       <div className='w-full flex justify-center my-8'>
-        <button className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'>
-          Disable
-        </button>
+        {!enable && (
+          <button
+            onClick={addDisabledDay}
+            disabled={selectedDate ? false : true}
+            className={
+              selectedDate
+                ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
+            }
+          >
+            Disable
+          </button>
+        )}
+        {!enable ? (
+          <button
+            onClick={() => setEnable(!enable)}
+            className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+          >
+            Schedule
+          </button>
+        ) : (
+          <button
+            onClick={EnableDate}
+            className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+          >
+            Enable
+          </button>
+        )}
       </div>
     </div>
   );

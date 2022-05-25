@@ -6,6 +6,7 @@ import { styles, Options, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import moment from 'moment';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Book = ({ fetchAppointments, dispatch }) => {
   // const disabledDays = [];
@@ -25,6 +26,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
     day: moment().date(),
   });
   const disabledTimes = [];
+
+  const [disabledDays, setDisabledDays] = useState([]);
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate.month,
@@ -75,6 +78,11 @@ const Book = ({ fetchAppointments, dispatch }) => {
 
   useEffect(() => {
     dispatch(getAppointments());
+    axiosWithAuth()
+      .get('/api/disabledDays')
+      .then((res) => {
+        setDisabledDays(res.data);
+      });
   }, []);
 
   return (
@@ -88,6 +96,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
+              disabledDays={disabledDays}
             />
             <div className='my-2 ml-2'></div>
           </div>

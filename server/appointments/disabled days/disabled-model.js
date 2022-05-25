@@ -14,7 +14,9 @@ const insert = async (day) => {
 };
 
 const remove = async (year, month, day) => {
-  const row = await db('disabled_days').del().where(year, month, day);
+  const row = await db('disabled_days')
+    .del()
+    .where(year, month, day, 'year', 'month', 'day');
   return row;
 };
 
