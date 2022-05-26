@@ -27,12 +27,14 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       });
   };
 
+  console.log(enableDate);
+
   const EnableDate = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .delete('/api/disabledDays')
+      .delete('/api/disabledDays', selectedDate)
       .then((res) => {
-        console.log('worked');
+        console.log(res);
       });
   };
 
