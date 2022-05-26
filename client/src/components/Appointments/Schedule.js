@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
@@ -34,19 +34,21 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const handleEnableButton = async (e) => {
     await EnableDate(e);
-    setEnable(!enable);
+    setEnable(false);
   };
 
   const EnableDate = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .delete('/api/disabledDays', { data: enableDate })
-      .then((res) => {
-        setDisabledDays(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    enableDate &&
+      axiosWithAuth()
+        .delete('/api/disabledDays', { data: enableDate })
+        .then((res) => {
+          setDisabledDays(res.data);
+          setEnable(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 
   useEffect(() => {
@@ -92,30 +94,21 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
           onChange={setEnableDate}
         />
       )}
-      <div className='w-full flex justify-around my-4'>
-        <div className='flex items-center'>
-          <label className='mr-12'>
-            <input
-              onChange={() => setFullDay(!fullDay)}
-              value={fullDay}
-              className='mr-2'
-              type='checkbox'
-            />
-            Full Day
-          </label>
+      {selectedDate && (
+        <div className='w-full flex justify-start my-4'>
+          <div className='flex items-center justify-center ml-12'>
+            <label className='mr-2'>
+              <input
+                onChange={() => setTime(!time)}
+                value={time}
+                className='mr-2'
+                type='checkbox'
+              />
+              Time
+            </label>
+          </div>
         </div>
-        <div className='flex items-center justify-center'>
-          <label className='mr-2'>
-            <input
-              onChange={() => setTime(!time)}
-              value={time}
-              className='mr-2'
-              type='checkbox'
-            />
-            Time
-          </label>
-        </div>
-      </div>
+      )}
       {time && (
         <div className='w-full flex justify-center'>
           <select
