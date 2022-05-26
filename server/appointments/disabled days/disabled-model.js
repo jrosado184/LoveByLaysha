@@ -14,8 +14,8 @@ const insert = async (day) => {
 };
 
 const remove = async (body) => {
-  const row = await db('disabled_days').del().where(body);
-  return row;
+  await db('disabled_days').del().where(body);
+  return findAll();
 };
 
 module.exports = {

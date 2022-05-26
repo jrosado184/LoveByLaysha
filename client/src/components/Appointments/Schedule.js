@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
@@ -27,14 +27,25 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       });
   };
 
-  console.log(enableDate);
+  const handleDisabledButton = async () => {
+    await addDisabledDay();
+    setSelectedDate(null);
+  };
+
+  const handleEnableButton = async (e) => {
+    await EnableDate(e);
+    setEnable(!enable);
+  };
 
   const EnableDate = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .delete('/api/disabledDays', { year: 2022, month: 5, day: 25 })
+      .delete('/api/disabledDays', { data: enableDate })
       .then((res) => {
-        console.log(res);
+        setDisabledDays(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -119,7 +130,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       <div className='w-full flex justify-center my-8'>
         {!enable && (
           <button
-            onClick={addDisabledDay}
+            onClick={handleDisabledButton}
             disabled={selectedDate ? false : true}
             className={
               selectedDate
@@ -139,7 +150,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
           </button>
         ) : (
           <button
-            onClick={EnableDate}
+            onClick={handleEnableButton}
             className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
           >
             Enable
