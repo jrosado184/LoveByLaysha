@@ -32,7 +32,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
   const EnableDate = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .delete('/api/disabledDays', selectedDate)
+      .delete('/api/disabledDays', { year: 2022, month: 5, day: 25 })
       .then((res) => {
         console.log(res);
       });
