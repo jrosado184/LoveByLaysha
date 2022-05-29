@@ -37,8 +37,8 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[0].time) ||
+          disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
@@ -52,9 +52,9 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[0].time) ||
           disabledTimes.includes(times[1].time) ||
+          disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
           disabledTimes.includes(times[5].time) ||
@@ -68,10 +68,10 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[0].time) ||
-          disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[1].time) ||
+          disabledTimes.includes(times[2].time) ||
+          disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
           disabledTimes.includes(times[5].time) ||
           disabledTimes.includes(times[6].time) ||
@@ -85,15 +85,16 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[4].time) ||
           disabledTimes.includes(times[0].time) ||
           disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
+          disabledTimes.includes(times[4].time) ||
           disabledTimes.includes(times[5].time) ||
           disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
-          disabledTimes.includes(times[8].time)
+          disabledTimes.includes(times[8].time) ||
+          disabledTimes.includes(times[9].time)
         }
         value='12:00 PM'
       >
@@ -102,12 +103,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[5].time) ||
           disabledTimes.includes(times[0].time) ||
           disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
           disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
           disabledTimes.includes(times[8].time) ||
@@ -121,12 +122,13 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[0].time) ||
           disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
+          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
           disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
@@ -140,15 +142,15 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[7].time) ||
-          disabledTimes.includes(times[1].time) ||
           disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
+          disabledTimes.includes(times[6].time) ||
+          disabledTimes.includes(times[7].time) ||
           disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
-          disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[11].time)
         }
         value='1:30 PM'
@@ -158,11 +160,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[8].time) ||
-          disabledTimes.includes(times[2].time) ||
           disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
+          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
+          disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
@@ -176,10 +179,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[9].time) ||
-          disabledTimes.includes(times[3].time) ||
           disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
+          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
+          disabledTimes.includes(times[8].time) ||
+          disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
@@ -193,10 +198,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[10].time) ||
-          disabledTimes.includes(times[4].time) ||
+          disabledTimes.includes(times[5].time) ||
+          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
+          disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
+          disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[13].time) ||
@@ -210,8 +217,10 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[11].time) ||
+          disabledTimes.includes(times[6].time) ||
           disabledTimes.includes(times[7].time) ||
+          disabledTimes.includes(times[8].time) ||
+          disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[12].time) ||
@@ -227,11 +236,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[7].time) ||
+          disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
+          disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[13].time) ||
           disabledTimes.includes(times[14].time) ||
           disabledTimes.includes(times[15].time) ||
@@ -244,11 +254,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[13].time) ||
+          disabledTimes.includes(times[8].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
+          disabledTimes.includes(times[13].time) ||
           disabledTimes.includes(times[14].time) ||
           disabledTimes.includes(times[15].time) ||
           disabledTimes.includes(times[16].time)
@@ -260,12 +271,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[14].time) ||
           disabledTimes.includes(times[9].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[13].time) ||
+          disabledTimes.includes(times[14].time) ||
           disabledTimes.includes(times[15].time) ||
           disabledTimes.includes(times[16].time)
         }
@@ -276,12 +287,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[15].time) ||
           disabledTimes.includes(times[10].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[13].time) ||
           disabledTimes.includes(times[14].time) ||
+          disabledTimes.includes(times[15].time) ||
           disabledTimes.includes(times[16].time)
         }
         value='5:30 PM'
@@ -291,12 +302,12 @@ export const Options = ({ disabledTimes }) => {
       ;
       <option
         disabled={
-          disabledTimes.includes(times[16].time) ||
           disabledTimes.includes(times[11].time) ||
           disabledTimes.includes(times[12].time) ||
           disabledTimes.includes(times[13].time) ||
           disabledTimes.includes(times[14].time) ||
-          disabledTimes.includes(times[15].time)
+          disabledTimes.includes(times[15].time) ||
+          disabledTimes.includes(times[16].time)
         }
         value='6:00 PM'
       >
