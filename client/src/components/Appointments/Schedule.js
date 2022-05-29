@@ -5,13 +5,17 @@ import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { Options } from './../data/Options';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import moment from 'moment';
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState({
+    year: moment().year(),
+    month: moment().month() + 1,
+    day: moment().date(),
+  });
   const [enableDate, setEnableDate] = useState(null);
   const [disabledDays, setDisabledDays] = useState([]);
   const [time, setTime] = useState(false);
-  const [fullDay, setFullDay] = useState(false);
   const [enable, setEnable] = useState(false);
 
   const disabledTimes = [];
