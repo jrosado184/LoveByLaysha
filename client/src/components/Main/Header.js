@@ -12,7 +12,7 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='flex bg-pink-200 w-full h-46 shadow-md flex flex-col'>
+      <div className='bg-pink-200 w-full h-46 shadow-md flex flex-col'>
         <div className='w-full'>
           {localStorage.getItem('token') ? (
             <div className='container'>
@@ -37,17 +37,17 @@ const Header = ({ dispatch }) => {
       <div
         className={
           localStorage.getItem('token')
-            ? 'sm:bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[5%] py-2 md:pr-4'
-            : 'sm:bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[2.6%] py-2 md:pr-4'
+            ? 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 md:pr-4'
+            : 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[2.6%] py-2 md:pr-4'
         }
       >
-        <nav className='ml-2 h-6 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
+        <nav className='ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
           <Link to='nails'>Nailfies</Link>
         </nav>
         <nav
           className={
             !localStorage.getItem('token')
-              ? 'h-6 text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'
+              ? 'text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'
               : 'hidden'
           }
         >

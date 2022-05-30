@@ -47,6 +47,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       disabledTimes.push(appointment.appointment_time)
   );
 
+  disabledTimes.splice(disabledTimes.indexOf(info.appointment_time));
+
   const handleFile = (url) => {
     setInfo({
       ...info,

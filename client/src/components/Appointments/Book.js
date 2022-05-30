@@ -9,17 +9,6 @@ import moment from 'moment';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Book = ({ fetchAppointments, dispatch }) => {
-  // const disabledDays = [];
-
-  /* DO NOT REMOVE ---- to use for selecting off days later on */
-  // fetchAppointments.map((t) =>
-  //   disabledDays.push({
-  //     year: t.appointment_year,
-  //     month: t.appointment_month,
-  //     day: t.appointment_day,
-  //   })
-  // );
-
   const [selectedDate, setSelectedDate] = useState({
     year: moment().year(),
     month: moment().month() + 1,
