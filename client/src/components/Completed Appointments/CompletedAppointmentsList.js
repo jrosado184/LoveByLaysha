@@ -12,7 +12,7 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
     dispatch(getCompletedAppointments());
     setTimeout(() => {
       setLoading(false);
-    }, 600);
+    }, 500);
   }, [dispatch]);
 
   return (

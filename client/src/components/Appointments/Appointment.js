@@ -24,7 +24,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
     dispatch(appointmentId(id));
     setTimeout(() => {
       setLoading(false);
-    }, 900);
+    }, 500);
   }, [dispatch]);
 
   return (

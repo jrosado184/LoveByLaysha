@@ -14,10 +14,10 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
     sortDates();
     setTimeout(() => {
       setLoading(false);
-    }, 600);
+    }, 500);
   }, []);
 
-  return (
+  return fetchAppointments.length ? (
     <>
       <Search />
       <div className='flex flex-col items-center my-2'>
@@ -30,6 +30,10 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
         )}
       </div>
     </>
+  ) : (
+    <div className='w-full h-96 flex justify-center items-center'>
+      No Appointments Scheduled
+    </div>
   );
 };
 

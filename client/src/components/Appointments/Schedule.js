@@ -6,6 +6,7 @@ import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import { Options } from './../data/Options';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import moment from 'moment';
+import AppointmentList from './AppointmentList';
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -79,82 +80,92 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
   }, []);
 
   return (
-    <div className='flex flex-col items-center my-6'>
-      {!enable ? (
-        <Calendar
-          calendarClassName='border-2 border-pink-200 h-[100%]'
-          colorPrimary='#f8a4d1'
-          value={selectedDate}
-          minimumDate={utils().getToday()}
-          onChange={setSelectedDate}
-          disabledDays={disabledDays}
-        />
-      ) : (
-        <Calendar
-          calendarClassName='border-2 border-pink-200 h-[100%]'
-          colorPrimary='#f8a4d1'
-          value={enableDate}
-          minimumDate={utils().getToday()}
-          onChange={setEnableDate}
-        />
-      )}
-      {selectedDate && (
-        <div className='w-full flex justify-start my-4'>
-          <div className='flex items-center justify-center ml-12'>
-            <label className='mr-2'>
-              <input
-                onChange={() => setTime(!time)}
-                value={time}
-                className='mr-2'
-                type='checkbox'
-              />
-              Time
-            </label>
+    <>
+      <div className='flex flex-col items-center w-full desktop:flex-row desktop:justify-around desktop:items-start'>
+        <div className='flex flex-col items-center my-6 desktop:items-start'>
+          {!enable ? (
+            <Calendar
+              calendarClassName='border-2 border-pink-200 h-[100%]'
+              colorPrimary='#f8a4d1'
+              value={selectedDate}
+              minimumDate={utils().getToday()}
+              onChange={setSelectedDate}
+              disabledDays={disabledDays}
+            />
+          ) : (
+            <Calendar
+              calendarClassName='border-2 border-pink-200 h-[100%]'
+              colorPrimary='#f8a4d1'
+              value={enableDate}
+              minimumDate={utils().getToday()}
+              onChange={setEnableDate}
+            />
+          )}
+          {selectedDate && (
+            <div className='w-full flex justify-start my-4'>
+              <div className='flex items-center justify-center'>
+                <label className='mr-2'>
+                  <input
+                    onChange={() => setTime(!time)}
+                    value={time}
+                    className='mr-2'
+                    type='checkbox'
+                  />
+                  Time
+                </label>
+              </div>
+            </div>
+          )}
+          {time && (
+            <div className='w-full flex justify-center'>
+              <select
+                name='appointment_time'
+                className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:desktop:w-full'
+              >
+                <option value=''>select a time</option>
+                {<Options disabledTimes={disabledTimes} />}
+              </select>
+            </div>
+          )}
+          <div className='w-full flex justify-center my-8 desktop:justify-start desktop:ml-12'>
+            {!enable && (
+              <button
+                onClick={handleDisabledButton}
+                disabled={selectedDate ? false : true}
+                className={
+                  selectedDate
+                    ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                    : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
+                }
+              >
+                Disable
+              </button>
+            )}
+            {!enable ? (
+              <button
+                onClick={() => setEnable(!enable)}
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+              >
+                Schedule
+              </button>
+            ) : (
+              <button
+                onClick={handleEnableButton}
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+              >
+                Enable
+              </button>
+            )}
           </div>
         </div>
-      )}
-      {time && (
-        <div className='w-full flex justify-center'>
-          <select
-            name='appointment_time'
-            className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
-          >
-            <option value=''>select a time</option>
-            {<Options disabledTimes={disabledTimes} />}
-          </select>
+        <div className='w-full border border-pink-200 desktop:hidden'></div>
+        <div className=' py-6 h-full w-full desktop:w-3/6'>
+          <div className='scrollbar-hide overflow-y-scroll h-96'>
+            {<AppointmentList /> || <div>No Appointments</div>}
+          </div>
         </div>
-      )}
-      <div className='w-full flex justify-center my-8'>
-        {!enable && (
-          <button
-            onClick={handleDisabledButton}
-            disabled={selectedDate ? false : true}
-            className={
-              selectedDate
-                ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
-                : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
-            }
-          >
-            Disable
-          </button>
-        )}
-        {!enable ? (
-          <button
-            onClick={() => setEnable(!enable)}
-            className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
-          >
-            Schedule
-          </button>
-        ) : (
-          <button
-            onClick={handleEnableButton}
-            className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
-          >
-            Enable
-          </button>
-        )}
       </div>
-    </div>
+    </>
   );
 };
 
