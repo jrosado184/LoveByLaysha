@@ -230,7 +230,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
                   width={330}
                   apiKey={process.env.REACT_APP_UPLOAD_KEY}
                   onSuccess={handleFile}
-                  preview='false'
+                  preview='true'
                 />
               </div>
             </label>

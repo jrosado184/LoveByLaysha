@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { addAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -10,15 +10,20 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .post('/api/appointments', info)
-      .then((res) => {
-        dispatch(addAppointments(res.data));
-        nav('/loading');
-      })
-      .catch((err) => {
-        console.log(err.response.message);
-      });
+    info.appointment_day &&
+      info.appointment_time &&
+      info.client_name &&
+      info.client_phone &&
+      info.client_set !== 'none' &&
+      axiosWithAuth()
+        .post('/api/appointments', info)
+        .then((res) => {
+          dispatch(addAppointments(res.data));
+          nav('/loading');
+        })
+        .catch((err) => {
+          console.log(err.response.message);
+        });
   };
 
   const handleFile = (url) => {
@@ -37,14 +42,29 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
             width={330}
             apiKey={process.env.REACT_APP_UPLOAD_KEY}
             onSuccess={handleFile}
-            preview='false'
+            preview='true'
           />
         </div>
       </label>
       <input
-        disabled={false}
+        disabled={
+          info.appointment_day &&
+          info.appointment_time &&
+          info.client_name &&
+          info.client_phone
+            ? false
+            : true
+        }
         data-testid='bookbtn'
-        className='w-20 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
+        className={
+          info.appointment_day &&
+          info.appointment_time &&
+          info.client_name &&
+          info.client_phone &&
+          (info.client_set !== 'none' || info.refillSet !== 'none')
+            ? 'w-20 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
+            : 'opacity-90 w-20 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
+        }
         type='submit'
         onClick={handleSubmit}
       />
