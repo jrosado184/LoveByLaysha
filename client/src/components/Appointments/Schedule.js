@@ -69,7 +69,12 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const disableTime = () => {
     axiosWithAuth()
-      .post("/api/disabledTimes", { time: selectedTime }, selectedDate)
+      .post("/api/disabledTimes", {
+        time: selectedTime,
+        year: selectedDate.year,
+        month: selectedDate.month,
+        day: selectedDate.day,
+      })
       .then((res) => {
         setUnavailableTimes(res.data);
       })
