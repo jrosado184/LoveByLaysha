@@ -24,6 +24,14 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
         .catch((err) => {
           console.log(err.response.message);
         });
+    axiosWithAuth()
+      .post('/api/disabledTimes', info.appointment_time)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleFile = (url) => {

@@ -15,11 +15,21 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
     day: moment().date(),
   });
   const [enableDate, setEnableDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState('');
   const [disabledDays, setDisabledDays] = useState([]);
   const [time, setTime] = useState(false);
   const [enable, setEnable] = useState(false);
 
   const disabledTimes = [];
+
+  selectedDate !== null &&
+    fetchAppointments.map(
+      (appointment) =>
+        selectedDate.day === appointment.appointment_day &&
+        selectedDate.year === appointment.appointment_year &&
+        selectedDate.month === appointment.appointment_month &&
+        disabledTimes.push(appointment.appointment_time)
+    );
 
   const addDisabledDay = () => {
     axiosWithAuth()
@@ -56,16 +66,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         });
   };
 
-  useEffect(() => {
-    !selectedDate !== null &&
-      fetchAppointments.map(
-        (appointment) =>
-          selectedDate.day === appointment.appointment_day &&
-          selectedDate.year === appointment.appointment_year &&
-          selectedDate.month === appointment.appointment_month &&
-          disabledTimes.push(appointment.appointment_time)
-      );
-  }, []);
+  const disableTime = () => {};
 
   useEffect(() => {
     dispatch(getAppointments());
@@ -119,6 +120,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
           {time && (
             <div className='w-full flex justify-center'>
               <select
+                onChange={(e) => setSelectedTime(e.target.value)}
                 name='appointment_time'
                 className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:desktop:w-full'
               >
@@ -128,19 +130,27 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
             </div>
           )}
           <div className='w-full flex justify-center my-8 desktop:justify-start desktop:ml-12'>
-            {!enable && (
-              <button
-                onClick={handleDisabledButton}
-                disabled={selectedDate ? false : true}
-                className={
-                  selectedDate
-                    ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
-                    : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
-                }
-              >
-                Disable
-              </button>
-            )}
+            {!enable &&
+              (!time ? (
+                <button
+                  onClick={handleDisabledButton}
+                  disabled={selectedDate ? false : true}
+                  className={
+                    selectedDate
+                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                      : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
+                  }
+                >
+                  Disable
+                </button>
+              ) : (
+                <button
+                  onClick={disableTime}
+                  className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                >
+                  Disable Time
+                </button>
+              ))}
             {!enable ? (
               <button
                 onClick={() => setEnable(!enable)}
@@ -161,7 +171,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         <div className='w-full border border-pink-200 desktop:hidden'></div>
         <div className=' py-6 h-full w-full desktop:w-3/6'>
           <div className='scrollbar-hide overflow-y-scroll h-96'>
-            {<AppointmentList /> || <div>No Appointments</div>}
+            <AppointmentList />
           </div>
         </div>
       </div>

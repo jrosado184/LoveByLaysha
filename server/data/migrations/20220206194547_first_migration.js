@@ -42,10 +42,14 @@ exports.up = async (knex) => {
       disabled.integer('year');
       disabled.integer('month');
       disabled.integer('day');
+    })
+    .createTable('disabled_times', (times) => {
+      times.string('time');
     });
 };
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists('disabled_times');
   await knex.schema.dropTableIfExists('disabled_days');
   await knex.schema.dropTableIfExists('completed_appointments');
   await knex.schema.dropTableIfExists('appointments');

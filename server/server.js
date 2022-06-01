@@ -5,6 +5,7 @@ const adminRouter = require('./auth/users-router');
 const appointRouter = require('./appointments/appointments-router');
 const completedRouter = require('./appointments/completed-router');
 const disabledDays = require('./appointments/disabled days/disabled-router');
+const disabledTimes = require('./appointments/disabled_times/disabled_times_router');
 
 const server = express();
 server.use(express.json());
@@ -15,5 +16,6 @@ server.use('/api/users', adminRouter);
 server.use('/api/appointments', appointRouter);
 server.use('/api/completedAppointments', completedRouter);
 server.use('/api/disabledDays', disabledDays);
+server.use('/api/disabledTimes', disabledTimes);
 
 module.exports = server;
