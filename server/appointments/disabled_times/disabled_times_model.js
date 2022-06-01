@@ -4,9 +4,9 @@ const findAll = () => {
   return db("disabled_times");
 };
 
-const insert = async (time) => {
-  const [del] = await db("disabled_times").insert(time, [
-    "time, year,month,day",
+const insert = async (body) => {
+  const [del] = await db("disabled_times").insert(body, [
+    "time,year,month,day",
   ]);
   return del;
 };
