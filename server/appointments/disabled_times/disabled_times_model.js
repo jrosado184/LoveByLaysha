@@ -6,7 +6,10 @@ const findAll = () => {
 
 const insert = async (body) => {
   const [del] = await db("disabled_times").insert(body, [
-    "time,year,month,day",
+    "time",
+    "year",
+    "month",
+    "day",
   ]);
   return del;
 };

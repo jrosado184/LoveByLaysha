@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { getAppointments } from "../../redux/actions/appointment-actions";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
@@ -69,7 +69,12 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const disableTime = () => {
     axiosWithAuth()
-      .post("/api/disabledTimes", {})
+      .post("/api/disabledTimes", {
+        time: selectedTime,
+        year: selectedDate.year,
+        month: selectedDate.month,
+        day: selectedDate.day,
+      })
       .then((res) => {
         setUnavailableTimes(res.data);
       })
