@@ -25,7 +25,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
           console.log(err.response.message);
         });
     axiosWithAuth()
-      .post('/api/disabledTimes', info.appointment_time)
+      .post('/api/disabledTimes', { time: '5:00 PM' })
       .then((res) => {
         console.log(res);
       })

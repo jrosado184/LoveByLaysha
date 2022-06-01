@@ -28,7 +28,7 @@ router.delete('/', (req, res, next) => {
 });
 
 router.use((err, req, res, next) => {
-  res.json({
+  res.status(500).res.json({
     message: err.message,
   });
 });

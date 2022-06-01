@@ -5,8 +5,8 @@ const findAll = () => {
 };
 
 const insert = async (time) => {
-  const [disabled_time] = await db('disabled_times').insert(time, ['time']);
-  return disabled_time;
+  const del = await db('disabled_times').insert(time, ['time']);
+  return del;
 };
 
 const remove = async (time) => {
