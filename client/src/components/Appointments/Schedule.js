@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { Options } from './../data/Options';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import moment from 'moment';
-import AppointmentList from './AppointmentList';
+import React, { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar, utils } from "react-modern-calendar-datepicker";
+import { Options } from "./../data/Options";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import moment from "moment";
+import AppointmentList from "./AppointmentList";
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -15,10 +15,11 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
     day: moment().date(),
   });
   const [enableDate, setEnableDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState("");
   const [disabledDays, setDisabledDays] = useState([]);
   const [time, setTime] = useState(false);
   const [enable, setEnable] = useState(false);
+  const [unavailableTimes, setUnavailableTimes] = useState([]);
 
   const disabledTimes = [];
 
@@ -28,12 +29,12 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         selectedDate.day === appointment.appointment_day &&
         selectedDate.year === appointment.appointment_year &&
         selectedDate.month === appointment.appointment_month &&
-        disabledTimes.push(appointment.appointment_time)
+        disabledTimes.push([appointment.appointment_time])
     );
 
   const addDisabledDay = () => {
     axiosWithAuth()
-      .post('/api/disabledDays', selectedDate)
+      .post("/api/disabledDays", selectedDate)
       .then((res) => {
         setDisabledDays((prev) => [...prev, res.data]);
       })
@@ -56,7 +57,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
     e.preventDefault();
     enableDate &&
       axiosWithAuth()
-        .delete('/api/disabledDays', { data: enableDate })
+        .delete("/api/disabledDays", { data: enableDate })
         .then((res) => {
           setDisabledDays(res.data);
           setEnable(false);
@@ -66,19 +67,38 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         });
   };
 
-  const disableTime = () => {};
+  const disableTime = () => {
+    axiosWithAuth()
+      .post("/api/disabledTimes", { time: selectedTime }, selectedDate)
+      .then((res) => {
+        setUnavailableTimes(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get('/api/disabledDays')
+      .get("/api/disabledDays")
       .then((res) => {
         setDisabledDays(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
+  }, [unavailableTimes]);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/disabledTimes")
+      .then((res) => {
+        setUnavailableTimes(res.data);
+      });
   }, []);
+
+  console.log(unavailableTimes);
 
   return (
     <>
@@ -137,8 +157,8 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                   disabled={selectedDate ? false : true}
                   className={
                     selectedDate
-                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
-                      : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
+                      ? "w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm"
+                      : "w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60"
                   }
                 >
                   Disable
