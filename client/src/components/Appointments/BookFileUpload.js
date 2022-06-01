@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { addAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SimpleFileUpload from 'react-simple-file-upload';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
+export const disabledTimes = [];
+
 const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
   const nav = useNavigate();
+
+  const [times, setTimes] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,9 +29,10 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
           console.log(err.response.message);
         });
     axiosWithAuth()
-      .post('/api/disabledTimes')
+      .post('/api/disabledTimes', { time: info.appointment_time })
       .then((res) => {
         console.log(res);
+        setTimes(res);
       })
       .catch((err) => {
         console.log(err);
@@ -40,6 +45,17 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
       images: url,
     });
   };
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get('/api/disabledDays')
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
