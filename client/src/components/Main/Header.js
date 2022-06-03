@@ -12,24 +12,24 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='bg-pink-200 w-full h-46 shadow-md flex flex-col'>
+      <div className='bg-pink-200 w-full h-48 shadow-md'>
         <div className='w-full'>
           {localStorage.getItem("token") ? (
-            <div className='container'>
+            <div className='flex'>
               <img
-                className='user-image ml-6 my-4 w-44 h-44 rounded-full border-4 border-white md:w-44'
+                className='user-image ml-6 my-2 w-32 h-32 rounded-full border-4 border-white'
                 src={user}
                 alt=''
               />
             </div>
           ) : (
             <img
-              className='ml-6 my-4 w-44 h-44 rounded-full border-4 border-white hover:opacity-75 md:w-44'
+              className='ml-6 w-44 h-44 rounded-full border-4 border-white hover:opacity-75 md:w-44'
               src={laysha}
               alt=''
             />
           )}
-          <div className='pl-14 py-1 text-2xl w-full'>
+          <div className='pl-10 pb-6 text-2xl w-full'>
             <p className='font-light'>{localStorage.getItem("message")}</p>
           </div>
         </div>

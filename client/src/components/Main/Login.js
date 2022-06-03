@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { handleLogin, login } from '../../redux/actions/login_actions';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { handleLogin, login } from "../../redux/actions/login_actions";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Login = (props) => {
   const { dispatch } = props;
@@ -9,8 +9,8 @@ const Login = (props) => {
   const nav = useNavigate();
 
   const [login, setLogin] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    nav('/nails');
+    nav("/nails");
   };
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -49,7 +49,7 @@ const Login = (props) => {
           onChange={handleChange}
         />
         <input
-          className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-pink-300 rounded-full'
+          className='w-20 h-8 my-3 border-2 border-pink-300 bg-pink-100 text-pink-600 rounded-full cursor-pointer'
           type='submit'
         />
       </form>

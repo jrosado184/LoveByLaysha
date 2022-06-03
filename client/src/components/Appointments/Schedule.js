@@ -7,6 +7,8 @@ import { Options } from "./../data/Options";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import moment from "moment";
 import AppointmentList from "./AppointmentList";
+import { Months } from "../../Algos/Months";
+import trash from "./../../assets/trash.png";
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -23,14 +25,28 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const disabledTimes = [];
 
-  selectedDate !== null &&
+  const findBookedTimes = () => {
     fetchAppointments.map(
       (appointment) =>
         selectedDate.day === appointment.appointment_day &&
         selectedDate.year === appointment.appointment_year &&
         selectedDate.month === appointment.appointment_month &&
-        disabledTimes.push([appointment.appointment_time])
+        disabledTimes.push(appointment.appointment_time)
     );
+  };
+
+  const findSelectedTimesOff = () => {
+    unavailableTimes.map(
+      (time) =>
+        selectedDate.year === time.year &&
+        selectedDate.month === time.month &&
+        selectedDate.day === time.day &&
+        disabledTimes.push(time.time)
+    );
+  };
+  selectedDate !== null && findBookedTimes();
+
+  findSelectedTimesOff();
 
   const addDisabledDay = () => {
     axiosWithAuth()
@@ -41,11 +57,6 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const handleDisabledButton = async () => {
-    await addDisabledDay();
-    setSelectedDate(null);
   };
 
   const handleEnableButton = async (e) => {
@@ -76,6 +87,18 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         day: selectedDate.day,
       })
       .then((res) => {
+        setUnavailableTimes((prev) => [...prev, res.data]);
+        setSelectedTime("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const enableTime = (time) => {
+    axiosWithAuth()
+      .delete("/api/disabledTimes", { data: { time: time } })
+      .then((res) => {
         setUnavailableTimes(res.data);
       })
       .catch((err) => {
@@ -93,7 +116,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [unavailableTimes]);
+  }, []);
 
   useEffect(() => {
     axiosWithAuth()
@@ -103,7 +126,10 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       });
   }, []);
 
-  console.log(unavailableTimes);
+  const bookedTimes = fetchAppointments.map((time) => time.appointment_time);
+  const adminSelectedDaysOff = disabledTimes.filter(
+    (time) => !bookedTimes.includes(time)
+  );
 
   return (
     <>
@@ -154,11 +180,11 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               </select>
             </div>
           )}
-          <div className='w-full flex justify-center my-8 desktop:justify-start desktop:ml-12'>
+          <div className='w-full flex justify-center my-4 desktop:justify-start desktop:ml-12'>
             {!enable &&
               (!time ? (
                 <button
-                  onClick={handleDisabledButton}
+                  onClick={addDisabledDay}
                   disabled={selectedDate ? false : true}
                   className={
                     selectedDate
@@ -173,7 +199,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                   onClick={disableTime}
                   className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
                 >
-                  Disable Time
+                  Disable
                 </button>
               ))}
             {!enable ? (
@@ -192,9 +218,38 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               </button>
             )}
           </div>
+          <div className='w-full my-6 border border-pink-200 desktop:hidden'></div>
+          <div className='w-full flex flex-col items-center border border-pink-400 rounded-md h-60 my-6 desktop:my-12'>
+            <div className='flex w-full h-8 justify-center items-center border-b border-pink-400'>
+              <p className='font-medium'>{`Disabled times for ${Months(
+                selectedDate.month
+              )} ${selectedDate.day}, ${selectedDate.year} `}</p>
+            </div>
+            {adminSelectedDaysOff.length ? (
+              <div>
+                {adminSelectedDaysOff.map((times, index) => (
+                  <div key={index} className='flex w-full justify-center my-2'>
+                    <ul>{times}</ul>
+                    <div className='w-6 flex items-center justify-center ml-2'>
+                      <img
+                        onClick={() => enableTime(times)}
+                        className='w-3 object-fit cursor-pointer'
+                        src={trash}
+                        alt=''
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className='flex justify-center items-center w-full h-60'>
+                <p>No selected times off</p>
+              </div>
+            )}
+          </div>
+          <div className='w-full my-6 border border-pink-200 desktop:hidden'></div>
         </div>
-        <div className='w-full border border-pink-200 desktop:hidden'></div>
-        <div className=' py-6 h-full w-full desktop:w-3/6'>
+        <div className=' py-6 h-full w-full desktop:w-[40%]'>
           <div className='scrollbar-hide overflow-y-scroll h-96'>
             <AppointmentList />
           </div>
