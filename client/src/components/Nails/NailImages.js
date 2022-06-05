@@ -12,7 +12,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
           return (
             <div
               key={nailData}
-              className='nail-container w-[45%] h-60 my-2 border-2 border-gray-400 shadow-md rounded-md sm2:w-40 lg:w-[13%]'
+              className='nail-container w-[45%] h-60 my-2 shadow-md rounded-sm sm2:w-40 lg:w-[13%]'
             >
               <div className='delete-nail-con'>
                 {removeImage && (
@@ -31,7 +31,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
               </div>
               <img
                 key={nailData}
-                className='h-full w-full'
+                className='h-full w-full rounded-md border-2 border-gray-400'
                 src={nailData}
                 alt=''
               />

@@ -16,7 +16,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
     dispatch(appointmentId(id));
     setTimeout(() => {
       setLoading(false);
-    }, 900);
+    }, 500);
   }, []);
 
   const handleDelete = () => {
