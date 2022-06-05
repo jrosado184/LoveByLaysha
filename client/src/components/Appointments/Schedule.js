@@ -16,6 +16,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
     month: moment().month() + 1,
     day: moment().date(),
   });
+
   const [enableDate, setEnableDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("");
   const [disabledDays, setDisabledDays] = useState([]);
@@ -88,7 +89,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
       })
       .then((res) => {
         setUnavailableTimes((prev) => [...prev, res.data]);
-        setSelectedTime("");
+        setTime(false);
       })
       .catch((err) => {
         console.log(err);
@@ -162,6 +163,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                     value={time}
                     className='mr-2'
                     type='checkbox'
+                    checked={time}
                   />
                   Time
                 </label>

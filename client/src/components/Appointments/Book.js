@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import BookFileUpload from './BookFileUpload';
-import { styles, Options, refillSet } from '../data/Options';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import moment from 'moment';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import React, { useState, useEffect } from "react";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar, utils } from "react-modern-calendar-datepicker";
+import BookFileUpload from "./BookFileUpload";
+import { styles, Options, refillSet } from "../data/Options";
+import { connect } from "react-redux";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import moment from "moment";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Book = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -18,36 +18,54 @@ const Book = ({ fetchAppointments, dispatch }) => {
 
   const [disabledDays, setDisabledDays] = useState([]);
 
+  const [unavailableTimes, setUnavailableTimes] = useState([]);
+
   const [info, setInfo] = useState({
     appointment_month: selectedDate.month,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
-    appointment_time: '',
-    client_name: '',
-    client_phone: '',
-    client_set: 'none',
+    appointment_time: "",
+    client_name: "",
+    client_phone: "",
+    client_set: "none",
     client_refill: false,
-    client_refillSet: 'none',
+    client_refillSet: "none",
     client_Soak: false,
-    client_details: '',
-    images: '',
+    client_details: "",
+    images: "",
   });
 
   const [error, setError] = useState({
-    time: '',
-    name: '',
-    phone: '',
-    set: '',
-    refillSet: '',
+    time: "",
+    name: "",
+    phone: "",
+    set: "",
+    refillSet: "",
   });
 
-  fetchAppointments.map(
-    (appointment) =>
-      selectedDate.day === appointment.appointment_day &&
-      selectedDate.year === appointment.appointment_year &&
-      selectedDate.month === appointment.appointment_month &&
-      disabledTimes.push(appointment.appointment_time)
-  );
+  const findBookedTimes = () => {
+    fetchAppointments.map(
+      (appointment) =>
+        selectedDate.day === appointment.appointment_day &&
+        selectedDate.year === appointment.appointment_year &&
+        selectedDate.month === appointment.appointment_month &&
+        disabledTimes.push(appointment.appointment_time)
+    );
+  };
+
+  findBookedTimes();
+
+  const findSelectedTimesOff = () => {
+    unavailableTimes.map(
+      (time) =>
+        selectedDate.year === time.year &&
+        selectedDate.month === time.month &&
+        selectedDate.day === time.day &&
+        disabledTimes.push(time.time)
+    );
+  };
+
+  findSelectedTimesOff();
 
   const handleCalendar = (e) => {
     setSelectedDate(e);
@@ -59,8 +77,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
       appointment_month: selectedDate.month,
       appointment_day: selectedDate.day,
       appointment_year: selectedDate.year,
-      client_set: info.client_refill ? 'none' : info.client_set,
-      client_refillSet: info.client_set ? 'none' : info.client_set,
+      client_set: info.client_refill ? "none" : info.client_set,
+      client_refillSet: info.client_set ? "none" : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -68,9 +86,20 @@ const Book = ({ fetchAppointments, dispatch }) => {
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get('/api/disabledDays')
+      .get("/api/disabledDays")
       .then((res) => {
         setDisabledDays(res.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/disabledTimes")
+      .then((res) => {
+        setUnavailableTimes(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -127,8 +156,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
-                  : 'hidden'
+                  ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]"
+                  : "hidden"
               }
             >
               <option value=''>Select a new set</option>
@@ -158,8 +187,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 desktop:w-[70%]'
-                  : 'hidden'
+                  ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 desktop:w-[70%]"
+                  : "hidden"
               }
             >
               <option value=''>select refill</option>

@@ -48,9 +48,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
   useEffect(() => {
     axiosWithAuth()
       .get("/api/disabledDays")
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
