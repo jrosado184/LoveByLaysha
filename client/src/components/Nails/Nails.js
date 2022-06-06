@@ -62,8 +62,21 @@ const Nails = (logIn) => {
   return (
     <div className='pb-20 py-2 desktop:py-1'>
       {localStorage.getItem('token') && (
-        <div className='w-full h-8 flex justify-end pr-6 desktop:hidden'>
-          <img className='w-10 h-fit' src={dots} alt='dots' />
+        <div className='w-full h-8 flex justify-end items-center pr-6 desktop:hidden'>
+          {removeImage && (
+            <p
+              onClick={() => setRemoveImage(!removeImage)}
+              className='text-pink-500 w-[18%] flex justify-center items-center bg-pink-200 border border-pink-400 rounded-full'
+            >
+              Done
+            </p>
+          )}
+          <img
+            onClick={() => setRemoveImage(!removeImage)}
+            className={removeImage ? 'hidden' : 'w-10 h-fit'}
+            src={dots}
+            alt='dots'
+          />
         </div>
       )}
       {image && (
