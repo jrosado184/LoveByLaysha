@@ -53,12 +53,12 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
               >
                 {appointmentId.images ? (
                   <img
-                    className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
+                    className='w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
                     alt=''
                     src={appointmentId.images}
                   />
                 ) : (
-                  <p className='sm:flex justify-center items-center w-96 border-2 border-gray-400 desktop:w-[50%] h-96'>
+                  <p className='sm:flex justify-center items-center w-96 border-2 border-gray-400 rounded-md desktop:w-[50%] h-96'>
                     No images uploaded
                   </p>
                 )}

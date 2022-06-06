@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Modal } from 'antd';
 
 const UploadModal = ({ image, setImage, handleImage }) => {
   const [modal, setModal] = useState(false);
@@ -14,7 +15,8 @@ const UploadModal = ({ image, setImage, handleImage }) => {
 
   return (
     <div className='upload-modal'>
-      <div className='flex justify-center'>
+      <Modal title='Upload Image' visible={true}></Modal>
+      {/* <div className='flex justify-center'>
         <div className='modal-box rounded-md'>
           <p className='font-bold my-2 w-[100%] text-center'>Upload file?</p>
           <div className='flex justify-evenly w-full my-6'>
@@ -32,7 +34,7 @@ const UploadModal = ({ image, setImage, handleImage }) => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

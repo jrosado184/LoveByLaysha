@@ -10,7 +10,10 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage';
+import NailUploadNav from './NailUploadNav';
 import NailSkeleton from './NailSkeleton';
+import FooterNav from './../Mobile/FooterNav';
+import dots from './../../assets/dots.svg';
 
 const Nails = (logIn) => {
   const [token, setToken] = useState(null);
@@ -57,7 +60,12 @@ const Nails = (logIn) => {
   }, [logIn]);
 
   return (
-    <>
+    <div className='pb-20 py-2 desktop:py-1'>
+      {localStorage.getItem('token') && (
+        <div className='w-full h-8 flex justify-end pr-6 desktop:hidden'>
+          <img className='w-10 h-fit' src={dots} alt='dots' />
+        </div>
+      )}
       {image && (
         <UploadModal
           setImage={setImage}
@@ -65,31 +73,12 @@ const Nails = (logIn) => {
           handleImage={handleImage}
         />
       )}
-      {token && (
-        <div className='flex items-center justify-center w-full h-14 shadow-md sticky top-0 bg-white'>
-          <div className='w-[50%] h-full  text-pink-800 border border-pink-200 flex justify-center items-center cursor-pointer'>
-            <label
-              className='cursor-pointer'
-              onClick={(e) => setImage(e.target.files[0])}
-            >
-              Upload Images
-              <input
-                onChange={(e) => setImage(e.target.files[0])}
-                type='file'
-                className='custom-file-input'
-              />
-            </label>
-          </div>
-          <div className='w-[50%] h-full border border-pink-200 flex justify-center cursor-pointer'>
-            <button
-              onClick={() => setRemoveImage(!removeImage)}
-              className='text-pink-800'
-            >
-              {removeImage ? 'Finish' : 'Remove Images'}
-            </button>
-          </div>
-        </div>
-      )}
+      <NailUploadNav
+        token={token}
+        removeImage={removeImage}
+        setImage={setImage}
+        setRemoveImage={setRemoveImage}
+      />
       {loading && <NailSkeleton cards={imageUrl.length} />}
       <NailImages
         handleDeleteImage={handleDeleteImage}
@@ -97,7 +86,12 @@ const Nails = (logIn) => {
         token={token}
         removeImage={removeImage}
       />
-    </>
+      {localStorage.getItem('token') && (
+        <div className='fixed bottom-0 w-full z-10 y-20'>
+          <FooterNav setImage={setImage} />
+        </div>
+      )}
+    </div>
   );
 };
 

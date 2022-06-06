@@ -7,7 +7,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
 
   return (
     <>
-      <div className='w-full h-full flex flex-wrap justify-center gap-6 py-4 pl-6 pr-4'>
+      <div className='w-full h-full flex flex-wrap justify-center gap-6 pl-6 pr-4 desktop:py-6'>
         {imageUrl.map((nailData) => {
           return (
             <div

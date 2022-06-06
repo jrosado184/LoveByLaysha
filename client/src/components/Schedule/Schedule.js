@@ -7,8 +7,7 @@ import { Options } from '../data/Options';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import moment from 'moment';
 import MainCalendar from './MainCalendar';
-import { Months } from '../../Algos/Months';
-import trash from './../../assets/trash.png';
+import FooterNav from './../Mobile/FooterNav';
 import DisabledTimes from './DisabledTimes';
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
@@ -216,22 +215,14 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               </button>
             )}
           </div>
-          <div className='w-full my-6 border border-pink-200 desktop:hidden'></div>
-          <div className='w-full flex flex-col items-center border border-pink-400 rounded-md h-60 my-6 desktop:my-12'>
-            <div className='flex w-full h-8 justify-center items-center border-b border-pink-400'>
-              <p className='font-medium'>{`Disabled times for ${Months(
-                selectedDate.month
-              )} ${selectedDate.day}, ${selectedDate.year} `}</p>
-            </div>
-            <DisabledTimes
-              disabledTimes={disabledTimes}
-              enableTime={enableTime}
-            />
-          </div>
-          <div className='w-full my-6 border border-pink-200 desktop:hidden'></div>
+          <DisabledTimes
+            disabledTimes={disabledTimes}
+            enableTime={enableTime}
+            selectedDate={selectedDate}
+          />
         </div>
         <div className=' py-6 h-full w-[95%] desktop:w-[81%] desktop:pl-20'>
-          <div className=''>
+          <div className='hidden desktop:block'>
             <MainCalendar />
           </div>
         </div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import trash from './../../assets/trash.png';
+import { Months } from '../../Algos/Months';
 
 const DisabledTimes = ({
   fetchAppointments,
-  dispatch,
+  selectedDate,
   disabledTimes,
   enableTime,
 }) => {
@@ -14,28 +15,36 @@ const DisabledTimes = ({
   );
 
   return (
-    <div>
-      {adminSelectedDaysOff.length ? (
-        <div>
-          {adminSelectedDaysOff.map((times, index) => (
-            <div key={index} className='flex w-full justify-center my-2'>
-              <ul>{times}</ul>
-              <div className='w-6 flex items-center justify-center ml-2'>
-                <img
-                  onClick={() => enableTime(times)}
-                  className='w-3 object-fit cursor-pointer'
-                  src={trash}
-                  alt=''
-                />
+    <div className='w-full h-80'>
+      <div className='w-full my-12 border border-pink-200 desktop:hidden'></div>
+      <div className='w-full flex flex-col items-center border border-pink-400 rounded-md h-60 my-6 desktop:my-12'>
+        <div className='flex w-full h-8 justify-center items-center border-b border-pink-400'>
+          <p className='font-medium'>{`Disabled times for ${Months(
+            selectedDate.month
+          )} ${selectedDate.day}, ${selectedDate.year} `}</p>
+        </div>
+        {adminSelectedDaysOff.length ? (
+          <div>
+            {adminSelectedDaysOff.map((times, index) => (
+              <div key={index} className='flex w-full justify-center my-2'>
+                <ul>{times}</ul>
+                <div className='w-6 flex items-center justify-center ml-2'>
+                  <img
+                    onClick={() => enableTime(times)}
+                    className='w-3 object-fit cursor-pointer'
+                    src={trash}
+                    alt=''
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className='flex justify-center items-center w-full h-60'>
-          <p>No selected times off</p>
-        </div>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div className='flex justify-center items-center w-full h-60'>
+            <p>No selected times off</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

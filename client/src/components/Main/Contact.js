@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import instagram from "../../assets/instagram.svg";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import instagram from '../../assets/instagram.svg';
 
 export const Contact = () => {
   const form = useRef();
