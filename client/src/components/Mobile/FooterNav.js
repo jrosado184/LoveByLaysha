@@ -38,7 +38,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
             <CalendarIcon className='w-9 h-fit' strokeWidth='.9' />
           </Link>
         ) : (
-          <Link to='policies'>
+          <Link to='/policies'>
             <ClipboardListIcon className='w-9' strokeWidth='.9' />
           </Link>
         )}
@@ -67,22 +67,20 @@ const FooterNav = ({ setImage, onNailComp }) => {
       )}
       {!localStorage.getItem('token') && (
         <div className='w-9 h-full flex items-center justify-center pb-2'>
-          <Link to='/appointments'>
+          <Link to='/contact'>
             <MailIcon className='w-9 h-fit' strokeWidth='.9' />
           </Link>
         </div>
       )}
-      <div className='w-9 h-full flex items-center justify-center pb-2'>
-        {localStorage.getItem('token') ? (
+      {localStorage.getItem('token') && (
+        <div className='w-9 h-full flex items-center justify-center pb-2'>
+          (
           <Link to='/settings'>
             <CogIcon strokeWidth='.9' className='w-9 h-fit' />
           </Link>
-        ) : (
-          <Link to='/login'>
-            <UserIcon className='w-9 h-fit' strokeWidth='.9' />
-          </Link>
-        )}
-      </div>
+          )
+        </div>
+      )}
     </div>
   );
 };

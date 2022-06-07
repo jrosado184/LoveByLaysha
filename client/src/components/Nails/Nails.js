@@ -62,7 +62,7 @@ const Nails = (logIn) => {
   }, [logIn]);
 
   return (
-    <div>
+    <div className='pb-20 desktop:p-0'>
       {localStorage.getItem('token') && (
         <div
           className={

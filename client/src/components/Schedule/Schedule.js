@@ -129,7 +129,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   return (
     <>
-      <div className='flex flex-col items-center w-full desktop:flex-row desktop:items-start desktop:pl-20 '>
+      <div className='flex flex-col items-center w-full desktop:flex-row desktop:items-start pb-20 desktop:pl-20 '>
         <div className='flex flex-col items-center my-6 desktop:items-start'>
           {!enable ? (
             <Calendar

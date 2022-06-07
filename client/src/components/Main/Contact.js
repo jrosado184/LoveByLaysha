@@ -27,7 +27,7 @@ export const Contact = () => {
 
   return (
     <>
-      <div className='flex flex-col lg:flex-row w-[100%] h-full items-center'>
+      <div className='flex flex-col pb-20 lg:flex-row w-[100%] h-full items-center'>
         <div className='w-[100%] lg:w-[50%]'>
           <form
             className='flex my-4 flex-col justify-center items-center lg:w-[100%]'

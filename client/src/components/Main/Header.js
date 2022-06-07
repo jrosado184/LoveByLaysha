@@ -4,7 +4,7 @@ import user from '../../assets/user.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loggedOut } from '../../redux/actions/login_actions';
-import { LogoutIcon } from '@heroicons/react/outline';
+import { LogoutIcon, LoginIcon } from '@heroicons/react/outline';
 
 const Header = ({ dispatch }) => {
   const handleLogOut = () => {
@@ -25,7 +25,7 @@ const Header = ({ dispatch }) => {
             </div>
           ) : (
             <img
-              className='ml-6 w-40 h-40 rounded-full border-4 border-white hover:opacity-75 md:w-44'
+              className='ml-6 w-32 h-32 rounded-full border-4 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
               src={laysha}
               alt=''
             />
@@ -42,13 +42,13 @@ const Header = ({ dispatch }) => {
             : 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4'
         }
       >
-        {/* <nav className='ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
+        <nav className='hidden desktop:flex ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center'>
           <Link to='nails'>Nailfies</Link>
         </nav>
         <nav
           className={
             !localStorage.getItem('token')
-              ? 'text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'
+              ? 'hidden desktop:flex text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center'
               : 'hidden'
           }
         >
@@ -58,7 +58,7 @@ const Header = ({ dispatch }) => {
           className={
             localStorage.getItem('token')
               ? 'hidden'
-              : 'h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'
+              : 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center'
           }
         >
           <Link to='policies'>Policies</Link>
@@ -66,7 +66,7 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             localStorage.getItem('token')
-              ? 'h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-24 h-[6%] items-center justify-center flex'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-24 h-[6%] items-center justify-center flex'
               : 'hidden'
           }
         >
@@ -75,7 +75,7 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             !localStorage.getItem('token')
-              ? 'h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center'
               : 'hidden'
           }
         >
@@ -84,19 +84,32 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             localStorage.getItem('token')
-              ? 'h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 w- h-[6%] pl-2 pr-2 items-center justify-center flex'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 w- h-[6%] pl-2 pr-2 items-center justify-center'
               : 'hidden'
           }
         >
           <Link to='appointments'>Appointments</Link>
-        </nav> */}
-        {localStorage.getItem('token') && (
-          <nav className='w-6 mr-4'>
+        </nav>
+        <nav className='w-6 mr-4 desktop:hidden'>
+          {localStorage.getItem('token') ? (
             <Link onClick={handleLogOut} to='/'>
               <LogoutIcon strokeWidth='1.3' />
             </Link>
-          </nav>
-        )}
+          ) : (
+            <Link to='/login'>
+              <LoginIcon strokeWidth='1.3' />
+            </Link>
+          )}
+        </nav>
+        <nav className='hidden desktop:block h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'>
+          {localStorage.getItem('token') ? (
+            <Link onClick={handleLogOut} to='/'>
+              Logout
+            </Link>
+          ) : (
+            <Link to='/login'>Login</Link>
+          )}
+        </nav>
       </div>
     </>
   );

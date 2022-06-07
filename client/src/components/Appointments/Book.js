@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
-import BookFileUpload from "./BookFileUpload";
-import { styles, Options, refillSet } from "../data/Options";
-import { connect } from "react-redux";
-import { getAppointments } from "../../redux/actions/appointment-actions";
-import moment from "moment";
-import axiosWithAuth from "../../utils/axiosWithAuth";
+import React, { useState, useEffect } from 'react';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import BookFileUpload from './BookFileUpload';
+import { styles, Options, refillSet } from '../data/Options';
+import { connect } from 'react-redux';
+import { getAppointments } from '../../redux/actions/appointment-actions';
+import moment from 'moment';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const Book = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -24,23 +24,23 @@ const Book = ({ fetchAppointments, dispatch }) => {
     appointment_month: selectedDate.month,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
-    appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    appointment_time: '',
+    client_name: '',
+    client_phone: '',
+    client_set: 'none',
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: 'none',
     client_Soak: false,
-    client_details: "",
-    images: "",
+    client_details: '',
+    images: '',
   });
 
   const [error, setError] = useState({
-    time: "",
-    name: "",
-    phone: "",
-    set: "",
-    refillSet: "",
+    time: '',
+    name: '',
+    phone: '',
+    set: '',
+    refillSet: '',
   });
 
   const findBookedTimes = () => {
@@ -77,8 +77,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
       appointment_month: selectedDate.month,
       appointment_day: selectedDate.day,
       appointment_year: selectedDate.year,
-      client_set: info.client_refill ? "none" : info.client_set,
-      client_refillSet: info.client_set ? "none" : info.client_set,
+      client_set: info.client_refill ? 'none' : info.client_set,
+      client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -86,7 +86,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get("/api/disabledDays")
+      .get('/api/disabledDays')
       .then((res) => {
         setDisabledDays(res.data);
       });
@@ -94,7 +94,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("/api/disabledTimes")
+      .get('/api/disabledTimes')
       .then((res) => {
         setUnavailableTimes(res.data);
       })
@@ -105,7 +105,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
 
   return (
     <div>
-      <form className='sm:pl-10 py-4 desktop:pl-[17%] w-full'>
+      <form className='pl-8 xr:pl-10 py-4 pb-20 desktop:pl-[17%] w-full'>
         <div className='md:flex'>
           <div className='flex flex-col'>
             <Calendar
@@ -123,7 +123,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='appointment_time'
               value={info.appointment_time}
               onChange={handleChange}
-              className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]'
+              className='w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
             >
               <option value=''>select a time</option>
               {<Options disabledTimes={disabledTimes} />}
@@ -131,7 +131,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
             <p className='text-red-500'>{error.time}</p>
             <input
               data-testid='name'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 desktop:w-[70%]'
+              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -144,7 +144,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 desktop:w-[70%]'
+              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
               type='tel'
               placeholder='Phone number'
             />
@@ -156,8 +156,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 desktop:w-[70%]"
-                  : "hidden"
+                  ? 'w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
+                  : 'hidden'
               }
             >
               <option value=''>Select a new set</option>
@@ -187,8 +187,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 desktop:w-[70%]"
-                  : "hidden"
+                  ? 'w-[91%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full xr:w-[88%] md:ml-6 desktop:w-[70%]'
+                  : 'hidden'
               }
             >
               <option value=''>select refill</option>
@@ -219,7 +219,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[88%] h-20 border-2 border-pink-400 pl-2 py-1 desktop:w-[70%]'
+                className='w-[91%] h-20 border-2 border-pink-400 pl-2 py-1 xr:w-[88%] desktop:w-[70%]'
               />
             </label>
             <BookFileUpload info={info} setInfo={setInfo} />
