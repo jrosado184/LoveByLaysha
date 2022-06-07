@@ -42,8 +42,8 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
 
   return (
     <>
-      <div className='desktop:w-full mb-28'>
-        <div className='desktop:flex flex-col items-start justify-start'>
+      <div className='desktop:w-full'>
+        <div className='desktop:flex flex-col'>
           {loading ? (
             <ClientUploadSkeleton />
           ) : (

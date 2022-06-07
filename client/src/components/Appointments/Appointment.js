@@ -14,7 +14,6 @@ import AppointmentSkeleton from './AppointmentSkeleton';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Months } from '../../Algos/Months';
-import FooterNav from './../Mobile/FooterNav';
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const [loading, setLoading] = useState(true);
@@ -29,7 +28,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       {loading ? (
         <AppointmentSkeleton />
       ) : (
@@ -42,27 +41,27 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               <div className='w-full flex justify-evenly desktop:w-[100%] desktop:justify-start py-4'>
                 <div className='flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={date} alt='' />
-                  <p className='font-semibold py-4'>{`${Months(
+                  <p className='font-semibold py-4 py-4'>{`${Months(
                     appointment.appointment_month
                   )} ${appointment.appointment_day}, ${
                     appointment.appointment_year
                   }`}</p>
                 </div>
-                <div className='flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-9' src={time} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.appointment_time || <Skeleton />}
                   </p>
                 </div>
               </div>
-              <div className='w-full flex justify-evenly desktop:w-[100%] justify-start py-4'>
-                <div className='flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+              <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start py-4'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={person} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.client_name}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-9' src={phone} alt='' />
                   <p className='font-semibold py-4'>
                     {Phone(appointment.client_phone)}
@@ -78,7 +77,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                       : 'No Soak Off'}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-12 h-fit' src={set} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.client_set === 'none'
@@ -96,7 +95,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                       : 'No Refill'}
                   </p>
                 </div>
-                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-12 h-fit' src={set} alt='' />
                   <p className='font-semibold py-4'>
                     {String(appointment.client_refillSet) === 'none'
@@ -109,7 +108,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
           );
         })
       )}
-    </div>
+    </>
   );
 };
 const mapStateToProps = (state) => {
