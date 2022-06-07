@@ -21,6 +21,7 @@ const Nails = (logIn) => {
   const [imageUrl, setImageUrl] = useState([]);
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [onNailComp, setOnNailComp] = useState(false);
 
   const allImageRef = ref(storage, 'nails/');
 
@@ -57,12 +58,24 @@ const Nails = (logIn) => {
     setTimeout(() => {
       setLoading(false);
     }, 900);
+    setOnNailComp(true);
   }, [logIn]);
 
   return (
-    <div className='pb-20 py-2 desktop:py-1'>
+    <div>
       {localStorage.getItem('token') && (
-        <div className='w-full h-8 flex justify-end items-center pr-6 desktop:hidden'>
+        <div
+          className={
+            removeImage
+              ? 'w-full h-8 flex justify-end items-center pr-6 desktop:hidden py-6 sticky top-0 bg-white z-20  '
+              : 'w-full h-8 flex justify-end items-center pr-6 sticky top-0 bg-white z-20 desktop:hidden'
+          }
+        >
+          {removeImage && (
+            <p className='mr-12 text-red-700 font-semibold'>
+              Finished Deleting Images?
+            </p>
+          )}
           {removeImage && (
             <p
               onClick={() => setRemoveImage(!removeImage)}
@@ -100,8 +113,8 @@ const Nails = (logIn) => {
         removeImage={removeImage}
       />
       {localStorage.getItem('token') && (
-        <div className='fixed bottom-0 w-full z-10 y-20'>
-          <FooterNav setImage={setImage} />
+        <div className='fixed bottom-0 w-full z-10'>
+          <FooterNav onNailComp={onNailComp} />
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import right from '../../assets/right.svg';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Months } from '../../Algos/Months';
+import FooterNav from './../Mobile/FooterNav';
 
 const Appointments = (props) => {
   const nav = useNavigate();
@@ -39,6 +40,11 @@ const Appointments = (props) => {
           </div>
         </div>
       </div>
+      {localStorage.getItem('token') && (
+        <div className='fixed bottom-0 w-full z-10 y-20'>
+          <FooterNav />
+        </div>
+      )}
     </div>
   );
 };

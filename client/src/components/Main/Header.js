@@ -4,6 +4,7 @@ import user from '../../assets/user.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loggedOut } from '../../redux/actions/login_actions';
+import { LogoutIcon } from '@heroicons/react/outline';
 
 const Header = ({ dispatch }) => {
   const handleLogOut = () => {
@@ -37,11 +38,11 @@ const Header = ({ dispatch }) => {
       <div
         className={
           localStorage.getItem('token')
-            ? 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 md:pr-4'
-            : 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[2.6%] py-2 md:pr-4'
+            ? 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 sm:pr-0 md:pr-4'
+            : 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4'
         }
       >
-        <nav className='ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
+        {/* <nav className='ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center flex'>
           <Link to='nails'>Nailfies</Link>
         </nav>
         <nav
@@ -88,16 +89,14 @@ const Header = ({ dispatch }) => {
           }
         >
           <Link to='appointments'>Appointments</Link>
-        </nav>
-        <nav className='text-1xl border-2 rounded-full text-center bg-white border-pink-300 w-20 h-[6%] pl-3 pr-3 items-center justify-center flex'>
-          {!localStorage.getItem('token') ? (
-            <Link to='login'>Admin</Link>
-          ) : (
+        </nav> */}
+        {localStorage.getItem('token') && (
+          <nav className='w-6 mr-4'>
             <Link onClick={handleLogOut} to='/'>
-              Logout
+              <LogoutIcon strokeWidth='1.3' />
             </Link>
-          )}
-        </nav>
+          </nav>
+        )}
       </div>
     </>
   );

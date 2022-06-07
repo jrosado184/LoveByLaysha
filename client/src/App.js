@@ -21,12 +21,17 @@ import ConfirmLoad from './components/Appointments/ConfirmLoad';
 import CancelConfirm from './components/Appointments/CancelConfirm';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import FooterNav from './components/Mobile/FooterNav';
+import Settings from './components/Mobile/Settings';
 
 const App = () => {
   return (
     <>
       <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
         <Header />
+        <div className='fixed bottom-0 w-full z-10'>
+          <FooterNav />
+        </div>
         <Routes>
           <Route path='/' element={<Nails />} />
           <Route path='/nails' element={<Nails />} />
@@ -55,6 +60,14 @@ const App = () => {
             element={
               <PrivateRoute>
                 <CompletedAppointmentsList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/settings'
+            element={
+              <PrivateRoute>
+                <Settings />
               </PrivateRoute>
             }
           />

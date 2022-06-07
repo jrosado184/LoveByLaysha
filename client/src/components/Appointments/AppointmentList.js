@@ -5,6 +5,7 @@ import Appointments from './Appointments';
 import Search from './Search';
 import { sortDates } from '../../Algos/Sorting';
 import AppointmentsSkeleton from './AppointmentsSkeleton';
+import FooterNav from '../Mobile/FooterNav';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);
