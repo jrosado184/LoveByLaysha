@@ -114,7 +114,7 @@ const Nails = (logIn) => {
       />
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-10'>
-          <FooterNav onNailComp={onNailComp} />
+          <FooterNav setImage={setImage} onNailComp={onNailComp} />
         </div>
       )}
     </div>
