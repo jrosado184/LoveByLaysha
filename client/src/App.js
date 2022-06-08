@@ -29,7 +29,7 @@ const App = () => {
     <>
       <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
         <Header />
-        <div className='fixed bottom-0 w-full z-10'>
+        <div className='fixed bottom-0 w-full z-20'>
           <FooterNav />
         </div>
         <Routes>
