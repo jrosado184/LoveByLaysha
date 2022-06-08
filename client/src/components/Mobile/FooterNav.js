@@ -90,9 +90,9 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <Link to='/settings'>
             <CogIcon strokeWidth='.9' className='w-7 h-fit text-pink-900' />
           </Link>
-          <div className='text-xs text-pink-900'>Settings</div>
         </div>
       )}
+      <div className='text-xs text-pink-900'>Settings</div>
     </div>
   );
 };
