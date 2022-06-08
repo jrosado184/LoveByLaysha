@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
     <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
-      <div className='w-9 h-full flex flex-col items-center justify-center pb-4 '>
+      <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
         <Link to='/nails'>
           <HomeIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         </Link>
@@ -24,7 +24,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       <div
         className={
           !localStorage.getItem('token')
-            ? 'w-9 h-full flex flex-col items-center justify-center pb-4'
+            ? 'w-9 h-full flex flex-col items-center justify-center mb-4'
             : 'hidden'
         }
       >
@@ -34,7 +34,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         <p className='text-xs text-pink-900'>Book</p>
       </div>
       {!localStorage.getItem('token') ? (
-        <div className='w-9 h-full flex flex-col items-center justify-center pb-4 '>
+        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
           <Link to='/policies'>
             <ClipboardListIcon
               className='w-7 h-fit text-pink-900'
@@ -44,7 +44,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <p className='text-xs text-pink-900'>Policies</p>
         </div>
       ) : (
-        <div className='w-9 h-full flex flex-col items-center justify-center pb-4 '>
+        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
           <Link to='/schedule'>
             <CalendarIcon
               className='w-7 h-fit text-pink-900'
@@ -70,7 +70,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </div>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center pb-4'>
+        <div className='w-9 h-full flex flex-col items-center justify-center mb-4'>
           <Link to='/appointments'>
             <BellIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           </Link>
@@ -78,7 +78,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </div>
       )}
       {!localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center pb-4 '>
+        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
           <Link to='/contact'>
             <MailIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           </Link>
@@ -86,7 +86,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </div>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center pb-4'>
+        <div className='w-9 h-full flex flex-col items-center justify-center mb-4'>
           <Link to='/settings'>
             <CogIcon strokeWidth='.9' className='w-7 h-fit text-pink-900' />
           </Link>
