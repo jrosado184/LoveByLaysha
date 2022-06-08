@@ -33,7 +33,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
           setCancelModal={setCancelModal}
         />
       )}
-      <div className='flex flex-col items-center justify-center my-10'>
+      <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
         {fil.map((item) => {
           return (
             <div

@@ -33,7 +33,7 @@ export const Contact = () => {
             className='flex my-4 flex-col justify-center items-center lg:w-[100%]'
             ref={form}
           >
-            <h1 className='my-2 font-semibold'>Contact Me</h1>
+            <h1 className='my-2 font-semibold text-pink-900'>Contact Me</h1>
             <input
               name='user_name'
               className='pl-3 my-4 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
@@ -60,7 +60,7 @@ export const Contact = () => {
         </div>
         <div className='w-[100%] my-6 lg:w-[50%] flex flex-col justify-center items-center'>
           <div className='flex flex-col items-center w-full'>
-            <h2 className='text-lg'>Connect with me</h2>
+            <h2 className='text-lg text-pink-900'>Connect with me</h2>
             <a
               href='https://www.instagram.com/lovebylaysha/'
               target='_blank'

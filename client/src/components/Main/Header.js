@@ -18,22 +18,33 @@ const Header = ({ dispatch }) => {
           {localStorage.getItem('token') ? (
             <div className='flex'>
               <img
-                className='user-image ml-6 w-12 h-12 rounded-full border-4 border-white desktop:w-32 desktop:h-32'
+                className='user-image ml-6 w-14 h-12 rounded-full border-4 border-white desktop:w-32 desktop:h-32'
                 src={user}
                 alt=''
               />
             </div>
           ) : (
             <img
-              className='ml-6 w-12 h-12 rounded-full border-4 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
+              className='ml-6 w-14 h-12 rounded-full border-2 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
               src={laysha}
               alt=''
             />
           )}
-          <div className='pl-2 py-2 text-2xl w-fully desktop:pl-10 desktop:py-0'>
-            <p className='font-light'>
+          <div className='pl-3 py-2 text-2xl flex justify-between items-center w-full desktop:pl-10 desktop:py-0'>
+            <p className='font-light text-pink-900'>
               {localStorage.getItem('message') || 'LoveByLaysha'}
             </p>
+            <nav className='w-6 mr-4 desktop:hidden'>
+              {localStorage.getItem('token') ? (
+                <Link onClick={handleLogOut} to='/'>
+                  <LogoutIcon className='text-pink-900' strokeWidth='1.3' />
+                </Link>
+              ) : (
+                <Link to='/login'>
+                  <LoginIcon className='text-pink-900' strokeWidth='1.3' />
+                </Link>
+              )}
+            </nav>
           </div>
         </div>
       </div>
@@ -91,17 +102,6 @@ const Header = ({ dispatch }) => {
           }
         >
           <Link to='appointments'>Appointments</Link>
-        </nav>
-        <nav className='w-6 mr-4 desktop:hidden'>
-          {localStorage.getItem('token') ? (
-            <Link onClick={handleLogOut} to='/'>
-              <LogoutIcon strokeWidth='1.3' />
-            </Link>
-          ) : (
-            <Link to='/login'>
-              <LoginIcon strokeWidth='1.3' />
-            </Link>
-          )}
         </nav>
         <nav className='hidden desktop:block h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex'>
           {localStorage.getItem('token') ? (

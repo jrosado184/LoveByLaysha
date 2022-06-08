@@ -67,7 +67,7 @@ const Nails = (logIn) => {
         <div
           className={
             removeImage
-              ? 'w-full h-8 flex justify-end items-center pr-6 desktop:hidden py-6 sticky top-0 bg-white z-20  '
+              ? 'w-full h-8 flex justify-end items-center pr-6 desktop:hidden py-6 sticky top-[7%] bg-white z-20  '
               : 'w-full h-8 flex justify-end items-center pr-6 sticky top-[7%] bg-white z-20 desktop:hidden'
           }
         >
