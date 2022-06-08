@@ -19,39 +19,36 @@ const FooterNav = ({ setImage, onNailComp }) => {
         <Link to='/nails'>
           <HomeIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         </Link>
-        <div className='text-xs text-pink-900'>Home</div>
+        <p className='text-xs text-pink-900'>Home</p>
       </div>
       <div
         className={
           !localStorage.getItem('token')
-            ? 'w-9 h-full flex flex-col items-center justify-center mb-4'
+            ? 'w-9 h-fit flex flex-col items-center justify-center mb-4'
             : 'hidden'
         }
       >
+        <BookOpenIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         <Link to='/book'>
-          <BookOpenIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
+          <p className='text-xs text-pink-900'>Book</p>
         </Link>
-        <div className='text-xs text-pink-900'>Book</div>
       </div>
       {!localStorage.getItem('token') ? (
-        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
+        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <ClipboardListIcon
+            className='w-7 h-fit text-pink-900'
+            strokeWidth='.9'
+          />
           <Link to='/policies'>
-            <ClipboardListIcon
-              className='w-7 h-fit text-pink-900'
-              strokeWidth='.9'
-            />
+            <p className='text-xs text-pink-900'>Policies</p>
           </Link>
-          <div className='text-xs text-pink-900'>Policies</div>
         </div>
       ) : (
-        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
+        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <CalendarIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           <Link to='/schedule'>
-            <CalendarIcon
-              className='w-7 h-fit text-pink-900'
-              strokeWidth='.9'
-            />
+            <p className='text-xs text-pink-900'>Schedule</p>
           </Link>
-          <div className='text-xs text-pink-900'>Schedule</div>
         </div>
       )}
       {onNailComp && (
@@ -70,29 +67,29 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </div>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center mb-4'>
+        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
+          <BellIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           <Link to='/appointments'>
-            <BellIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
+            <p className='text-xs text-pink-900'>Appointments</p>
           </Link>
-          <div className='text-xs text-pink-900'>Appointments</div>
         </div>
       )}
       {!localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
+        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <MailIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           <Link to='/contact'>
-            <MailIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
+            <p className='text-xs text-pink-900'>Contact</p>
           </Link>
-          <div className='text-xs text-pink-900'>Contact</div>
         </div>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-9 h-full flex flex-col items-center justify-center mb-4'>
+        <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
+          <CogIcon strokeWidth='.9' className='w-7 h-fit text-pink-900' />
           <Link to='/settings'>
-            <CogIcon strokeWidth='.9' className='w-7 h-fit text-pink-900' />
+            <p className='text-xs text-pink-900'>Settings</p>
           </Link>
         </div>
       )}
-      <div className='text-xs text-pink-900'>Settings</div>
     </div>
   );
 };
