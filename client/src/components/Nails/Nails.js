@@ -113,7 +113,7 @@ const Nails = (logIn) => {
         removeImage={removeImage}
       />
       {localStorage.getItem('token') && (
-        <div className='fixed bottom-0 w-full z-10'>
+        <div className='fixed bottom-0 w-full z-20'>
           <FooterNav setImage={setImage} onNailComp={onNailComp} />
         </div>
       )}
