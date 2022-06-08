@@ -111,7 +111,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   }, [info]);
 
   return (
-    <form className='pl-10 py-4 desktop:pl-[17%] w-full'>
+    <form className='pl-10 py-4 pb-24 desktop:pl-[17%] w-full'>
       <div className='md:flex'>
         <Calendar
           onChange={setSelectedDate}

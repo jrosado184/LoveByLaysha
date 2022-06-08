@@ -17,9 +17,9 @@ const FooterNav = ({ setImage, onNailComp }) => {
     <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
       <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
         <Link to='/nails'>
-          <HomeIcon className='w-7 h-fit' strokeWidth='.9' />
+          <HomeIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         </Link>
-        <p className='text-xs'>Home</p>
+        <p className='text-xs text-pink-900'>Home</p>
       </div>
       <div
         className={
