@@ -13,33 +13,35 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='bg-pink-200 w-full h-48 shadow-md'>
-        <div className='w-full py-2'>
+      <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 desktop:h-48 desktop:static'>
+        <div className='w-full py-2 flex desktop:block'>
           {localStorage.getItem('token') ? (
             <div className='flex'>
               <img
-                className='user-image ml-6 my-2 w-32 h-32 rounded-full border-4 border-white'
+                className='user-image ml-6 w-12 h-12 rounded-full border-4 border-white desktop:w-32 desktop:h-32'
                 src={user}
                 alt=''
               />
             </div>
           ) : (
             <img
-              className='ml-6 w-32 h-32 rounded-full border-4 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
+              className='ml-6 w-12 h-12 rounded-full border-4 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
               src={laysha}
               alt=''
             />
           )}
-          <div className='pl-10 pb-6 text-2xl w-full'>
-            <p className='font-light'>{localStorage.getItem('message')}</p>
+          <div className='pl-2 py-2 text-2xl w-fully desktop:pl-10 desktop:py-0'>
+            <p className='font-light'>
+              {localStorage.getItem('message') || 'LoveByLaysha'}
+            </p>
           </div>
         </div>
       </div>
       <div
         className={
           localStorage.getItem('token')
-            ? 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 sm:pr-0 md:pr-4'
-            : 'bg-pink-200 border-b border-pink-500 flex text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4'
+            ? 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 sm:pr-0 md:pr-4'
+            : 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4'
         }
       >
         <nav className='hidden desktop:flex ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center'>
