@@ -10,15 +10,16 @@ import {
   CogIcon,
   ClipboardListIcon,
 } from '@heroicons/react/outline';
+import home from '../../assets/icons/home.svg';
 import { connect } from 'react-redux';
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
     <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
       <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
-        <img src={plus} />
+        <img className='w-7 h-fit' src={home} alt='' />
         <Link to='/nails'>
-          <p className='text-sm text-pink-900'>Home</p>
+          <p className='text-xs text-pink-900'>Home</p>
         </Link>
         {/* <HomeIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' /> */}
       </div>
