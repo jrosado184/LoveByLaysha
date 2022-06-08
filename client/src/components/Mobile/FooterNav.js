@@ -14,12 +14,12 @@ import { connect } from 'react-redux';
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
-    <div className='flex h-32 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
+    <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
       <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
         <Link to='/nails'>
           <HomeIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         </Link>
-        <p className='text-xs text-pink-900'>Home</p>
+        <div className='text-xs text-pink-900'>Home</div>
       </div>
       <div
         className={
@@ -31,7 +31,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         <Link to='/book'>
           <BookOpenIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
         </Link>
-        <p className='text-xs text-pink-900'>Book</p>
+        <div className='text-xs text-pink-900'>Book</div>
       </div>
       {!localStorage.getItem('token') ? (
         <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
@@ -41,7 +41,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
               strokeWidth='.9'
             />
           </Link>
-          <p className='text-xs text-pink-900'>Policies</p>
+          <div className='text-xs text-pink-900'>Policies</div>
         </div>
       ) : (
         <div className='w-9 h-full flex flex-col items-center justify-center mb-4 '>
@@ -51,7 +51,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
               strokeWidth='.9'
             />
           </Link>
-          <p className='text-xs text-pink-900'>Schedule</p>
+          <div className='text-xs text-pink-900'>Schedule</div>
         </div>
       )}
       {onNailComp && (
@@ -74,7 +74,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <Link to='/appointments'>
             <BellIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           </Link>
-          <p className='text-xs text-pink-900'>Appointments</p>
+          <div className='text-xs text-pink-900'>Appointments</div>
         </div>
       )}
       {!localStorage.getItem('token') && (
@@ -82,7 +82,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <Link to='/contact'>
             <MailIcon className='w-7 h-fit text-pink-900' strokeWidth='.9' />
           </Link>
-          <p className='text-xs text-pink-900'>Contact</p>
+          <div className='text-xs text-pink-900'>Contact</div>
         </div>
       )}
       {localStorage.getItem('token') && (
@@ -90,7 +90,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <Link to='/settings'>
             <CogIcon strokeWidth='.9' className='w-7 h-fit text-pink-900' />
           </Link>
-          <p className='text-xs text-pink-900'>Settings</p>
+          <div className='text-xs text-pink-900'>Settings</div>
         </div>
       )}
     </div>
