@@ -67,8 +67,8 @@ const Nails = (logIn) => {
         <div
           className={
             removeImage
-              ? 'w-full h-8 flex justify-end items-center pr-6 desktop:hidden py-6 sticky top-[7%] bg-white z-20  '
-              : 'w-full h-8 flex justify-end items-center pr-6 sticky top-[7%] bg-white z-20 desktop:hidden'
+              ? 'w-full h-8 flex justify-end items-center pr-6 py-6 sticky top-[6.5%] bg-white z-20 desktop:hidden'
+              : 'w-full h-8 my-4 flex justify-end items-center pr-6 sticky top-[6.5%] bg-white z-20 desktop:hidden'
           }
         >
           {removeImage && (
@@ -79,14 +79,14 @@ const Nails = (logIn) => {
           {removeImage && (
             <p
               onClick={() => setRemoveImage(!removeImage)}
-              className='text-pink-500 w-[18%] flex justify-center items-center bg-pink-200 border border-pink-400 rounded-full'
+              className='text-pink-500 w-[16%] flex justify-center items-center bg-pink-200 border border-pink-400 rounded-full'
             >
               Done
             </p>
           )}
           <img
             onClick={() => setRemoveImage(!removeImage)}
-            className={removeImage ? 'hidden' : 'w-10 h-fit'}
+            className={removeImage ? 'hidden' : 'w-10 h-12'}
             src={dots}
             alt='dots'
           />

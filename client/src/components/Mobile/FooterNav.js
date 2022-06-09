@@ -13,12 +13,12 @@ import settings from './../../assets/icons/settings.svg';
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
     <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 desktop:hidden'>
-      <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
-        <img className='w-7 h-fit' src={home} alt='' />
-        <Link to='/nails'>
+      <Link to='/nails'>
+        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <img className='w-7 h-fit' src={home} alt='' />
           <p className='text-xs text-pink-900'>Home</p>
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div
         className={
           !localStorage.getItem('token')
@@ -26,28 +26,28 @@ const FooterNav = ({ setImage, onNailComp }) => {
             : 'hidden'
         }
       >
-        <img className='w-7 h-fit' src={book} alt='' />
         <Link to='/book'>
+          <img className='w-7 h-fit' src={book} alt='' />
           <p className='text-xs text-pink-900'>Book</p>
         </Link>
       </div>
       {!localStorage.getItem('token') ? (
-        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
-          <img className='w-7 h-fit' src={clipboard} alt='' />
-          <Link to='/policies'>
+        <Link to='/policies'>
+          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+            <img className='w-7 h-fit' src={clipboard} alt='' />
             <p className='text-xs text-pink-900'>Policies</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
       ) : (
-        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
-          <img className='w-7 h-fit' src={schedule} alt='' />
-          <Link to='/schedule'>
+        <Link to='/schedule'>
+          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+            <img className='w-7 h-fit' src={schedule} alt='' />
             <p className='text-xs text-pink-900'>Schedule</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
       {onNailComp && (
-        <div className='w-11 h-11 mb-3  bg-pink-300 border border-white rounded-full'>
+        <div className='w-9 h-fit mb-5  bg-pink-300 border border-white rounded-full'>
           <label
             className='cursor-pointer'
             onClick={(e) => setImage(e.target.files[0])}
@@ -62,28 +62,28 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </div>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
-          <img src={appointments} className='w-7 h-fit' alt='' />
-          <Link to='/appointments'>
+        <Link to='/appointments'>
+          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
+            <img src={appointments} className='w-7 h-fit' alt='' />
             <p className='text-xs text-pink-900'>Appointments</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
       {!localStorage.getItem('token') && (
-        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
-          <img className='w-7 h-fit' src={contact} alt='' />
-          <Link to='/contact'>
+        <Link to='/contact'>
+          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+            <img className='w-7 h-fit' src={contact} alt='' />
             <p className='text-xs text-pink-900'>Contact</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
       {localStorage.getItem('token') && (
-        <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
-          <img className='w-7 h-fit' src={settings} alt='' />
-          <Link to='/settings'>
+        <Link to='/settings'>
+          <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
+            <img className='w-7 h-fit' src={settings} alt='' />
             <p className='text-xs text-pink-900'>Settings</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
     </div>
   );
