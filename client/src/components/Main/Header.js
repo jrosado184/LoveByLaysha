@@ -18,7 +18,7 @@ const Header = ({ dispatch }) => {
           {localStorage.getItem('token') ? (
             <div className='flex'>
               <img
-                className='user-image ml-6 w-14 h-12 rounded-full border-4 border-white desktop:w-32 desktop:h-32'
+                className='user-image ml-6 w-14 h-12 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
                 src={user}
                 alt=''
               />
