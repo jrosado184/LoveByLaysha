@@ -69,6 +69,10 @@ const Book = ({ fetchAppointments, dispatch }) => {
 
   const handleCalendar = (e) => {
     setSelectedDate(e);
+    setInfo({
+      ...info,
+      appointment_time: '',
+    });
   };
 
   const handleChange = (e) => {
@@ -101,7 +105,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [selectedDate]);
 
   return (
     <div>
@@ -219,7 +223,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[91%] h-20 border-2 border-pink-400 pl-2 py-1 xr:w-[88%] desktop:w-[70%]'
+                className='w-[91%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[88%] desktop:w-[70%]'
               />
             </label>
             <BookFileUpload info={info} setInfo={setInfo} />

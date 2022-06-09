@@ -75,6 +75,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       appointment_day: selectedDate.day,
       appointment_year: selectedDate.year,
     });
+    setChanges(!changes);
   };
 
   const handleSubmit = (e) => {
@@ -244,9 +245,11 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               Update Changes?
             </label>
             <input
+              disabled={changes ? false : true}
               data-testid='bookbtn'
-              className='w-20 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+              className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
               type='submit'
+              value='Save'
               onClick={handleSubmit}
             />
           </div>
