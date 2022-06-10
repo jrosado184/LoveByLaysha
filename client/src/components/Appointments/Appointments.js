@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import right from '../../assets/right.svg';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Months } from '../../Algos/Months';
 import FooterNav from './../Mobile/FooterNav';
+import { getAppointments } from './../../redux/actions/appointment-actions';
 
-const Appointments = (props) => {
+const Appointments = ({ appointment, index, dispatch }) => {
   const nav = useNavigate();
-  const { appointment, index } = props;
 
   const handleAppointment = () => {
     nav(`/appointment/${appointment.appointment_id}`);
   };
+
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, [dispatch]);
 
   return (
     <div
