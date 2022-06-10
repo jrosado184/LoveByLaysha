@@ -20,9 +20,10 @@ import Edit from './components/Appointments/Edit';
 import ConfirmLoad from './components/Appointments/ConfirmLoad';
 import CancelConfirm from './components/Appointments/CancelConfirm';
 import { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import FooterNav from './components/Mobile/FooterNav';
 import Settings from './components/Mobile/Settings';
+import Loading from './components/Appointments/Loading';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const App = () => {
   return (
@@ -37,7 +38,8 @@ const App = () => {
           <Route path='/nails' element={<Nails />} />
           <Route path='/book' element={<Book />} />
           <Route path='/confirm/:id' element={<Confirm />} />
-          <Route path='/loading' element={<ConfirmLoad />} />
+          <Route path='/loading-confirm' element={<ConfirmLoad />} />
+          <Route path='/loading' element={<Loading />} />
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/register' element={<Register />} />

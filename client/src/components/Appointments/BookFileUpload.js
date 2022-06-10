@@ -15,7 +15,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
       .post('/api/appointments', info)
       .then((res) => {
         dispatch(addAppointments(res.data));
-        nav('/loading');
+        nav('/loading-confirm');
       })
       .catch((err) => {
         console.log(err.response.message);
