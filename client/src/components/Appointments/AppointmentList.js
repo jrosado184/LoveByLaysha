@@ -5,7 +5,6 @@ import Appointments from './Appointments';
 import Search from './Search';
 import { sortDates } from '../../Algos/Sorting';
 import AppointmentsSkeleton from './AppointmentsSkeleton';
-import FooterNav from '../Mobile/FooterNav';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);
@@ -21,7 +20,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   return fetchAppointments.length ? (
     <>
       <Search />
-      <div className='flex flex-col items-center my-2'>
+      <div className='flex flex-col items-center my-2 mb-24'>
         {loading ? (
           <AppointmentsSkeleton card={fetchAppointments.length} />
         ) : (

@@ -33,16 +33,16 @@ const Uploads = ({ dispatch, completedAppointmentsById }) => {
             >
               {appointmentId.images ? (
                 <img
-                  className='sm:w-96 border-2 border-gray-400 desktop:w-[50%] h-96'
+                  className='sm:w-96 border-2 border-pink-900 rounded-md desktop:w-[50%] h-96'
                   alt=''
                   src={appointmentId.images}
                 />
               ) : (
-                <p className='sm:flex justify-center items-center w-96 border-2 border-gray-400 desktop:w-[50%] h-96'>
+                <p className='sm:flex justify-center items-center w-96 border border-pink-900 text-pink-900 rounded-md desktop:w-[50%] h-96'>
                   No images uploaded
                 </p>
               )}
-              <p className='ml-2 my-6'>
+              <p className='ml-2 my-6 text-pink-900'>
                 {appointmentId.client_details === ''
                   ? 'No Additional Details'
                   : appointmentId.client_details}
@@ -53,7 +53,7 @@ const Uploads = ({ dispatch, completedAppointmentsById }) => {
         <div className='flex justify-evenly w-full h-fit my-6 desktop:justify-center gap-12'>
           <button
             onClick={handleDelete}
-            className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-sm'
+            className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-full'
           >
             Delete
           </button>

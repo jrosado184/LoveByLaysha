@@ -72,7 +72,7 @@ const Nails = (logIn) => {
           }
         >
           {removeImage && (
-            <p className='mr-12 text-red-700 font-semibold'>
+            <p className='mr-12 text-pink-900 font-semibold'>
               Finished Deleting Images?
             </p>
           )}

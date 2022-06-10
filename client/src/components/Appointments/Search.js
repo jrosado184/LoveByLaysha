@@ -9,9 +9,6 @@ const Search = () => {
 
   const [searchInput, setSearchInput] = useState('');
 
-  const handleRemoved = () => {
-    nav('/deleted');
-  };
   const handleCompleted = () => {
     nav('/completedAppointments');
   };
@@ -29,7 +26,7 @@ const Search = () => {
               : 'hidden'
           }
         >
-          <p className='text-sm'>Completed</p>
+          <p className='text-sm text-pink-900'>Completed</p>
         </div>
         <form className='h-8 flex items-center justify-end w-full my-2'>
           <input

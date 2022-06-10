@@ -37,7 +37,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
               className='sm:w-full h-100 py-6 flex flex-col desktop:ml-6'
             >
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={date} alt='' />
                   <p className='font-semibold py-4 py-4'>{`${Months(
                     appointment.appointment_month
@@ -45,7 +45,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                     appointment.appointment_year
                   }`}</p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={time} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.appointment_time}
@@ -53,13 +53,13 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
               </div>
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={person} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.client_name}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={phone} alt='' />
                   <p className='font-semibold py-4'>
                     {Phone(appointment.client_phone)}
@@ -67,7 +67,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
               </div>
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={soak} alt='' />
                   <p className='font-semibold py-4'>
                     {String(appointment.client_Soak) === 'true'
@@ -75,7 +75,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                       : 'No Soak Off'}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-12 h-fit' src={set} alt='' />
                   <p className='font-semibold py-4'>
                     {appointment.client_set === 'none'
@@ -85,7 +85,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
               </div>
               <div className='sm:shadow-lg w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
-                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={refill} alt='' />
                   <p className='font-semibold py-4'>
                     {String(appointment.client_refill) === 'true'
@@ -93,7 +93,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                       : 'No Refill'}
                   </p>
                 </div>
-                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-black rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-12 h-fit' src={set} alt='' />
                   <p className='font-semibold py-4'>
                     {String(appointment.client_refillSet) === 'none'

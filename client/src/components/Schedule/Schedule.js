@@ -152,11 +152,11 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
           {selectedDate && (
             <div className='w-full flex justify-start my-4'>
               <div className='flex items-center justify-center'>
-                <label className='mr-2'>
+                <label className='mr-2 text-pink-900'>
                   <input
                     onChange={() => setTime(!time)}
                     value={time}
-                    className='mr-2'
+                    className='mr-2 border border-pink-900 '
                     type='checkbox'
                     checked={time}
                   />
@@ -185,7 +185,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                   disabled={selectedDate ? false : true}
                   className={
                     selectedDate
-                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
                       : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
                   }
                 >
@@ -194,7 +194,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               ) : (
                 <button
                   onClick={disableTime}
-                  className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                  className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
                 >
                   Disable
                 </button>
@@ -202,14 +202,14 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
             {!enable ? (
               <button
                 onClick={() => setEnable(!enable)}
-                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
               >
                 Schedule
               </button>
             ) : (
               <button
                 onClick={handleEnableButton}
-                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-sm'
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
               >
                 Enable
               </button>
