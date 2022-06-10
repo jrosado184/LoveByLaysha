@@ -17,7 +17,7 @@ const Policies = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div className='w-full flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center pb-24'>
       <h1 className='text-pink-900 text-lg py-4 font-semibold'>Policies</h1>
       <div>
         <ul className='w-full flex items-start justify-center'>
