@@ -6,6 +6,7 @@ import { getAppointments } from '../../redux/actions/appointment-actions';
 import edit from './../../assets/edit.svg';
 import CancelModal from './CancelModal';
 import { Months } from '../../Algos/Months';
+import Loading from './../Appointments/Loading';
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -13,6 +14,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   const { id } = useParams();
 
   const [cancelModal, setCancelModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleEdit = () => {
     nav(`/edit/${id}`);
@@ -23,6 +25,9 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
 
   useEffect(() => {
     dispatch(getAppointments());
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [dispatch]);
 
   return (
@@ -33,45 +38,49 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
           setCancelModal={setCancelModal}
         />
       )}
-      <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
-        {fil.map((item) => {
-          return (
-            <div
-              key={item.appointment_id}
-              className='flex flex-col items-center'
-            >
-              <h1 className='text-3xl text-center my-6'>
-                {`Thank you for booking ${item.client_name}!`}
-              </h1>
-              <img
-                className='w-12 border-2 border-green-500 rounded-full'
-                src={check}
-                alt=''
-              />
-              <p className='font-semibold'>Your appointment is confirmed:</p>
-              <p className='font-bold underline'>{`For ${Months(
-                item.appointment_month
-              )} ${item.appointment_day}, ${item.appointment_year} at ${
-                item.appointment_time
-              }`}</p>
-              <div className='flex justify-evenly w-full h-12 items-end my-8 '>
-                <div className='flex w-12 items-center underline'>
-                  <button onClick={handleEdit} className='w-16 h-7 text-sm'>
-                    Edit
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
+          {fil.map((item) => {
+            return (
+              <div
+                key={item.appointment_id}
+                className='flex flex-col items-center'
+              >
+                <h1 className='text-3xl text-center my-6'>
+                  {`Thank you for booking ${item.client_name}!`}
+                </h1>
+                <img
+                  className='w-12 border-2 border-green-500 rounded-full'
+                  src={check}
+                  alt=''
+                />
+                <p className='font-semibold'>Your appointment is confirmed:</p>
+                <p className='font-bold underline'>{`For ${Months(
+                  item.appointment_month
+                )} ${item.appointment_day}, ${item.appointment_year} at ${
+                  item.appointment_time
+                }`}</p>
+                <div className='flex justify-evenly w-full h-12 items-end my-8 '>
+                  <div className='flex w-12 items-center underline'>
+                    <button onClick={handleEdit} className='w-16 h-7 text-sm'>
+                      Edit
+                    </button>
+                    <img className='w-4 h-4' src={edit} alt='' />
+                  </div>
+                  <button
+                    onClick={() => setCancelModal(!cancelModal)}
+                    className='w-16 h-7 text-sm text-red-500 underline'
+                  >
+                    Cancel
                   </button>
-                  <img className='w-4 h-4' src={edit} alt='' />
                 </div>
-                <button
-                  onClick={() => setCancelModal(!cancelModal)}
-                  className='w-16 h-7 text-sm text-red-500 underline'
-                >
-                  Cancel
-                </button>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };

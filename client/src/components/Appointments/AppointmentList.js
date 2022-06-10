@@ -17,23 +17,23 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
     }, 500);
   }, []);
 
-  return fetchAppointments.length ? (
+  return (
     <>
       <Search />
       <div className='flex flex-col items-center my-2 mb-24'>
         {loading ? (
           <AppointmentsSkeleton card={fetchAppointments.length} />
-        ) : (
+        ) : fetchAppointments.length ? (
           fetchAppointments.map((appointment, index) => (
             <Appointments key={index} appointment={appointment} />
           ))
+        ) : (
+          <div className='w-full h-96 flex justify-center items-center my-24'>
+            No Appointments Scheduled
+          </div>
         )}
       </div>
     </>
-  ) : (
-    <div className='w-full h-96 flex justify-center items-center'>
-      No Appointments Scheduled
-    </div>
   );
 };
 

@@ -39,7 +39,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={date} alt='' />
-                  <p className='font-semibold py-4 py-4'>{`${Months(
+                  <p className='font-semibold py-4 py-4 text-pink-900'>{`${Months(
                     appointment.appointment_month
                   )} ${appointment.appointment_day}, ${
                     appointment.appointment_year
@@ -47,7 +47,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={time} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {appointment.appointment_time}
                   </p>
                 </div>
@@ -55,13 +55,13 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={person} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {appointment.client_name}
                   </p>
                 </div>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={phone} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {Phone(appointment.client_phone)}
                   </p>
                 </div>
@@ -69,7 +69,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={soak} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {String(appointment.client_Soak) === 'true'
                       ? 'Soak Off'
                       : 'No Soak Off'}
@@ -77,7 +77,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
                 <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-12 h-fit' src={set} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {appointment.client_set === 'none'
                       ? 'No New Set'
                       : appointment.client_set}
@@ -87,7 +87,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
               <div className='sm:shadow-lg w-full flex justify-evenly desktop:w-[100%] justify-start gap-8 py-4'>
                 <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={refill} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {String(appointment.client_refill) === 'true'
                       ? 'Refill'
                       : 'No Refill'}
@@ -95,7 +95,7 @@ const CompletedInformation = ({ dispatch, completedAppointmentsById }) => {
                 </div>
                 <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-12 h-fit' src={set} alt='' />
-                  <p className='font-semibold py-4'>
+                  <p className='font-semibold py-4 text-pink-900'>
                     {String(appointment.client_refillSet) === 'none'
                       ? 'No Refill Set'
                       : appointment.client_refillSet}

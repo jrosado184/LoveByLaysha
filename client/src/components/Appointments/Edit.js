@@ -84,7 +84,11 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       .put(`https://lovebylaysha.herokuapp.com/api/appointments/${id}`, info)
       .then((res) => {
         setInfo(res.data[0]);
-        nav('/loading');
+        nav(
+          `/confirm/${
+            fetchAppointments[fetchAppointments.length - 1].appointment_id
+          }`
+        );
       })
       .catch((err) => {
         console.log(err);

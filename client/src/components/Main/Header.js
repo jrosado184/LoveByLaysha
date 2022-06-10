@@ -25,7 +25,7 @@ const Header = ({ dispatch }) => {
             </div>
           ) : (
             <img
-              className='ml-6 w-14 h-12 rounded-full border-2 border-white hover:opacity-75 md:w-44 desktop:h-40 desktop:w-40'
+              className='user-image ml-6 w-14 h-12 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
               src={laysha}
               alt=''
             />
