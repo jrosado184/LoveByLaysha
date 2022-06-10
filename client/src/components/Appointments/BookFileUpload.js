@@ -7,25 +7,19 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const disabledTimes = [];
 
-const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
+const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const nav = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    info.appointment_day &&
-      info.appointment_time &&
-      info.client_name &&
-      info.client_phone &&
-      (info.client_set !== 'none' || info.client_refillSet !== 'none') &&
-      axiosWithAuth()
-        .post('/api/appointments', info)
-        .then((res) => {
-          dispatch(addAppointments(res.data));
-          nav('/loading');
-        })
-        .catch((err) => {
-          console.log(err.response.message);
-        });
+  const handleSubmit = () => {
+    axiosWithAuth()
+      .post('/api/appointments', info)
+      .then((res) => {
+        dispatch(addAppointments(res.data));
+        nav('/loading');
+      })
+      .catch((err) => {
+        console.log(err.response.message);
+      });
   };
 
   const handleFile = (url) => {
@@ -49,14 +43,6 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
         </div>
       </label>
       <input
-        disabled={
-          info.appointment_day &&
-          info.appointment_time &&
-          info.client_name &&
-          info.client_phone
-            ? false
-            : true
-        }
         data-testid='bookbtn'
         className={
           info.appointment_day &&
@@ -69,7 +55,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, handleErrors }) => {
         }
         type='submit'
         value='Book'
-        onClick={handleSubmit}
+        onClick={formValid(handleSubmit)}
       />
     </div>
   );
