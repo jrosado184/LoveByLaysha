@@ -16,7 +16,7 @@ const CancelModal = ({ cancelModal, setCancelModal }) => {
         nav('/loading');
         setTimeout(() => {
           nav('/canceled');
-        }, 3000);
+        }, 2000);
       });
   };
   return (

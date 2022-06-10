@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getAppointments } from '../../redux/actions/appointment-actions';
 
-const CancelConfirm = () => {
+const CancelConfirm = ({ dispatch }) => {
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, [dispatch]);
+
   return (
     <div className='w-full h-96 flex flex-col justify-end items-center desktop:justify-center'>
       <p className='font-bold my-6'>Appointment Canceled</p>
@@ -9,4 +15,10 @@ const CancelConfirm = () => {
   );
 };
 
-export default CancelConfirm;
+const mapStateToProps = (state) => {
+  return {
+    fetchAppointments: state.appointments.fetchAppointments,
+  };
+};
+
+export default connect(mapStateToProps)(CancelConfirm);
