@@ -34,13 +34,13 @@ const CancelModal = ({ cancelModal, setCancelModal }) => {
       <div className='flex justify-center gap-8 py-5'>
         <button
           onClick={() => setCancelModal(false)}
-          className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-10 flex justify-center items-center'
+          className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-10 flex justify-center items-center dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
         >
           <ArrowLeftIcon className='w-6 h-6' />
         </button>
         <button
           onClick={handleCancel}
-          className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-16'
+          className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-16 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
         >
           Cancel
         </button>

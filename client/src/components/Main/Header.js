@@ -61,7 +61,7 @@ const Header = ({ dispatch }) => {
             : 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4 dark:bg-neutral-900 border-neutral-900'
         }
       >
-        <nav className='hidden desktop:flex ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center dark:bg-neutral-700 border-neutral-900'>
+        <nav className='hidden desktop:flex ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'>
           <Link className='dark:text-neutral-100' to='nails'>
             Nailfies
           </Link>
@@ -69,15 +69,11 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             !localStorage.getItem('token')
-              ? 'hidden desktop:flex text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center dark:bg-neutral-700 border-neutral-900'
+              ? 'hidden desktop:flex text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'
               : 'hidden'
           }
         >
-          <Link
-            className='dark:text-neutral-100'
-            className='dark:text-neutral-100'
-            to='book'
-          >
+          <Link className='dark:text-neutral-100' to='book'>
             Book
           </Link>
         </nav>
@@ -85,7 +81,7 @@ const Header = ({ dispatch }) => {
           className={
             localStorage.getItem('token')
               ? 'hidden'
-              : 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center dark:bg-neutral-700 border-neutral-900'
+              : 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'
           }
         >
           <Link className='dark:text-neutral-100' to='policies'>
@@ -95,7 +91,7 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             localStorage.getItem('token')
-              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-24 h-[6%] items-center justify-center flex dark:bg-neutral-700 border-neutral-900'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-24 h-[6%] items-center justify-center flex dark:bg-neutral-700 dark:border-neutral-900'
               : 'hidden'
           }
         >
@@ -106,7 +102,7 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             !localStorage.getItem('token')
-              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center dark:bg-neutral-700 border-neutral-900'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'
               : 'hidden'
           }
         >
@@ -117,7 +113,7 @@ const Header = ({ dispatch }) => {
         <nav
           className={
             localStorage.getItem('token')
-              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 w- h-[6%] pl-2 pr-2 items-center justify-center dark:bg-neutral-700 border-neutral-900'
+              ? 'hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 w- h-[6%] pl-2 pr-2 items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'
               : 'hidden'
           }
         >
@@ -125,7 +121,7 @@ const Header = ({ dispatch }) => {
             Appointments
           </Link>
         </nav>
-        <nav className='hidden desktop:block h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center flex dark:bg-neutral-700 border-neutral-900'>
+        <nav className='hidden desktop:flex h-[6%] text-1xl border-2 rounded-full text-center bg-white border-pink-300 pl-3 pr-3 w-20 h-[6%] items-center justify-center dark:bg-neutral-700 dark:border-neutral-900'>
           {localStorage.getItem('token') ? (
             <Link
               className='dark:text-neutral-100'
