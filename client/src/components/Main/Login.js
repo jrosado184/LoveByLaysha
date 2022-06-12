@@ -26,14 +26,16 @@ const Login = (props) => {
     nav('/nails');
   };
   return (
-    <div className='h-96 flex flex-col items-center justify-center'>
-      <p className='font-bold my-2 text-pink-900'>FOR ADMIN USE ONLY</p>
+    <div className='h-screen pb-96 flex flex-col items-center justify-center'>
+      <p className='font-bold text-pink-900 dark:dark:text-neutral-100'>
+        FOR ADMIN USE ONLY
+      </p>
       <form
         onSubmit={handleSubmit}
         className=' w-96 my-4 flex flex-col items-center justify-center'
       >
         <input
-          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md'
+          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:dark:border-neutral-800'
           type='text'
           placeholder='Username'
           name='username'
@@ -41,7 +43,7 @@ const Login = (props) => {
           onChange={handleChange}
         />
         <input
-          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md'
+          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:dark:border-neutral-800'
           type='password'
           placeholder='Password'
           name='password'

@@ -1,7 +1,7 @@
-import React from "react";
-import star from "./../../assets/icons/star.svg";
-import cash from "./../../assets/icons/CashApp-logo.svg";
-import zelle from "./../../assets/icons/zelle.svg";
+import React from 'react';
+import star from './../../assets/icons/star.svg';
+import cash from './../../assets/icons/CashApp-logo.svg';
+import zelle from './../../assets/icons/zelle.svg';
 
 const Policies = () => {
   return (
