@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import star from './../../assets/icons/star.svg';
-import Loading from './../Appointments/Loading';
+import React from "react";
+import star from "./../../assets/icons/star.svg";
+import cash from "./../../assets/icons/CashApp-logo.svg";
+import zelle from "./../../assets/icons/zelle.svg";
 
 const Policies = () => {
-  const nav = useNavigate();
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 400);
-  }, []);
-
   return (
     <div className='w-full flex flex-col items-center pb-24'>
       <h1 className='text-pink-900 text-lg py-4 font-semibold'>Policies</h1>
@@ -22,6 +12,18 @@ const Policies = () => {
           <img className='w-7' src={star} alt='' />
           <p className='w-80 ml-2 text-pink-900'>
             A $30 non-refundable deposit is required to secure your spot!
+            <span className='flex items-center gap-2'>
+              <a
+                className='ml-2'
+                href='https://cash.app/$LayshaSerrano'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img className='w-24 py-2' src={cash} alt='' />
+              </a>
+              <p>OR</p>
+              <img className='w-16' src={zelle} alt='layshs.s21@gmail.com' />
+            </span>
           </p>
         </ul>
         <ul className='w-full flex items-center justify-center py-6'>
@@ -47,7 +49,7 @@ const Policies = () => {
         <ul className='w-full flex items-start justify-center py-6'>
           <img className='w-7' src={star} alt='' />
           <p className='w-80 ml-2 text-pink-900'>
-            Please come with bear nails unless you are expecting a soak off, I
+            Please come with bare nails unless you are expecting a soak off, I
             will not work over nails that were not done by me
           </p>
         </ul>
