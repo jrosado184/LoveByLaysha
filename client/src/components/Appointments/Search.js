@@ -22,11 +22,13 @@ const Search = () => {
           onClick={handleCompleted}
           className={
             !showSearch
-              ? 'target:bg-red-500 w-22 h-7 border-2 border-pink-200 rounded-full flex items-center ml-4 pl-2 pr-2 cursor-pointer'
+              ? ' w-22 h-7 border-2 border-pink-200 rounded-full flex items-center ml-4 pl-2 pr-2 cursor-pointer dark:border-neutral-900'
               : 'hidden'
           }
         >
-          <p className='text-sm text-pink-900'>Completed</p>
+          <p className='text-sm text-pink-900 dark:text-neutral-100'>
+            Completed
+          </p>
         </div>
         <form className='h-8 flex items-center justify-end w-full my-2'>
           <input

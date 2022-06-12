@@ -41,14 +41,14 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
+        <div className='flex flex-col items-center justify-start h-[90vh] py-12 desktop:justify-start desktop:h-[75.3vh]'>
           {fil.map((item) => {
             return (
               <div
                 key={item.appointment_id}
                 className='flex flex-col items-center'
               >
-                <h1 className='text-3xl text-center my-6'>
+                <h1 className='text-3xl text-center my-6 dark:text-neutral-100'>
                   {`Thank you for booking ${item.client_name}!`}
                 </h1>
                 <img
@@ -56,15 +56,20 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   src={check}
                   alt=''
                 />
-                <p className='font-semibold'>Your appointment is confirmed:</p>
-                <p className='font-bold underline'>{`For ${Months(
+                <p className='font-semibold dark:text-neutral-100'>
+                  Your appointment is confirmed:
+                </p>
+                <p className='font-bold underline dark:text-neutral-100'>{`For ${Months(
                   item.appointment_month
                 )} ${item.appointment_day}, ${item.appointment_year} at ${
                   item.appointment_time
                 }`}</p>
                 <div className='flex justify-evenly w-full h-12 items-end my-8 '>
                   <div className='flex w-12 items-center underline'>
-                    <button onClick={handleEdit} className='w-16 h-7 text-sm'>
+                    <button
+                      onClick={handleEdit}
+                      className='w-16 h-7 text-sm dark:text-neutral-100'
+                    >
                       Edit
                     </button>
                     <img className='w-4 h-4' src={edit} alt='' />

@@ -39,47 +39,47 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               className='w-full h-100 py-6 flex flex-col desktop:ml-6'
             >
               <div className='w-full flex justify-evenly desktop:w-[100%] desktop:justify-start py-4'>
-                <div className='flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9' src={date} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>{`${Months(
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>{`${Months(
                     appointment.appointment_month
                   )} ${appointment.appointment_day}, ${
                     appointment.appointment_year
                   }`}</p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-9' src={time} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
-                    {appointment.appointment_time || <Skeleton />}
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
+                    {appointment.appointment_time}
                   </p>
                 </div>
               </div>
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start py-4'>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2'>
                   <img className='w-9' src={person} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {appointment.client_name}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-9' src={phone} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {Phone(appointment.client_phone)}
                   </p>
                 </div>
               </div>
               <div className='sm:w-full flex justify-evenly desktop:w-[100%] justify-start py-4'>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={soak} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {String(appointment.client_Soak) === 'true'
                       ? 'Soak Off'
                       : 'No Soak Off'}
                   </p>
                 </div>
-                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
+                <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-12 h-fit' src={set} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {appointment.client_set === 'none'
                       ? 'No New Set'
                       : appointment.client_set}
@@ -87,17 +87,17 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                 </div>
               </div>
               <div className='sm:shadow-lg w-full flex justify-evenly desktop:w-[100%] justify-start py-4'>
-                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2'>
+                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2'>
                   <img className='w-9 h-fit' src={refill} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {String(appointment.client_refill) === 'true'
                       ? 'Refill'
                       : 'No Refill'}
                   </p>
                 </div>
-                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
+                <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md dark:border-neutral-900 md:w-60 h-40 desktop:w-1/2 desktop:ml-6'>
                   <img className='w-12 h-fit' src={set} alt='' />
-                  <p className='font-semibold py-4 text-pink-900'>
+                  <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                     {String(appointment.client_refillSet) === 'none'
                       ? 'No Refill Set'
                       : appointment.client_refillSet}

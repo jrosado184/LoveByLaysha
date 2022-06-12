@@ -129,7 +129,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='appointment_time'
               value={info.appointment_time}
               onChange={handleChange}
-              className='w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
+              className='w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md dark:border-neutral-900 dark:text-white dark:bg-neutral-700 dark:placeholder:text-white xr:w-[88%] md:ml-6 desktop:w-[70%]'
             >
               <option value=''>select a time</option>
               {<Options disabledTimes={disabledTimes} />}
@@ -140,7 +140,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
             <input
               {...register('client_name', { required: 'Please enter a name' })}
               data-testid='name'
-              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
+              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[88%] dark:border-neutral-900 dark:bg-neutral-700 dark:placeholder:text-white md:ml-6 desktop:w-[70%]'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -159,7 +159,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
+              className='pl-3 my-6 w-[91%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:border-neutral-900 dark:bg-neutral-700 dark:placeholder:text-white xr:w-[88%] md:ml-6 desktop:w-[70%]'
               type='number'
               placeholder='Phone number'
             />
@@ -173,7 +173,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? 'w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[88%] md:ml-6 desktop:w-[70%]'
+                  ? 'w-[91%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[88%] dark:border-neutral-900 dark:bg-neutral-700 dark:text-white md:ml-6 desktop:w-[70%]'
                   : 'hidden'
               }
             >
@@ -184,7 +184,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 </option>
               ))}
             </select>
-            <label className='flex items-center'>
+            <label className='flex items-center dark:text-white'>
               <input
                 data-testid='rinput'
                 name='client_refill'
@@ -204,7 +204,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? 'w-[91%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full xr:w-[88%] md:ml-6 desktop:w-[70%]'
+                  ? 'w-[91%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full xr:w-[88%] dark:border-neutral-900 dark:bg-neutral-700 dark:text-white md:ml-6 desktop:w-[70%]'
                   : 'hidden'
               }
             >
@@ -215,7 +215,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 </option>
               ))}
             </select>
-            <label className='flex items-center my-4 md:ml-6'>
+            <label className='flex items-center my-4 dark:text-neutral-100 md:ml-6'>
               <input
                 name='client_Soak'
                 value={info.client_Soak}
@@ -226,7 +226,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 type='checkbox'
               />
               <p>Soak Off</p>
-              <p className='ml-52 text-pink-300'>$10</p>
+              <p className='ml-52 text-pink-300 dark:text-neutral-100'>$10</p>
             </label>
             <label className=' my-2 md:ml-6'>
               <textarea
@@ -235,7 +235,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[91%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[88%] desktop:w-[70%]'
+                className='w-[91%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100 xr:w-[88%] desktop:w-[70%]'
               />
             </label>
             <BookFileUpload

@@ -51,7 +51,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </Link>
       )}
       {onNailComp && (
-        <div className='w-9 h-fit mb-5  bg-pink-300 border border-white rounded-full'>
+        <div className='w-9 h-fit mb-5  bg-pink-300 border border-white rounded-full dark:bg-neutral-700'>
           <label
             className='cursor-pointer'
             onClick={(e) => setImage(e.target.files[0])}

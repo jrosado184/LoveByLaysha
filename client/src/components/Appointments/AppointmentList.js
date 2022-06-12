@@ -18,9 +18,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   }, []);
 
   return (
-    <>
+    <div className='h-[90vh]'>
       <Search />
-      <div className='flex flex-col items-center my-2 mb-24'>
+      <div className='flex flex-col items-center my-2'>
         {loading ? (
           <AppointmentsSkeleton card={fetchAppointments.length} />
         ) : fetchAppointments.length ? (
@@ -28,12 +28,12 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
             <Appointments key={index} appointment={appointment} />
           ))
         ) : (
-          <div className='w-full h-96 flex justify-center items-center my-24'>
+          <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
             No Appointments Scheduled
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
