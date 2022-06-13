@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import BookFileUpload from './BookFileUpload';
 import { styles, Options, refillSet } from '../data/Options';
 import { connect } from 'react-redux';
@@ -8,6 +6,8 @@ import { getAppointments } from '../../redux/actions/appointment-actions';
 import moment from 'moment';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import { useForm } from 'react-hook-form';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 
 const Book = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -107,20 +107,17 @@ const Book = ({ fetchAppointments, dispatch }) => {
   } = useForm(info);
 
   return (
-    <div>
-      <form className='pl-8 xr:pl-10 py-4 pb-20 desktop:pl-[17%] w-full'>
+    <div className>
+      <div className='md:flex'></div>
+      <form className='pl-8 xr:py-4 pb-20 desktop:pl-[17%] w-full'>
         <div className='md:flex'>
-          <div className='flex flex-col'>
-            <Calendar
-              onChange={handleCalendar}
-              calendarClassName='border-2 border-pink-200 h-[100%]'
-              colorPrimary='#f8a4d1'
-              value={selectedDate}
-              minimumDate={utils().getToday()}
-              disabledDays={disabledDays}
-            />
-            <div className='my-2 ml-2'></div>
-          </div>
+          <Calendar
+            onChange={setSelectedDate}
+            value={selectedDate}
+            minimumDate={utils().getToday()}
+            disabledDays={disabledDays}
+            calendarClassName='border border-pink-300 dark:border-neutral-900'
+          />
           <div className='md:w-[60%]'>
             <select
               {...register('appointment_time', {
