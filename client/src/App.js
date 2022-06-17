@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className={darkMode && 'dark'}>
-      <div className='dark:bg-neutral-900'>
+      <div className='dark:bg-neutral-800'>
         <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
           <Header />
           <div className='fixed bottom-0 w-full z-20'>
@@ -51,7 +51,7 @@ const App = () => {
             <Route
               path='/appointment/:id'
               element={
-                <div className='w-full flex flex-col desktop:flex-row'>
+                <div className='w-full h-[160vh] flex flex-col desktop:flex-row desktop:h-[80vh]'>
                   <PrivateRoute>
                     <Appointment />
                     <ClientUploads />

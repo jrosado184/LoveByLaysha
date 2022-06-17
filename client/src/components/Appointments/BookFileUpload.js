@@ -31,7 +31,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
 
   return (
     <div>
-      <label className=' my-6 flex flex-col shrink md:ml-6'>
+      <label className=' my-6 flex flex-col shrink md:ml-6 dark:text-neutral-100'>
         Have a specific set in mind?
         <div className='my-2 xr:pl-1'>
           <SimpleFileUpload
@@ -50,8 +50,8 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           info.client_name &&
           info.client_phone &&
           (info.client_set !== 'none' || info.refillSet !== 'none')
-            ? 'w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
-            : 'opacity-90 w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%]'
+            ? 'w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+            : 'opacity-90 w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%] dark:bg-neutral-500 dark:border-neutral-900 dark:text-neutral-100'
         }
         type='submit'
         value='Book'

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import check from './../../assets/check.svg';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
-import edit from './../../assets/edit.svg';
+import { ReactComponent as Edit } from './../../assets/edit.svg';
 import CancelModal from './CancelModal';
 import { Months } from '../../Algos/Months';
 import Loading from './../Appointments/Loading';
@@ -31,7 +31,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className='h-[85.6vh]'>
       {cancelModal && (
         <CancelModal
           cancelModal={cancelModal}
@@ -39,7 +39,9 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
         />
       )}
       {loading ? (
-        <Loading />
+        <div className='h-[90vh]'>
+          <Loading />
+        </div>
       ) : (
         <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
           {fil.map((item) => {
@@ -48,7 +50,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 key={item.appointment_id}
                 className='flex flex-col items-center'
               >
-                <h1 className='text-3xl text-center my-6'>
+                <h1 className='text-3xl text-center my-6 text-pink-900 dark:text-neutral-100'>
                   {`Thank you for booking ${item.client_name}!`}
                 </h1>
                 <img
@@ -56,18 +58,23 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   src={check}
                   alt=''
                 />
-                <p className='font-semibold'>Your appointment is confirmed:</p>
-                <p className='font-bold underline'>{`For ${Months(
+                <p className='font-semibold text-pink-900 dark:text-neutral-100'>
+                  Your appointment is confirmed:
+                </p>
+                <p className='font-bold underline text-pink-900 dark:text-neutral-100'>{`For ${Months(
                   item.appointment_month
                 )} ${item.appointment_day}, ${item.appointment_year} at ${
                   item.appointment_time
                 }`}</p>
                 <div className='flex justify-evenly w-full h-12 items-end my-8 '>
                   <div className='flex w-12 items-center underline'>
-                    <button onClick={handleEdit} className='w-16 h-7 text-sm'>
+                    <button
+                      onClick={handleEdit}
+                      className='w-16 h-7 text-sm text-pink-900 dark:text-neutral-100'
+                    >
                       Edit
                     </button>
-                    <img className='w-4 h-4' src={edit} alt='' />
+                    <Edit className='w-9 h-9 text-pink-900 dark:text-neutral-100' />
                   </div>
                   <button
                     onClick={() => setCancelModal(!cancelModal)}
@@ -81,7 +88,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

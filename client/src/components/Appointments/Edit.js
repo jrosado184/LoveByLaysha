@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
-import { styles, refillSet, Options } from "../data/Options";
-import { connect } from "react-redux";
-import axios from "axios";
-import axiosWithAuth from "../../utils/axiosWithAuth";
-import SimpleFileUpload from "react-simple-file-upload";
-import { getAppointments } from "../../redux/actions/appointment-actions";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import { styles, refillSet, Options } from '../data/Options';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
+import SimpleFileUpload from 'react-simple-file-upload';
+import { getAppointments } from '../../redux/actions/appointment-actions';
 
 const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();
@@ -28,15 +28,15 @@ const Edit = ({ fetchAppointments, dispatch }) => {
     appointment_month: selectedDate.year,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
-    appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    appointment_time: '',
+    client_name: '',
+    client_phone: '',
+    client_set: 'none',
     client_refill: false,
-    client_refillSet: "none",
+    client_refillSet: 'none',
     client_Soak: false,
-    client_details: "",
-    images: "",
+    client_details: '',
+    images: '',
   });
 
   const disabledTimes = [];
@@ -64,8 +64,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       appointment_month: selectedDate.month,
       appointment_day: selectedDate.day,
       appointment_year: selectedDate.year,
-      client_set: info.client_refill ? "none" : info.client_set,
-      client_refillSet: info.client_set ? "none" : info.client_set,
+      client_set: info.client_refill ? 'none' : info.client_set,
+      client_refillSet: info.client_set ? 'none' : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -112,7 +112,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get("/api/disabledDays")
+      .get('/api/disabledDays')
       .then((res) => {
         setDisabledDays(res.data);
       });
@@ -142,14 +142,14 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             name='appointment_time'
             value={info.appointment_time}
             onChange={handleChange}
-            className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6'
+            className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           >
             <option value=''>select a time</option>
             {<Options disabledTimes={disabledTimes} />}
           </select>
           <input
             data-testid='name'
-            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
             type='text'
             placeholder='Name'
             name='client_name'
@@ -161,7 +161,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             name='client_phone'
             value={info.client_phone}
             onChange={handleChange}
-            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6'
+            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
             type='tel'
             placeholder='Phone number'
           />
@@ -172,8 +172,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             disabled={info.client_refill}
             className={
               !info.client_refill
-                ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6"
-                : "hidden"
+                ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                : 'hidden'
             }
           >
             <option value=''>Select a new set</option>
@@ -183,7 +183,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               </option>
             ))}
           </select>
-          <label className='flex items-center'>
+          <label className='flex items-center dark:text-neutral-100'>
             <input
               data-testid='rinput'
               name='client_refill'
@@ -204,8 +204,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             onChange={handleChange}
             className={
               info.client_refill
-                ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6"
-                : "hidden"
+                ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                : 'hidden'
             }
           >
             <option value=''>select refill</option>
@@ -215,7 +215,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               </option>
             ))}
           </select>
-          <label className='flex items-center my-4 md:ml-6'>
+          <label className='flex items-center my-4 md:ml-6 dark:text-neutral-100'>
             <input
               name='client_Soak'
               value={info.client_Soak}
@@ -227,20 +227,20 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               checked={info.client_Soak}
             />
             <p>Soak Off</p>
-            <p className='ml-52 text-pink-300'>$10</p>
+            <p className='ml-52 text-pink-300 dark:text-neutral-100'>$10</p>
           </label>
-          <label className=' my-2 md:ml-6'>
+          <label className=' my-2 md:ml-6 dark:text-neutral-100'>
             Additional Details:
             <textarea
               data-testid='details'
               name='client_details'
               value={info.client_details}
               onChange={handleChange}
-              className='w-[88%] h-20 pl-2 border-2 border-pink-400 md:ml-6'
+              className='w-[88%] h-20 pl-2 border-2 border-pink-400 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
             />
           </label>
           <div>
-            <label className=' my-6 flex flex-col shrink md:ml-6'>
+            <label className=' my-6 flex flex-col shrink md:ml-6 dark:text-neutral-100'>
               Have a specific set in mind?
               <div className='my-2'>
                 <SimpleFileUpload
@@ -251,7 +251,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
                 />
               </div>
             </label>
-            <label className='flex items-center gap-2'>
+            <label className='flex items-center gap-2 text-neutral-100 desktop:ml-6'>
               <input
                 onChange={handleCalendar}
                 value={changes}
@@ -263,7 +263,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             <input
               disabled={changes ? false : true}
               data-testid='bookbtn'
-              className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%]'
+              className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               type='submit'
               value='Save'
               onClick={handleSubmit}

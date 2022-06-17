@@ -13,7 +13,7 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-800 desktop:h-48 desktop:static'>
+      <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-48 desktop:static'>
         <div className='w-full py-2 flex desktop:block'>
           {localStorage.getItem('token') ? (
             <div className='flex'>
@@ -57,8 +57,8 @@ const Header = ({ dispatch }) => {
       <div
         className={
           localStorage.getItem('token')
-            ? 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 sm:pr-0 md:pr-4 dark:bg-neutral-800 dark:border-neutral-900'
-            : 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4 dark:bg-neutral-800 dark:border-neutral-900'
+            ? 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end pr-[3.4%] py-2 sm:pr-0 md:pr-4 dark:bg-neutral-900 dark:border-neutral-900'
+            : 'hidden desktop:flex bg-pink-200 border-b border-pink-500 text-md w-full gap-1 items-end justify-end xr:pr-[2.6%] py-2 md:pr-4 dark:bg-neutral-900 dark:border-neutral-900'
         }
       >
         <nav className='hidden desktop:flex ml-2 text-1xl border-2 text-center bg-white rounded-full border-pink-300 pl-3 pr-3 h-[6%] items-center justify-center dark:bg-neutral-600 dark:border-neutral-900'>

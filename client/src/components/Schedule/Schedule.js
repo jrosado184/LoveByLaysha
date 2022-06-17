@@ -152,7 +152,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
           {selectedDate && (
             <div className='w-full flex justify-start my-4'>
               <div className='flex items-center justify-center'>
-                <label className='mr-2 text-pink-900'>
+                <label className='mr-2 text-pink-900 dark:text-neutral-100'>
                   <input
                     onChange={() => setTime(!time)}
                     value={time}
@@ -170,7 +170,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               <select
                 onChange={(e) => setSelectedTime(e.target.value)}
                 name='appointment_time'
-                className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:desktop:w-full'
+                className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:desktop:w-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               >
                 <option value=''>select a time</option>
                 {<Options disabledTimes={disabledTimes} />}
@@ -185,8 +185,8 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                   disabled={selectedDate ? false : true}
                   className={
                     selectedDate
-                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
-                      : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60'
+                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                      : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60 dark:bg-neutral-600 dark:border-neutral-900 dark:text-neutral-100'
                   }
                 >
                   Disable
@@ -194,7 +194,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               ) : (
                 <button
                   onClick={disableTime}
-                  className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
+                  className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
                 >
                   Disable
                 </button>
@@ -202,7 +202,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
             {!enable ? (
               <button
                 onClick={() => setEnable(!enable)}
-                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               >
                 Schedule
               </button>

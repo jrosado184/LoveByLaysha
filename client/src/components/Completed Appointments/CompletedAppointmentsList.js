@@ -16,9 +16,9 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className='h-[85.55vh] desktop:pb-6'>
       <Search />
-      <div className='flex flex-col items-center my-2'>
+      <div className='flex flex-col items-center my-2 '>
         {loading ? (
           <AppointmentsSkeleton card={completedAppointments.length} />
         ) : (
@@ -30,7 +30,7 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 };
 

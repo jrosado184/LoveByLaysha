@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 const FooterNav = ({ setImage, onNailComp, darkMode }) => {
   return (
-    <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-800 dark:border-neutral-900 desktop:hidden'>
+    <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
       <Link to='/'>
         <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
           <Home
@@ -75,7 +75,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
         </Link>
       )}
       {onNailComp && (
-        <div className='w-9 h-fit mb-5  bg-pink-300 border border-white rounded-full'>
+        <div className='w-9 h-fit mb-5 bg-pink-300 border border-white rounded-full dark:bg-neutral-600'>
           <label
             className='cursor-pointer'
             onClick={(e) => setImage(e.target.files[0])}
