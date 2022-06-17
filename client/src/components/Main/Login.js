@@ -23,7 +23,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    nav('/nails');
+    nav('/');
   };
   return (
     <div className='h-96 flex flex-col items-center justify-center'>

@@ -15,7 +15,7 @@ import NailSkeleton from './NailSkeleton';
 import FooterNav from './../Mobile/FooterNav';
 import dots from './../../assets/dots.svg';
 
-const Nails = (logIn) => {
+const Nails = ({ logIn, darkMode }) => {
   const [token, setToken] = useState(null);
   const [removeImage, setRemoveImage] = useState(false);
   const [imageUrl, setImageUrl] = useState([]);
@@ -114,7 +114,11 @@ const Nails = (logIn) => {
       />
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-20'>
-          <FooterNav setImage={setImage} onNailComp={onNailComp} />
+          <FooterNav
+            darkMode={darkMode}
+            setImage={setImage}
+            onNailComp={onNailComp}
+          />
         </div>
       )}
     </div>
