@@ -37,7 +37,10 @@ const App = () => {
             <FooterNav darkMode={darkMode} />
           </div>
           <Routes>
-            <Route path='/' element={<Nails darkMode={darkMode} />} />
+            <Route
+              path='/'
+              element={<Nails darkMode={darkMode} setDarkMode={setDarkMode} />}
+            />
             <Route path='/book' element={<Book />} />
             <Route path='/confirm/:id' element={<Confirm />} />
             <Route path='/loading-confirm' element={<ConfirmLoad />} />

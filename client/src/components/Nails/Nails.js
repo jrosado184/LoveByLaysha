@@ -14,8 +14,11 @@ import NailUploadNav from './NailUploadNav';
 import NailSkeleton from './NailSkeleton';
 import FooterNav from './../Mobile/FooterNav';
 import { ReactComponent as Dots } from './../../assets/dots.svg';
+import { ReactComponent as Sun } from './../../assets/sun.svg';
+import { ReactComponent as Moon } from './../../assets/moon.svg';
+import { Switch } from '@headlessui/react';
 
-const Nails = ({ logIn, darkMode }) => {
+const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [token, setToken] = useState(null);
   const [removeImage, setRemoveImage] = useState(false);
   const [imageUrl, setImageUrl] = useState([]);
@@ -63,6 +66,27 @@ const Nails = ({ logIn, darkMode }) => {
 
   return (
     <div className='pb-24 desktop:p-0'>
+      <div
+        className={
+          localStorage.getItem('token')
+            ? 'hidden'
+            : 'w-full flex justify-end pr-6 py-4 pb-0'
+        }
+      >
+        <Switch
+          checked={darkMode}
+          onChange={setDarkMode}
+          className={`${
+            darkMode ? 'bg-neutral-600' : 'bg-gray-400'
+          } relative inline-flex h-6 w-11 items-center rounded-full`}
+        >
+          <span
+            className={`${
+              darkMode ? 'translate-x-6' : 'translate-x-1'
+            } inline-block h-4 w-4 transform rounded-full bg-white`}
+          />
+        </Switch>
+      </div>
       {localStorage.getItem('token') && (
         <div
           className={
