@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import trash from './../../assets/trash.png';
+import { ReactComponent as Trash } from './../../assets/trash.svg';
 import { Months } from '../../Algos/Months';
 
 const DisabledTimes = ({
@@ -27,13 +27,11 @@ const DisabledTimes = ({
           <div>
             {adminSelectedDaysOff.map((times, index) => (
               <div key={index} className='flex w-full justify-center my-2'>
-                <ul>{times}</ul>
+                <ul className='text-pink-900 dark:text-neutral-100'>{times}</ul>
                 <div className='w-6 flex items-center justify-center ml-2'>
-                  <img
+                  <Trash
                     onClick={() => enableTime(times)}
-                    className='w-3 object-fit cursor-pointer'
-                    src={trash}
-                    alt=''
+                    className='w-5 object-fit cursor-pointer text-pink-900 dark:text-neutral-100'
                   />
                 </div>
               </div>

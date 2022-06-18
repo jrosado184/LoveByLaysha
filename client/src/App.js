@@ -21,15 +21,17 @@ import ConfirmLoad from './components/Appointments/ConfirmLoad';
 import CancelConfirm from './components/Appointments/CancelConfirm';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import FooterNav from './components/Mobile/FooterNav';
-import Settings from './components/Mobile/Settings';
+import Notes from './components/Mobile/Notes';
 import Loading from './components/Appointments/Loading';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
 
   return (
-    <div className={darkMode && 'dark'}>
+    <div className={darkMode ? 'dark' : null}>
       <div className='dark:bg-neutral-800'>
         <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
           <Header />
@@ -74,7 +76,7 @@ const App = () => {
               path='/settings'
               element={
                 <PrivateRoute>
-                  <Settings />
+                  <Notes darkMode={darkMode} setDarkMode={setDarkMode} />
                 </PrivateRoute>
               }
             />

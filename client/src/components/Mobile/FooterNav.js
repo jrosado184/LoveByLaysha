@@ -7,7 +7,7 @@ import { ReactComponent as Clipboard } from './../../assets/icons/clipboard.svg'
 import { ReactComponent as Contact } from './../../assets/icons/mail.svg';
 import { ReactComponent as Schedule } from './../../assets/icons/calendar.svg';
 import { ReactComponent as Appointments } from './../../assets/icons/appointments.svg';
-import { ReactComponent as Settings } from './../../assets/icons/settings.svg';
+import { ReactComponent as Notes } from './../../assets/icons/notes.svg';
 import { connect } from 'react-redux';
 
 const FooterNav = ({ setImage, onNailComp, darkMode }) => {
@@ -124,16 +124,14 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
       {localStorage.getItem('token') && (
         <Link to='/settings'>
           <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
-            <Settings
+            <Notes
               className={
                 darkMode
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
             />
-            <p className='text-xs text-pink-900 dark:text-neutral-100'>
-              Settings
-            </p>
+            <p className='text-xs text-pink-900 dark:text-neutral-100'>Notes</p>
           </div>
         </Link>
       )}
