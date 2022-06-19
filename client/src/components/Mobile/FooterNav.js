@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import plus from './../../assets/plus.svg';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Home } from '../../assets/icons/home.svg';
@@ -8,16 +9,15 @@ import { ReactComponent as Contact } from './../../assets/icons/mail.svg';
 import { ReactComponent as Schedule } from './../../assets/icons/calendar.svg';
 import { ReactComponent as Appointments } from './../../assets/icons/appointments.svg';
 import { ReactComponent as Notes } from './../../assets/icons/notes.svg';
-import { connect } from 'react-redux';
 
-const FooterNav = ({ setImage, onNailComp, darkMode }) => {
+const FooterNav = ({ setImage, onNailComp }) => {
   return (
     <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
       <Link to='/'>
         <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
           <Home
             className={
-              darkMode
+              localStorage.getItem('theme') === 'dark'
                 ? 'w-7 h-fit text-neutral-100'
                 : 'w-7 h-fit text-pink-900'
             }
@@ -35,7 +35,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
         <Link to='/book'>
           <Book
             className={
-              darkMode
+              localStorage.getItem('theme') === 'dark'
                 ? 'w-7 h-fit text-neutral-100'
                 : 'w-7 h-fit text-pink-900'
             }
@@ -48,7 +48,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Clipboard
               className={
-                darkMode
+                localStorage.getItem('theme') === 'dark'
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
@@ -63,7 +63,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Schedule
               className={
-                darkMode
+                localStorage.getItem('theme') === 'dark'
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
@@ -94,7 +94,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
             <Appointments
               className={
-                darkMode
+                localStorage.getItem('theme') === 'dark'
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
@@ -110,7 +110,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Contact
               className={
-                darkMode
+                localStorage.getItem('theme') === 'dark'
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
@@ -126,7 +126,7 @@ const FooterNav = ({ setImage, onNailComp, darkMode }) => {
           <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
             <Notes
               className={
-                darkMode
+                localStorage.getItem('theme') === 'dark'
                   ? 'w-7 h-fit text-neutral-100'
                   : 'w-7 h-fit text-pink-900'
               }
@@ -144,6 +144,7 @@ const mapStateToProps = (state) => {
     login: {
       logout: state.login.logout,
     },
+    theme: state.theme,
   };
 };
 

@@ -1,10 +1,10 @@
-import { LOGIN, LOGGEDIN, LOGOUT } from "../actions/login_actions";
+import { LOGIN, LOGGEDIN, LOGOUT } from '../actions/login_actions';
 const initialState = {
   login: {
-    message: "",
+    message: '',
   },
-  loggedIn: "",
-  logout: "",
+  loggedIn: '',
+  logout: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,12 +19,14 @@ const reducer = (state = initialState, action) => {
     case LOGGEDIN:
       return {
         ...state,
-        loggedIn: localStorage.getItem("token"),
+        loggedIn: localStorage.getItem('token'),
       };
     case LOGOUT: {
       return {
         ...state,
-        logout: localStorage.clear(),
+        logout: localStorage.removeItem('token'),
+        // eslint-disable-next-line no-dupe-keys
+        logout: localStorage.removeItem('message'),
       };
     }
     default:

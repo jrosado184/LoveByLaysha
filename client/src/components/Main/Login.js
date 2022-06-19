@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { handleLogin, login } from '../../redux/actions/login_actions';
+import { handleLogin } from '../../redux/actions/login_actions';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Login = (props) => {
-  const { dispatch } = props;
-
+const Login = ({ dispatch }) => {
   const nav = useNavigate();
 
   const [login, setLogin] = useState({

@@ -113,7 +113,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
           <div className='flex flex-col'>
             <Calendar
               onChange={handleCalendar}
-              calendarClassName='border-2 border-pink-200 h-[100%]'
+              calendarClassName='border-2 border-pink-200 h-[100% dark:border-neutral-900'
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
