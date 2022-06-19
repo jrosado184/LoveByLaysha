@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { Options } from '../data/Options';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import moment from 'moment';
-import MainCalendar from './MainCalendar';
-import FooterNav from './../Mobile/FooterNav';
-import DisabledTimes from './DisabledTimes';
+import React, { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar, utils } from "react-modern-calendar-datepicker";
+import { Options } from "../data/Options";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import moment from "moment";
+import MainCalendar from "./MainCalendar";
+import FooterNav from "./../Mobile/FooterNav";
+import DisabledTimes from "./DisabledTimes";
 
 const Schedule = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -18,7 +18,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
   });
 
   const [enableDate, setEnableDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState("");
   const [disabledDays, setDisabledDays] = useState([]);
   const [time, setTime] = useState(false);
   const [enable, setEnable] = useState(false);
@@ -51,7 +51,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const addDisabledDay = () => {
     axiosWithAuth()
-      .post('/api/disabledDays', selectedDate)
+      .post("/api/disabledDays", selectedDate)
       .then((res) => {
         setDisabledDays((prev) => [...prev, res.data]);
       })
@@ -69,7 +69,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
     e.preventDefault();
     enableDate &&
       axiosWithAuth()
-        .delete('/api/disabledDays', { data: enableDate })
+        .delete("/api/disabledDays", { data: enableDate })
         .then((res) => {
           setDisabledDays(res.data);
           setEnable(false);
@@ -81,7 +81,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const disableTime = () => {
     axiosWithAuth()
-      .post('/api/disabledTimes', {
+      .post("/api/disabledTimes", {
         time: selectedTime,
         year: selectedDate.year,
         month: selectedDate.month,
@@ -98,7 +98,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   const enableTime = (time) => {
     axiosWithAuth()
-      .delete('/api/disabledTimes', { data: { time: time } })
+      .delete("/api/disabledTimes", { data: { time: time } })
       .then((res) => {
         setUnavailableTimes(res.data);
       })
@@ -110,7 +110,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get('/api/disabledDays')
+      .get("/api/disabledDays")
       .then((res) => {
         setDisabledDays(res.data);
       })
@@ -121,7 +121,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get('/api/disabledTimes')
+      .get("/api/disabledTimes")
       .then((res) => {
         setUnavailableTimes(res.data);
       });
@@ -170,7 +170,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
               <select
                 onChange={(e) => setSelectedTime(e.target.value)}
                 name='appointment_time'
-                className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md dark:border-neutral-900 dark:bg-neutral-700 dark:text-white md:desktop:w-full'
+                className='w-full h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:desktop:w-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               >
                 <option value=''>select a time</option>
                 {<Options disabledTimes={disabledTimes} />}
@@ -185,8 +185,8 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
                   disabled={selectedDate ? false : true}
                   className={
                     selectedDate
-                      ? 'w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
-                      : 'w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60 dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                      ? "w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100"
+                      : "w-24 h-8 mr-6 bg-white border border-pink-500 text-pink-500  shadow-sm rounded-sm opacity-60 dark:bg-neutral-600 dark:border-neutral-900 dark:text-neutral-100"
                   }
                 >
                   Disable

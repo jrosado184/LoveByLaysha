@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { appointmentId } from '../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
-import ClientUploadSkeleton from './ClientUploadsSkeleton';
-import FooterNav from './../Mobile/FooterNav';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { appointmentId } from "../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
+import ClientUploadSkeleton from "./ClientUploadsSkeleton";
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
@@ -27,7 +26,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   const handleComplete = () => {
@@ -37,7 +36,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   return (
@@ -60,13 +59,13 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                       src={appointmentId.images}
                     />
                   ) : (
-                    <p className='text-pink-900 flex justify-center items-center w-96 border border-pink-900 rounded-md dark:border-neutral-900 dark:text-neutral-100 desktop:w-[50%] h-96'>
+                    <p className='text-pink-900 flex justify-center items-center w-96 border border-pink-900 rounded-md desktop:w-[50%] h-96 dark:border-neutral-900 dark:text-neutral-100'>
                       No images uploaded
                     </p>
                   )}
                   <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
-                    {appointmentId.client_details === ''
-                      ? 'No Additional Details'
+                    {appointmentId.client_details === ""
+                      ? "No Additional Details"
                       : appointmentId.client_details}
                   </p>
                 </div>
@@ -76,13 +75,13 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
           <div className='flex justify-evenly my-6 ml-2 desktop:justify-center gap-12'>
             <button
               onClick={handleDelete}
-              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-full dark:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-900'
+              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
               Remove
             </button>
             <button
               onClick={handleComplete}
-              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-900'
+              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
               Complete
             </button>

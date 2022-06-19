@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { handleLogin } from '../../redux/actions/login_actions';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { handleLogin } from "../../redux/actions/login_actions";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Login = ({ dispatch }) => {
   const nav = useNavigate();
 
   const [login, setLogin] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -21,11 +21,11 @@ const Login = ({ dispatch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    nav('/nails');
+    nav("/");
   };
   return (
-    <div className='h-[90vh] pb-96 flex flex-col items-center justify-center'>
-      <p className='font-bold text-pink-900 dark:dark:text-neutral-100'>
+    <div className='h-[90vh] flex flex-col items-center justify-start py-16'>
+      <p className='font-bold my-2 text-pink-900 dark:text-neutral-100'>
         FOR ADMIN USE ONLY
       </p>
       <form
@@ -33,7 +33,7 @@ const Login = ({ dispatch }) => {
         className=' w-96 my-4 flex flex-col items-center justify-center'
       >
         <input
-          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:border-neutral-800 dark:bg-neutral-700 dark:placeholder:text-neutral-100'
+          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:bg-neutral-700 dark:border-neutral-900'
           type='text'
           placeholder='Username'
           name='username'
@@ -41,7 +41,7 @@ const Login = ({ dispatch }) => {
           onChange={handleChange}
         />
         <input
-          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:dark:border-neutral-800 dark:bg-neutral-700 dark:placeholder:text-neutral-100'
+          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:bg-neutral-700 dark:border-neutral-900'
           type='password'
           placeholder='Password'
           name='password'

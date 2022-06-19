@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import Appointments from './Appointments';
-import Search from './Search';
-import { sortDates } from '../../Algos/Sorting';
-import AppointmentsSkeleton from './AppointmentsSkeleton';
+import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import Appointments from "./Appointments";
+import Search from "./Search";
+import { sortDates } from "../../Algos/Sorting";
+import AppointmentsSkeleton from "./AppointmentsSkeleton";
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   }, []);
 
   return (
-    <div className='h-[90vh]'>
+    <div className='h-[90vh] pb-6 desktop:h-[75.3vh]'>
       <Search />
       <div className='flex flex-col items-center my-2'>
         {loading ? (
@@ -28,7 +28,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
             <Appointments key={index} appointment={appointment} />
           ))
         ) : (
-          <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
+          <div className='w-full h-96 flex justify-center items-center my-24 dark:text-neutral-100'>
             No Appointments Scheduled
           </div>
         )}

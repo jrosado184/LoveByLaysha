@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Rodal from 'rodal';
-import 'rodal/lib/rodal.css';
+import React, { useEffect, useState } from "react";
+import Rodal from "rodal";
+import "rodal/lib/rodal.css";
 
 const UploadModal = ({ image, setImage, handleImage }) => {
   const [modal, setModal] = useState(false);
@@ -17,7 +17,7 @@ const UploadModal = ({ image, setImage, handleImage }) => {
   return (
     <div className='upload-modal'>
       <Rodal
-        animation={'zoom'}
+        animation={"zoom"}
         visible={image ? true : false}
         onClose={() => setModal(false)}
         showCloseButton={false}
@@ -25,17 +25,19 @@ const UploadModal = ({ image, setImage, handleImage }) => {
         height={120}
         className=''
       >
-        <p className='font-bold my-2 w-[100%] text-center'>Upload file?</p>
+        <p className='font-bold my-2 w-[100%] text-center text-pink-900 dark:text-neutral-800'>
+          Upload file?
+        </p>
         <div className='flex justify-evenly py-5'>
           <button
             onClick={() => setImage((prev) => !prev)}
-            className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
+            className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           >
             Cancel
           </button>
           <button
             onClick={Upload}
-            className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
+            className='border border-pink-400 bg-pink-200 text-pink-800 rounded-md w-20 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           >
             Upload
           </button>
