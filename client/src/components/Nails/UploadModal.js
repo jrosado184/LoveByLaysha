@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Rodal from 'rodal';
-import 'rodal/lib/rodal.css';
+import React, { useEffect, useState } from "react";
+import Rodal from "rodal";
+import "rodal/lib/rodal.css";
 
 const UploadModal = ({ image, setImage, handleImage }) => {
   const [modal, setModal] = useState(false);
@@ -17,12 +17,13 @@ const UploadModal = ({ image, setImage, handleImage }) => {
   return (
     <div className='upload-modal'>
       <Rodal
-        animation={'zoom'}
+        animation={"zoom"}
         visible={image ? true : false}
         onClose={() => setModal(false)}
         showCloseButton={false}
         width={300}
         height={120}
+        className=''
       >
         <p className='font-bold my-2 w-[100%] text-center text-pink-900 dark:text-neutral-800'>
           Upload file?

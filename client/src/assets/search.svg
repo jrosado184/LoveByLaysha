@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="rgb(131 24 67)" stroke-width="2">
+<style>
+        path {
+            stroke: rgb(131 24 67);
+        }
+        @media (prefers-color-scheme: dark) {
+            path { stroke: white; }
+        }
+    </style>
+=======
 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+>>>>>>> c3c9de694236afe2af604ee4d7860d5dab5d4005
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 </svg>

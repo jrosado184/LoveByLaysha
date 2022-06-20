@@ -243,12 +243,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             <label className=' my-6 flex flex-col shrink md:ml-6 dark:text-neutral-100'>
               Have a specific set in mind?
               <div className='my-2'>
-                <SimpleFileUpload
-                  width={330}
-                  apiKey={process.env.REACT_APP_UPLOAD_KEY}
-                  onSuccess={handleFile}
-                  preview='true'
-                />
+                <input type='file' />
               </div>
             </label>
             <label className='flex items-center gap-2 text-neutral-100 desktop:ml-6'>

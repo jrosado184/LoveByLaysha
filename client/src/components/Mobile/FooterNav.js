@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import plus from './../../assets/plus.svg';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Home } from '../../assets/icons/home.svg';
-import { ReactComponent as Book } from './../../assets/icons/book.svg';
-import { ReactComponent as Clipboard } from './../../assets/icons/clipboard.svg';
-import { ReactComponent as Contact } from './../../assets/icons/mail.svg';
-import { ReactComponent as Schedule } from './../../assets/icons/calendar.svg';
-import { ReactComponent as Appointments } from './../../assets/icons/appointments.svg';
-import { ReactComponent as Notes } from './../../assets/icons/notes.svg';
+import React from "react";
+import { connect } from "react-redux";
+import plus from "./../../assets/plus.svg";
+import { Link } from "react-router-dom";
+import { ReactComponent as Home } from "../../assets/icons/home.svg";
+import { ReactComponent as Book } from "./../../assets/icons/book.svg";
+import { ReactComponent as Clipboard } from "./../../assets/icons/clipboard.svg";
+import { ReactComponent as Contact } from "./../../assets/icons/mail.svg";
+import { ReactComponent as Schedule } from "./../../assets/icons/calendar.svg";
+import { ReactComponent as Appointments } from "./../../assets/icons/appointments.svg";
+import { ReactComponent as Notes } from "./../../assets/icons/notes.svg";
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
@@ -17,9 +17,9 @@ const FooterNav = ({ setImage, onNailComp }) => {
         <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
           <Home
             className={
-              localStorage.getItem('theme') === 'dark'
-                ? 'w-7 h-fit text-neutral-100'
-                : 'w-7 h-fit text-pink-900'
+              localStorage.getItem("theme") === "dark"
+                ? "w-7 h-fit text-neutral-100"
+                : "w-7 h-fit text-pink-900"
             }
           />
           <p className='text-xs text-pink-900 dark:text-neutral-100'>Home</p>
@@ -27,30 +27,30 @@ const FooterNav = ({ setImage, onNailComp }) => {
       </Link>
       <div
         className={
-          !localStorage.getItem('token')
-            ? 'w-9 h-fit flex flex-col items-center justify-center mb-4'
-            : 'hidden'
+          !localStorage.getItem("token")
+            ? "w-9 h-fit flex flex-col items-center justify-center mb-4"
+            : "hidden"
         }
       >
         <Link to='/book'>
           <Book
             className={
-              localStorage.getItem('theme') === 'dark'
-                ? 'w-7 h-fit text-neutral-100'
-                : 'w-7 h-fit text-pink-900'
+              localStorage.getItem("theme") === "dark"
+                ? "w-7 h-fit text-neutral-100"
+                : "w-7 h-fit text-pink-900"
             }
           />
           <p className='text-xs text-pink-900 dark:text-neutral-100'>Book</p>
         </Link>
       </div>
-      {!localStorage.getItem('token') ? (
+      {!localStorage.getItem("token") ? (
         <Link to='/policies'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Clipboard
               className={
-                localStorage.getItem('theme') === 'dark'
-                  ? 'w-7 h-fit text-neutral-100'
-                  : 'w-7 h-fit text-pink-900'
+                localStorage.getItem("theme") === "dark"
+                  ? "w-7 h-fit text-neutral-100"
+                  : "w-7 h-fit text-pink-900"
               }
             />
             <p className='text-xs text-pink-900 dark:text-neutral-100'>
@@ -63,9 +63,9 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Schedule
               className={
-                localStorage.getItem('theme') === 'dark'
-                  ? 'w-7 h-fit text-neutral-100'
-                  : 'w-7 h-fit text-pink-900'
+                localStorage.getItem("theme") === "dark"
+                  ? "w-7 h-fit text-neutral-100"
+                  : "w-7 h-fit text-pink-900"
               }
             />
             <p className='text-xs text-pink-900 dark:text-neutral-100'>
@@ -89,14 +89,14 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </label>
         </div>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <Link to='/appointments'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
             <Appointments
               className={
-                localStorage.getItem('theme') === 'dark'
-                  ? 'w-7 h-fit text-neutral-100'
-                  : 'w-7 h-fit text-pink-900'
+                localStorage.getItem("theme") === "dark"
+                  ? "w-7 h-fit text-neutral-100"
+                  : "w-7 h-fit text-pink-900"
               }
             />
             <p className='text-xs text-pink-900 dark:text-neutral-100'>
@@ -105,14 +105,14 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </div>
         </Link>
       )}
-      {!localStorage.getItem('token') && (
+      {!localStorage.getItem("token") && (
         <Link to='/contact'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <Contact
               className={
-                localStorage.getItem('theme') === 'dark'
-                  ? 'w-7 h-fit text-neutral-100'
-                  : 'w-7 h-fit text-pink-900'
+                localStorage.getItem("theme") === "dark"
+                  ? "w-7 h-fit text-neutral-100"
+                  : "w-7 h-fit text-pink-900"
               }
             />
             <p className='text-xs text-pink-900 dark:text-neutral-100'>
@@ -121,14 +121,14 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </div>
         </Link>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <Link to='/settings'>
           <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
             <Notes
               className={
-                localStorage.getItem('theme') === 'dark'
-                  ? 'w-7 h-fit text-neutral-100'
-                  : 'w-7 h-fit text-pink-900'
+                localStorage.getItem("theme") === "dark"
+                  ? "w-7 h-fit text-neutral-100"
+                  : "w-7 h-fit text-pink-900"
               }
             />
             <p className='text-xs text-pink-900 dark:text-neutral-100'>Notes</p>

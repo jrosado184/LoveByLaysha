@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { useParams, useNavigate } from 'react-router-dom';
-import Rodal from 'rodal';
-import { ArrowLeftIcon } from '@heroicons/react/outline';
+import React, { useState } from "react";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { useParams, useNavigate } from "react-router-dom";
+import Rodal from "rodal";
+import { ArrowLeftIcon } from "@heroicons/react/outline";
 
 const CancelModal = ({ cancelModal, setCancelModal }) => {
   const { id } = useParams();
@@ -13,15 +13,15 @@ const CancelModal = ({ cancelModal, setCancelModal }) => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
       .then((res) => {
-        nav('/loading');
+        nav("/loading");
         setTimeout(() => {
-          nav('/canceled');
+          nav("/canceled");
         }, 2000);
       });
   };
   return (
     <Rodal
-      animation={'zoom'}
+      animation={"zoom"}
       visible={cancelModal}
       onClose={() => setCancelModal(false)}
       showCloseButton={false}

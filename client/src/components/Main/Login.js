@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { handleLogin } from '../../redux/actions/login_actions';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { handleLogin } from "../../redux/actions/login_actions";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Login = ({ dispatch }) => {
   const nav = useNavigate();
 
   const [login, setLogin] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ const Login = ({ dispatch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    nav('/');
+    nav("/");
   };
   return (
     <div className='h-[90vh] flex flex-col items-center justify-start py-16'>

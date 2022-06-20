@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import NailImages from './NailImages';
-import UploadModal from './UploadModal';
-import { connect } from 'react-redux';
-import { storage } from '../../firebase/firebase';
+import React, { useEffect, useState } from "react";
+import NailImages from "./NailImages";
+import UploadModal from "./UploadModal";
+import { connect } from "react-redux";
+import { storage } from "../../firebase/firebase";
 import {
   ref,
   uploadBytes,
   listAll,
   getDownloadURL,
   deleteObject,
-} from 'firebase/storage';
-import NailUploadNav from './NailUploadNav';
-import NailSkeleton from './NailSkeleton';
-import FooterNav from './../Mobile/FooterNav';
-import { ReactComponent as Dots } from './../../assets/dots.svg';
-import ToggleTheme from './../Main/ToggleTheme';
+} from "firebase/storage";
+import NailUploadNav from "./NailUploadNav";
+import NailSkeleton from "./NailSkeleton";
+import FooterNav from "./../Mobile/FooterNav";
+import { ReactComponent as Dots } from "./../../assets/dots.svg";
+import ToggleTheme from "./../Main/ToggleTheme";
 
 const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [token, setToken] = useState(null);
@@ -24,7 +24,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [loading, setLoading] = useState(true);
   const [onNailComp, setOnNailComp] = useState(false);
 
-  const allImageRef = ref(storage, 'nails/');
+  const allImageRef = ref(storage, "nails/");
 
   const handleImage = () => {
     if (image === null) return;
@@ -55,7 +55,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, []);
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'));
+    setToken(localStorage.getItem("token"));
     setTimeout(() => {
       setLoading(false);
     }, 900);
@@ -66,19 +66,19 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
     <div className='pb-24 desktop:p-0'>
       <div
         className={
-          localStorage.getItem('token')
-            ? 'hidden'
-            : 'w-full flex justify-end pr-6 py-4 pb-0'
+          localStorage.getItem("token")
+            ? "hidden"
+            : "w-full flex justify-end pr-6 py-4 pb-0"
         }
       >
         <ToggleTheme darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <div
           className={
             removeImage
-              ? 'w-full h-8 flex justify-end items-center pr-6 py-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden'
-              : 'w-full h-8 my-4 flex justify-end items-center pr-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden'
+              ? "w-full h-8 flex justify-end items-center pr-6 py-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden"
+              : "w-full h-8 my-4 flex justify-end items-center pr-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden"
           }
         >
           {removeImage && (
@@ -98,8 +98,8 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
             onClick={() => setRemoveImage(!removeImage)}
             className={
               removeImage
-                ? 'hidden'
-                : 'w-10 h-12 text-pink-900 dark:text-neutral-100'
+                ? "hidden"
+                : "w-10 h-12 text-pink-900 dark:text-neutral-100"
             }
           />
         </div>
@@ -124,7 +124,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         token={token}
         removeImage={removeImage}
       />
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav
             darkMode={darkMode}

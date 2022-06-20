@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { ReactComponent as Trash } from './../../assets/trash.svg';
-import { Months } from '../../Algos/Months';
+import React from "react";
+import { connect } from "react-redux";
+import { ReactComponent as Trash } from "./../../assets/trash.svg";
+import { Months } from "../../Algos/Months";
 
 const DisabledTimes = ({
   fetchAppointments,

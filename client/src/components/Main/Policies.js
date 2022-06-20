@@ -1,6 +1,6 @@
-import React from 'react';
-import { ReactComponent as Star } from './../../assets/icons/star.svg';
-import { ReactComponent as CashApp } from './../../assets/icons/CashApp-logo.svg';
+import React from "react";
+import { ReactComponent as Star } from "./../../assets/icons/star.svg";
+import { ReactComponent as CashApp } from "./../../assets/icons/CashApp-logo.svg";
 
 const Policies = () => {
   return (

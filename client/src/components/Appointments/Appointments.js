@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { ReactComponent as Right } from '../../assets/right.svg';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Months } from '../../Algos/Months';
-import FooterNav from './../Mobile/FooterNav';
-import { getAppointments } from './../../redux/actions/appointment-actions';
+import React, { useEffect } from "react";
+import { ReactComponent as Right } from "../../assets/right.svg";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Months } from "../../Algos/Months";
+import FooterNav from "./../Mobile/FooterNav";
+import { getAppointments } from "./../../redux/actions/appointment-actions";
 
 const Appointments = ({ appointment, index, dispatch }) => {
   const nav = useNavigate();
@@ -50,7 +50,7 @@ const Appointments = ({ appointment, index, dispatch }) => {
           </div>
         </div>
       </div>
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <div className='fixed bottom-0 w-full z-10 y-20'>
           <FooterNav />
         </div>

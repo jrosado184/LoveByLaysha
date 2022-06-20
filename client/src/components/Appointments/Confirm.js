@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import check from './../../assets/check.svg';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import { ReactComponent as Edit } from './../../assets/edit.svg';
-import CancelModal from './CancelModal';
-import { Months } from '../../Algos/Months';
-import Loading from './../Appointments/Loading';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import check from "./../../assets/check.svg";
+import { connect } from "react-redux";
+import { getAppointments } from "../../redux/actions/appointment-actions";
+import { ReactComponent as Edit } from "./../../assets/edit.svg";
+import CancelModal from "./CancelModal";
+import { Months } from "../../Algos/Months";
+import Loading from "./../Appointments/Loading";
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -43,7 +43,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
           <Loading />
         </div>
       ) : (
-        <div className='flex flex-col items-center h-96 justify-end my-10 desktop:justify-start'>
+        <div className='flex flex-col items-center justify-start h-[90vh] py-12 desktop:justify-start desktop:h-[75.3vh]'>
           {fil.map((item) => {
             return (
               <div

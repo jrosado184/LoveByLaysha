@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { addAppointments } from "../../redux/actions/appointment-actions.js";
 import { useNavigate } from "react-router-dom";
@@ -5,6 +6,15 @@ import { connect } from "react-redux";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import { storage } from "../../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+import React from "react";
+import { addAppointments } from "../../redux/actions/appointment-actions.js";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import SimpleFileUpload from "react-simple-file-upload";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+
+export const disabledTimes = [];
 
 const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const [image, setImage] = useState(null);
@@ -82,6 +92,9 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
               />
             </label>
           </div>
+
+        <div className='my-2 xr:pl-1'>
+          <input type='file' />
         </div>
       </label>
       <input
