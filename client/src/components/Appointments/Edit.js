@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { styles, refillSet, Options } from '../data/Options';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import SimpleFileUpload from 'react-simple-file-upload';
-import { getAppointments } from '../../redux/actions/appointment-actions';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar, utils } from "react-modern-calendar-datepicker";
+import { styles, refillSet, Options } from "../data/Options";
+import { connect } from "react-redux";
+import axios from "axios";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import SimpleFileUpload from "react-simple-file-upload";
+import { getAppointments } from "../../redux/actions/appointment-actions";
 
 const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();
@@ -28,15 +28,15 @@ const Edit = ({ fetchAppointments, dispatch }) => {
     appointment_month: selectedDate.year,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
-    appointment_time: '',
-    client_name: '',
-    client_phone: '',
-    client_set: 'none',
+    appointment_time: "",
+    client_name: "",
+    client_phone: "",
+    client_set: "none",
     client_refill: false,
-    client_refillSet: 'none',
+    client_refillSet: "none",
     client_Soak: false,
-    client_details: '',
-    images: '',
+    client_details: "",
+    images: "",
   });
 
   const disabledTimes = [];
@@ -64,8 +64,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       appointment_month: selectedDate.month,
       appointment_day: selectedDate.day,
       appointment_year: selectedDate.year,
-      client_set: info.client_refill ? 'none' : info.client_set,
-      client_refillSet: info.client_set ? 'none' : info.client_set,
+      client_set: info.client_refill ? "none" : info.client_set,
+      client_refillSet: info.client_set ? "none" : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
@@ -112,7 +112,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   useEffect(() => {
     dispatch(getAppointments());
     axiosWithAuth()
-      .get('/api/disabledDays')
+      .get("/api/disabledDays")
       .then((res) => {
         setDisabledDays(res.data);
       });
@@ -131,7 +131,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       <div className='md:flex'>
         <Calendar
           onChange={setSelectedDate}
-          calendarClassName='border-2 border-pink-200'
+          calendarClassName='border-2 border-pink-200 dark:border-neutral-900'
           colorPrimary='#f8a4d1'
           value={selectedDate}
           minimumDate={utils().getToday()}
@@ -172,8 +172,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             disabled={info.client_refill}
             className={
               !info.client_refill
-                ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-                : 'hidden'
+                ? "w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900"
+                : "hidden"
             }
           >
             <option value=''>Select a new set</option>
@@ -204,8 +204,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
             onChange={handleChange}
             className={
               info.client_refill
-                ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-                : 'hidden'
+                ? "w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900"
+                : "hidden"
             }
           >
             <option value=''>select refill</option>

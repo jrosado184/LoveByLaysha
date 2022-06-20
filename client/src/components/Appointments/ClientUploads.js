@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { appointmentId } from '../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
-import ClientUploadSkeleton from './ClientUploadsSkeleton';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { appointmentId } from "../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
+import ClientUploadSkeleton from "./ClientUploadsSkeleton";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase/firebase";
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
-
+  const allImageRef = ref(storage, "clientUploads/");
   const { id } = useParams();
 
   const [loading, setLoading] = useState(true);
+  const [clientImage, setClientImage] = useState([]);
 
   useEffect(() => {
     dispatch(appointmentId(id));
     setTimeout(() => {
       setLoading(false);
     }, 500);
+  }, []);
+
+  useEffect(() => {
+    listAll(allImageRef).then((res) => {
+      res.items.map((item) =>
+        getDownloadURL(item).then((url) =>
+          setClientImage((prev) => [...prev, url])
+        )
+      );
+    });
   }, []);
 
   const handleDelete = () => {
@@ -26,7 +39,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   const handleComplete = () => {
@@ -36,8 +49,10 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
+
+  console.log(getAppointmentById);
 
   return (
     <>
@@ -64,8 +79,8 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                     </p>
                   )}
                   <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
-                    {appointmentId.client_details === ''
-                      ? 'No Additional Details'
+                    {appointmentId.client_details === ""
+                      ? "No Additional Details"
                       : appointmentId.client_details}
                   </p>
                 </div>

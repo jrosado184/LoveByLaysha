@@ -498,8 +498,8 @@ input[type='file'] {
   cursor: default;
 }
 
-.dark .Calendar__monthSelectorItem.-active .Calendar__monthSelectorItemText,
-.dark .Calendar__yearSelectorItem.-active .Calendar__yearSelectorText {
+.dark .Calendar__monthSelectorItem.-active .dark .Calendar__monthSelectorItemText,
+.dark .Calendar__yearSelectorItem.-active .dark .Calendar__yearSelectorText {
   background-color: rgb(38 38 38) !important;
   color: #fff;
 }
@@ -614,9 +614,9 @@ input[type='file'] {
   border-color: transparent;
 }
 
-.Calendar__day.-selected,
-.Calendar__day.-selectedStart,
-.Calendar__day.-selectedEnd {
+.dark .Calendar__day.-selected,
+.dark .Calendar__day.-selectedStart,
+.dark .Calendar__day.-selectedEnd {
   background: #fff !important;
   color: rgb(0, 0, 0) !important;
 }
