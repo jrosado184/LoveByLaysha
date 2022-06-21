@@ -10,16 +10,15 @@ const ConfirmLoad = ({ dispatch, fetchAppointments }) => {
 
   useEffect(() => {
     dispatch(getAppointments());
-  }, []);
-
-  setTimeout(() => {
-    nav(
-      `/confirm/${
-        fetchAppointments[fetchAppointments.length - 1].appointment_id
-      }`
-    );
-    setLoading(false);
-  }, 1000);
+    setTimeout(() => {
+      nav(
+        `/confirm/${
+          fetchAppointments[fetchAppointments.length - 1].appointment_id
+        }`
+      );
+      setLoading(false);
+    }, 1000);
+  }, [fetchAppointments]);
 
   return loading && <Loading />;
 };

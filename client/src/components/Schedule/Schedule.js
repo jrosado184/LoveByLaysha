@@ -133,7 +133,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
         <div className='flex flex-col items-center my-6 desktop:items-start'>
           {!enable ? (
             <Calendar
-              calendarClassName='border-2 border-pink-200 h-[100%]'
+              calendarClassName='border-2 border-pink-200 h-[100%] dark:border-neutral-900'
               colorPrimary='#f8a4d1'
               value={selectedDate}
               minimumDate={utils().getToday()}
@@ -142,7 +142,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
             />
           ) : (
             <Calendar
-              calendarClassName='border-2 border-pink-200 h-[100%]'
+              calendarClassName='border-2 border-pink-200 h-[100%] dark:border-neutral-900'
               colorPrimary='#f8a4d1'
               value={enableDate}
               minimumDate={utils().getToday()}

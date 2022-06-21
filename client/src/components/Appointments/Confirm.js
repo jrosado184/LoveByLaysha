@@ -50,7 +50,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 key={item.appointment_id}
                 className='flex flex-col items-center'
               >
-                <h1 className='text-3xl text-center my-6 text-pink-900 dark:text-neutral-100'>
+                <h1 className='text-2xl text-center my-6 text-pink-900 dark:text-neutral-100'>
                   {`Thank you for booking ${item.client_name}!`}
                 </h1>
                 <img

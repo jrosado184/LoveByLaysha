@@ -1,46 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { addAppointments } from '../../redux/actions/appointment-actions.js';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SimpleFileUpload from 'react-simple-file-upload';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-
-export const disabledTimes = [];
+import { storage } from '../../firebase/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ReactComponent as Check } from './../../assets/checkmark.svg';
+import ImageUploadInput from './ImageUploadInput';
 
 const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const nav = useNavigate();
 
-  const handleSubmit = () => {
-    axiosWithAuth()
-      .post('/api/appointments', info)
-      .then((res) => {
-        dispatch(addAppointments(res.data));
-        nav('/loading-confirm');
-      })
-      .catch((err) => {
-        console.log(err.response.message);
-      });
-  };
+  const [image, setImage] = useState(null);
 
-  const handleFile = (url) => {
-    setInfo({
-      ...info,
-      images: url,
+  const handleImage = () => {
+    if (image === null) return;
+    const imageRef = ref(storage, `clientUploads/${image.name}`);
+    uploadBytes(imageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setInfo({ ...info, images: url });
+      });
     });
   };
 
+  const handleSubmit = async (e) => {
+    try {
+      const res = await axiosWithAuth().post('/api/appointments', info);
+      dispatch(addAppointments(res.data));
+      nav('/loading-confirm');
+    } catch (err) {
+      console.log(err.response.message);
+    }
+  };
+  useEffect(() => {
+    handleImage();
+  }, [image]);
+
   return (
     <div>
-      <label className=' my-6 flex flex-col shrink md:ml-6 dark:text-neutral-100'>
+      <label className=' my-6 flex flex-col shrink md:ml-6 text-pink-900 dark:text-neutral-100'>
         Have a specific set in mind?
-        <div className='my-2 xr:pl-1'>
-          <SimpleFileUpload
-            width={325}
-            apiKey={process.env.REACT_APP_UPLOAD_KEY}
-            onSuccess={handleFile}
-            preview='true'
-          />
-        </div>
+        <ImageUploadInput setImage={setImage} />
+        {image && (
+          <div className='w-full flex gap-2 py-1'>
+            <p className='text-pink-900 dark:text-neutral-100'>File Uploaded</p>
+            <Check fill='rgb(21 128 61)' className='w-6' />
+          </div>
+        )}
       </label>
       <input
         data-testid='bookbtn'
