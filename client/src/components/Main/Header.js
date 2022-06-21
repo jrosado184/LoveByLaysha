@@ -14,24 +14,24 @@ const Header = ({ dispatch }) => {
   return (
     <>
       <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-48 desktop:static'>
-        <div className='w-full py-2 flex desktop:block'>
+        <div className='w-full py-[1.4%] flex desktop:block'>
           {localStorage.getItem('token') ? (
             <div className='flex'>
               <img
-                className='user-image ml-6 w-14 h-12 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
+                className='user-image ml-2 w-11 h-11 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
                 src={user}
                 alt=''
               />
             </div>
           ) : (
             <img
-              className='user-image ml-10 w-14 h-11 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
+              className='user-image ml-2 w-14 h-12 my-1 rounded-full border-2 border-white desktop:w-32 desktop:h-32'
               src={laysha}
               alt=''
             />
           )}
-          <div className='pl-3 py-2 text-2xl flex justify-between items-center w-full desktop:pl-10 desktop:py-0'>
-            <p className='font-light text-pink-900 dark:text-neutral-100'>
+          <div className='pl-2 py-2 text-2xl flex justify-between items-center w-full desktop:pl-10 desktop:py-0'>
+            <p className='font-light pl-2 text-pink-900 dark:text-neutral-100'>
               {localStorage.getItem('message') || 'LoveByLaysha'}
             </p>
             <nav className='w-6 mr-4 desktop:hidden'>
