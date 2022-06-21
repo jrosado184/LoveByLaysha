@@ -18,7 +18,7 @@ const Header = ({ dispatch }) => {
           {localStorage.getItem('token') ? (
             <div className='flex'>
               <img
-                className='user-image ml-2 w-11 h-11 rounded-full border-2 border-white desktop:w-32 desktop:h-32 desktop:ml-9'
+                className='user-image ml-2 w-11 h-11 rounded-full border-2 border-white desktop:w-32 desktop:h-32 desktop:ml-11'
                 src={user}
                 alt=''
               />
@@ -31,9 +31,15 @@ const Header = ({ dispatch }) => {
             />
           )}
           <div className='pl-2 py-2 text-2xl flex justify-between items-center w-full desktop:pl-10 desktop:py-0'>
-            <p className='font-light pl-2 text-pink-900 dark:text-neutral-100'>
-              {localStorage.getItem('message') || 'LoveByLaysha'}
-            </p>
+            {localStorage.getItem('message') ? (
+              <p className='font-light pl-1 text-pink-900 dark:text-neutral-100 desktop:pl-4'>
+                {localStorage.getItem('message')}
+              </p>
+            ) : (
+              <p className='font-light pr-1 text-pink-900 dark:text-neutral-100 desktop:pl-4'>
+                LoveByLaysha
+              </p>
+            )}
             <nav className='w-6 mr-4 desktop:hidden'>
               {localStorage.getItem('token') ? (
                 <Link onClick={handleLogOut} to='/'>
