@@ -6,6 +6,9 @@
   opacity: 70%;
 } */
 
+.svg {
+  stroke: #fff;
+}
 .user-image:hover {
   opacity: 50%;
 }
