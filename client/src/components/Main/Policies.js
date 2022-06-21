@@ -4,7 +4,7 @@ import { ReactComponent as CashApp } from './../../assets/icons/CashApp-logo.svg
 
 const Policies = () => {
   return (
-    <div className='w-full flex flex-col items-center pb-2'>
+    <div className='w-full flex flex-col items-center pb-16'>
       <h1 className='text-pink-900 text-lg py-4 font-semibold dark:text-neutral-100'>
         Policies
       </h1>

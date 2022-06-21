@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Header from './components/Main/Header';
-import Book from './components/Appointments/Book';
-import Register from './components/Main/Register';
-import Login from './components/Main/Login';
-import AppointmentList from './components/Appointments/AppointmentList';
-import Appointment from './components/Appointments/Appointment';
-import ClientUploads from './components/Appointments/ClientUploads';
-import Confirm from './components/Appointments/Confirm';
-import Schedule from './components/Schedule/Schedule';
-import Contact from './components/Main/Contact';
-import PrivateRoute from './utils/PrivateRoute';
-import Nails from './components/Nails/Nails';
-import CompletedAppointmentsList from './components/Completed Appointments/CompletedAppointmentsList';
-import CompletedInformation from './components/Completed Appointments/CompletedInformation';
-import CompletedUploads from './components/Completed Appointments/CompletedUploads';
-import Policies from './components/Main/Policies';
-import Edit from './components/Appointments/Edit';
-import ConfirmLoad from './components/Appointments/ConfirmLoad';
-import CancelConfirm from './components/Appointments/CancelConfirm';
-import { SkeletonTheme } from 'react-loading-skeleton';
-import FooterNav from './components/Mobile/FooterNav';
-import Notes from './components/Mobile/Notes';
-import Loading from './components/Appointments/Loading';
-import 'react-loading-skeleton/dist/skeleton.css';
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Main/Header";
+import Book from "./components/Appointments/Book";
+import Register from "./components/Main/Register";
+import Login from "./components/Main/Login";
+import AppointmentList from "./components/Appointments/AppointmentList";
+import Appointment from "./components/Appointments/Appointment";
+import ClientUploads from "./components/Appointments/ClientUploads";
+import Confirm from "./components/Appointments/Confirm";
+import Schedule from "./components/Schedule/Schedule";
+import Contact from "./components/Main/Contact";
+import PrivateRoute from "./utils/PrivateRoute";
+import Nails from "./components/Nails/Nails";
+import CompletedAppointmentsList from "./components/Completed Appointments/CompletedAppointmentsList";
+import CompletedInformation from "./components/Completed Appointments/CompletedInformation";
+import CompletedUploads from "./components/Completed Appointments/CompletedUploads";
+import Policies from "./components/Main/Policies";
+import Edit from "./components/Appointments/Edit";
+import ConfirmLoad from "./components/Appointments/ConfirmLoad";
+import CancelConfirm from "./components/Appointments/CancelConfirm";
+import { SkeletonTheme } from "react-loading-skeleton";
+import FooterNav from "./components/Mobile/FooterNav";
+import Notes from "./components/Mobile/Notes";
+import Loading from "./components/Appointments/Loading";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem('theme') === 'dark'
+    localStorage.getItem("theme") === "dark"
   );
 
   return (
-    <div className={darkMode ? 'dark' : null}>
+    <div className={darkMode ? "dark" : null}>
       <div className='dark:bg-neutral-800'>
         <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
           <Header />
@@ -56,7 +56,7 @@ const App = () => {
             <Route
               path='/appointment/:id'
               element={
-                <div className='w-full h-[160vh] flex flex-col desktop:flex-row desktop:h-[80vh]'>
+                <div className='w-full h-[160vh] flex flex-col desktop:flex-row desktop:h-screen'>
                   <PrivateRoute>
                     <Appointment />
                     <ClientUploads />

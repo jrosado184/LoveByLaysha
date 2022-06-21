@@ -107,7 +107,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
   } = useForm(info);
 
   return (
-    <div className='desktop:h-[93.1vh]'>
+    <div className='desktop:h-[110.4vh]'>
       <form className='pl-8 xr:pl-10 py-4 pb-20 desktop:pl-[17%] w-full'>
         <div className='md:flex'>
           <div className='flex flex-col'>

@@ -69,7 +69,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                 >
                   {appointmentId.images ? (
                     <img
-                      className='w-96 border border-pink-900 desktop:w-[50%] h-96 dark:border-neutral-900'
+                      className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900'
                       alt=''
                       src={appointmentId.images}
                     />
@@ -90,13 +90,13 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
           <div className='flex justify-evenly my-6 ml-2 desktop:justify-center gap-12'>
             <button
               onClick={handleDelete}
-              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500 shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+              className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 text-sm shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
               Remove
             </button>
             <button
               onClick={handleComplete}
-              className='w-24 h-10 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+              className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 text-sm  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
               Complete
             </button>

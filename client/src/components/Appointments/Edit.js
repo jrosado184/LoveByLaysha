@@ -6,8 +6,11 @@ import { styles, refillSet, Options } from "../data/Options";
 import { connect } from "react-redux";
 import axios from "axios";
 import axiosWithAuth from "../../utils/axiosWithAuth";
-import SimpleFileUpload from "react-simple-file-upload";
 import { getAppointments } from "../../redux/actions/appointment-actions";
+import ImageUploadInput from "./ImageUploadInput";
+import { storage } from "../../firebase/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ReactComponent as Check } from "./../../assets/checkmark.svg";
 
 const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();
@@ -51,13 +54,6 @@ const Edit = ({ fetchAppointments, dispatch }) => {
 
   disabledTimes.splice(disabledTimes.indexOf(info.appointment_time));
 
-  const handleFile = (url) => {
-    setInfo({
-      ...info,
-      images: url,
-    });
-  };
-
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -67,6 +63,18 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       client_set: info.client_refill ? "none" : info.client_set,
       client_refillSet: info.client_set ? "none" : info.client_set,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const [image, setImage] = useState(null);
+
+  const handleImage = () => {
+    if (image === null) return;
+    const imageRef = ref(storage, `clientUploads/${image.name}`);
+    uploadBytes(imageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setInfo({ ...info, images: url });
+      });
     });
   };
 
@@ -126,8 +134,12 @@ const Edit = ({ fetchAppointments, dispatch }) => {
     });
   }, [info]);
 
+  useEffect(() => {
+    handleImage();
+  }, [image]);
+
   return (
-    <form className='pl-10 py-4 pb-24 desktop:pl-[17%] w-full'>
+    <form className='pl-8 py-4 pb-24 desktop:pl-[17%] w-full'>
       <div className='md:flex'>
         <Calendar
           onChange={setSelectedDate}
@@ -236,22 +248,28 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               name='client_details'
               value={info.client_details}
               onChange={handleChange}
-              className='w-[88%] h-20 pl-2 border-2 border-pink-400 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
+              className='w-[88%] h-20 pl-2 border-2 border-pink-300 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
             />
           </label>
           <div>
-            <label className=' my-6 flex flex-col shrink md:ml-6 dark:text-neutral-100'>
+            <label className=' my-6 flex flex-col shrink md:ml-6 text-pink-900 dark:text-neutral-100'>
               Have a specific set in mind?
               <div className='my-2'>
-                <SimpleFileUpload
-                  width={330}
-                  apiKey={process.env.REACT_APP_UPLOAD_KEY}
-                  onSuccess={handleFile}
-                  preview='true'
-                />
+                <ImageUploadInput setImage={setImage} />
+                {image && (
+                  <div className='w-full flex gap-2 py-1'>
+                    <p className='text-pink-900 dark:text-neutral-100'>
+                      File Uploaded
+                    </p>
+                    <Check
+                      fill='rgb(34 197 94)'
+                      className='w-6 text-neutral-500'
+                    />
+                  </div>
+                )}
               </div>
             </label>
-            <label className='flex items-center gap-2 text-neutral-100 desktop:ml-6'>
+            <label className='flex items-center gap-2 text-pink-900 dark:text-neutral-100 desktop:ml-6'>
               <input
                 onChange={handleCalendar}
                 value={changes}

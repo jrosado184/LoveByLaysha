@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  opacity: 70%;
-} */
 
+.svg {
+  stroke: #fff;
+}
 .user-image:hover {
   opacity: 50%;
 }
@@ -498,7 +498,10 @@ input[type='file'] {
   cursor: default;
 }
 
-.dark .Calendar__monthSelectorItem.-active .dark .Calendar__monthSelectorItemText,
+.dark
+  .Calendar__monthSelectorItem.-active
+  .dark
+  .Calendar__monthSelectorItemText,
 .dark .Calendar__yearSelectorItem.-active .dark .Calendar__yearSelectorText {
   background-color: rgb(38 38 38) !important;
   color: #fff;
