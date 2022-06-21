@@ -43,8 +43,9 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
         <ImageUploadInput setImage={setImage} />
         {image && (
           <div className='w-full flex gap-2 py-1'>
-            <p className='text-pink-900 dark:text-neutral-100'>File Uploaded</p>
-            <Check fill='rgb(21 128 61)' className='w-6' />
+            <p className='text-pink-900 dark:text-green-500'>
+              Image Successfully Uploaded!
+            </p>
           </div>
         )}
       </label>
