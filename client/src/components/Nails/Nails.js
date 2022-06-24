@@ -48,6 +48,10 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
     listAll(allImageRef).then((res) => {
       res.items.map((item) =>
         getDownloadURL(item).then((url) => {
+          url = url.replace(
+            'https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com',
+            process.env.REACT_APP_IMAGEKIT
+          );
           setImageUrl((prev) => [...prev, url]);
         })
       );
