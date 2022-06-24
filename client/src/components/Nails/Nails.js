@@ -50,7 +50,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         getDownloadURL(item).then((url) => {
           url = url.replace(
             'https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com',
-            process.env.REACT_APP_IMAGEKIT
+            `${process.env.REACT_APP_IMAGEKIT}/tr:w-250,h-250,dpr-2`
           );
           setImageUrl((prev) => [...prev, url]);
         })
@@ -67,7 +67,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, [logIn]);
 
   return (
-    <div className='pb-24 h-[90vh] desktop:h-[100vh]'>
+    <div className='pb-24 desktop:p-0'>
       <div
         className={
           localStorage.getItem('token')
