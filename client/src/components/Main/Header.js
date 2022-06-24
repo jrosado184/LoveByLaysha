@@ -1,5 +1,5 @@
 import React from 'react';
-import laysha from '../../assets/laysha.jpg';
+import laysha from '../../assets/laysha.webp';
 import user from '../../assets/user.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
