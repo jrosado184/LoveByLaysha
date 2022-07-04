@@ -31,7 +31,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   }, [dispatch]);
 
   return (
-    <div className='h-[85.6vh]'>
+    <div className='h-[85.6vh] desktop:pb-[44.4%]'>
       {cancelModal && (
         <CancelModal
           cancelModal={cancelModal}
@@ -50,7 +50,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 key={item.appointment_id}
                 className='flex flex-col items-center'
               >
-                <h1 className='text-2xl text-center my-6 text-pink-900 dark:text-neutral-100'>
+                <h1 className='text-2xl text-center my-6 text-pink-900 dark:text-neutral-100 desktop:text-4xl'>
                   {`Thank you for booking ${item.client_name}!`}
                 </h1>
                 <img
@@ -58,10 +58,10 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   src={check}
                   alt=''
                 />
-                <p className='font-semibold text-pink-900 dark:text-neutral-100'>
+                <p className='font-semibold text-pink-900 dark:text-neutral-100 desktop:text-1xl'>
                   Your appointment is confirmed:
                 </p>
-                <p className='font-bold underline text-pink-900 dark:text-neutral-100'>{`For ${Months(
+                <p className='font-bold underline text-pink-900 dark:text-neutral-100 desktop:text-2xl'>{`For ${Months(
                   item.appointment_month
                 )} ${item.appointment_day}, ${item.appointment_year} at ${
                   item.appointment_time

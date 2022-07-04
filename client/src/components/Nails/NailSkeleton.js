@@ -8,7 +8,10 @@ const NailSkeleton = ({ cards }) => {
       {Array(cards)
         .fill(0)
         .map((e, i) => (
-          <div className='w-[45%] desktop:w-[13%]' key={i}>
+          <div
+            className='nail-container w-[45%] h-fit md:w-[20%] md:grow desktop:w-[14%]'
+            key={i}
+          >
             <Skeleton height={210} />
           </div>
         ))}

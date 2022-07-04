@@ -26,34 +26,34 @@ export const Contact = () => {
   };
 
   return (
-    <>
-      <div className='flex flex-col pb-32 lg:flex-row w-[100%] h-full items-center desktop:pb-[12.3%]'>
+    <div className='pb-[50%] desktop:pb-[8.9%]'>
+      <div className='flex flex-col md:flex-row w-[100%] h-full items-center desktop:pb-[12.3%]'>
         <div className='w-[100%] lg:w-[50%]'>
           <form
             className='flex my-4 flex-col justify-center items-center lg:w-[100%]'
             ref={form}
           >
-            <h1 className='my-2 font-semibold text-pink-900 dark:text-neutral-100'>
+            <h1 className='my-2 font-semibold text-2xl text-pink-900 dark:text-neutral-100'>
               Contact Me
             </h1>
             <input
               name='user_name'
-              className='pl-3 my-4 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700'
+              className='pl-3 my-4 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
               placeholder='Name'
             />
             <input
               name='user_email'
               type='email'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
               placeholder='Email'
             />
             <textarea
               placeholder='Message'
-              className='pl-3 my-4 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700'
+              className='pl-3 my-4 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
               name='message'
             />
             <input
-              className='w-20 h-8 my-4 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[79%] dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
+              className='w-20 h-8 my-4 border-2 border-pink-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[78%] desktop:ml-[63%] dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100'
               type='button'
               value='Send'
               onClick={sendEmail}
@@ -70,12 +70,12 @@ export const Contact = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <img className='w-28' src={instagram} alt='instagram' />
+              <img className='w-full' src={instagram} alt='instagram' />
             </a>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

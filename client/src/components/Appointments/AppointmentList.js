@@ -18,7 +18,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
   }, []);
 
   return (
-    <div className='h-[90vh] pb-6 desktop:h-[75.3vh]'>
+    <div className='h-[90vh] pb-6 desktop:pb-[47.2%]'>
       <Search />
       <div className='flex flex-col items-center my-2'>
         {loading ? (

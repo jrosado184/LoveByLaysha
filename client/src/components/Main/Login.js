@@ -24,7 +24,7 @@ const Login = ({ dispatch }) => {
     nav('/');
   };
   return (
-    <div className='h-[90vh] flex flex-col items-center justify-start py-16'>
+    <div className='h-full flex flex-col items-center justify-start py-16 pb-[110%] desktop:pb-[29.12%]'>
       <p className='font-bold my-2 text-pink-900 dark:text-neutral-100'>
         FOR ADMIN USE ONLY
       </p>

@@ -209,7 +209,7 @@ const Schedule = ({ fetchAppointments, dispatch }) => {
             ) : (
               <button
                 onClick={handleEnableButton}
-                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full'
+                className='w-24 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500  shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               >
                 Enable
               </button>

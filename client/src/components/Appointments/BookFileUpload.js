@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { addAppointments } from "../../redux/actions/appointment-actions.js";
-import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
-import axiosWithAuth from "../../utils/axiosWithAuth";
-import { storage } from "../../firebase/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { ReactComponent as Check } from "./../../assets/checkmark.svg";
-import ImageUploadInput from "./ImageUploadInput";
+import React, { useState, useEffect } from 'react';
+import { addAppointments } from '../../redux/actions/appointment-actions.js';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import axiosWithAuth from '../../utils/axiosWithAuth';
+import { storage } from '../../firebase/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ReactComponent as Check } from './../../assets/checkmark.svg';
+import ImageUploadInput from './ImageUploadInput';
 
 const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const nav = useNavigate();
@@ -25,9 +25,9 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
 
   const handleSubmit = async (e) => {
     try {
-      const res = await axiosWithAuth().post("/api/appointments", info);
+      const res = await axiosWithAuth().post('/api/appointments', info);
       dispatch(addAppointments(res.data));
-      nav("/loading-confirm");
+      nav('/loading-confirm');
     } catch (err) {
       console.log(err.response.message);
     }
@@ -56,9 +56,9 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           info.appointment_time &&
           info.client_name &&
           info.client_phone &&
-          (info.client_set !== "none" || info.refillSet !== "none")
-            ? "w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100"
-            : "opacity-90 w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full sm2:ml-[70%] md:ml-[75%] lg:ml-[63%] dark:bg-neutral-500 dark:border-neutral-900 dark:text-neutral-100"
+          (info.client_set !== 'none' || info.refillSet !== 'none')
+            ? 'w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full md:ml-[75%] lg:ml-[63%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+            : 'opacity-90 w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full lg:ml-[63%] dark:bg-neutral-500 dark:border-neutral-900 dark:text-neutral-100'
         }
         type='submit'
         value='Book'

@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className={darkMode ? 'dark' : null}>
-      <div className='dark:bg-neutral-800'>
+      <div className='h-full dark:bg-neutral-800'>
         <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
           <Header />
           <div className='fixed bottom-0 w-full z-20'>
