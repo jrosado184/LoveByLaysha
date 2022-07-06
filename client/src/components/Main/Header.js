@@ -14,7 +14,7 @@ const Header = ({ dispatch }) => {
 
   return (
     <>
-      <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-16 desktop:static'>
+      <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-16'>
         <div className='w-full flex items-center h-16 desktop:h-13 desktop:items-center'>
           {localStorage.getItem('token') ? (
             <div className='flex'>
@@ -43,25 +43,23 @@ const Header = ({ dispatch }) => {
                 LoveByLaysha
               </p>
             )}
-            <div className='flex'>
-              <nav className='w-6 mr-4 desktop:w-8'>
-                {localStorage.getItem('token') ? (
-                  <Link onClick={handleLogOut} to='/'>
-                    <LogoutIcon
-                      className='text-pink-900 dark:text-neutral-100'
-                      strokeWidth='1.3'
-                    />
-                  </Link>
-                ) : (
-                  <Link to='/login'>
-                    <LoginIcon
-                      className='text-pink-900 dark:text-neutral-100'
-                      strokeWidth='1.3'
-                    />
-                  </Link>
-                )}
-              </nav>
-            </div>
+            <nav className='w-6 mr-4 desktop:w-8'>
+              {localStorage.getItem('token') ? (
+                <Link onClick={handleLogOut} to='/'>
+                  <LogoutIcon
+                    className='text-pink-900 dark:text-neutral-100'
+                    strokeWidth='1.3'
+                  />
+                </Link>
+              ) : (
+                <Link to='/login'>
+                  <LoginIcon
+                    className='text-pink-900 dark:text-neutral-100'
+                    strokeWidth='1.3'
+                  />
+                </Link>
+              )}
+            </nav>
           </div>
         </div>
       </div>

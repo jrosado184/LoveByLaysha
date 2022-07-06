@@ -67,7 +67,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, [logIn]);
 
   return (
-    <div className='h-full'>
+    <div className='pb-20 desktop:pb-0'>
       <div
         className={
           localStorage.getItem('token')

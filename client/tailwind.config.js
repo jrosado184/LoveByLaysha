@@ -11,6 +11,7 @@ module.exports = {
       md: '700px',
       lg: '1000px',
       desktop: '1429px',
+      monitor: '1980px',
     },
     extend: {
       fontFamily: {
