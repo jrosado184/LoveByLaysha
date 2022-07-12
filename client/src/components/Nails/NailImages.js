@@ -28,7 +28,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
             </div>
             <img
               key={nailData}
-              className='h-fit w-full rounded-md border-2 border-gray-400'
+              className='h-[20%] w-full rounded-md border-2 border-gray-400'
               src={nailData}
               alt=''
             />
