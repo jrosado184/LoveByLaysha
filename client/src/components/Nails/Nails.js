@@ -77,37 +77,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
       >
         <ToggleTheme darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
-      {localStorage.getItem('token') && (
-        <div
-          className={
-            removeImage
-              ? 'w-full h-8 flex justify-end items-center pr-6 py-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden'
-              : 'w-full h-8 my-4 flex justify-end items-center pr-6 sticky top-[6.5%] bg-white z-20 dark:bg-neutral-800 desktop:hidden'
-          }
-        >
-          {removeImage && (
-            <p className='mr-12 text-pink-900 font-semibold dark:text-neutral-100'>
-              Finished Deleting Images?
-            </p>
-          )}
-          {removeImage && (
-            <p
-              onClick={() => setRemoveImage(!removeImage)}
-              className='text-pink-500 w-[16%] flex justify-center items-center bg-pink-200 border border-pink-400 rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
-            >
-              Done
-            </p>
-          )}
-          <Dots
-            onClick={() => setRemoveImage(!removeImage)}
-            className={
-              removeImage
-                ? 'hidden'
-                : 'w-10 h-12 text-pink-900 dark:text-neutral-100'
-            }
-          />
-        </div>
-      )}
+
       {image && (
         <UploadModal
           setImage={setImage}
