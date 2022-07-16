@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import { styles, refillSet, Options } from '../data/Options';
+import { styles, refillSet, Options } from '../../data/Options';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { getAppointments } from '../../redux/actions/appointment-actions';
-import ImageUploadInput from './ImageUploadInput';
-import { storage } from '../../firebase/firebase';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
+import { getAppointments } from '../../../redux/actions/appointment-actions';
+import ImageUploadInput from '../../Appointments/modals/ImageUploadInput';
+import { storage } from '../../../firebase/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { ReactComponent as Check } from './../../assets/checkmark.svg';
+import { ReactComponent as Check } from './../../../assets/checkmark.svg';
 
 const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();

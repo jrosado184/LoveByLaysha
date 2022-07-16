@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { getAppointments } from '../../redux/actions/appointment-actions';
+import { getAppointments } from '../../../redux/actions/appointment-actions';
 import Appointments from './Appointments';
-import Search from './Search';
-import { sortDates } from '../../Algos/Sorting';
-import AppointmentsSkeleton from './AppointmentsSkeleton';
+import Search from '../Search';
+import { sortDates } from '../../../Algos/Sorting';
+import AppointmentsSkeleton from './../skeletons/AppointmentSkeleton';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);

@@ -7,7 +7,7 @@ import { Options } from '../data/Options';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import moment from 'moment';
 import MainCalendar from './MainCalendar';
-import FooterNav from './../Mobile/FooterNav';
+import FooterNav from '../Mobile/FooterNav';
 import DisabledTimes from './DisabledTimes';
 
 const Schedule = ({ fetchAppointments, dispatch }) => {

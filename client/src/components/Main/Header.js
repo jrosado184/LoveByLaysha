@@ -42,9 +42,9 @@ const Header = ({ dispatch }) => {
                 LoveByLaysha
               </p>
             )}
-            <div className='hidden desktop:flex h-16 items-end justify-between gap-20'>
+            <div className='hidden desktop:flex h-16 items-end justify-between gap-20 '>
               <Link to='/'>
-                <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+                <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white '>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     className='h-8 w-8 text-pink-900 dark:text-neutral-100'
@@ -64,7 +64,7 @@ const Header = ({ dispatch }) => {
               <div
                 className={
                   !localStorage.getItem('token')
-                    ? 'w-9 h-fit flex flex-col items-center justify-center mb-4'
+                    ? 'w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'
                     : 'hidden'
                 }
               >
@@ -87,7 +87,7 @@ const Header = ({ dispatch }) => {
               </div>
               {!localStorage.getItem('token') ? (
                 <Link to='/policies'>
-                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-8 w-8 text-pink-900 dark:text-neutral-100'
@@ -106,7 +106,7 @@ const Header = ({ dispatch }) => {
                 </Link>
               ) : (
                 <Link to='/schedule'>
-                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-8 w-8 text-pink-900 dark:text-neutral-100'
@@ -126,7 +126,7 @@ const Header = ({ dispatch }) => {
               )}
               {localStorage.getItem('token') && (
                 <Link to='/appointments'>
-                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
+                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-8 w-8 text-pink-900 dark:text-neutral-100'
@@ -146,7 +146,7 @@ const Header = ({ dispatch }) => {
               )}
               {!localStorage.getItem('token') && (
                 <Link to='/contact'>
-                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+                  <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-8 w-8 text-pink-900 dark:text-neutral-100'
@@ -166,7 +166,7 @@ const Header = ({ dispatch }) => {
               )}
               {localStorage.getItem('token') && (
                 <Link to='/settings'>
-                  <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
+                  <div className='w-22 h-fit flex flex-col items-center justify-center mb-4 hover:border-b hover:border-white'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-8 w-8 text-pink-900 dark:text-neutral-100'

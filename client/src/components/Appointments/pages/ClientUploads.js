@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { appointmentId } from '../../redux/actions/appointment-actions';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
+import { appointmentId } from '../../../redux/actions/appointment-actions';
 import { connect } from 'react-redux';
-import ClientUploadSkeleton from './ClientUploadsSkeleton';
+import ClientUploadSkeleton from './../skeletons/ClientUploadsSkeleton';
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();

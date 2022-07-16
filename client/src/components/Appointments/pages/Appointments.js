@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { ReactComponent as Right } from '../../assets/right.svg';
+import { ReactComponent as Right } from '../../../assets/right.svg';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Months } from '../../Algos/Months';
-import FooterNav from './../Mobile/FooterNav';
-import { getAppointments } from './../../redux/actions/appointment-actions';
+import { Months } from '../../../Algos/Months';
+import FooterNav from '../../Mobile/FooterNav';
+import { getAppointments } from '../../../redux/actions/appointment-actions';
 
 const Appointments = ({ appointment, index, dispatch }) => {
   const nav = useNavigate();

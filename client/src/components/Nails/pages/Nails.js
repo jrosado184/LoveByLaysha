@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import NailImages from './NailImages';
-import UploadModal from './UploadModal';
+import UploadModal from './../modals/UploadModal';
 import { connect } from 'react-redux';
-import { storage } from '../../firebase/firebase';
+import { storage } from '../../../firebase/firebase';
 import {
   ref,
   uploadBytes,
@@ -10,11 +10,11 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage';
-import NailUploadNav from './NailUploadNav';
-import NailSkeleton from './NailSkeleton';
-import FooterNav from './../Mobile/FooterNav';
-import { ReactComponent as Dots } from './../../assets/dots.svg';
-import ToggleTheme from './../Main/ToggleTheme';
+import NailUploadNav from './../modals/NailUploadNav';
+import NailSkeleton from './../skeletons/NailSkeleton';
+import FooterNav from '../../Mobile/FooterNav';
+import { ReactComponent as Dots } from './../../../assets/dots.svg';
+import ToggleTheme from '../../Main/ToggleTheme';
 
 const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [token, setToken] = useState(null);
@@ -67,7 +67,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, [logIn]);
 
   return (
-    <div className='h-full pb-20 desktop:pb-0'>
+    <div className={loading ? 'h-[300vh] pb-20' : 'h-full pb-20 desktop:pb-0'}>
       <div
         className={
           localStorage.getItem('token')
@@ -91,7 +91,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         setImage={setImage}
         setRemoveImage={setRemoveImage}
       />
-      {loading ? (
+      {/* {loading ? (
         <div className='h-screen'>
           <NailSkeleton cards={imageUrl?.length} />
         </div>
@@ -102,7 +102,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
           token={token}
           removeImage={removeImage}
         />
-      )}
+      )} */}
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav

@@ -1,5 +1,5 @@
 import React from 'react';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { useParams, useNavigate } from 'react-router-dom';
 import Rodal from 'rodal';
 import { ArrowLeftIcon } from '@heroicons/react/outline';

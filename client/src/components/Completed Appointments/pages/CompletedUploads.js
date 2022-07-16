@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getCompletedAppointmentsById } from '../../redux/actions/appointment-actions';
+import { getCompletedAppointmentsById } from '../../../redux/actions/appointment-actions';
 import { connect } from 'react-redux';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
 
 const Uploads = ({ dispatch, completedAppointmentsById }) => {
   const { id } = useParams();

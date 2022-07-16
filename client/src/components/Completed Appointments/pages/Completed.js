@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Right } from '../../assets/right.svg';
-import { Months } from '../../Algos/Months';
+import { ReactComponent as Right } from '../../../assets/right.svg';
+import { Months } from '../../../Algos/Months';
 
 const Completed = ({ appointment }) => {
   const nav = useNavigate();

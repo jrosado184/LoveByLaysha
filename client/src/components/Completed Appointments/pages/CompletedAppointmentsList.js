@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { getCompletedAppointments } from '../../redux/actions/appointment-actions';
+import { getCompletedAppointments } from '../../../redux/actions/appointment-actions';
 import Completed from './Completed';
-import Search from '../Appointments/Search';
-import AppointmentsSkeleton from '../Appointments/AppointmentsSkeleton';
+import Search from '../../Appointments/Search';
+import AppointmentsSkeleton from './../../Appointments/skeletons/AppointmentsListSkeleton';
 
 const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   const [loading, setLoading] = useState(true);

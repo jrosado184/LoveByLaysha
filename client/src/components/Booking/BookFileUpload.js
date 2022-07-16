@@ -6,7 +6,7 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 import { storage } from '../../firebase/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { ReactComponent as Check } from './../../assets/checkmark.svg';
-import ImageUploadInput from './ImageUploadInput';
+import ImageUploadInput from '../Appointments/modals/ImageUploadInput';
 
 const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const nav = useNavigate();
