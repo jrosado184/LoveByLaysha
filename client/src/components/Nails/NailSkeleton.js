@@ -9,7 +9,7 @@ const NailSkeleton = ({ cards }) => {
         .fill(0)
         .map((e, i) => (
           <div
-            className='nail-container flex w-[45%] h-[18%] grow sm:grow-0 md:w-[20%] md:h-[17%] desktop:w-[15%] desktop:h-[30%] desktop:grow-0'
+            className='nail-container flex w-[45%] h-[23.3%] sm:h-[19%] grow sm:grow-0 sm2:h-[24.3%] md:w-[30%] md:h-[23.3%] lg:w-[23%] desktop:w-[15%] desktop:grow-0 desktop:h-[30%]'
             key={i}
           >
             <div className='w-full flex flex-col flex-wrap grow rounded-md bg-neutral-400 h-[100%] dark:bg-neutral-900'></div>

@@ -11,7 +11,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
         return (
           <div
             key={index}
-            className='nail-container flex w-[45%] h-[20%] grow sm:grow-0 md:w-[20%] desktop:w-[15%] desktop:grow-0'
+            className='nail-container flex w-[45%] h-[20%] grow sm:grow-0 md:w-[30%] lg:w-[23%] desktop:w-[15%] desktop:grow-0'
           >
             {/* <div className='delete-nail-con'>
               {removeImage && (
