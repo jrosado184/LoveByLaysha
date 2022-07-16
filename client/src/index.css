@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  opacity: 70%;
-} */
+#root {
+  height: 100%;
+}
 
 .user-image:hover {
   opacity: 50%;

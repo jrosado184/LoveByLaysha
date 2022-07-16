@@ -53,6 +53,9 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
             `${process.env.REACT_APP_IMAGEKIT}/tr:w-250,h-250,dpr-2`
           );
           setImageUrl((prev) => [...prev, url]);
+          setTimeout(() => {
+            setLoading(false);
+          }, 600);
         })
       );
     });
@@ -60,14 +63,11 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
-    setTimeout(() => {
-      setLoading(false);
-    }, 900);
     setOnNailComp(true);
   }, [logIn]);
 
   return (
-    <div className='pb-20 desktop:pb-0'>
+    <div className='h-full pb-20 desktop:pb-0'>
       <div
         className={
           localStorage.getItem('token')
@@ -91,13 +91,18 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         setImage={setImage}
         setRemoveImage={setRemoveImage}
       />
-      {loading && <NailSkeleton cards={imageUrl.length} />}
-      <NailImages
-        handleDeleteImage={handleDeleteImage}
-        imageUrl={imageUrl}
-        token={token}
-        removeImage={removeImage}
-      />
+      {loading ? (
+        <div className='h-screen'>
+          <NailSkeleton cards={imageUrl?.length} />
+        </div>
+      ) : (
+        <NailImages
+          handleDeleteImage={handleDeleteImage}
+          imageUrl={imageUrl}
+          token={token}
+          removeImage={removeImage}
+        />
+      )}
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav
