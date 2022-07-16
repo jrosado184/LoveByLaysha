@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAppointments } from '../../redux/actions/appointment-actions';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';

@@ -13,8 +13,8 @@ import {
 import NailUploadNav from './../modals/NailUploadNav';
 import NailSkeleton from './../skeletons/NailSkeleton';
 import FooterNav from '../../Mobile/FooterNav';
-import { ReactComponent as Dots } from './../../../assets/dots.svg';
 import ToggleTheme from '../../Main/ToggleTheme';
+import useElementOnScreen from './../../hooks/useElementOnScreen';
 
 const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [token, setToken] = useState(null);
@@ -91,18 +91,20 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         setImage={setImage}
         setRemoveImage={setRemoveImage}
       />
-      {/* {loading ? (
+      {loading ? (
         <div className='h-screen'>
           <NailSkeleton cards={imageUrl?.length} />
         </div>
       ) : (
-        <NailImages
-          handleDeleteImage={handleDeleteImage}
-          imageUrl={imageUrl}
-          token={token}
-          removeImage={removeImage}
-        />
-      )} */}
+        <div>
+          <NailImages
+            handleDeleteImage={handleDeleteImage}
+            imageUrl={imageUrl}
+            token={token}
+            removeImage={removeImage}
+          />
+        </div>
+      )}
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav

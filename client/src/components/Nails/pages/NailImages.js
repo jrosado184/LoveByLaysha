@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ReactComponent as Trash } from './../../../assets/trash.svg';
 import 'react-loading-skeleton/dist/skeleton.css';
 
