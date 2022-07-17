@@ -6,14 +6,15 @@ const appointRouter = require('./appointments/appointments-router');
 const completedRouter = require('./appointments/completed-router');
 const disabledDays = require('./appointments/disabled days/disabled-router');
 const disabledTimes = require('./appointments/disabled_times/disabled_times_router');
-
+const serveStatic = require('serve-static');
 const path = require('path');
 
-const options = {
-  etag: true,
-  maxAge: 360000,
-  redirect: true,
-};
+function setCustomCacheControl(res, path) {
+  if (serveStatic.mime.lookup(path) === 'text/html') {
+    // Custom Cache-Control for HTML files
+    res.setHeader('Cache-Control', 'public, max-age=3600000');
+  }
+}
 
 const server = express();
 server.use(express.json());
@@ -26,11 +27,14 @@ server.use('/api/completedAppointments', completedRouter);
 server.use('/api/disabledDays', disabledDays);
 server.use('/api/disabledTimes', disabledTimes);
 server.use(
-  express.static(path.join(__dirname, '..', 'client', 'public'), options)
+  serveStatic(path.join(__dirname, '..', 'client', 'public'), {
+    maxAge: '1d',
+    setHeaders: setCustomCacheControl,
+  })
 );
 
 server.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'favicon.ico'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'public'));
 });
 
 module.exports = server;
