@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.20.7",
     "axios": "^0.25.0",
+    "gzipper": "^7.1.0",
     "intersection-observer": "^0.12.2",
     "moment": "^2.29.3",
     "numeral": "^2.0.6",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && gzipper --verbose ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
