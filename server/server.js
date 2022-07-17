@@ -9,13 +9,6 @@ const disabledTimes = require('./appointments/disabled_times/disabled_times_rout
 const serveStatic = require('serve-static');
 const path = require('path');
 
-function setCustomCacheControl(res, path) {
-  if (serveStatic.mime.lookup(path) === 'text/html') {
-    // Custom Cache-Control for HTML files
-    res.setHeader('Cache-Control', 'public, max-age=3600000');
-  }
-}
-
 const server = express();
 server.use(express.json());
 server.use(helmet());
@@ -29,7 +22,11 @@ server.use('/api/disabledTimes', disabledTimes);
 server.use(
   serveStatic(path.join(__dirname, '..', 'client', 'public'), {
     maxAge: '1d',
-    setHeaders: setCustomCacheControl,
+  })
+);
+server.use(
+  serveStatic(path.join(__dirname, '..', 'client', 'public', 'scr', 'assets'), {
+    maxAge: '1d',
   })
 );
 
