@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  height: 100%;
+body {
+  min-height: 100vh;
 }
 
 .user-image:hover {
@@ -703,7 +703,7 @@ input[type='file'] {
     padding-top: 1.2em;
     display: flex;
     flex-direction: column;
-    width: 80% !important;
+    width: 50vh !important;
     z-index: 10;
     max-width: 90vw;
     min-height: 36.7em;

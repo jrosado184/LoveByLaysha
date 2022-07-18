@@ -7,9 +7,12 @@ const ToggleTheme = ({ darkMode, setDarkMode }) => {
     !darkMode
       ? localStorage.setItem('theme', 'dark')
       : localStorage.setItem('theme', 'light');
-    darkMode
-      ? (document.body.style.backgroundColor = 'white')
-      : (document.body.style.backgroundColor = 'black');
+
+    !darkMode
+      ? localStorage.setItem('color', 'rgb(38 38 38)')
+      : localStorage.setItem('color', 'white');
+
+    document.body.style.backgroundColor = localStorage.getItem('color');
   };
 
   return (

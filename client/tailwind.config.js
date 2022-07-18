@@ -5,11 +5,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
+      supersm: '200px',
       sm: '390px',
       xr: '414px',
       sm2: '500px',
       md: '700px',
-      lg: '1000px',
+      lg: '1216px',
       desktop: '1429px',
       monitor: '1980px',
     },

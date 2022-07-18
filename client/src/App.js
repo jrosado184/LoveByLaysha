@@ -33,7 +33,10 @@ const App = () => {
   return (
     <div className={darkMode ? 'dark' : null}>
       <div className='h-full dark:bg-neutral-800'>
-        <SkeletonTheme baseColor='#C0C0C0' highlightColor='#D3D3D3'>
+        <SkeletonTheme
+          baseColor={!darkMode ? '#C0C0C0' : 'bg-neutral-300'}
+          highlightColor='#D3D3D3'
+        >
           <Header />
           <div className='fixed bottom-0 w-full z-20'>
             <FooterNav darkMode={darkMode} />

@@ -4,7 +4,7 @@ import { getAppointments } from '../../../redux/actions/appointment-actions';
 import Appointments from './Appointments';
 import Search from '../Search';
 import { sortDates } from '../../../Algos/Sorting';
-import AppointmentsSkeleton from './../skeletons/AppointmentSkeleton';
+import AppointmentsSkeleton from './../skeletons/AppointmentsListSkeleton';
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);

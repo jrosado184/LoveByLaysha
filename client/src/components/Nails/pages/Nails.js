@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import NailImages from './NailImages';
 import UploadModal from './../modals/UploadModal';
 import { connect } from 'react-redux';
@@ -14,9 +14,9 @@ import NailUploadNav from './../modals/NailUploadNav';
 import NailSkeleton from './../skeletons/NailSkeleton';
 import FooterNav from '../../Mobile/FooterNav';
 import ToggleTheme from '../../Main/ToggleTheme';
-import useElementOnScreen from './../../hooks/useElementOnScreen';
 
 const Nails = ({ logIn, darkMode, setDarkMode }) => {
+  const [visible, setVisible] = useState(false);
   const [token, setToken] = useState(null);
   const [removeImage, setRemoveImage] = useState(false);
   const [imageUrl, setImageUrl] = useState([]);
@@ -25,6 +25,12 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [onNailComp, setOnNailComp] = useState(false);
 
   const allImageRef = ref(storage, 'nails/');
+
+  const displayedImages = useCallback((el) => {
+    if (el !== null) {
+      setVisible(true);
+    }
+  }, []);
 
   const handleImage = () => {
     if (image === null) return;
@@ -55,7 +61,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
           setImageUrl((prev) => [...prev, url]);
           setTimeout(() => {
             setLoading(false);
-          }, 600);
+          }, 700);
         })
       );
     });
@@ -67,7 +73,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, [logIn]);
 
   return (
-    <div className={loading ? 'h-[300vh] pb-20' : 'h-full pb-20 desktop:pb-0'}>
+    <>
       <div
         className={
           localStorage.getItem('token')
@@ -91,20 +97,14 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         setImage={setImage}
         setRemoveImage={setRemoveImage}
       />
-      {loading ? (
-        <div className='h-screen'>
-          <NailSkeleton cards={imageUrl?.length} />
-        </div>
-      ) : (
-        <div>
-          <NailImages
-            handleDeleteImage={handleDeleteImage}
-            imageUrl={imageUrl}
-            token={token}
-            removeImage={removeImage}
-          />
-        </div>
-      )}
+      <div ref={displayedImages}>
+        <NailImages
+          handleDeleteImage={handleDeleteImage}
+          imageUrl={imageUrl}
+          token={token}
+          removeImage={removeImage}
+        />
+      </div>
       {localStorage.getItem('token') && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav
@@ -114,7 +114,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
