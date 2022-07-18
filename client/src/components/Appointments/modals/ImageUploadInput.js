@@ -5,7 +5,7 @@ const ImageUploadInput = ({ setImage }) => {
     <div className='flex justify-start items-center py-2 w-[100%]'>
       <label
         htmlFor='dropzone-file'
-        className='flex flex-col justify-center items-center w-80 h-46 bg-gray-50 rounded-lg border-2 border-pink-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-neutral-700 hover:bg-gray-100 dark:border-neutral-900 dark:hover:border-gray-500 dark:hover:bg-neutral-600'
+        className='flex flex-col justify-center items-center w-[100%] h-46 bg-gray-50 rounded-lg border-2 border-pink-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-neutral-700 hover:bg-gray-100 dark:border-neutral-900 dark:hover:border-gray-500 dark:hover:bg-neutral-600 md:w-80 lg:w-[100%]'
       >
         <div className='flex flex-col justify-center items-center pt-3 pb-6'>
           <svg

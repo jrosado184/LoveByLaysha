@@ -49,21 +49,15 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           </div>
         )}
       </label>
-      <input
-        data-testid='bookbtn'
-        className={
-          info.appointment_day &&
-          info.appointment_time &&
-          info.client_name &&
-          info.client_phone &&
-          (info.client_set !== 'none' || info.refillSet !== 'none')
-            ? 'w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 bg-pink-100 ml-[30%] text-rose-500 rounded-full md:ml-[75%] lg:ml-[63%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
-            : 'opacity-90 w-24 h-8 my-3 flex justify-center items-center border-2 border-rose-300 text-rose-400 ml-[30%] rounded-full lg:ml-[63%] dark:bg-neutral-500 dark:border-neutral-900 dark:text-neutral-100'
-        }
-        type='submit'
-        value='Book'
-        onClick={formValid(handleSubmit)}
-      />
+      <div className='flex justify-center w-[97%] my-2'>
+        <input
+          className='w-20 text-md border border-pink-500 text-pink-900 bg-pink-200 rounded-full dark:bg-neutral-900 dark:border-neutral-600 dark:text-neutral-100'
+          data-testid='bookbtn'
+          type='submit'
+          value='Book'
+          onClick={formValid(handleSubmit)}
+        />
+      </div>
     </div>
   );
 };
