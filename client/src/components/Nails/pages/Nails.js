@@ -73,7 +73,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, [logIn]);
 
   return (
-    <>
+    <div className='h-screen'>
       <div
         className={
           localStorage.getItem('token')
@@ -114,7 +114,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

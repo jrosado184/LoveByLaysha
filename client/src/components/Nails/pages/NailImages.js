@@ -6,13 +6,13 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className='h-[100vh]'>
-      <div className='w-full h-fit flex flex-wrap justify-center gap-6 pl-6 pb-20 pr-4 py-2 desktop:py-[1.7%]'>
+    <div className='h-full'>
+      <div className='w-full h-full flex flex-wrap justify-center  gap-6 pl-6 pb-20 pr-4 py-2 desktop:py-[1.7%]'>
         {imageUrl.map((nailData, index) => {
           return (
             <div
               key={index}
-              className='grow flex sm:max-w-[46%] sm:h-[20vh] lg:max-w-[17%] lg:h-[20%] desktop:max-w-[15%] desktop:h-[30vh]'
+              className='nail-container flex max-w-[45%] h-fit grow sm2:max-w-[29%] lg:max-w-[20%] desktop:w-[17%] desktop:grow-0'
             >
               {/* <div className='delete-nail-con'>
               {removeImage && (

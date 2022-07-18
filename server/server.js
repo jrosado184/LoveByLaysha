@@ -26,7 +26,7 @@ server.use(
 );
 server.use(
   serveStatic(path.join(__dirname, '..', 'client', 'public', 'scr', 'assets'), {
-    maxAge: '1d',
+    maxAge: '31536000',
   })
 );
 

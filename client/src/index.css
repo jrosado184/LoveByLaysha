@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  min-height: 100vh;
+img {
+  aspect-ratio: attr(width) / attr(height);
 }
 
 .user-image:hover {
