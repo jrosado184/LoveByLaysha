@@ -107,7 +107,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
   } = useForm(info);
 
   return (
-    <div className='p-[.67%] w-[100%]'>
+    <div className='w-[100%] h-screen'>
       <form className='pl-8 pr-8 xr:pl-10 py-4 pb-20 desktop:pl-[17%]'>
         <div className='md:flex md:w-[75%]'>
           <div className='flex justify-center'>
@@ -140,7 +140,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
             <input
               {...register('client_name', { required: 'Please enter a name' })}
               data-testid='name'
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[100%] dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[100%] dark:bg-neutral-700 dark:border-neutral-900 text-neutral-100 dark:placeholder:text-neutral-100'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -159,7 +159,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[100%] dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[100%] text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
               type='number'
               placeholder='Phone number'
             />
@@ -237,7 +237,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[97%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[100%] dark:bg-neutral-700 dark:border-neutral-900'
+                className='w-[97%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[100%] text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
               />
             </label>
             <BookFileUpload

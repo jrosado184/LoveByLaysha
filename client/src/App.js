@@ -34,8 +34,8 @@ const App = () => {
     <div className={darkMode ? 'dark' : null}>
       <div className='h-full dark:bg-neutral-800'>
         <SkeletonTheme
-          baseColor={!darkMode ? '#C0C0C0' : 'bg-neutral-300'}
-          highlightColor='#D3D3D3'
+          baseColor={!darkMode ? '#C0C0C0' : 'rgb(68 64 60)'}
+          highlightColor={!darkMode ? '#D3D3D3' : 'rgb(68 64 60);'}
         >
           <Header />
           <div className='fixed bottom-0 w-full z-20'>

@@ -33,7 +33,7 @@ const Login = ({ dispatch }) => {
         className=' w-96 my-4 flex flex-col items-center justify-center'
       >
         <input
-          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:bg-neutral-700 dark:border-neutral-900'
+          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           type='text'
           placeholder='Username'
           name='username'
@@ -41,7 +41,7 @@ const Login = ({ dispatch }) => {
           onChange={handleChange}
         />
         <input
-          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:bg-neutral-700 dark:border-neutral-900'
+          className='my-3 pl-3 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           type='password'
           placeholder='Password'
           name='password'

@@ -28,7 +28,7 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
             <Appointments key={index} appointment={appointment} />
           ))
         ) : (
-          <div className='w-full h-96 flex justify-center items-center my-24 dark:text-neutral-100'>
+          <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
             No Appointments Scheduled
           </div>
         )}
