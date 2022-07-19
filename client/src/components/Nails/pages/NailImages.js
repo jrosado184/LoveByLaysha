@@ -1,6 +1,4 @@
-import React, { useState, useRef } from 'react';
-import { ReactComponent as Trash } from './../../../assets/trash.svg';
-import 'react-loading-skeleton/dist/skeleton.css';
+import React, { useState } from 'react';
 
 const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +10,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
           return (
             <div
               key={index}
-              className='nail-container flex max-w-[45%] h-fit grow sm2:max-w-[29%] lg:max-w-[20%] desktop:w-[17%] desktop:grow-0'
+              className='flex max-h-[28vh] max-w-[85%] sm:max-w-[45%] sm:max-h-[19vh] grow sm2:max-w-[29%] sm2:max-h-[24vh] lg:max-w-[20%] lg:max-h-[28vh] desktop:w-[15%] desktop:max-h-[30vh] desktop:grow-0'
             >
               {/* <div className='delete-nail-con'>
               {removeImage && (
@@ -28,8 +26,10 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
               )}
             </div> */}
               <img
+                width={400}
+                height={400}
                 key={nailData}
-                className='h-full w-full rounded-md border-2 border-neutral-400 dark:border-neutral-900'
+                className='rounded-md border-2 border-neutral-400 dark:border-neutral-900'
                 src={nailData}
                 alt=''
               />
