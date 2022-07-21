@@ -33,8 +33,8 @@ export const Contact = () => {
             className='flex my-4 flex-col justify-center items-center lg:w-[100%]'
             ref={form}
           >
-            <h1 className='my-2 font-semibold text-2xl text-pink-900 dark:text-neutral-100'>
-              Contact Me
+            <h1 className='my-2 font-bold text-2xl text-pink-900 dark:text-neutral-100'>
+              Contact me
             </h1>
             <input
               name='user_name'

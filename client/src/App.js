@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Main/Header';
+import Header from './components/Main/Header/Header';
 import Book from './components/Booking/Book';
 import Register from './components/Main/Register';
 import Login from './components/Main/Login';

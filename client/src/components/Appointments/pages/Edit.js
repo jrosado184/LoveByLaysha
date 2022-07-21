@@ -11,6 +11,7 @@ import ImageUploadInput from '../../Appointments/modals/ImageUploadInput';
 import { storage } from '../../../firebase/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { ReactComponent as Check } from './../../../assets/checkmark.svg';
+import { ReactComponent as Back } from './../../../assets/icons/back.svg';
 
 const Edit = ({ fetchAppointments, dispatch }) => {
   const nav = useNavigate();
@@ -139,157 +140,165 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   }, [image]);
 
   return (
-    <form className='pl-8 py-4 pb-24 desktop:pl-[17%] w-full'>
-      <div className='md:flex'>
-        <Calendar
-          onChange={setSelectedDate}
-          calendarClassName='border-2 border-pink-200 dark:border-neutral-900'
-          colorPrimary='#f8a4d1'
-          value={selectedDate}
-          minimumDate={utils().getToday()}
-          disabledDays={disabledDays}
+    <>
+      <div className='w-full flex ml-6 py-4 '>
+        <Back
+          onClick={() => nav(`/confirm/${id}`)}
+          className='text-pink-900 w-7 dark:text-neutral-100 cursor-pointer'
         />
-        <div className='md:w-[60%]'>
-          <select
-            name='appointment_time'
-            value={info.appointment_time}
-            onChange={handleChange}
-            className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-          >
-            <option value=''>select a time</option>
-            {<Options disabledTimes={disabledTimes} />}
-          </select>
-          <input
-            data-testid='name'
-            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-            type='text'
-            placeholder='Name'
-            name='client_name'
-            value={info.client_name}
-            onChange={handleChange}
+      </div>
+      <form className='pl-8 pb-24 desktop:pl-[17%] w-full'>
+        <div className='md:flex'>
+          <Calendar
+            onChange={setSelectedDate}
+            calendarClassName='border-2 border-pink-200 dark:border-neutral-900'
+            colorPrimary='#f8a4d1'
+            value={selectedDate}
+            minimumDate={utils().getToday()}
+            disabledDays={disabledDays}
           />
-          <input
-            data-testid='phone'
-            name='client_phone'
-            value={info.client_phone}
-            onChange={handleChange}
-            className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-            type='tel'
-            placeholder='Phone number'
-          />
-          <select
-            name='client_set'
-            value={info.client_set}
-            onChange={handleChange}
-            disabled={info.client_refill}
-            className={
-              !info.client_refill
-                ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-                : 'hidden'
-            }
-          >
-            <option value=''>Select a new set</option>
-            {styles.map((style) => (
-              <option key={style} value={style}>
-                {style}
-              </option>
-            ))}
-          </select>
-          <label className='flex items-center dark:text-neutral-100'>
-            <input
-              data-testid='rinput'
-              name='client_refill'
-              className='mr-2 my-4 border-2 md:ml-6'
-              type='checkbox'
-              onChange={() =>
-                setInfo({ ...info, client_refill: !info.client_refill })
-              }
-              value={info.client_refill}
-              checked={info.client_refill}
-            />
-            Refill
-          </label>
-          <select
-            data-testid='refill'
-            name='client_refillSet'
-            value={info.client_refillSet}
-            onChange={handleChange}
-            className={
-              info.client_refill
-                ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
-                : 'hidden'
-            }
-          >
-            <option value=''>select refill</option>
-            {refillSet.map((set) => (
-              <option key={set} value={set}>
-                {set}
-              </option>
-            ))}
-          </select>
-          <label className='flex items-center my-4 md:ml-6 dark:text-neutral-100'>
-            <input
-              name='client_Soak'
-              value={info.client_Soak}
-              onChange={() =>
-                setInfo({ ...info, client_Soak: !info.client_Soak })
-              }
-              className='mr-2 my-1'
-              type='checkbox'
-              checked={info.client_Soak}
-            />
-            <p>Soak Off</p>
-            <p className='ml-52 text-pink-300 dark:text-neutral-100'>$10</p>
-          </label>
-          <label className=' my-2 md:ml-6 dark:text-neutral-100'>
-            Additional Details:
-            <textarea
-              data-testid='details'
-              name='client_details'
-              value={info.client_details}
+          <div className='md:w-[60%]'>
+            <select
+              name='appointment_time'
+              value={info.appointment_time}
               onChange={handleChange}
-              className='w-[88%] h-20 pl-2 border-2 border-pink-300 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
-            />
-          </label>
-          <div>
-            <label className=' my-6 flex flex-col shrink md:ml-6 text-pink-900 dark:text-neutral-100'>
-              Have a specific set in mind?
-              <div className='my-2'>
-                <ImageUploadInput setImage={setImage} />
-                {image && (
-                  <div className='w-full flex gap-2 py-1'>
-                    <p className='text-pink-900 dark:text-neutral-100'>
-                      File Uploaded
-                    </p>
-                    <Check
-                      fill='rgb(34 197 94)'
-                      className='w-6 text-neutral-500'
-                    />
-                  </div>
-                )}
-              </div>
-            </label>
-            <label className='flex items-center gap-2 text-pink-900 dark:text-neutral-100 desktop:ml-6'>
-              <input
-                onChange={handleCalendar}
-                value={changes}
-                className='pl-6'
-                type='checkbox'
-              />
-              Update Changes?
-            </label>
+              className='w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+            >
+              <option value=''>select a time</option>
+              {<Options disabledTimes={disabledTimes} />}
+            </select>
             <input
-              disabled={changes ? false : true}
-              data-testid='bookbtn'
-              className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
-              type='submit'
-              value='Save'
-              onClick={handleSubmit}
+              data-testid='name'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+              type='text'
+              placeholder='Name'
+              name='client_name'
+              value={info.client_name}
+              onChange={handleChange}
             />
+            <input
+              data-testid='phone'
+              name='client_phone'
+              value={info.client_phone}
+              onChange={handleChange}
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+              type='tel'
+              placeholder='Phone number'
+            />
+            <select
+              name='client_set'
+              value={info.client_set}
+              onChange={handleChange}
+              disabled={info.client_refill}
+              className={
+                !info.client_refill
+                  ? 'w-[88%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                  : 'hidden'
+              }
+            >
+              <option value=''>Select a new set</option>
+              {styles.map((style) => (
+                <option key={style} value={style}>
+                  {style}
+                </option>
+              ))}
+            </select>
+            <label className='flex items-center dark:text-neutral-100'>
+              <input
+                data-testid='rinput'
+                name='client_refill'
+                className='mr-2 my-4 border-2 md:ml-6'
+                type='checkbox'
+                onChange={() =>
+                  setInfo({ ...info, client_refill: !info.client_refill })
+                }
+                value={info.client_refill}
+                checked={info.client_refill}
+              />
+              Refill
+            </label>
+            <select
+              data-testid='refill'
+              name='client_refillSet'
+              value={info.client_refillSet}
+              onChange={handleChange}
+              className={
+                info.client_refill
+                  ? 'w-[88%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full md:ml-6 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                  : 'hidden'
+              }
+            >
+              <option value=''>select refill</option>
+              {refillSet.map((set) => (
+                <option key={set} value={set}>
+                  {set}
+                </option>
+              ))}
+            </select>
+            <label className='flex items-center my-4 md:ml-6 dark:text-neutral-100'>
+              <input
+                name='client_Soak'
+                value={info.client_Soak}
+                onChange={() =>
+                  setInfo({ ...info, client_Soak: !info.client_Soak })
+                }
+                className='mr-2 my-1'
+                type='checkbox'
+                checked={info.client_Soak}
+              />
+              <p>Soak Off</p>
+              <p className='ml-52 text-pink-300 dark:text-neutral-100'>$10</p>
+            </label>
+            <label className=' my-2 md:ml-6 dark:text-neutral-100'>
+              Additional Details:
+              <textarea
+                data-testid='details'
+                name='client_details'
+                value={info.client_details}
+                onChange={handleChange}
+                className='w-[88%] h-20 pl-2 border-2 border-pink-300 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
+              />
+            </label>
+            <div>
+              <label className=' my-6 flex flex-col shrink md:ml-6 text-pink-900 dark:text-neutral-100'>
+                Have a specific set in mind?
+                <div className='my-2'>
+                  <ImageUploadInput setImage={setImage} />
+                  {image && (
+                    <div className='w-full flex gap-2 py-1'>
+                      <p className='text-pink-900 dark:text-neutral-100'>
+                        File Uploaded
+                      </p>
+                      <Check
+                        fill='rgb(34 197 94)'
+                        className='w-6 text-neutral-500'
+                      />
+                    </div>
+                  )}
+                </div>
+              </label>
+              <label className='flex items-center gap-2 text-pink-900 dark:text-neutral-100 desktop:ml-6'>
+                <input
+                  onChange={handleCalendar}
+                  value={changes}
+                  className='md:ml-4'
+                  type='checkbox'
+                />
+                Update Changes?
+              </label>
+              <input
+                disabled={changes ? false : true}
+                data-testid='bookbtn'
+                className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                type='submit'
+                value='Save'
+                onClick={handleSubmit}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

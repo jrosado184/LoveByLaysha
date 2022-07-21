@@ -71,7 +71,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
         className={
           localStorage.getItem('token')
             ? 'hidden'
-            : 'w-full flex justify-end pr-6 py-4 pb-0'
+            : 'w-full flex justify-end pr-8 py-4 pb-0'
         }
       >
         <ToggleTheme darkMode={darkMode} setDarkMode={setDarkMode} />
