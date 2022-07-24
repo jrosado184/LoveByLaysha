@@ -21,17 +21,14 @@ server.use('/api/disabledDays', disabledDays);
 server.use('/api/disabledTimes', disabledTimes);
 server.use(
   serveStatic(path.join(__dirname, '..', 'client', 'public'), {
-    maxAge: '1d',
-  })
-);
-server.use(
-  serveStatic(path.join(__dirname, '..', 'client', 'public', 'scr', 'assets'), {
     maxAge: '31536000',
   })
 );
 
 server.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'public'), {
+    maxAge: '31536000',
+  });
 });
 
 module.exports = server;
