@@ -249,14 +249,13 @@ const Edit = ({ fetchAppointments, dispatch }) => {
               <p>Soak Off</p>
               <p className='ml-52 text-pink-300 dark:text-neutral-100'>$10</p>
             </label>
-            <label className=' my-2 md:ml-6 dark:text-neutral-100'>
-              Additional Details:
+            <label className=' my-2 dark:text-neutral-100'>
               <textarea
                 data-testid='details'
                 name='client_details'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[88%] h-20 pl-2 border-2 border-pink-300 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900'
+                className='w-[93%] h-20 pl-2 border-2 border-pink-300 md:ml-6 dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
               />
             </label>
             <div>
@@ -286,14 +285,16 @@ const Edit = ({ fetchAppointments, dispatch }) => {
                 />
                 Update Changes?
               </label>
-              <input
-                disabled={changes ? false : true}
-                data-testid='bookbtn'
-                className='w-24 h-8 my-6 ml-28 border-2 border-rose-300 bg-pink-100 text-rose-500 rounded-full sm2:ml-[70%] md:ml-[74%] lg:ml-[80%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
-                type='submit'
-                value='Save'
-                onClick={handleSubmit}
-              />
+              <div className='w-full flex justify-center'>
+                <input
+                  disabled={changes ? false : true}
+                  data-testid='bookbtn'
+                  className='w-24 h-8 my-6 border-2 border-rose-300 bg-pink-100 text-rose-500 rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                  type='submit'
+                  value='Save'
+                  onClick={handleSubmit}
+                />
+              </div>
             </div>
           </div>
         </div>

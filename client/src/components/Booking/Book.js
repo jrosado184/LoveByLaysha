@@ -140,7 +140,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
             <input
               {...register('client_name', { required: 'Please enter a name' })}
               data-testid='name'
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 text-neutral-100 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-100'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -159,7 +159,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
               type='number'
               placeholder='Phone number'
             />
@@ -237,7 +237,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[97%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[90%] text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                className='w-[97%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
               />
             </label>
             <BookFileUpload

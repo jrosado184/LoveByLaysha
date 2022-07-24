@@ -1,11 +1,10 @@
 import React from 'react';
 import { ReactComponent as Star } from './../../assets/icons/star.svg';
 import { ReactComponent as CashApp } from './../../assets/icons/CashApp-logo.svg';
-import Contact from './Contact';
 
 const Policies = () => {
   return (
-    <div className='md:flex'>
+    <div className='md:flex h-[100vh]'>
       <div className='w-[93%] ml-2 flex flex-col items-center pb-16 md:items-start md:ml-6 desktop:w-[100%]'>
         <h1 className='text-pink-900  text-[1.4rem]  my-1 font-semibold underline  dark:text-neutral-100'>
           Policies
