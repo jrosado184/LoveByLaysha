@@ -29,6 +29,11 @@ server.use(
     maxAge: '31536000',
   })
 );
+server.use(
+  serveStatic(path.join(__dirname, '..', 'client', 'build'), {
+    maxAge: '31536000',
+  })
+);
 
 server.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'public'), {
@@ -40,6 +45,9 @@ server.get('/', (req, res, next) => {
       maxAge: '31536000',
     }
   );
+  res.sendFile(path.join(__dirname, '..', 'client', 'build'), {
+    maxAge: '31536000',
+  });
 });
 
 module.exports = server;
