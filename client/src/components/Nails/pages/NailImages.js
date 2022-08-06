@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
   const [showModal, setShowModal] = useState(false);
@@ -10,7 +10,7 @@ const NailImages = ({ imageUrl, removeImage, handleDeleteImage }) => {
           return (
             <div
               key={index}
-              className='flex max-h-[28vh] max-w-[85%] sm:max-w-[45%] sm:max-h-[19vh] grow sm2:max-w-[29%] sm2:max-h-[24vh] lg:max-w-[20%] lg:max-h-[28vh] desktop:w-[15%] desktop:max-h-[30vh] desktop:grow-0'
+              className='flex grow h-[28%] max-w-[85%] sm:grow-0 sm:w-[45%] sm:h-[19%] sm2:w-[29%] sm2:h-[24%] lg:w-[20%] lg:h-[28%] desktop:w-[15%] desktop:h-[30%] desktop:grow-0'
             >
               {/* <div className='delete-nail-con'>
               {removeImage && (
