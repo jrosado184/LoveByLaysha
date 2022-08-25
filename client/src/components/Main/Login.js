@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { handleLogin } from '../../redux/actions/login_actions';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { handleLogin } from "../../redux/actions/login_actions";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Login = ({ dispatch }) => {
   const nav = useNavigate();
 
   const [login, setLogin] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ const Login = ({ dispatch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(login));
-    nav('/');
+    nav("/");
   };
   return (
     <div className='h-screen flex flex-col items-center justify-start py-16 '>
@@ -30,10 +30,10 @@ const Login = ({ dispatch }) => {
       </p>
       <form
         onSubmit={handleSubmit}
-        className=' w-96 my-4 flex flex-col items-center justify-center'
+        className='w-96 my-4 flex flex-col items-center justify-center'
       >
         <input
-          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+          className='sm:pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
           type='text'
           placeholder='Username'
           name='username'

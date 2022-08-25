@@ -1,10 +1,11 @@
-import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { getAppointments } from '../../../redux/actions/appointment-actions';
-import Appointments from './Appointments';
-import Search from '../Search';
-import { sortDates } from '../../../Algos/Sorting';
-import AppointmentsSkeleton from './../skeletons/AppointmentsListSkeleton';
+import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { getAppointments } from "../../../redux/actions/appointment-actions";
+import Appointments from "./Appointments";
+import Search from "../Search";
+import { sortDates } from "../../../Algos/Sorting";
+import AppointmentsSkeleton from "./../skeletons/AppointmentsListSkeleton";
+import Loading from "./Loading";
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,9 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
       <Search />
       <div className='flex flex-col items-center my-2'>
         {loading ? (
-          <AppointmentsSkeleton card={fetchAppointments.length} />
+          <AppointmentsSkeleton card={fetchAppointments.length} /> && (
+            <Loading />
+          )
         ) : fetchAppointments.length ? (
           fetchAppointments.map((appointment, index) => (
             <Appointments key={index} appointment={appointment} />

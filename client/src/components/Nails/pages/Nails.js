@@ -30,16 +30,24 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
     const imageRef = ref(storage, `nails/${image.name}`);
     uploadBytes(imageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
+        url = url.replace(
+          "https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com",
+          `${process.env.REACT_APP_IMAGEKIT}/tr:w-250,h-250,dpr-2`
+        );
         setImageUrl((prev) => [...prev, url]);
       });
     });
   };
 
-  const handleDeleteImage = (url) => {
-    const imageName = ref(storage, url);
+  const handleDeleteImage = (url, firebaseURL) => {
+    const imageKitImageUrl = `${
+      process.env.REACT_APP_IMAGEKIT
+    }/tr:w-250,h-250,dpr-2/o/${url.split("/")[6]}`;
+    const imageName = ref(storage, firebaseURL);
     const imageRef = ref(storage, `nails/${imageName.name}`);
+    console.log(imageRef);
     deleteObject(imageRef).then(() => {
-      setImageUrl(imageUrl.filter((img) => img !== url));
+      setImageUrl(imageUrl.filter((img) => img !== imageKitImageUrl));
     });
   };
 
@@ -92,7 +100,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
       />
 
       {loading ? (
-        <NailSkeleton cards={21} />
+        <NailSkeleton cards={16} />
       ) : (
         <div>
           <NailImages
