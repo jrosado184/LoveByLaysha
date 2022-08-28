@@ -1,10 +1,11 @@
-import React from "react";
-import image from "./../../../assets/user.jpg.webp";
+import React from 'react';
+import image from './../../../assets/user.jpg.webp';
 
 const NailSkeleton = ({ cards }) => {
   return (
     <div className='h-full'>
       <div className='w-full h-full flex flex-wrap justify-center  gap-6 pl-6 pb-20 pr-4 py-2 desktop:py-[1.7%]'>
+        <div className='w-full flex justify-end pr-6 my-1'></div>
         {Array(cards)
           .fill(0)
           .map((e, i) => (
