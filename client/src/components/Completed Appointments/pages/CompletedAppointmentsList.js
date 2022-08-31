@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { getCompletedAppointments } from '../../../redux/actions/appointment-actions';
-import Completed from './Completed';
-import Search from '../../Appointments/Search';
-import AppointmentsSkeleton from './../../Appointments/skeletons/AppointmentsListSkeleton';
+import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { getCompletedAppointments } from "../../../redux/actions/appointment-actions";
+import Completed from "./Completed";
+import Search from "../../Appointments/Search";
+import Loading from "../../Appointments/pages/Loading";
 
 const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
       <Search />
       <div className='flex flex-col items-center my-2 '>
         {loading ? (
-          <AppointmentsSkeleton card={completedAppointments.length} />
+          <Loading />
         ) : (
           completedAppointments.map((appointment) => (
             <Completed
@@ -28,6 +28,11 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
               appointment={appointment}
             />
           ))
+        )}
+        {!completedAppointments.length && (
+          <p className='w-full h-[70vh] flex justify-center items-center text-pink-900 dark:text-neutral-100'>
+            No Completed Appointments
+          </p>
         )}
       </div>
     </div>

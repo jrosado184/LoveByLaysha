@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import NailImages from './NailImages';
-import UploadModal from './../modals/UploadModal';
-import { connect } from 'react-redux';
-import { storage } from '../../../firebase/firebase';
+import React, { useEffect, useState } from "react";
+import NailImages from "./NailImages";
+import UploadModal from "./../modals/UploadModal";
+import { connect } from "react-redux";
+import { storage } from "../../../firebase/firebase";
 import {
   ref,
   uploadBytes,
   listAll,
   getDownloadURL,
   deleteObject,
-} from 'firebase/storage';
-import NailUploadNav from './../modals/NailUploadNav';
-import NailSkeleton from './../skeletons/NailSkeleton';
-import FooterNav from '../../Mobile/FooterNav';
-import ToggleTheme from '../../Main/ToggleTheme';
+} from "firebase/storage";
+import NailUploadNav from "./../modals/NailUploadNav";
+import NailSkeleton from "./../skeletons/NailSkeleton";
+import Loading from "./../../Appointments/pages/Loading";
+import FooterNav from "../../Mobile/FooterNav";
+import ToggleTheme from "../../Main/ToggleTheme";
 
 const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [token, setToken] = useState(null);
@@ -23,7 +24,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const [loading, setLoading] = useState(true);
   const [onNailComp, setOnNailComp] = useState(false);
 
-  const allImageRef = ref(storage, 'nails/');
+  const allImageRef = ref(storage, "nails/");
 
   const handleImage = () => {
     if (image === null) return;
@@ -31,7 +32,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
     uploadBytes(imageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         url = url.replace(
-          'https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com',
+          "https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com",
           `${process.env.REACT_APP_IMAGEKIT}/tr:w-250,h-250,dpr-2`
         );
         setImageUrl((prev) => [...prev, url]);
@@ -42,7 +43,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   const handleDeleteImage = (url, firebaseURL) => {
     const imageKitImageUrl = `${
       process.env.REACT_APP_IMAGEKIT
-    }/tr:w-250,h-250,dpr-2/o/${url.split('/')[6]}`;
+    }/tr:w-250,h-250,dpr-2/o/${url.split("/")[6]}`;
     const imageName = ref(storage, firebaseURL);
     const imageRef = ref(storage, `nails/${imageName.name}`);
     console.log(imageRef);
@@ -56,7 +57,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
       res.items.map((item) =>
         getDownloadURL(item).then((url) => {
           url = url.replace(
-            'https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com',
+            "https://firebasestorage.googleapis.com/v0/b/lovebylaysha-be39b.appspot.com",
             `${process.env.REACT_APP_IMAGEKIT}/tr:w-250,h-250,dpr-2`
           );
           setImageUrl((prev) => [...prev, url]);
@@ -69,7 +70,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
   }, []);
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'));
+    setToken(localStorage.getItem("token"));
     setOnNailComp(true);
   }, [logIn]);
 
@@ -77,9 +78,9 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
     <div>
       <div
         className={
-          localStorage.getItem('token')
-            ? 'hidden'
-            : 'w-full flex justify-end pr-6 py-4 pb-0'
+          localStorage.getItem("token")
+            ? "hidden"
+            : "w-full flex justify-end pr-6 py-4 pb-0"
         }
       >
         <ToggleTheme darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -100,7 +101,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
       />
 
       {loading ? (
-        <NailSkeleton cards={16} />
+        <Loading />
       ) : (
         <div>
           <NailImages
@@ -112,7 +113,7 @@ const Nails = ({ logIn, darkMode, setDarkMode }) => {
           />
         </div>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <div className='fixed bottom-0 w-full z-20'>
           <FooterNav
             darkMode={darkMode}

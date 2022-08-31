@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../../utils/axiosWithAuth';
-import { appointmentId } from '../../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
-import ClientUploadSkeleton from './../skeletons/ClientUploadsSkeleton';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../../utils/axiosWithAuth";
+import { appointmentId } from "../../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
+import ClientUploadSkeleton from "./../skeletons/ClientUploadsSkeleton";
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
@@ -26,7 +26,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   const handleComplete = () => {
@@ -36,42 +36,38 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   return (
     <>
       <div className='desktop:w-full pb-24'>
         <div className='desktop:flex flex-col'>
-          {loading ? (
-            <ClientUploadSkeleton />
-          ) : (
-            getAppointmentById.map((appointmentId, index) => {
-              return (
-                <div
-                  key={index}
-                  className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
-                >
-                  {appointmentId.images ? (
-                    <img
-                      className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900'
-                      alt=''
-                      src={appointmentId.images}
-                    />
-                  ) : (
-                    <p className='text-pink-900 flex justify-center items-center w-96 border border-pink-900 rounded-md desktop:w-[50%] h-96 dark:border-neutral-900 dark:text-neutral-100'>
-                      No images uploaded
-                    </p>
-                  )}
-                  <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
-                    {appointmentId.client_details === ''
-                      ? 'No Additional Details'
-                      : appointmentId.client_details}
+          {getAppointmentById.map((appointmentId, index) => {
+            return (
+              <div
+                key={index}
+                className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
+              >
+                {appointmentId.images ? (
+                  <img
+                    className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900'
+                    alt=''
+                    src={appointmentId.images}
+                  />
+                ) : (
+                  <p className='text-pink-900 flex justify-center items-center w-96 border border-pink-900 rounded-md desktop:w-[50%] h-96 dark:border-neutral-900 dark:text-neutral-100'>
+                    No images uploaded
                   </p>
-                </div>
-              );
-            })
-          )}
+                )}
+                <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
+                  {appointmentId.client_details === ""
+                    ? "No Additional Details"
+                    : appointmentId.client_details}
+                </p>
+              </div>
+            );
+          })}
           <div className='flex justify-evenly my-6 ml-2 desktop:justify-center gap-12'>
             <button
               onClick={handleDelete}
