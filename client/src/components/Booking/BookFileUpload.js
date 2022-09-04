@@ -49,7 +49,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           </div>
         )}
       </label>
-      <div className='flex justify-center w-[97%] my-2'>
+      <div className='flex justify-center w-[100%] my-2'>
         <input
           className='w-20 text-md border border-pink-500 text-pink-900 bg-pink-200 rounded-full dark:bg-neutral-900 dark:border-neutral-600 dark:text-neutral-100'
           data-testid='bookbtn'
@@ -58,6 +58,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           onClick={formValid(handleSubmit)}
         />
       </div>
+      <button className='w-full flex justify-center'>hey</button>
     </div>
   );
 };

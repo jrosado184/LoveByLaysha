@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import instagram from "../../assets/instagram.svg";
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import instagram from '../../assets/instagram.svg';
 
 export const Contact = () => {
   const [inputs, setInputs] = useState({
-    user_name: "",
-    user_email: "",
-    message: "",
+    user_name: '',
+    user_email: '',
+    message: '',
   });
 
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState('');
 
   const handleInputs = (e) => {
     setInputs({
@@ -36,7 +36,7 @@ export const Contact = () => {
         .then(
           (result) => {
             console.log(result.text);
-            setSuccess("Message Delivered!");
+            setSuccess('Message Delivered!');
           },
           (error) => {
             console.log(error.text);
@@ -57,7 +57,7 @@ export const Contact = () => {
             </h1>
             <input
               name='user_name'
-              className='pl-3 my-4 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
+              className='pl-3 my-4 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100 desktop:w-[70%]'
               placeholder='Name'
               value={inputs.name}
               onChange={handleInputs}
@@ -65,14 +65,14 @@ export const Contact = () => {
             <input
               name='user_email'
               type='email'
-              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
+              className='pl-3 my-6 w-[88%] h-10 rounded-full border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100 desktop:w-[70%]'
               placeholder='Email'
               value={inputs.email}
               onChange={handleInputs}
             />
             <textarea
               placeholder='Message'
-              className='pl-3 my-4 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 desktop:w-[70%]'
+              className='pl-3 my-4 w-[88%] pb-24 py-3 rounded-lg border-2 border-pink-300 shadow-md md:ml-6 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-100 desktop:w-[70%]'
               name='message'
               value={inputs.message}
               onChange={handleInputs}

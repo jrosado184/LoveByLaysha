@@ -129,7 +129,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='appointment_time'
               value={info.appointment_time}
               onChange={handleChange}
-              className='w-[97%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+              className='w-[100%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
               <option value=''>select a time</option>
               {<Options disabledTimes={disabledTimes} />}
@@ -140,7 +140,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
             <input
               {...register('client_name', { required: 'Please enter a name' })}
               data-testid='name'
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[100%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-100'
               type='text'
               placeholder='Name'
               name='client_name'
@@ -159,7 +159,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               name='client_phone'
               value={info.client_phone}
               onChange={handleChange}
-              className='pl-3 my-6 w-[97%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
+              className='pl-3 my-6 w-[100%] h-10 rounded-full border-2 border-pink-300 shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900 dark:placeholder:text-neutral-100'
               type='number'
               placeholder='Phone number'
             />
@@ -173,7 +173,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               disabled={info.client_refill}
               className={
                 !info.client_refill
-                  ? 'w-[97%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                  ? 'w-[100%] h-10 my-4 border-2 border-pink-300 pl-2 rounded-full shadow-md xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
                   : 'hidden'
               }
             >
@@ -204,7 +204,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
               onChange={handleChange}
               className={
                 info.client_refill
-                  ? 'w-[97%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
+                  ? 'w-[100%] h-10 mb-1 border-2 border-pink-300 pl-2 rounded-full xr:w-[97%] md:ml-6 md:w-[90%] dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
                   : 'hidden'
               }
             >
@@ -237,7 +237,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
                 placeholder='Additional Details:'
                 value={info.client_details}
                 onChange={handleChange}
-                className='w-[97%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
+                className='w-[100%] h-20 border-2 border-pink-400 pl-2 py-1 rounded-md xr:w-[97%] md:w-[90%] dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900'
               />
             </label>
             <BookFileUpload
