@@ -8,6 +8,7 @@ import { getAppointments } from '../../redux/actions/appointment-actions';
 import moment from 'moment';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 const Book = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
@@ -22,6 +23,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
   const [unavailableTimes, setUnavailableTimes] = useState([]);
 
   const [info, setInfo] = useState({
+    confirmation: uuid(),
     appointment_month: selectedDate.month,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
@@ -35,6 +37,8 @@ const Book = ({ fetchAppointments, dispatch }) => {
     client_details: '',
     images: '',
   });
+
+  console.log(info);
 
   const findBookedTimes = () => {
     fetchAppointments.map(
