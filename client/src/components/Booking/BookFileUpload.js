@@ -58,7 +58,12 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           onClick={formValid(handleSubmit)}
         />
       </div>
-      <button className='w-full flex justify-center'>hey</button>
+      <button
+        onClick={() => nav('/reschedule')}
+        className='w-full my-[0.2%] flex justify-center underline text-pink-900 dark:text-neutral-100'
+      >
+        reschedule or cancel?
+      </button>
     </div>
   );
 };
