@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../../redux/actions/appointment-actions';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getAppointments } from "../../../redux/actions/appointment-actions";
 
 const CancelConfirm = ({ dispatch }) => {
   useEffect(() => {
@@ -8,8 +8,8 @@ const CancelConfirm = ({ dispatch }) => {
   }, [dispatch]);
 
   return (
-    <div className='w-full h-[85.9vh] flex flex-col justify-center items-center desktop:justify-center desktop:h-[93.3vh]'>
-      <p className='font-bold my-6 dark:text-neutral-100'>
+    <div className='w-full h-[85.9vh] flex flex-col justify-center items-center desktop:justify-center desktop:h-[70vh]'>
+      <p className='font-bold text-pink-900 dark:text-neutral-100'>
         Appointment Canceled
       </p>
       <div className='flex gap-10 justify-center w-full'></div>

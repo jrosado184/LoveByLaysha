@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import check from './../../../assets/check.svg';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../../redux/actions/appointment-actions';
-import { ReactComponent as Edit } from './../../../assets/edit.svg';
-import CancelModal from './../modals/CancelModal';
-import { Months } from '../../../Algos/Months';
-import Loading from './Loading';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import check from "./../../../assets/check.svg";
+import { connect } from "react-redux";
+import { getAppointments } from "../../../redux/actions/appointment-actions";
+import { ReactComponent as Edit } from "./../../../assets/edit.svg";
+import CancelModal from "./../modals/CancelModal";
+import { Months } from "../../../Algos/Months";
+import Loading from "./Loading";
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -58,8 +58,14 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   src={check}
                   alt=''
                 />
+                <div className='flex items-center gap-2 h-16'>
+                  <p className='my-4 text-2xl font-bold text-pink-900'>{`Confirmation Code:`}</p>
+                  <p className='border border-pink-900 w-24 h-8 flex items-center justify-center text-pink-900 font-bold text-2xl'>
+                    {item.confirmation}
+                  </p>
+                </div>
                 <p className='font-semibold text-pink-900 dark:text-neutral-100 desktop:text-1xl'>
-                  Your appointment is confirmed:
+                  Your appointment has been booked:
                 </p>
                 <p className='font-bold underline text-pink-900 dark:text-neutral-100 desktop:text-2xl'>{`For ${Months(
                   item.appointment_month
@@ -74,7 +80,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                     >
                       Edit
                     </button>
-                    <Edit className='w-9 h-9 text-pink-900 dark:text-neutral-100' />
+                    <Edit className='w-4 h-4 text-pink-900 dark:text-neutral-100' />
                   </div>
                   <button
                     onClick={() => setCancelModal(!cancelModal)}

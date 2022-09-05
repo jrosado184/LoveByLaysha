@@ -44,7 +44,7 @@ const App = () => {
         <Routes>
           <Route
             path='/'
-            element={<Nails darkMode={darkMode} setDarkMode={setDarkMode} />}
+            element={<Register darkMode={darkMode} setDarkMode={setDarkMode} />}
           />
           <Route path='/book' element={<Book />} />
           <Route path='/reschedule' element={<Reschedule />} />
