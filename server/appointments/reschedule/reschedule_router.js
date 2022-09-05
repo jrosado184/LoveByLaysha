@@ -3,11 +3,7 @@ const Appoint = require("./reschedule_model");
 
 router.get("/", (req, res, next) => {
   const { confirmation, client_name } = req.body;
-  Appoint.findBy(confirmation, client_name)
-    .then((confirm) => {
-      res.json(confirm);
-    })
-    .catch(next);
+  res.json({ message: "im here" });
 });
 
 router.use((req, res, next) => {
