@@ -7,13 +7,7 @@ const {
 } = require("./appointments-middleware");
 
 router.get("/", (req, res, next) => {
-  Appoint.findAll()
-    .then((appoint) => {
-      {
-        res.json(appoint);
-      }
-    })
-    .catch(next);
+  res.json({ message: "testing" });
 });
 
 router.get("/:id", checkId, (req, res, next) => {
