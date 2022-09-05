@@ -23,7 +23,7 @@ const Book = ({ fetchAppointments, dispatch }) => {
   const [unavailableTimes, setUnavailableTimes] = useState([]);
 
   const [info, setInfo] = useState({
-    confirmation: RandomConfirmation(5),
+    confirmation: "1234",
     appointment_month: selectedDate.month,
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
