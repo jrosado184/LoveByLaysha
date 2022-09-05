@@ -22,8 +22,8 @@ import CancelConfirm from "./components/Appointments/pages/CancelConfirm";
 import FooterNav from "./components/Mobile/FooterNav";
 import Notes from "./components/Mobile/Notes";
 import Loading from "./components/Appointments/pages/Loading";
-import "react-loading-skeleton/dist/skeleton.css";
 import Reschedule from "./components/Booking/Reschedule";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -44,7 +44,7 @@ const App = () => {
         <Routes>
           <Route
             path='/'
-            element={<Register darkMode={darkMode} setDarkMode={setDarkMode} />}
+            element={<Nails darkMode={darkMode} setDarkMode={setDarkMode} />}
           />
           <Route path='/book' element={<Book />} />
           <Route path='/reschedule' element={<Reschedule />} />

@@ -3,7 +3,7 @@ import axiosWithAuth from "./../../utils/axiosWithAuth";
 
 const Reschedule = () => {
   const [confirmation, setConfirmation] = useState({
-    name: "",
+    client_name: "",
     confirmation: "",
   });
 
@@ -17,7 +17,7 @@ const Reschedule = () => {
   const handleRequest = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .get("/api/reschedule", confirmation)
+      .get("/api/reschedule")
       .then((res) => {
         console.log(res);
       })
@@ -38,7 +38,7 @@ const Reschedule = () => {
         className='w-[80vw] h-12 border border-pink-900 rounded-full pl-4 dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100 desktop:w-[30vw]'
         type='text'
         placeholder='Enter your name'
-        name='name'
+        name='client_name'
         value={confirmation.name}
         onChange={handleChange}
       />
