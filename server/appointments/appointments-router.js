@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Appoint = require("./appointments-model");
+const Reschedule = require("./reschedule/reschedule-model");
 const {
   checkBody,
   checkId,
@@ -7,7 +8,10 @@ const {
 } = require("./appointments-middleware");
 
 router.get("/", (req, res, next) => {
-  res.json({ message: "testing" });
+  const { confirmation, client_name } = req.body;
+  Reschedule.findBy(confirmation, client_name).then((res) => {
+    res.json(res);
+  });
 });
 
 router.get("/:id", checkId, (req, res, next) => {
