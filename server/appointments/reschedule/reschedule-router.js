@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Reschedule = require('./reschedule-model');
+const { combinationDoesNotExist } = require('./reschedule-middleware');
 
-router.post('/', (req, res, next) => {
+router.post('/', combinationDoesNotExist, (req, res, next) => {
   const { client_name, confirmation } = req.body;
-
   Reschedule.findBy(confirmation, client_name)
     .then((reschedule) => {
       res.json(reschedule);
