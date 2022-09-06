@@ -17,7 +17,7 @@ const Reschedule = () => {
   const handleRequest = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .get("/api/appointments")
+      .get("/api/appointments", confirmation)
       .then((res) => {
         console.log(res);
       })
