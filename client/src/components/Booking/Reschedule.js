@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import axiosWithAuth from "./../../utils/axiosWithAuth";
+import React, { useState } from 'react';
+import axiosWithAuth from './../../utils/axiosWithAuth';
 
 const Reschedule = () => {
   const [confirmation, setConfirmation] = useState({
-    client_name: "",
-    confirmation: "",
+    client_name: '',
+    confirmation: '',
   });
 
   const handleChange = (e) => {
@@ -17,7 +17,12 @@ const Reschedule = () => {
   const handleRequest = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .get("/api/reschedule")
+      .get('/api/reschedule', {
+        params: {
+          client_name: confirmation.client_name,
+          confirmation: confirmation.confirmation,
+        },
+      })
       .then((res) => {
         console.log(res);
       })
