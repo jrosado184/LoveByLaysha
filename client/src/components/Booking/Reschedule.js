@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axiosWithAuth from './../../utils/axiosWithAuth';
 
 const Reschedule = () => {
+  const nav = useNavigate();
+
   const [confirmation, setConfirmation] = useState({
     client_name: '',
     confirmation: '',
   });
+
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setConfirmation({
@@ -19,10 +24,10 @@ const Reschedule = () => {
     axiosWithAuth()
       .post('/api/reschedule', confirmation)
       .then((res) => {
-        console.log(res);
+        nav(`/reschedule-info/${res?.data?.[0].appointment_id}`);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.message);
       });
   };
 
@@ -55,6 +60,7 @@ const Reschedule = () => {
         type='submit'
         value='Submit'
       />
+      <p className='text-pink-900 dark:text-neutral-100 my-6'>{error}</p>
     </form>
   );
 };

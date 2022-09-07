@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { appointmentId } from "../../../redux/actions/appointment-actions";
-import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
-import { ReactComponent as Calendar } from "../../../assets/calendar.svg";
-import { ReactComponent as Person } from "../../../assets/person.svg";
-import { ReactComponent as Set } from "../../../assets/set.svg";
-import { ReactComponent as Time } from "../../../assets/time.svg";
-import { ReactComponent as Soak } from "../../../assets/soak.svg";
-import { ReactComponent as PhoneIcon } from "../../../assets/phone.svg";
-import { ReactComponent as Refill } from "../../../assets/refill.svg";
-import Phone from "../../../Algos/Phone";
-import AppointmentSkeleton from "../skeletons/AppointmentSkeleton";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { Months } from "../../../Algos/Months";
-import Loading from "./Loading";
+import React, { useEffect, useState } from 'react';
+import { appointmentId } from '../../../redux/actions/appointment-actions';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { ReactComponent as Calendar } from '../../../assets/calendar.svg';
+import { ReactComponent as Person } from '../../../assets/person.svg';
+import { ReactComponent as Set } from '../../../assets/set.svg';
+import { ReactComponent as Time } from '../../../assets/time.svg';
+import { ReactComponent as Soak } from '../../../assets/soak.svg';
+import { ReactComponent as PhoneIcon } from '../../../assets/phone.svg';
+import { ReactComponent as Refill } from '../../../assets/refill.svg';
+import Phone from '../../../Algos/Phone';
+import { Months } from '../../../Algos/Months';
 
 const Appointment = ({ dispatch, getAppointmentById }) => {
   const [loading, setLoading] = useState(true);
@@ -45,7 +41,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2 desktop:ml-6'>
                 <Time className='w-9 text-pink-900 dark:text-neutral-100' />
                 <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
-                  {appointment.appointment_time || <Skeleton />}
+                  {appointment.appointment_time}
                 </p>
               </div>
             </div>
@@ -67,16 +63,16 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2'>
                 <Soak className='w-9 text-pink-900 dark:text-neutral-100' />
                 <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
-                  {String(appointment.client_Soak) === "true"
-                    ? "Soak Off"
-                    : "No Soak Off"}
+                  {String(appointment.client_Soak) === 'true'
+                    ? 'Soak Off'
+                    : 'No Soak Off'}
                 </p>
               </div>
               <div className='sm:flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2 desktop:ml-6'>
                 <Set className='w-9 text-pink-900 dark:text-neutral-100' />
                 <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
-                  {appointment.client_set === "none"
-                    ? "No New Set"
+                  {appointment.client_set === 'none'
+                    ? 'No New Set'
                     : appointment.client_set}
                 </p>
               </div>
@@ -85,16 +81,16 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
               <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2'>
                 <Refill className='w-9 text-pink-900 dark:text-neutral-100' />
                 <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
-                  {String(appointment.client_refill) === "true"
-                    ? "Refill"
-                    : "No Refill"}
+                  {String(appointment.client_refill) === 'true'
+                    ? 'Refill'
+                    : 'No Refill'}
                 </p>
               </div>
               <div className='sm:shadow-lg flex flex-col justify-center items-center w-40 h-full border 2 border-pink-900 rounded-md md:w-60 h-40 dark:border-neutral-900 desktop:w-1/2 desktop:ml-6'>
                 <Set className='w-9 text-pink-900 dark:text-neutral-100' />
                 <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
-                  {String(appointment.client_refillSet) === "none"
-                    ? "No Refill Set"
+                  {String(appointment.client_refillSet) === 'none'
+                    ? 'No Refill Set'
                     : appointment.client_refillSet}
                 </p>
               </div>

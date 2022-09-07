@@ -78,11 +78,10 @@ const Book = ({ fetchAppointments, dispatch }) => {
       appointment_year: selectedDate.year,
       client_set: info.client_refill ? 'none' : info.client_set,
       client_refillSet: info.client_set ? 'none' : info.client_set,
-      [e.target.name]: e.target.value.toLowerCase(),
+      client_name: info.client_name.toLowerCase(),
+      [e.target.name]: e.target.value,
     });
   };
-
-  console.log(info);
 
   useEffect(() => {
     dispatch(getAppointments());

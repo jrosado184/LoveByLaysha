@@ -24,6 +24,7 @@ import Notes from './components/Mobile/Notes';
 import Loading from './components/Appointments/pages/Loading';
 import Reschedule from './components/Booking/Reschedule';
 import 'react-loading-skeleton/dist/skeleton.css';
+import RescheduleInfo from './components/Booking/RescheduleInfo';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -48,6 +49,7 @@ const App = () => {
           />
           <Route path='/book' element={<Book />} />
           <Route path='/reschedule' element={<Reschedule />} />
+          <Route path='/reschedule-info/:id' element={<RescheduleInfo />} />
           <Route path='/confirm/:id' element={<Confirm />} />
           <Route path='/loading-confirm' element={<ConfirmLoad />} />
           <Route path='/loading' element={<Loading />} />

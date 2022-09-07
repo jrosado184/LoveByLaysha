@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import check from "./../../../assets/check.svg";
-import { connect } from "react-redux";
-import { getAppointments } from "../../../redux/actions/appointment-actions";
-import { ReactComponent as Edit } from "./../../../assets/edit.svg";
-import CancelModal from "./../modals/CancelModal";
-import { Months } from "../../../Algos/Months";
-import Loading from "./Loading";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import check from './../../../assets/check.svg';
+import { connect } from 'react-redux';
+import { getAppointments } from '../../../redux/actions/appointment-actions';
+import { ReactComponent as Edit } from './../../../assets/edit.svg';
+import CancelModal from './../modals/CancelModal';
+import { Months } from '../../../Algos/Months';
+import Loading from './Loading';
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
   const nav = useNavigate();
@@ -59,8 +59,8 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                   alt=''
                 />
                 <div className='flex items-center gap-2 h-16'>
-                  <p className='my-4 text-2xl font-bold text-pink-900'>{`Confirmation Code:`}</p>
-                  <p className='border border-pink-900 w-24 h-8 flex items-center justify-center text-pink-900 font-bold text-2xl'>
+                  <p className='my-4 text-2xl font-bold text-pink-900 dark:text-neutral-100'>{`Confirmation Code:`}</p>
+                  <p className='border border-pink-900 w-24 h-8 p-5 flex items-center justify-center text-pink-900 font-bold text-2xl dark:text-neutral-100 dark:border-neutral-400'>
                     {item.confirmation}
                   </p>
                 </div>
@@ -80,11 +80,11 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                     >
                       Edit
                     </button>
-                    <Edit className='w-4 h-4 text-pink-900 dark:text-neutral-100' />
+                    <Edit className='w-8 h-8 text-pink-900 dark:text-neutral-100' />
                   </div>
                   <button
                     onClick={() => setCancelModal(!cancelModal)}
-                    className='w-16 h-7 text-sm text-red-500 underline'
+                    className='w-16 h-7 text-sm text-pink-900 dark:text-neutral-100 underline'
                   >
                     Cancel
                   </button>
