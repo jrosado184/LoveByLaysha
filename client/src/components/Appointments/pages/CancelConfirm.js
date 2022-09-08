@@ -8,7 +8,7 @@ const CancelConfirm = ({ dispatch }) => {
   }, [dispatch]);
 
   return (
-    <div className='w-full h-[85.9vh] flex flex-col justify-center items-center desktop:justify-center desktop:h-[70vh]'>
+    <div className='w-full h-[70.9vh] flex flex-col justify-center items-center desktop:justify-center desktop:h-[70vh]'>
       <p className='font-bold text-pink-900 dark:text-neutral-100'>
         Appointment Canceled
       </p>
