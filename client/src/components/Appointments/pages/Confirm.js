@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import check from './../../../assets/check.svg';
-import { connect } from 'react-redux';
-import { getAppointments } from '../../../redux/actions/appointment-actions';
-import { ReactComponent as Edit } from './../../../assets/edit.svg';
-import CancelModal from './../modals/CancelModal';
-import { Months } from '../../../Algos/Months';
-import Loading from './Loading';
+import React, { useEffect, useState } from "react";
+import check from "./../../../assets/check.svg";
+import { connect } from "react-redux";
+import { getAppointments } from "../../../redux/actions/appointment-actions";
+import CancelModal from "./../modals/CancelModal";
+import { Months } from "../../../Algos/Months";
+import Loading from "./Loading";
 
 const Confirm = ({ dispatch, fetchAppointments }) => {
-  const nav = useNavigate();
-
-  const { id } = useParams();
-
   const [cancelModal, setCancelModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const handleEdit = () => {
-    nav(`/edit/${id}`);
-  };
   const fil = fetchAppointments.filter(
     (elem) => elem === fetchAppointments[fetchAppointments.length - 1]
   );
@@ -50,7 +41,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 key={item.appointment_id}
                 className='flex flex-col items-center'
               >
-                <h1 className='text-2xl text-center my-6 text-pink-900 dark:text-neutral-100 desktop:text-4xl'>
+                <h1 className='text-3xl text-center my-6 text-pink-900 dark:text-neutral-100 desktop:text-4xl'>
                   {`Thank you for booking ${item.client_name}!`}
                 </h1>
                 <img
@@ -72,23 +63,6 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
                 )} ${item.appointment_day}, ${item.appointment_year} at ${
                   item.appointment_time
                 }`}</p>
-                <div className='flex justify-evenly w-full h-12 items-end my-8 '>
-                  <div className='flex w-12 items-center underline'>
-                    <button
-                      onClick={handleEdit}
-                      className='w-16 h-7 text-sm text-pink-900 dark:text-neutral-100'
-                    >
-                      Edit
-                    </button>
-                    <Edit className='w-8 h-8 text-pink-900 dark:text-neutral-100' />
-                  </div>
-                  <button
-                    onClick={() => setCancelModal(!cancelModal)}
-                    className='w-16 h-7 text-sm text-pink-900 dark:text-neutral-100 underline'
-                  >
-                    Cancel
-                  </button>
-                </div>
               </div>
             );
           })}

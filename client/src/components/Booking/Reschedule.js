@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axiosWithAuth from './../../utils/axiosWithAuth';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axiosWithAuth from "./../../utils/axiosWithAuth";
 
 const Reschedule = () => {
   const nav = useNavigate();
 
   const [confirmation, setConfirmation] = useState({
-    client_name: '',
-    confirmation: '',
+    client_name: "",
+    confirmation: "",
   });
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setConfirmation({
       ...confirmation,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.toLowerCase(),
     });
   };
 
   const handleRequest = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post('/api/reschedule', confirmation)
+      .post("/api/reschedule", confirmation)
       .then((res) => {
         nav(`/reschedule-info/${res?.data?.[0].appointment_id}`);
       })
