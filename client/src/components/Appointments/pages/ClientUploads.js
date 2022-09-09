@@ -41,7 +41,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
 
   return (
     <>
-      <div className='desktop:w-full pb-24'>
+      <div className='desktop:w-full pb-24 pr-4'>
         <div className='desktop:flex flex-col'>
           {getAppointmentById.map((appointmentId, index) => {
             return (
@@ -51,7 +51,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
               >
                 {appointmentId.images ? (
                   <img
-                    className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900'
+                    className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900 dark:bg-neutral-700'
                     alt=''
                     src={appointmentId.images}
                   />
