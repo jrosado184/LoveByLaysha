@@ -13,7 +13,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
 
   const [image, setImage] = useState(null);
 
-  const handleImage = () => {
+  const handleImage = async () => {
     if (image === null) return;
     const imageRef = ref(storage, `clientUploads/${image.name}`);
     uploadBytes(imageRef, image).then((snapshot) => {
@@ -24,8 +24,10 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   };
 
   const handleSubmit = async (e) => {
-    dispatch(postAppointments(info));
-    nav("/loading-confirm");
+    setTimeout(() => {
+      dispatch(postAppointments(info));
+      nav("/loading-confirm");
+    }, 900);
   };
   useEffect(() => {
     handleImage();
