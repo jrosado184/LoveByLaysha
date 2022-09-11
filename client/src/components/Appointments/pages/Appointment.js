@@ -31,7 +31,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className='w-full h-[70vh] flex flex-col lg:flex-row desktop:h-[70vh]'>
+        <div className='w-full h-[70vh] flex flex-col lg:flex-row'>
           <div className='w-full py-4'>
             {getAppointmentById.map((appointment, index) => {
               return (
@@ -75,7 +75,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                           : "No Soak Off"}
                       </p>
                     </div>
-                    <div className='sm:flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2 desktop:ml-6'>
+                    <div className='flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2 desktop:ml-6'>
                       <Set className='w-9 text-pink-900 dark:text-neutral-100' />
                       <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                         {appointment.client_set === "none"
@@ -84,8 +84,8 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                       </p>
                     </div>
                   </div>
-                  <div className='sm:shadow-lg w-full flex justify-evenly desktop:w-[100%] py-1'>
-                    <div className='sm:shadow-lg flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2'>
+                  <div className='w-full flex justify-evenly desktop:w-[100%] py-1'>
+                    <div className='flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2'>
                       <Refill className='w-9 text-pink-900 dark:text-neutral-100' />
                       <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                         {String(appointment.client_refill) === "true"
@@ -93,7 +93,7 @@ const Appointment = ({ dispatch, getAppointmentById }) => {
                           : "No Refill"}
                       </p>
                     </div>
-                    <div className='sm:shadow-lg flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2 desktop:ml-6'>
+                    <div className='flex flex-col justify-center items-center w-48 border 2 border-pink-900 rounded-md h-40 dark:border-neutral-900 dark:bg-neutral-700 sm2:w-[45%] desktop:w-1/2 desktop:ml-6'>
                       <Set className='w-9 text-pink-900 dark:text-neutral-100' />
                       <p className='font-semibold py-4 text-pink-900 dark:text-neutral-100'>
                         {String(appointment.client_refillSet) === "none"

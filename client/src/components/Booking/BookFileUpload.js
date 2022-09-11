@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { addAppointments } from '../../redux/actions/appointment-actions.js';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import { storage } from '../../firebase/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { ReactComponent as Check } from './../../assets/checkmark.svg';
-import ImageUploadInput from '../Appointments/modals/ImageUploadInput';
+import React, { useState, useEffect } from "react";
+import { postAppointments } from "../../redux/actions/appointment-actions.js";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { storage } from "../../firebase/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ReactComponent as Check } from "./../../assets/checkmark.svg";
+import ImageUploadInput from "../Appointments/modals/ImageUploadInput";
 
 const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   const nav = useNavigate();
@@ -24,13 +24,8 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
   };
 
   const handleSubmit = async (e) => {
-    try {
-      const res = await axiosWithAuth().post('/api/appointments', info);
-      dispatch(addAppointments(res.data));
-      nav('/loading-confirm');
-    } catch (err) {
-      console.log(err.response.message);
-    }
+    dispatch(postAppointments(info));
+    nav("/loading-confirm");
   };
   useEffect(() => {
     handleImage();
@@ -59,7 +54,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
         />
       </div>
       <button
-        onClick={() => nav('/reschedule')}
+        onClick={() => nav("/reschedule")}
         className='w-full my-[0.2%] flex justify-center underline text-pink-900 dark:text-neutral-100'
       >
         reschedule or cancel?

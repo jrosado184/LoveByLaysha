@@ -41,7 +41,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
 
   return (
     <>
-      <div className='desktop:w-full pb-24 pr-4'>
+      <div className='desktop:w-full pb-24'>
         <div className='desktop:flex flex-col'>
           {getAppointmentById.map((appointmentId, index) => {
             return (
@@ -50,15 +50,17 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                 className='flex flex-col items-center justify-center w-full pb-6 desktop:py-12'
               >
                 {appointmentId.images ? (
-                  <img
-                    className='w-[86%] border h-72 border-pink-900 desktop:w-[40%] h-96 dark:border-neutral-900 dark:bg-neutral-700'
-                    alt=''
-                    src={appointmentId.images}
-                  />
+                  <div className='w-[92%] h-96 border border-pink-900 flex justify-center items-center desktop:w-[55%] dark:border-neutral-900'>
+                    <img
+                      className='w-full border h-full desktop:w-full'
+                      alt=''
+                      src={appointmentId.images}
+                    />
+                  </div>
                 ) : (
-                  <p className='text-pink-900 flex justify-center items-center w-96 border border-pink-900 rounded-md desktop:w-[50%] h-96 dark:border-neutral-900 dark:text-neutral-100'>
-                    No images uploaded
-                  </p>
+                  <div className='w-[92%] h-96 border border-pink-900 text-neutral-100 flex justify-center items-center bg-neutral-700 desktop:w-[55%] dark:border-neutral-900'>
+                    <p>No images uploaded</p>
+                  </div>
                 )}
                 <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
                   {appointmentId.client_details === ""
