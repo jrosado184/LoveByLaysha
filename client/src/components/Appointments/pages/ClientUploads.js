@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axiosWithAuth from "../../../utils/axiosWithAuth";
-import { appointmentId } from "../../../redux/actions/appointment-actions";
-import { connect } from "react-redux";
-import ClientUploadSkeleton from "./../skeletons/ClientUploadsSkeleton";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axiosWithAuth from '../../../utils/axiosWithAuth';
+import { appointmentId } from '../../../redux/actions/appointment-actions';
+import { connect } from 'react-redux';
+import ClientUploadSkeleton from './../skeletons/ClientUploadsSkeleton';
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
@@ -26,7 +26,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav("/appointments");
+    nav('/appointments');
   };
 
   const handleComplete = () => {
@@ -36,7 +36,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav("/appointments");
+    nav('/appointments');
   };
 
   return (
@@ -58,13 +58,13 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                     />
                   </div>
                 ) : (
-                  <div className='w-[92%] h-96 border border-pink-900 text-neutral-100 flex justify-center items-center bg-neutral-700 desktop:w-[55%] dark:border-neutral-900'>
+                  <div className='w-[92%] h-96 border border-pink-900 dark:text-neutral-100 flex justify-center items-center dark:bg-neutral-700 desktop:w-[55%] dark:border-neutral-900'>
                     <p>No images uploaded</p>
                   </div>
                 )}
                 <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
-                  {appointmentId.client_details === ""
-                    ? "No Additional Details"
+                  {appointmentId.client_details === ''
+                    ? 'No Additional Details'
                     : appointmentId.client_details}
                 </p>
               </div>
