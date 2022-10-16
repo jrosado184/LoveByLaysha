@@ -58,7 +58,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                     />
                   </div>
                 ) : (
-                  <div className='w-[92%] h-96 border border-pink-900 dark:text-neutral-100 flex justify-center items-center dark:bg-neutral-700 desktop:w-[55%] dark:border-neutral-900'>
+                  <div className='w-[92%] h-96 border border-pink-900 text-pink-900 dark:text-neutral-100 flex justify-center items-center dark:bg-neutral-700 desktop:w-[55%] dark:border-neutral-900'>
                     <p>No images uploaded</p>
                   </div>
                 )}

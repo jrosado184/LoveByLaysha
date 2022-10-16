@@ -15,8 +15,6 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
     }, 500);
   }, [dispatch]);
 
-  console.log(completedAppointments);
-
   return (
     <div className='h-[85.55vh] desktop:pb-6'>
       <Search />
