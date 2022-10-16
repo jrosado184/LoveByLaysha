@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
-import React, { useEffect, useState } from "react";
-import { getCompletedAppointments } from "../../../redux/actions/appointment-actions";
-import Completed from "./Completed";
-import Search from "../../Appointments/Search";
-import Loading from "../../Appointments/pages/Loading";
+import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { getCompletedAppointments } from '../../../redux/actions/appointment-actions';
+import Completed from './Completed';
+import Search from '../../Appointments/Search';
+import Loading from '../../Appointments/pages/Loading';
 
 const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
   const [loading, setLoading] = useState(true);
@@ -14,6 +14,8 @@ const CompletedAppointmentsList = ({ dispatch, completedAppointments }) => {
       setLoading(false);
     }, 500);
   }, [dispatch]);
+
+  console.log(completedAppointments);
 
   return (
     <div className='h-[85.55vh] desktop:pb-6'>
