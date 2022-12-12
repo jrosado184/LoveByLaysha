@@ -5,6 +5,10 @@ const {
   checkId,
   checkExists,
 } = require("./appointments-middleware");
+const twilioClient = require("twilio")(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 router.get("/", (req, res, next) => {
   Appoint.findAll()
@@ -30,6 +34,19 @@ router.post("/", checkExists, checkBody, (req, res, next) => {
       res.status(201).json(appoint);
     })
     .catch(next);
+
+  twilioClient.messages
+    .create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: req.body.client_phone,
+      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appoinment_month} ${req.body.appointment_day}, ${req.body.appointment_year} at ${req.body.appoinment_time}. Please reply C to confirm – or reply with questions or if you need to reschedule.`,
+    })
+    .then(() => {
+      console.log("sent");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.put("/:id", checkBody, checkId, (req, res, next) => {
