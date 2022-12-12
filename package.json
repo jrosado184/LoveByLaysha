@@ -35,7 +35,6 @@
     "pg": "8.7.1",
     "redis": "^4.2.0",
     "serve-static": "^1.15.0",
-    "twilio": "^3.83.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -45,7 +44,8 @@
     "eslint": "^8.7.0",
     "jest": "27.4.7",
     "nodemon": "^2.0.19",
-    "supertest": "6.2.2"
+    "supertest": "6.2.2",
+    "twilio": "^3.83.4"
   },
   "repository": {
     "type": "git",

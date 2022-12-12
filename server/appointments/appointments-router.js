@@ -5,10 +5,10 @@ const {
   checkId,
   checkExists,
 } = require("./appointments-middleware");
-// const twilioClient = require("twilio")(
-//   process.env.TWILIO_ACCOUNT_SID,
-//   process.env.TWILIO_AUTH_TOKEN
-// );
+const twilioClient = require("twilio")(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 router.get("/", (req, res, next) => {
   Appoint.findAll()
