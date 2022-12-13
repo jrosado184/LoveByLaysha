@@ -40,10 +40,10 @@ router.post("/", checkExists, checkBody, (req, res, next) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: req.body.client_phone,
-      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appoinment_month} ${req.body.appointment_day}, ${req.body.appointment_year} at ${req.body.appoinment_time}. Please reply C to confirm – or reply with questions or if you need to reschedule.`,
+      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. Please reply C to confirm – or reply with questions or if you need to reschedule.`,
     })
     .then(() => {
-      console.log("sent");
+      console.log("confirmation message sent");
     })
     .catch((err) => {
       console.log(err);
