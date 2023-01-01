@@ -9,7 +9,7 @@ const sendClientConfirmationMessage = (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: req.body.client_phone,
-      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The location address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions,please reach out to me, thank you! Your confirmation code is ${req.body.confirmation}`,
+      body: `Hey ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions, please reach out to me. Your confirmation code is ${req.body.confirmation}, Thank you!`,
     })
     .then(() => {})
     .catch((err) => {
@@ -22,7 +22,7 @@ const sendAdminConfirmationMessage = (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: process.env.ADMIN_PHONE_NUMBER,
-      body: `Hello Laysha, ${req.body.client_name} has scheduled an appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. `,
+      body: `Hey Laysha, ${req.body.client_name} has scheduled an appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. `,
     })
     .then(() => {})
     .catch((err) => {
@@ -35,7 +35,7 @@ const rescheduleConfirmationMessage = (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: req.body.client_phone,
-      body: `Hello ${req.body.client_name}, your appointment has been rescheduled for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The location address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions,please reach out to me, thank you!`,
+      body: `Hey ${req.body.client_name}, your appointment has been rescheduled for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions, please reach out to me. Thank you!`,
     })
     .then(() => {})
     .catch((err) => {
@@ -48,7 +48,7 @@ const rescheduleConfirmationMessageForAdmin = (req) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: process.env.ADMIN_PHONE_NUMBER,
-      body: `Hello Laysha, ${req.body.client_name} has rescheduled their appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}.`,
+      body: `Hey Laysha, ${req.body.client_name} has rescheduled their appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. `,
     })
     .then(() => {})
     .catch((err) => {
@@ -61,7 +61,7 @@ const cancelConfirmationMessageForAdmin = (appoint) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: process.env.ADMIN_PHONE_NUMBER,
-      body: `Hello Laysha, ${appoint.client_name} has CANCELED their appointment for ${appoint.appointment_month}/${appoint.appointment_day}/${appoint.appointment_year} at ${appoint.appointment_time}.`,
+      body: `Hey Laysha, ${appoint.client_name} has CANCELED their appointment for ${appoint.appointment_month}/${appoint.appointment_day}/${appoint.appointment_year} at ${appoint.appointment_time}.`,
     })
     .then(() => {})
     .catch((err) => {
@@ -74,7 +74,7 @@ const cancelConfirmationMessage = (appoint) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: appoint.client_phone,
-      body: `Hello ${appoint.client_name}, your appointment for ${appoint.appointment_month}/${appoint.appointment_day}/${appoint.appointment_year} at ${appoint.appointment_time} has been canceled.`,
+      body: `Hey ${appoint.client_name}, your appointment for ${appoint.appointment_month}/${appoint.appointment_day}/${appoint.appointment_year} at ${appoint.appointment_time} has been canceled.`,
     })
     .then(() => {})
     .catch((err) => {
