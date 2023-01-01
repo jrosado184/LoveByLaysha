@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import plus from './../../assets/plus.svg';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import plus from "./../../assets/plus.svg";
+import { Link } from "react-router-dom";
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
@@ -27,9 +27,9 @@ const FooterNav = ({ setImage, onNailComp }) => {
       </Link>
       <div
         className={
-          !localStorage.getItem('token')
-            ? 'w-9 h-fit flex flex-col items-center justify-center mb-4'
-            : 'hidden'
+          !localStorage.getItem("token")
+            ? "w-9 h-fit flex flex-col items-center justify-center mb-4"
+            : "hidden"
         }
       >
         <Link to='/book'>
@@ -50,7 +50,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <p className='text-xs text-pink-900 dark:text-neutral-100'>Book</p>
         </Link>
       </div>
-      {!localStorage.getItem('token') ? (
+      {!localStorage.getItem("token") ? (
         <Link to='/policies'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <svg
@@ -110,7 +110,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </label>
         </div>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <Link to='/appointments'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
             <svg
@@ -133,7 +133,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </div>
         </Link>
       )}
-      {!localStorage.getItem('token') && (
+      {!localStorage.getItem("token") && (
         <Link to='/contact'>
           <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
             <svg
@@ -156,7 +156,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           </div>
         </Link>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <Link to='/settings'>
           <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
             <svg

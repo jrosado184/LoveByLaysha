@@ -5,11 +5,14 @@ const {
   checkId,
   checkExists,
 } = require("./appointments-middleware");
-const twilio = require("twilio");
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-
-const client = new twilio(accountSid, authToken);
+const {
+  sendAdminConfirmationMessage,
+  sendClientConfirmationMessage,
+  rescheduleConfirmationMessage,
+  rescheduleConfirmationMessageForAdmin,
+  cancelConfirmationMessage,
+  cancelConfirmationMessageForAdmin,
+} = require("./appointment_confirm_message");
 
 router.get("/", (req, res, next) => {
   Appoint.findAll()
@@ -33,27 +36,18 @@ router.post("/", checkExists, checkBody, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);
+      sendClientConfirmationMessage(req);
+      sendAdminConfirmationMessage(req);
     })
     .catch(next);
-
-  client.messages
-    .create({
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: req.body.client_phone,
-      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. Your confirmation code is ${req.body.confirmation}`,
-    })
-    .then(() => {
-      console.log("confirmation message sent");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 });
 
 router.put("/:id", checkBody, checkId, (req, res, next) => {
   Appoint.update(req.params.id, req.body)
     .then((newAppoint) => {
       res.status(200).json(newAppoint);
+      rescheduleConfirmationMessage(req);
+      rescheduleConfirmationMessageForAdmin(req);
     })
     .catch(next);
 });
@@ -62,6 +56,8 @@ router.delete("/:id", checkId, (req, res, next) => {
   Appoint.remove(req.params.id)
     .then((appoint) => {
       res.json(appoint);
+      cancelConfirmationMessage(appoint[0]);
+      cancelConfirmationMessageForAdmin(appoint[0]);
     })
     .catch(next);
 });
@@ -77,7 +73,7 @@ router.delete("/completed/:id", checkId, (req, res, next) => {
 router.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message,
-    custom: "error in the appointments  router",
+    custom: "error in the appointments router",
   });
 });
 
