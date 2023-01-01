@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { ReactComponent as Trash } from './../../assets/trash.svg';
-import { Months } from '../../Algos/Months';
+import React from "react";
+import { connect } from "react-redux";
+import { ReactComponent as Trash } from "./../../assets/trash.svg";
+import { Months } from "../../Algos/Months";
 
 const DisabledTimes = ({
   fetchAppointments,
@@ -19,7 +19,7 @@ const DisabledTimes = ({
       <div className='w-full my-12 border border-pink-200 dark:border-neutral-200 desktop:hidden'></div>
       <div className='w-full flex flex-col items-center border border-pink-400 rounded-md h-60 my-6 desktop:my-12 dark:border-neutral-600'>
         <div className='flex w-full h-8 justify-center items-center border-b border-pink-400 dark:border-neutral-600'>
-          <p className='font-medium text-pink-900 dark:text-neutral-100'>{`Disabled times for ${Months(
+          <p className='font-medium text-pink-900 dark:text-neutral-100'>{`Unavailable times for ${Months(
             selectedDate.month
           )} ${selectedDate.day}, ${selectedDate.year} `}</p>
         </div>
