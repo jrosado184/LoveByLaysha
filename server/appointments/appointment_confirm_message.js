@@ -22,7 +22,7 @@ const sendAdminConfirmationMessage = (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: process.env.ADMIN_PHONE_NUMBER,
-      body: `Hello Laysha, ${req.body.client_name} has scheduled an appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time} `,
+      body: `Hello Laysha, ${req.body.client_name} has scheduled an appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. `,
     })
     .then(() => {})
     .catch((err) => {
