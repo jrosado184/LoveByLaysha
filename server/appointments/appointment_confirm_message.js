@@ -9,7 +9,7 @@ const sendClientConfirmationMessage = (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: req.body.client_phone,
-      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. Your confirmation code is ${req.body.confirmation}`,
+      body: `Hello ${req.body.client_name}, this is a friendly reminder for your appointment with Laysha on ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The location address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions,please reach out to me, thank you! Your confirmation code is ${req.body.confirmation}`,
     })
     .then(() => {})
     .catch((err) => {
@@ -48,7 +48,7 @@ const rescheduleConfirmationMessageForAdmin = (req) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: process.env.ADMIN_PHONE_NUMBER,
-      body: `Hello Laysha, ${req.body.client_name} has rescheduled their appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The location address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions,please reach out to me, thank you!`,
+      body: `Hello Laysha, ${req.body.client_name} has rescheduled their appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}.`,
     })
     .then(() => {})
     .catch((err) => {
