@@ -21,7 +21,7 @@ const sendAdminConfirmationMessage = (req, res) => {
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: "+12675932425",
+      to: process.env.ADMIN_PHONE_NUMBER,
       body: `Hello Laysha, ${req.body.client_name} has scheduled an appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time} `,
     })
     .then(() => {})
@@ -47,7 +47,7 @@ const rescheduleConfirmationMessageForAdmin = (req) => {
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: req.body.client_phone,
+      to: process.env.ADMIN_PHONE_NUMBER,
       body: `Hello Laysha, ${req.body.client_name} has rescheduled their appointment for ${req.body.appointment_month}/${req.body.appointment_day}/${req.body.appointment_year} at ${req.body.appointment_time}. The location address is 2258 Tyson Ave, Philadelphia PA 19111. If you have any questions,please reach out to me, thank you!`,
     })
     .then(() => {})
@@ -60,7 +60,7 @@ const cancelConfirmationMessageForAdmin = (appoint) => {
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: appoint.client_phone,
+      to: process.env.ADMIN_PHONE_NUMBER,
       body: `Hello Laysha, ${appoint.client_name} has CANCELED their appointment for ${appoint.appointment_month}/${appoint.appointment_day}/${appoint.appointment_year} at ${appoint.appointment_time}.`,
     })
     .then(() => {})
