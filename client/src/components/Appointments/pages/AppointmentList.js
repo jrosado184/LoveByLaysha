@@ -27,9 +27,17 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
             <Loading />
           )
         ) : fetchAppointments.length ? (
-          fetchAppointments.map((appointment, index) => (
-            <Appointments key={index} appointment={appointment} />
-          ))
+          fetchAppointments
+            .sort((a, b) => {
+              const dateOneToCompare = `${a.appointment_month}/${a.appointment_day}/${a.appointment_year}`;
+              const dateTwoToCompare = `${b.appointment_month}/${b.appointment_day}/${b.appointment_year}`;
+              const newDateToCompareOne = new Date(dateOneToCompare);
+              const newDateToCompareTwo = new Date(dateTwoToCompare);
+              return newDateToCompareOne - newDateToCompareTwo;
+            })
+            .map((appointment, index) => (
+              <Appointments key={index} appointment={appointment} />
+            ))
         ) : (
           <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
             No Appointments Scheduled
