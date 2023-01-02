@@ -36,8 +36,8 @@ router.post("/", checkExists, checkBody, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);
-      // sendClientConfirmationMessage(req);
-      // sendAdminConfirmationMessage(req);
+      sendClientConfirmationMessage(req);
+      sendAdminConfirmationMessage(req);
     })
     .catch(next);
 });
@@ -46,8 +46,8 @@ router.put("/:id", checkBody, checkId, (req, res, next) => {
   Appoint.update(req.params.id, req.body)
     .then((newAppoint) => {
       res.status(200).json(newAppoint);
-      // rescheduleConfirmationMessage(req);
-      // rescheduleConfirmationMessageForAdmin(req);
+      rescheduleConfirmationMessage(req);
+      rescheduleConfirmationMessageForAdmin(req);
     })
     .catch(next);
 });
@@ -56,8 +56,8 @@ router.delete("/:id", checkId, (req, res, next) => {
   Appoint.remove(req.params.id)
     .then((appoint) => {
       res.json(appoint);
-      // cancelConfirmationMessage(appoint[0]);
-      // cancelConfirmationMessageForAdmin(appoint[0]);
+      cancelConfirmationMessage(appoint[0]);
+      cancelConfirmationMessageForAdmin(appoint[0]);
     })
     .catch(next);
 });
