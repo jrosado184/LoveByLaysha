@@ -36,8 +36,8 @@ router.post("/", checkExists, checkBody, (req, res, next) => {
   Appoint.insert(req.body)
     .then((appoint) => {
       res.status(201).json(appoint);
-      // sendClientConfirmationMessage(req);
-      // sendAdminConfirmationMessage(req);
+      sendClientConfirmationMessage(req);
+      sendAdminConfirmationMessage(req);
     })
     .catch(next);
 });

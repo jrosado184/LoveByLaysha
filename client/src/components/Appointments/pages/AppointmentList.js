@@ -3,30 +3,35 @@ import React, { useEffect, useState } from "react";
 import { getAppointments } from "../../../redux/actions/appointment-actions";
 import Appointments from "./Appointments";
 import Search from "../Search";
-import { sortDates } from "../../../Algos/Sorting";
-import AppointmentsSkeleton from "./../skeletons/AppointmentsListSkeleton";
 import Loading from "./Loading";
 
 const AppointmentList = ({ dispatch, fetchAppointments }) => {
   const [loading, setLoading] = useState(true);
+  const [searchingForClient, setSearchingForClient] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     dispatch(getAppointments());
-    sortDates();
     setTimeout(() => {
       setLoading(false);
     }, 500);
   }, []);
 
+  console.log();
+
   return (
     <div className='h-[90vh] pb-6 desktop:pb-[47.2%]'>
-      <Search />
+      <Search
+        searchingForClient={searchingForClient}
+        setSearchingForClient={setSearchingForClient}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
       <div className='flex flex-col items-center my-2'>
-        {loading ? (
-          <AppointmentsSkeleton card={fetchAppointments.length} /> && (
-            <Loading />
-          )
-        ) : fetchAppointments.length ? (
+        {/* {searchInput && */}
+        {/* // search functionailty goes here */}
+        {/* // } */}
+        {fetchAppointments.length ? (
           fetchAppointments
             .sort((a, b) => {
               const dateOneToCompare = `${a.appointment_month}/${a.appointment_day}/${a.appointment_year}`;
