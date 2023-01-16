@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { connect } from "react-redux";
 import { getAppointments } from "./../../redux/actions/appointment-actions";
-import e from "cors";
 
 const Search = ({
   dispatch,
@@ -26,12 +25,16 @@ const Search = ({
     setSearchInput(e.target.value);
   };
 
+  const onSearchClick = () => {
+    setShowSearch(!showSearch);
+    showSearch && setSearchingForClient(false);
+    showSearch && setSearchInput("");
+  };
+
   useEffect(() => {
     dispatch(getAppointments());
-    showSearch && setSearchingForClient(!searchingForClient);
-  }, [showSearch]);
-
-  console.log(searchingForClient);
+    searchInput && setSearchingForClient(true);
+  }, [showSearch, searchInput]);
 
   return (
     <div>
@@ -56,7 +59,7 @@ const Search = ({
             onClick={handleSearch}
             className={
               showSearch
-                ? "w-[100%] ml-2 border-2 border-pink-300 mr-2 h-9 pl-3 rounded-full dark:bg-neutral-700 dark:border-neutral-900"
+                ? "w-[100%] ml-2 border-2 border-pink-300 mr-2 h-9 pl-3 rounded-full text-pink-900 dark:text-neutral-100 dark:bg-neutral-700 dark:border-neutral-900"
                 : "hidden"
             }
             placeholder='Search for a client'
@@ -65,7 +68,7 @@ const Search = ({
             onChange={handleSearch}
           />
           <SearchIcon
-            onClick={() => setShowSearch(!showSearch)}
+            onClick={onSearchClick}
             className='w-6 mr-4 cursor-pointer text-pink-900 flex-shrink-0 dark:text-neutral-100'
           />
         </form>

@@ -17,8 +17,6 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
     }, 500);
   }, []);
 
-  console.log();
-
   return (
     <div className='h-[90vh] pb-6 desktop:pb-[47.2%]'>
       <Search
@@ -27,28 +25,36 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      <div className='flex flex-col items-center my-2'>
-        {/* {searchInput && */}
-        {/* // search functionailty goes here */}
-        {/* // } */}
-        {fetchAppointments.length ? (
-          fetchAppointments
-            .sort((a, b) => {
-              const dateOneToCompare = `${a.appointment_month}/${a.appointment_day}/${a.appointment_year}`;
-              const dateTwoToCompare = `${b.appointment_month}/${b.appointment_day}/${b.appointment_year}`;
-              const newDateToCompareOne = new Date(dateOneToCompare);
-              const newDateToCompareTwo = new Date(dateTwoToCompare);
-              return newDateToCompareOne - newDateToCompareTwo;
-            })
-            .map((appointment, index) => (
-              <Appointments key={index} appointment={appointment} />
-            ))
-        ) : (
-          <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
-            No Appointments Scheduled
-          </div>
-        )}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='flex flex-col items-center my-2'>
+          {searchInput &&
+            fetchAppointments.map((client, index) => {
+              if (client.client_name.includes(searchInput))
+                return <Appointments appointment={client} key={index} />;
+              return null;
+            })}
+          {!searchInput &&
+            fetchAppointments.length &&
+            fetchAppointments
+              .sort((a, b) => {
+                const dateOneToCompare = `${a.appointment_month}/${a.appointment_day}/${a.appointment_year}`;
+                const dateTwoToCompare = `${b.appointment_month}/${b.appointment_day}/${b.appointment_year}`;
+                const newDateToCompareOne = new Date(dateOneToCompare);
+                const newDateToCompareTwo = new Date(dateTwoToCompare);
+                return newDateToCompareOne - newDateToCompareTwo;
+              })
+              .map((appointment, index) => (
+                <Appointments key={index} appointment={appointment} />
+              ))}
+          {!searchInput && !fetchAppointments.length && (
+            <div className='w-full h-96 flex justify-center items-center my-24 text-pink-900 dark:text-neutral-100'>
+              No Appointments Scheduled
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
