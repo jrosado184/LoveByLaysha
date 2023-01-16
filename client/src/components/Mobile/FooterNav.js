@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
-    <div className='flex h-16 py-8  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
+    <div className='flex h-14 py-6  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
       <Link to='/'>
-        <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+        <div className='w-9 h-fit flex flex-col items-center justify-center '>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6 text-pink-900 dark:text-neutral-100'
@@ -28,7 +28,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       <div
         className={
           !localStorage.getItem("token")
-            ? "w-9 h-fit flex flex-col items-center justify-center mb-4"
+            ? "w-9 h-fit flex flex-col items-center justify-center"
             : "hidden"
         }
       >
@@ -52,7 +52,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       </div>
       {!localStorage.getItem("token") ? (
         <Link to='/policies'>
-          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6 text-pink-900 dark:text-neutral-100'
@@ -74,7 +74,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </Link>
       ) : (
         <Link to='/schedule'>
-          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6 text-pink-900 dark:text-neutral-100'
@@ -96,7 +96,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         </Link>
       )}
       {onNailComp && (
-        <div className='w-9 h-fit mb-5 bg-pink-300 border border-white rounded-full dark:bg-neutral-600'>
+        <div className='w-9 h-fit bg-pink-300 border border-white rounded-full dark:bg-neutral-600'>
           <label
             className='cursor-pointer'
             onClick={(e) => setImage(e.target.files[0])}
@@ -112,7 +112,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       )}
       {localStorage.getItem("token") && (
         <Link to='/appointments'>
-          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4'>
+          <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6 text-pink-900 dark:text-neutral-100'
@@ -135,7 +135,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       )}
       {!localStorage.getItem("token") && (
         <Link to='/contact'>
-          <div className='w-9 h-fit flex flex-col items-center justify-center mb-4 '>
+          <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6 text-pink-900 dark:text-neutral-100'
@@ -158,7 +158,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
       )}
       {localStorage.getItem("token") && (
         <Link to='/settings'>
-          <div className='w-22 h-fit flex flex-col items-center justify-center mb-4'>
+          <div className='w-22 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6 text-pink-900 dark:text-neutral-100'
