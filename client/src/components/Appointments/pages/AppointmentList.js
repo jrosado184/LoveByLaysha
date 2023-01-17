@@ -36,7 +36,6 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
               return null;
             })}
           {!searchInput &&
-            fetchAppointments.length &&
             fetchAppointments
               .sort((a, b) => {
                 const dateOneToCompare = `${a.appointment_month}/${a.appointment_day}/${a.appointment_year}`;
