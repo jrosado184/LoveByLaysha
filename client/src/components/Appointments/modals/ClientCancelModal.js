@@ -4,12 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import Rodal from "rodal";
 import { ArrowLeftIcon } from "@heroicons/react/outline";
 
-const CancelModal = ({ cancelModal, setCancelModal }) => {
+const ClientCancelModal = ({ cancelModal, setCancelModal }) => {
   const { id } = useParams();
 
   const nav = useNavigate();
 
-  const handleCancel = async () => {
+  const handleCancel = () => {
     axiosWithAuth()
       .delete(`/api/appointments/${id}`)
       .then((res) => {
@@ -49,4 +49,4 @@ const CancelModal = ({ cancelModal, setCancelModal }) => {
   );
 };
 
-export default CancelModal;
+export default ClientCancelModal;

@@ -16,13 +16,13 @@ const Header = ({ dispatch }) => {
   const nav = useNavigate();
 
   return (
-    <div className='bg-pink-200 w-full h-14 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-16'>
+    <div className='bg-pink-200 w-full h-16 shadow-md sticky top-0 z-20 dark:bg-neutral-900 desktop:h-16'>
       <div className='w-full flex items-center h-16 desktop:h-13 desktop:items-center'>
         {localStorage.getItem("token") ? (
-          <div className='flex justify-center items-center flex-col mb-1'>
+          <div className='flex justify-center items-center flex-col'>
             <img
               onClick={() => nav("/")}
-              className='user-image ml-2 w-10 h-10 rounded-full border-2 border-white desktop:w-11 desktop:h-11 desktop:ml-8'
+              className='user-image ml-2 w-11 h-11 rounded-full border-2 border-white desktop:w-11 desktop:h-11 desktop:ml-8'
               src={user}
               alt=''
             />
@@ -31,7 +31,7 @@ const Header = ({ dispatch }) => {
           <div className='flex justify-center items-center flex-col mb-1'>
             <img
               onClick={() => nav("/")}
-              className='ml-2 w-10 h-10 rounded-full border-2 border-white desktop:w-11 desktop:h-11 desktop:ml-8'
+              className='ml-2 w-11 h-11 rounded-full border-2 border-white desktop:w-11 desktop:h-11 desktop:ml-8'
               src={laysha}
               alt=''
             />

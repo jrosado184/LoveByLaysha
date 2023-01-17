@@ -6,7 +6,7 @@ import { appointmentId } from "../../redux/actions/appointment-actions";
 import { Months } from "./../../Algos/Months";
 import check from "./../../assets/check.svg";
 import Loading from "./../Appointments/pages/Loading";
-import CancelModal from "../Appointments/modals/CancelModal";
+import ClientCancelModal from "../Appointments/modals/ClientCancelModal";
 import { ReactComponent as Edit } from "./../../assets/edit.svg";
 
 const RescheduleInfo = ({ getAppointmentById, dispatch }) => {
@@ -32,7 +32,7 @@ const RescheduleInfo = ({ getAppointmentById, dispatch }) => {
   return (
     <div className='h-[89.2vh] desktop:pb-[44.4%]'>
       {cancelModal && (
-        <CancelModal
+        <ClientCancelModal
           cancelModal={cancelModal}
           setCancelModal={setCancelModal}
         />

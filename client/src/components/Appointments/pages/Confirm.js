@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import check from "./../../../assets/check.svg";
 import { connect } from "react-redux";
 import { getAppointments } from "../../../redux/actions/appointment-actions";
-import CancelModal from "./../modals/CancelModal";
+import ClientCancelModal from "./../modals/ClientCancelModal";
 import { Months } from "../../../Algos/Months";
 import Loading from "./Loading";
 
@@ -24,7 +24,7 @@ const Confirm = ({ dispatch, fetchAppointments }) => {
   return (
     <div className='h-[89.2vh] desktop:pb-[44.4%]'>
       {cancelModal && (
-        <CancelModal
+        <ClientCancelModal
           cancelModal={cancelModal}
           setCancelModal={setCancelModal}
         />

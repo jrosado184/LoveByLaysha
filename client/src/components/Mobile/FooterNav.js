@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 const FooterNav = ({ setImage, onNailComp }) => {
   return (
-    <div className='flex h-14 py-6  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
+    <div className='flex h-16 pb-3  justify-evenly items-center bg-pink-200 w-full border-y border-pink-300 dark:bg-neutral-900 dark:border-neutral-900 desktop:hidden'>
       <Link to='/'>
         <div className='w-9 h-fit flex flex-col items-center justify-center '>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+            className='h-7 w-7 text-pink-900 dark:text-neutral-100'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -35,7 +35,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
         <Link to='/book'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+            className='h-7 w-7 text-pink-900 dark:text-neutral-100'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -55,7 +55,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+              className='h-7 w-7 text-pink-900 dark:text-neutral-100'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'
@@ -77,7 +77,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+              className='h-7 w-7 text-pink-900 dark:text-neutral-100'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'
@@ -115,7 +115,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+              className='h-7 w-7 text-pink-900 dark:text-neutral-100'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'
@@ -138,7 +138,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-9 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+              className='h-7 w-7 text-pink-900 dark:text-neutral-100'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'
@@ -161,7 +161,7 @@ const FooterNav = ({ setImage, onNailComp }) => {
           <div className='w-22 h-fit flex flex-col items-center justify-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6 text-pink-900 dark:text-neutral-100'
+              className='h-7 w-7 text-pink-900 dark:text-neutral-100'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'

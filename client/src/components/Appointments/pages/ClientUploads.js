@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosWithAuth from '../../../utils/axiosWithAuth';
-import { appointmentId } from '../../../redux/actions/appointment-actions';
-import { connect } from 'react-redux';
-import ClientUploadSkeleton from './../skeletons/ClientUploadsSkeleton';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosWithAuth from "../../../utils/axiosWithAuth";
+import { appointmentId } from "../../../redux/actions/appointment-actions";
+import { connect } from "react-redux";
+import AdminCancelConfirm from "../modals/AdminCancelConfirm";
 
 const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const nav = useNavigate();
@@ -11,6 +11,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
   const { id } = useParams();
 
   const [loading, setLoading] = useState(true);
+  const [showCancelModal, setShowCancelModal] = useState(false);
 
   useEffect(() => {
     dispatch(appointmentId(id));
@@ -20,13 +21,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
   }, []);
 
   const handleDelete = () => {
-    axiosWithAuth()
-      .delete(`/api/appointments/${id}`)
-      .then((res) => {})
-      .catch((err) => {
-        console.log(err);
-      });
-    nav('/appointments');
+    setShowCancelModal(true);
   };
 
   const handleComplete = () => {
@@ -36,11 +31,17 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
       .catch((err) => {
         console.log(err);
       });
-    nav('/appointments');
+    nav("/appointments");
   };
 
   return (
     <>
+      {showCancelModal && (
+        <AdminCancelConfirm
+          showCancelModal={showCancelModal}
+          setShowCancelModal={setShowCancelModal}
+        />
+      )}
       <div className='desktop:w-full pb-24'>
         <div className='desktop:flex flex-col'>
           {getAppointmentById.map((appointmentId, index) => {
@@ -63,8 +64,8 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
                   </div>
                 )}
                 <p className='ml-2 my-6 text-pink-900 dark:text-neutral-100'>
-                  {appointmentId.client_details === ''
-                    ? 'No Additional Details'
+                  {appointmentId.client_details === ""
+                    ? "No Additional Details"
                     : appointmentId.client_details}
                 </p>
               </div>
@@ -75,7 +76,7 @@ const ClientUploads = ({ dispatch, getAppointmentById }) => {
               onClick={handleDelete}
               className='w-20 h-8 mr-6 bg-pink-200 border border-pink-500 text-pink-500 text-sm shadow-sm rounded-full dark:bg-neutral-700 dark:border-neutral-900 dark:text-neutral-100'
             >
-              Remove
+              Cancel
             </button>
             <button
               onClick={handleComplete}
