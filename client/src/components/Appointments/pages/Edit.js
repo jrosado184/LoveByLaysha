@@ -25,8 +25,8 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   });
 
   const [disabledDays, setDisabledDays] = useState([]);
-
   const [changes, setChanges] = useState(false);
+  const [image, setImage] = useState(null);
 
   const [info, setInfo] = useState({
     appointment_month: selectedDate.year,
@@ -58,16 +58,14 @@ const Edit = ({ fetchAppointments, dispatch }) => {
   const handleChange = (e) => {
     setInfo({
       ...info,
-      appointment_month: selectedDate.month,
-      appointment_day: selectedDate.day,
-      appointment_year: selectedDate.year,
+      // appointment_month: selectedDate.month,
+      // appointment_day: selectedDate.day,
+      // appointment_year: selectedDate.year,
       client_set: info.client_refill ? "none" : info.client_set,
       client_refillSet: info.client_set ? "none" : info.client_set,
       [e.target.name]: e.target.value,
     });
   };
-
-  const [image, setImage] = useState(null);
 
   const handleImage = () => {
     if (image === null) return;
@@ -79,7 +77,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
     });
   };
 
-  const handleCalendar = () => {
+  const handleCalendar = (e) => {
     setInfo({
       ...info,
       appointment_month: selectedDate.month,
@@ -133,7 +131,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
       day: info.appointment_day,
       year: info.appointment_year,
     });
-  }, [info]);
+  }, [info.appointment_month, info.appointment_day, info.appointment_year]);
 
   useEffect(() => {
     handleImage();
@@ -152,7 +150,7 @@ const Edit = ({ fetchAppointments, dispatch }) => {
         <div className='md:flex md:w-[75%]'>
           <div className='flex justify-center'>
             <Calendar
-              onChange={handleCalendar}
+              onChange={(e) => setSelectedDate(e)}
               calendarClassName='border-2 border-pink-200 h-[100%] dark:border-neutral-900'
               colorPrimary='#f8a4d1'
               value={selectedDate}
