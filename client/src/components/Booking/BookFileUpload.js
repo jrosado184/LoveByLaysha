@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { postAppointments } from "../../redux/actions/appointment-actions.js";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -13,7 +13,8 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
 
   const [image, setImage] = useState(null);
 
-  const handleImage = async () => {
+  const handleImage = async (e) => {
+    e.preventDefault();
     if (image === null) return;
     const imageRef = ref(storage, `clientUploads/${image.name}`);
     uploadBytes(imageRef, image).then((snapshot) => {
@@ -29,10 +30,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
       nav("/loading-confirm");
     }, 900);
   };
-  useEffect(() => {
-    handleImage();
-  }, [image]);
-
+  console.log(info);
   return (
     <div>
       <label className=' my-6 flex flex-col shrink md:ml-6 text-pink-900 dark:text-neutral-100'>
@@ -52,7 +50,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
           data-testid='bookbtn'
           type='submit'
           value='Book'
-          onClick={formValid(handleSubmit)}
+          onClick={handleSubmit}
         />
       </div>
       <button
