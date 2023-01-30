@@ -11,7 +11,6 @@ import {
   deleteObject,
 } from "firebase/storage";
 import NailUploadNav from "./../modals/NailUploadNav";
-import NailSkeleton from "./../skeletons/NailSkeleton";
 import Loading from "./../../Appointments/pages/Loading";
 import FooterNav from "../../Mobile/FooterNav";
 import ToggleTheme from "../../Main/ToggleTheme";

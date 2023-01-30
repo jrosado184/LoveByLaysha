@@ -1,8 +1,12 @@
 import React from "react";
 
-const Loading = () => {
+const Loading = ({ height }) => {
   return (
-    <div className='flex justify-center items-center h-[70vh]' role='status'>
+    <div
+      style={{ height: height || "70vh" }}
+      className='flex justify-center items-center'
+      role='status'
+    >
       <svg
         aria-hidden='true'
         className='mr-2 w-8 h-8 text-gray-300 animate-spin fill-pink-300 dark:text-gray-600 dark:fill-neutral-100'
