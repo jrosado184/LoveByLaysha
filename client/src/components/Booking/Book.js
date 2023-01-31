@@ -12,10 +12,13 @@ import RandomConfirmation from "../../Algos/RandomConfirmation";
 
 const Book = ({ fetchAppointments, dispatch }) => {
   const [selectedDate, setSelectedDate] = useState({
-    year: moment().year(),
-    month: moment().month() + 1,
-    day: moment().date(),
+    year: parseInt(localStorage.getItem("appointment_year")) || moment().year(),
+    month:
+      parseInt(localStorage.getItem("appointment_month")) ||
+      moment().month() + 1,
+    day: parseInt(localStorage.getItem("appointment_day")) || moment().date(),
   });
+
   const disabledTimes = [];
 
   const [disabledDays, setDisabledDays] = useState([]);
@@ -28,9 +31,9 @@ const Book = ({ fetchAppointments, dispatch }) => {
     appointment_day: selectedDate.day,
     appointment_year: selectedDate.year,
     appointment_time: "",
-    client_name: "",
-    client_phone: "",
-    client_set: "none",
+    client_name: localStorage.getItem("client_name") || "",
+    client_phone: localStorage.getItem("client_phone") || "",
+    client_set: "",
     client_refill: false,
     client_refillSet: "none",
     client_Soak: false,
@@ -102,6 +105,11 @@ const Book = ({ fetchAppointments, dispatch }) => {
         console.log(err);
       });
   }, [selectedDate]);
+
+  useEffect(() => {
+    localStorage.setItem("client_name", info.client_name);
+    localStorage.setItem("client_phone", info.client_phone);
+  }, [info]);
 
   const {
     register,
