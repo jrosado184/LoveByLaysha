@@ -53,7 +53,7 @@ const BookFileUpload = ({ info, dispatch, setInfo, formValid }) => {
         value={policyAgreement}
         onChange={() => setPolicyAgreement((prevValue) => !prevValue)}
       />
-      <label className='ml-2 text-pink-900'>
+      <label className='ml-2 text-pink-900 dark:text-neutral-100'>
         I have read and agree to all policies
       </label>
       <div className='flex justify-center w-[100%] my-2'>

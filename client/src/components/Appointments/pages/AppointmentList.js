@@ -31,9 +31,11 @@ const AppointmentList = ({ dispatch, fetchAppointments }) => {
         <div className='flex flex-col items-center my-2'>
           {searchInput &&
             fetchAppointments.map((client, index) => {
-              if (client.client_name.includes(searchInput))
+              if (client.client_name.includes(searchInput)) {
                 return <Appointments appointment={client} key={index} />;
-              return null;
+              } else {
+                return <div className="w-full h-[50vh] flex justify-center items-center text-pink-900 dark:text-neutral-100">No Appointments Found</div>
+              }
             })}
           {!searchInput &&
             fetchAppointments
